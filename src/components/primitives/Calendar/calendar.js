@@ -357,6 +357,7 @@ export class SiguiCalendar extends SiguiElement {
 
     this.querySelectorAll(".sg-calendar-picker-select").forEach((node) => {
       this.on(node, "change", () => {
+        if (!(node instanceof HTMLSelectElement)) return;
         const picker = node.getAttribute("data-picker");
         const month = picker === "month" ? Number(node.value) : monthStart.getMonth();
         const year = picker === "year" ? Number(node.value) : monthStart.getFullYear();

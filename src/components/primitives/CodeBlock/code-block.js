@@ -17,7 +17,7 @@ export class SiguiCodeBlock extends SiguiElement {
 
   constructor() {
     super();
-    /** @type {number | null} */
+    /** @type {ReturnType<typeof setTimeout> | null} */
     this.hljsRetryTimer = null;
     this.hljsRetryAttempts = 0;
   }
@@ -86,7 +86,7 @@ export class SiguiCodeBlock extends SiguiElement {
       let highlighted = null;
 
       // Try highlight.js if available
-      const hljs = /** @type {{ highlight: (code: string, options: { language: string }) => { value: string } }} */ (globalThis).hljs;
+      const hljs = (/** @type {{ hljs?: { highlight: (code: string, options: { language: string }) => { value: string } } }} */ (/** @type {unknown} */ (globalThis))).hljs;
       if (hljs && language) {
         try {
           const result = hljs.highlight(code, { language });
@@ -116,7 +116,7 @@ export class SiguiCodeBlock extends SiguiElement {
 
       // Try highlight.js simple mode
       requestAnimationFrame(() => {
-        const hljs = /** @type {{ highlightElement: (element: Element) => void }} */ (globalThis).hljs;
+        const hljs = (/** @type {{ hljs?: { highlightElement: (element: Element) => void } }} */ (/** @type {unknown} */ (globalThis))).hljs;
         const codeEl = this.querySelector(".sg-code-block-code");
         if (hljs && codeEl) {
           try {

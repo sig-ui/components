@@ -173,7 +173,7 @@ export class SiguiTabsTrigger extends SiguiElement {
       });
     }
     // Notify root to re-render now that this child is connected
-    if (this._root?._render) this._root._render();
+    if ((/** @type {any} */ (this._root))?._render) /** @type {any} */ (this._root)._render();
   }
 }
 
@@ -198,6 +198,6 @@ export class SiguiTabsContent extends SiguiElement {
     const myVal = readValue(this);
     this.hidden = myVal !== rootVal;
     // Notify root to re-render
-    if (root?._render) root._render();
+    if ((/** @type {any} */ (root))?._render) /** @type {any} */ (root)._render();
   }
 }

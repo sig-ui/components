@@ -82,7 +82,7 @@ export class SiguiSelectItem extends SiguiElement {
         const value = this.getAttribute("value") || this.dataset.value || this.textContent?.trim() || "";
         if (!value) return;
         this._root?.setAttribute("value", value);
-        this._root?._machine?.send("SELECT", { value });
+        /** @type {any} */ (this._root)?._machine?.send("SELECT", { value });
         this._root?.removeAttribute("open");
       });
     }

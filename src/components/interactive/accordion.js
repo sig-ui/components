@@ -75,7 +75,7 @@ export class SiguiAccordionTrigger extends SiguiElement {
         const open = this._item.hasAttribute("open");
         if (open) this._item.removeAttribute("open");
         else this._item.setAttribute("open", "");
-        this._root?._machine?.send("TOGGLE", { panel: this._item.dataset.value });
+        /** @type {any} */ (this._root)?._machine?.send("TOGGLE", { panel: this._item.dataset.value });
       });
     }
   }

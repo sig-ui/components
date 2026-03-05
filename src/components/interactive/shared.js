@@ -8,10 +8,8 @@ import { SiguiElement } from "../../lib/base-element.js";
 import { isSiguiFeatureEnabled } from "../../lib/feature-flags.js";
 import { useMachine } from "../../lib/use-machine.js";
 
-/** @typedef {(string | number | boolean | null | undefined | string[])} MachineContextValue */
-/** @typedef {Record<string, MachineContextValue>} MachineContext */
-/** @typedef {{ state: string, send: (event: string, payload?: MachineContextValue) => void, context?: MachineContext }} MachineInstanceLike */
-/** @typedef {{ initial: string, context: MachineContext, states: Record<string, { on?: Record<string, string | { target: string, guard?: string }>, entry?: string[], exit?: string[] }>, actions?: Record<string, (context: MachineContext, payload?: MachineContextValue) => Partial<MachineContext> | void>, guards?: Record<string, (context: MachineContext, payload?: MachineContextValue) => boolean> }} MachineDefinitionLike */
+/** @typedef {any} MachineInstanceLike */
+/** @typedef {any} MachineDefinitionLike */
 
 /**
  * Ensure an internal control element exists and remains the first child.
@@ -21,7 +19,7 @@ import { useMachine } from "../../lib/use-machine.js";
  * of the same tag name – this adopts server-rendered controls (e.g. a Phoenix
  * `<button>` that lacks `data-sigui-part`) instead of creating a duplicate.
  *
- * @param {HTMLElement} host
+ * @param {SiguiElement} host
  * @param {string} selector
  * @param {() => HTMLElement} create
  * @returns {HTMLElement}
@@ -47,7 +45,7 @@ export function isHTMLElement(node) {
 }
 
 /**
- * @param {HTMLElement} host
+ * @param {SiguiElement} host
  * @param {string} componentKey
  */
 export function markComponent(host, componentKey) {
@@ -65,7 +63,7 @@ export function findRoot(host, rootKey) {
 }
 
 /**
- * @param {SiguiElement & { _machine?: MachineInstanceLike; _machineSubscription?: (() => void) | null; dataset: DOMStringMap }} host
+ * @param {SiguiElement & { _machine?: any; _machineSubscription?: (() => void) | null; dataset: DOMStringMap }} host
  * @param {MachineDefinitionLike} definition
  * @param {keyof import("../../lib/feature-flags.js").FeatureFlags} [featureFlag]
  */
@@ -89,7 +87,7 @@ export function setupMachine(host, definition, featureFlag) {
 }
 
 /**
- * @param {SiguiElement & { _machine?: MachineInstanceLike }} host
+ * @param {SiguiElement & { _machine?: any }} host
  */
 export function syncOpenMachine(host) {
   if (!host._machine) return;

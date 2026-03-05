@@ -3542,12 +3542,14 @@ export const manifest = [
  * @property {string} [semanticRole]
  * @property {string} [accessibilityRequirements]
  */
+/** @type {ComponentDescriptor[]} */
+const manifestTyped = /** @type {any} */ (manifest);
 /**
  * getRootComponents.
  * @returns {ComponentDescriptor[]}
  */
 export function getRootComponents() {
-  return manifest.filter((c) => !c.parent);
+  return manifestTyped.filter((c) => !c.parent);
 }
 /**
  * getByCategory.
@@ -3555,7 +3557,7 @@ export function getRootComponents() {
  * @returns {ComponentDescriptor[]}
  */
 export function getByCategory(category) {
-  return manifest.filter((c) => c.category === category);
+  return manifestTyped.filter((c) => c.category === category);
 }
 /**
  * getComponent.
@@ -3563,7 +3565,7 @@ export function getByCategory(category) {
  * @returns {ComponentDescriptor | undefined}
  */
 export function getComponent(name) {
-  return manifest.find((c) => c.name === name);
+  return manifestTyped.find((c) => c.name === name);
 }
 /**
  * getChildren.
@@ -3571,9 +3573,10 @@ export function getComponent(name) {
  * @returns {ComponentDescriptor[]}
  */
 export function getChildren(parentName) {
-  return manifest.filter((c) => c.parent === parentName);
+  return manifestTyped.filter((c) => c.parent === parentName);
 }
 function propToJsonSchema(prop) {
+  /** @type {JsonSchemaProperty["type"]} */
   let type = "string";
   if (prop.type === "boolean")
     type = "boolean";
@@ -3581,7 +3584,8 @@ function propToJsonSchema(prop) {
     type = "number";
   else if (prop.type.startsWith("("))
     type = "string";
-  const schema = { type, description: prop.description };
+  /** @type {JsonSchemaProperty} */
+  const schema = { type, description: prop.description ?? "" };
   if (prop.values)
     schema.enum = prop.values;
   if (prop.default !== undefined)
@@ -3598,6 +3602,7 @@ function propToJsonSchema(prop) {
  * @returns {ComponentJsonSchema}
  */
 export function componentToJsonSchema(component) {
+  /** @type {Record<string, JsonSchemaProperty>} */
   const properties = {};
   const required = [];
   for (const [name, prop] of Object.entries(component.props)) {
@@ -3605,11 +3610,15 @@ export function componentToJsonSchema(component) {
     if (prop.required)
       required.push(name);
   }
+  /** @type {ComponentJsonSchema} */
   const schema = {
     type: "object",
     properties,
     required,
-    description: component.description
+    description: component.description,
+    "x-category": component.category,
+    "x-importPath": component.importPath,
+    "x-slots": component.slots
   };
   if (component.whenToUse)
     schema["x-whenToUse"] = component.whenToUse;
@@ -3619,11 +3628,8 @@ export function componentToJsonSchema(component) {
     schema["x-semanticRole"] = component.semanticRole;
   if (component.accessibilityRequirements)
     schema["x-accessibilityRequirements"] = component.accessibilityRequirements;
-  schema["x-category"] = component.category;
-  schema["x-importPath"] = component.importPath;
   if (component.parent)
     schema["x-parent"] = component.parent;
-  schema["x-slots"] = component.slots;
   return schema;
 }
 /**
@@ -3631,8 +3637,9 @@ export function componentToJsonSchema(component) {
  * @returns {{ $schema: string, title: string, description: string, definitions: Record<string, ComponentJsonSchema> }}
  */
 export function toJsonSchema() {
+  /** @type {Record<string, ComponentJsonSchema>} */
   const definitions = {};
-  for (const component of manifest) {
+  for (const component of manifestTyped) {
     definitions[component.name] = componentToJsonSchema(component);
   }
   return {

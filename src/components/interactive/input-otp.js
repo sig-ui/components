@@ -33,7 +33,7 @@ export class SiguiInputOtp extends SiguiElement {
   _render() {
     const length = Math.max(1, Number(this.getAttribute("length") || "6"));
     const value = (this.getAttribute("value") || "").slice(0, length);
-    let container = this.querySelector("[data-sigui-part='control']");
+    let container = /** @type {HTMLDivElement | null} */ (this.querySelector("[data-sigui-part='control']"));
     if (!(container instanceof HTMLDivElement)) {
       container = document.createElement("div");
       container.dataset.siguiPart = "control";

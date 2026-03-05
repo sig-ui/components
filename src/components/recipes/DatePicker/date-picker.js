@@ -103,7 +103,7 @@ export class SiguiDatePickerRoot extends SiguiElement {
 
   getContent() {
     if (this._contentEl && this._contentEl.isConnected) return this._contentEl;
-    const found = this.querySelector("sg-date-picker-content");
+    const found = /** @type {HTMLElement | null} */ (this.querySelector("sg-date-picker-content"));
     if (found) this._contentEl = found;
     return this._contentEl;
   }
@@ -303,7 +303,7 @@ export class SiguiDatePickerRoot extends SiguiElement {
       const locale = this.getAttribute("locale");
       if (locale) calendar.setAttribute("locale", locale);
       else calendar.removeAttribute("locale");
-      calendar.messages = this._messages;
+      /** @type {any} */ (calendar).messages = this._messages;
 
       if (selectedValue && calendar.getAttribute("value") !== selectedValue) calendar.setAttribute("value", selectedValue);
       if (!selectedValue) calendar.removeAttribute("value");

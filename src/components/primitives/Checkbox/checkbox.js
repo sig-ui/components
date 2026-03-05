@@ -53,8 +53,8 @@ export class SiguiCheckbox extends SiguiElement {
   }
 
   /** @param {string} name */
-  attributeChangedCallback(name) {
-    super.attributeChangedCallback(name);
+  attributeChangedCallback(name, oldValue, newValue) {
+    super.attributeChangedCallback(name, oldValue, newValue);
     this.syncNonStateAttrsToControl();
     if (name !== "checked" && name !== "indeterminate") return;
     if (this._isApplyingMachineState === true) return;
@@ -92,7 +92,7 @@ export class SiguiCheckbox extends SiguiElement {
         bubbles: true,
         detail: {
           checked: this._control?.checked === true,
-          indeterminate: this._control?.indeterminate === true,
+          indeterminate: Boolean(this._control?.indeterminate),
         },
       }));
     });

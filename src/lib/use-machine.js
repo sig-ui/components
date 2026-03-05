@@ -7,10 +7,8 @@
 import { createMachine } from "@sig-ui/core/machines";
 
 /**
- * @template TDef
- * @template {Record<string, string | number | boolean | null | undefined | string[]>} [TContext=Record<string, string | number | boolean | null | undefined | string[]>]
- * @param {TDef} definition
- * @param {(state: string, context: TContext) => void} [onChange]
+ * @param {any} definition
+ * @param {(state: string, context: any) => void} [onChange]
  */
 export function useMachine(definition, onChange) {
   const machine = createMachine(definition);

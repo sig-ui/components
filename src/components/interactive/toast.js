@@ -30,6 +30,10 @@ export class SiguiToastProvider extends SiguiElement {
  */
 export class SiguiToast extends SiguiElement {
   static observedAttributes = ["open", "duration"];
+  /** @type {any} */
+  _machine = null;
+  /** @type {ReturnType<typeof setTimeout> | null} */
+  _timer = null;
 
   /** @type {import("../../lib/base-element.js").SiguiContract} */
   static contract = Object.freeze({

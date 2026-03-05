@@ -366,8 +366,9 @@ export class SiguiColorPicker extends SiguiElement {
     const swatch = useButton ? document.createElement("button") : document.createElement("div");
     swatch.className = "sg-color-picker-trigger-swatch";
     if (useButton) {
-      swatch.type = "button";
-      swatch.disabled = this.hasAttribute("disabled");
+      const button = /** @type {HTMLButtonElement} */ (swatch);
+      button.type = "button";
+      button.disabled = this.hasAttribute("disabled");
     }
     swatch.style.width = `${this._geometry.swatchSizePx}px`;
     swatch.style.height = `${this._geometry.swatchSizePx}px`;

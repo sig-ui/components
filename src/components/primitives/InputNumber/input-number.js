@@ -29,7 +29,7 @@ export class SiguiInputNumber extends SiguiElement {
   }
 
   ensureInput() {
-    let input = this.querySelector("input[type='number']");
+    let input = /** @type {HTMLInputElement | null} */ (this.querySelector("input[type='number']"));
     if (!input) {
       input = document.createElement("input");
       input.type = "number";
