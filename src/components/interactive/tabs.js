@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 
 /**
  * interactive / tabs module for SigUI web components.

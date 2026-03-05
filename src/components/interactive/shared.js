@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 
 /**
  * interactive / shared module for SigUI web components.

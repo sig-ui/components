@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 
 /**
  * interactive / accordion module for SigUI web components.

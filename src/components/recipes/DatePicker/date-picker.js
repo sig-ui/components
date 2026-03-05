@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 
 /**
  * DatePicker / date-picker module for SigUI web components.

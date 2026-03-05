@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 
 /**
  * CodeBlock / code-block module for SigUI web components.

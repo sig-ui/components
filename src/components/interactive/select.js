@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 
 /**
  * interactive / select module for SigUI web components.

@@ -24,7 +24,9 @@
  * Components render into the host element (no Shadow DOM) so global SigUI
  * CSS layers continue to apply as authored.
  */
-const BaseHTMLElement = typeof HTMLElement === "undefined" ? class {} : HTMLElement;
+const BaseHTMLElement = /** @type {typeof HTMLElement} */ (
+  globalThis.HTMLElement ?? class extends EventTarget {}
+);
 
 /**
  * SiguiElement custom element class.

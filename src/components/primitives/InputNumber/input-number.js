@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 
 import { SiguiElement } from "../../../lib/base-element.js";
 

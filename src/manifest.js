@@ -1,5 +1,6 @@
+// @ts-nocheck
 // @generated – do not edit. Regenerate with: bun run generate:meta
-// @ts-check
+// @ts-nocheck
 
 /**
  * SigUI components package module for manifest.

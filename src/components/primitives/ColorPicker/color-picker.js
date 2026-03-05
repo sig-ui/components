@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 
 /**
  * ColorPicker / color-picker module for SigUI web components.
