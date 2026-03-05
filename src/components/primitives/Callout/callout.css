@@ -1,0 +1,19 @@
+.sg-callout {
+  display: block;
+  padding: var(--sg-pad-card, 1rem);
+  border-radius: var(--sg-radius-md, 0.5rem);
+  border: 1px solid var(--sg-color-border, currentColor);
+  background: var(--sg-color-surface-subtle, transparent);
+}
+
+.sg-callout[data-variant="success"] {
+  border-color: var(--sg-color-success, #1f8f4a);
+}
+
+.sg-callout[data-variant="warning"] {
+  border-color: var(--sg-color-warning, #c78700);
+}
+
+.sg-callout[data-variant="danger"] {
+  border-color: var(--sg-color-danger, #b42318);
+}

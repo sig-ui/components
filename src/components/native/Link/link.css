@@ -1,0 +1,57 @@
+@layer sigui.base {
+  .sg-link {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    text-decoration-thickness: 1px;
+    border-radius: var(--sg-input-radius, 0.25rem);
+    transition:
+      color var(--sg-transition-default, 200ms ease-out),
+      text-decoration-thickness var(--sg-transition-default, 200ms ease-out);
+  }
+
+}
+
+@layer sigui.variants {
+  .sg-link[data-color="primary"] {
+    color: var(--sg-color-primary);
+  }
+
+  .sg-link[data-color="muted"] {
+    color: var(--sg-color-text-muted);
+  }
+
+  .sg-link[data-color="inherit"] {
+    color: inherit;
+  }
+
+  .sg-link[data-underline="always"] {
+    text-decoration: underline;
+  }
+
+  .sg-link[data-underline="hover"] {
+    text-decoration: none;
+  }
+
+  .sg-link[data-underline="none"] {
+    text-decoration: none;
+  }
+
+}
+
+@layer sigui.states {
+  .sg-link:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  .sg-link[data-underline="hover"]:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+
+  .sg-link:focus-visible {
+    outline: 2px solid var(--sg-color-focus-ring, var(--sg-color-primary));
+    outline-offset: 2px;
+  }
+
+
+}

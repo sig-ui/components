@@ -1,0 +1,55 @@
+{
+  "name": "MutationObserver",
+  "importPath": "sg/mutation-observer",
+  "category": "layout",
+  "description": "Declarative MutationObserver bridge that emits mutation events.",
+  "whenToUse": "Reacting to structural/attribute changes without framework-specific hooks.",
+  "semanticRole": "none",
+  "props": {
+    "for": {
+      "type": "string",
+      "description": "CSS selector for observed target (defaults to parent)."
+    },
+    "child-list": {
+      "type": "boolean",
+      "default": true,
+      "description": "Observe child list changes."
+    },
+    "attributes": {
+      "type": "boolean",
+      "default": false,
+      "description": "Observe attribute changes."
+    },
+    "character-data": {
+      "type": "boolean",
+      "default": false,
+      "description": "Observe text node changes."
+    },
+    "subtree": {
+      "type": "boolean",
+      "default": true,
+      "description": "Observe entire subtree."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "mutation-observer.css",
+      "mutation-observer.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/layout/mutation-observer",
+    "label": "MutationObserver",
+    "group": "layout",
+    "subgroup": "observers",
+    "description": "Dispatch mutation events for observed elements"
+  },
+  "page": {
+    "title": "Observe DOM mutations",
+    "code": "<div id=\"mutation-target\">Observed content</div>\n<sg-mutation-observer for=\"#mutation-target\" attributes child-list subtree></sg-mutation-observer>"
+  }
+}

@@ -1,0 +1,26 @@
+@layer sigui.base {
+  .sg-skeleton {
+    display: block;
+    min-height: 1rem;
+    background: var(--sg-surface-container-highest);
+    border-radius: var(--sg-input-radius);
+    animation: sg-skeleton-pulse calc(200ms * 10) ease-in-out infinite;
+  }
+
+}
+
+@layer sigui.states {
+  @keyframes sg-skeleton-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  @media (forced-colors: active) {
+
+    .sg-skeleton {
+      border: 1px solid CanvasText;
+    }
+  }
+
+
+}

@@ -1,0 +1,86 @@
+{
+  "name": "ButtonGroup",
+  "importPath": "sg/button-group",
+  "category": "basic",
+  "description": "Groups related buttons together with shared size and color context. Renders role='group'.",
+  "whenToUse": "To group related actions that share visual styling (e.g. toolbar buttons).",
+  "avoidWhen": "For a single button or unrelated actions.",
+  "semanticRole": "group",
+  "props": {
+    "size": {
+      "type": "Size",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "md",
+      "description": "Button size for all children"
+    },
+    "color": {
+      "type": "ColorVariant",
+      "values": [
+        "primary",
+        "secondary",
+        "danger",
+        "success",
+        "warning",
+        "info",
+        "ghost"
+      ],
+      "description": "Color for all children"
+    },
+    "orientation": {
+      "type": "string",
+      "values": [
+        "horizontal",
+        "vertical"
+      ],
+      "default": "horizontal",
+      "description": "Layout direction"
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "button-group.css",
+      "button-group.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/forms/button-group",
+    "label": "ButtonGroup",
+    "group": "forms",
+    "subgroup": "actions-and-affordances",
+    "description": "Group related buttons horizontally or vertically"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Horizontal Group",
+            "language": "svelte",
+            "code": "<sg-button-group orientation=\"horizontal\" aria-label=\"Actions\">\n    <button class=\"sg-button\" data-color=\"primary\">Save</button>\n    <button class=\"sg-button\" data-color=\"secondary\">Cancel</button>\n    <button class=\"sg-button\" data-color=\"danger\">Delete</button>\n</sg-button-group>"
+          },
+          {
+            "title": "Vertical Group",
+            "language": "svelte",
+            "code": "<sg-button-group orientation=\"vertical\" aria-label=\"Options\">\n    <button class=\"sg-button\" data-color=\"secondary\">Option A</button>\n    <button class=\"sg-button\" data-color=\"secondary\">Option B</button>\n    <button class=\"sg-button\" data-color=\"secondary\">Option C</button>\n</sg-button-group>"
+          },
+          {
+            "title": "Sizes",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    <sg-button-group size=\"sm\" aria-label=\"Small group\">\n        <button class=\"sg-button\" data-color=\"primary\">Small</button>\n        <button class=\"sg-button\" data-color=\"secondary\">Small</button>\n    </sg-button-group>\n    <sg-button-group size=\"lg\" aria-label=\"Large group\">\n        <button class=\"sg-button\" data-color=\"primary\">Large</button>\n        <button class=\"sg-button\" data-color=\"secondary\">Large</button>\n    </sg-button-group>\n</sg-stack>"
+          }
+        ]
+      }
+    ]
+  }
+}

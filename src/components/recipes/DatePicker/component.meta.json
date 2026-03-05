@@ -1,0 +1,105 @@
+{
+  "name": "DatePickerRoot",
+  "importPath": "sg/datepicker",
+  "category": "overlay",
+  "description": "Root controller for a date picker with calendar dropdown.",
+  "whenToUse": "Selecting a single date (booking, scheduling, birth date).",
+  "avoidWhen": "Date range - extend with two DatePickers. Time only - use a time input.",
+  "semanticRole": "group",
+  "accessibilityRequirements": "label is required. Calendar uses role='grid' with arrow key navigation.",
+  "parts": [
+    {
+      "name": "DatePickerRoot",
+      "props": {
+        "value": {
+          "type": "string",
+          "description": "Selected date as ISO YYYY-MM-DD string."
+        },
+        "open": {
+          "type": "boolean",
+          "default": false,
+          "description": "Controlled open state. Bindable."
+        },
+        "label": {
+          "type": "string",
+          "required": true,
+          "description": "Accessible label - required."
+        },
+        "disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disables the date picker."
+        },
+        "onchange": {
+          "type": "(value: string) => void",
+          "description": "Called when a date is selected."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "DatePickerTrigger",
+      "description": "Button that opens the DatePicker calendar.",
+      "whenToUse": "Always inside a DatePickerRoot.",
+      "semanticRole": "button",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "DatePickerContent",
+      "description": "Dropdown container for the DatePicker calendar.",
+      "whenToUse": "Always inside a DatePickerRoot.",
+      "semanticRole": "dialog",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "DatePickerCalendar",
+      "description": "Calendar grid inside DatePickerContent. Renders month navigation and day grid.",
+      "whenToUse": "Always inside DatePickerContent.",
+      "semanticRole": "grid",
+      "accessibilityRequirements": "Days are gridcells. Arrow keys navigate. Today is highlighted.",
+      "slots": []
+    }
+  ],
+  "registry": {
+    "files": [
+      "date-picker.js",
+      "date-picker.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/date-picker",
+    "label": "DatePicker",
+    "group": "overlays",
+    "subgroup": "dialogs-and-popups",
+    "description": "Popup calendar for date selection"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Date Selection",
+            "language": "svelte",
+            "code": "<sg-date-picker-root label=\"Select date\">\n  <sg-date-picker-trigger>Pick a date</sg-date-picker-trigger>\n  <sg-date-picker-content>\n    <sg-date-picker-calendar></sg-date-picker-calendar>\n  </sg-date-picker-content>\n</sg-date-picker-root>"
+          },
+          {
+            "title": "Programmatic i18n",
+            "description": "Set locale and rely on built-in browser locale formatting.",
+            "language": "js",
+            "code": "<sg-date-picker-root locale=\"de-DE\" label=\"Datum wählen\">\n  <sg-date-picker-trigger>Datum wählen</sg-date-picker-trigger>\n  <sg-date-picker-content>\n    <sg-date-picker-calendar></sg-date-picker-calendar>\n  </sg-date-picker-content>\n</sg-date-picker-root>"
+          }
+        ]
+      }
+    ]
+  }
+}

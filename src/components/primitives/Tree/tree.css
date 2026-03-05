@@ -1,0 +1,14 @@
+.sg-tree {
+  display: block;
+}
+
+.sg-tree [role="treeitem"] {
+  display: block;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--sg-radius-sm, 0.25rem);
+}
+
+.sg-tree [role="treeitem"]:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 1px;
+}

@@ -1,0 +1,47 @@
+{
+  "name": "Slider",
+  "importPath": "sg/slider",
+  "category": "form",
+  "description": "CSS-only styled range slider. Apply class=\"sg-slider\" on a native <input type=\"range\"> element.",
+  "whenToUse": "Selecting a value from a continuous or stepped range. Use class=\"sg-slider\" on a native <input type=\"range\">.",
+  "avoidWhen": "Precise numeric input - use Input with type='number'.",
+  "semanticRole": "slider",
+  "accessibilityRequirements": "Requires associated label or aria-label.",
+  "props": {
+    "class": {
+      "type": "string",
+      "required": true,
+      "description": "Use class=\"sg-slider\" on a native <input type=\"range\">."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "slider.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/native/slider",
+    "label": "Slider",
+    "group": "native",
+    "description": "Range input with labels and steps"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Usage",
+            "language": "svelte",
+            "code": "<div>\n  <input type=\"range\" class=\"sg-slider\" value={sliderValue} oninput={(e) => { const el = e.currentTarget as any; sliderValue = (el.value ?? sliderValue); }} onchange={(e) => { const el = e.currentTarget as any; sliderValue = (el.value ?? sliderValue); }} onclick={(e) => { const el = e.currentTarget as any; sliderValue = (el.value ?? sliderValue); }} ontoggle={(e) => { const el = e.currentTarget as any; sliderValue = (el.value ?? sliderValue); }} min={0} max={100} step={1} />\n  <div class=\"sg-demo-slider-1\">\n    <input type=\"range\" class=\"sg-slider\" value={30} min={0} max={100} disabled={true} />\n  </div>\n</div>",
+            "css": ".sg-demo-slider-1 {\n  margin-top: var(--sg-space-3)\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

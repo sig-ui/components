@@ -1,0 +1,9 @@
+.sg-qr-code {
+  display: inline-block;
+}
+
+.sg-qr-code > svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}

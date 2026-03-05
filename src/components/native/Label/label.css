@@ -1,0 +1,33 @@
+@layer sigui.base {
+  .sg-label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sg-gap-tight, 0.25rem);
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+    font-weight: 500;
+    color: var(--sg-color-text);
+    cursor: pointer;
+  }
+
+  .sg-label-required {
+    color: var(--sg-color-danger);
+  }
+
+  .sg-label[data-required]::after {
+    content: "*";
+    color: var(--sg-color-danger);
+  }
+
+}
+
+@layer sigui.variants {
+  .sg-label[data-size="sm"] {
+    font-size: var(--sg-text-xs, 0.6875rem);
+  }
+
+  .sg-label[data-size="lg"] {
+    font-size: var(--sg-text-base, 1rem);
+  }
+
+}

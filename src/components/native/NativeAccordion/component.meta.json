@@ -1,0 +1,95 @@
+{
+  "name": "NativeAccordion",
+  "importPath": "sg/native-accordion",
+  "category": "navigation",
+  "description": "CSS-only native disclosure accordion using <details>/<summary>. Apply class=\"sg-native-accordion\" on a wrapper div containing <details> children.",
+  "whenToUse": "Accessible progressive disclosure where native browser semantics are preferred. Each item is a <details> element; add a shared name attribute for mutually exclusive behavior.",
+  "avoidWhen": "You need rich animation/state control - use AccordionRoot.",
+  "semanticRole": "group of disclosure widgets",
+  "accessibilityRequirements": "Provides native disclosure semantics through <details>/<summary>. No JavaScript required.",
+  "parts": [
+    {
+      "name": "NativeAccordion",
+      "props": {
+        "class": {
+          "type": "string",
+          "required": true,
+          "description": "Use class=\"sg-native-accordion\" on the wrapper element."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "NativeAccordionItem",
+      "description": "A <details> element inside the accordion wrapper.",
+      "whenToUse": "Always inside a NativeAccordion wrapper.",
+      "semanticRole": "disclosure widget",
+      "props": {
+        "name": {
+          "type": "string",
+          "required": false,
+          "description": "Shared name for mutually exclusive behavior. Omit for independent items."
+        },
+        "open": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether this item starts expanded."
+        },
+        "data-disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disables this item visually and prevents interaction."
+        }
+      },
+      "slots": [
+        "trigger",
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "native-accordion.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/native/accordion",
+    "label": "Accordion",
+    "group": "native",
+    "description": "Exclusive disclosure with native details element"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Exclusive (default)",
+            "language": "svelte",
+            "code": "<div class=\"sg-native-accordion\" aria-label=\"Frequently asked questions\">\n  <details name=\"faq\">\n    <summary>What is SigUI?</summary>\n    <p>SigUI is a comprehensive design system built on perceptual color science, fluid typography, and accessible interaction patterns.</p>\n  </details>\n  <details name=\"faq\">\n    <summary>How does it work?</summary>\n    <p>Core algorithms are pure TypeScript with no runtime dependencies. The theme layer provides design tokens with constrained typed configuration.</p>\n  </details>\n  <details name=\"faq\">\n    <summary>Why native details?</summary>\n    <p>The <code>&lt;details name&gt;</code> attribute provides mutually exclusive disclosure with zero JavaScript. Opening one item automatically closes others sharing the same name.</p>\n  </details>\n</div>"
+          },
+          {
+            "title": "With default open",
+            "language": "svelte",
+            "code": "<div class=\"sg-native-accordion\" aria-label=\"Default open demo\">\n  <details name=\"open-demo\" open>\n    <summary>Starts open</summary>\n    <p>This panel is open by default. Opening another panel will close this one.</p>\n  </details>\n  <details name=\"open-demo\">\n    <summary>Starts closed</summary>\n    <p>Click to reveal. The previously open panel closes automatically.</p>\n  </details>\n</div>"
+          },
+          {
+            "title": "Independent (no name)",
+            "language": "svelte",
+            "code": "<div class=\"sg-native-accordion\" aria-label=\"Independent accordion\">\n  <details>\n    <summary>First item</summary>\n    <p>Each panel opens and closes independently – multiple can be open at once.</p>\n  </details>\n  <details>\n    <summary>Second item</summary>\n    <p>Without a shared <code>name</code> attribute, items don't close each other.</p>\n  </details>\n</div>"
+          },
+          {
+            "title": "Disabled item",
+            "language": "svelte",
+            "code": "<div class=\"sg-native-accordion\" aria-label=\"Disabled demo\">\n  <details name=\"disabled-demo\">\n    <summary>Normal item</summary>\n    <p>This item works as expected.</p>\n  </details>\n  <details name=\"disabled-demo\" data-disabled>\n    <summary>Disabled item</summary>\n    <p>This won't open.</p>\n  </details>\n</div>"
+          }
+        ]
+      }
+    ]
+  }
+}

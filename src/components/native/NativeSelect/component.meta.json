@@ -1,0 +1,49 @@
+{
+  "name": "NativeSelect",
+  "importPath": "sg/native-select",
+  "category": "form",
+  "description": "CSS-only styled native <select>. Apply class=\"sg-native-select\" on a wrapper with a native <select> element inside.",
+  "whenToUse": "When you need a native select for mobile-friendly option picking. Use class=\"sg-native-select\" on a wrapper element.",
+  "avoidWhen": "When you need custom option rendering - use Select or Combobox instead.",
+  "semanticRole": "combobox (native)",
+  "accessibilityRequirements": "Associate label with select via for/id.",
+  "props": {
+    "class": {
+      "type": "string",
+      "required": true,
+      "description": "Use class=\"sg-native-select\" on the wrapper element."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "native-select.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/native/select",
+    "label": "Select",
+    "group": "native",
+    "description": "Native HTML select dropdown"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Native Select",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    <div class=\"sg-demo-nativeselect-1\">\n      <select class=\"sg-native-select\" value={value} oninput={(e) => { const el = e.currentTarget as any; value = (el.value ?? value); }} onchange={(e) => { const el = e.currentTarget as any; value = (el.value ?? value); }} onclick={(e) => { const el = e.currentTarget as any; value = (el.value ?? value); }} ontoggle={(e) => { const el = e.currentTarget as any; value = (el.value ?? value); }}>\n          <option value=\"\">Choose...</option>\n          <option value=\"us\">United States</option>\n          <option value=\"uk\">United Kingdom</option>\n          <option value=\"de\">Germany</option>\n          <option value=\"fr\">France</option>\n          <option value=\"jp\">Japan</option>\n      </select>\n    </div>\n    <div class=\"sg-demo-nativeselect-2\">\n      <select class=\"sg-native-select\">\n          <option value=\"\">Choose...</option>\n          <option value=\"a\">Option A</option>\n      </select>\n    </div>\n    <div class=\"sg-demo-nativeselect-3\">\n      <select class=\"sg-native-select\" disabled={true}>\n          <option value=\"\">Unavailable</option>\n      </select>\n    </div>\n</sg-stack>",
+            "css": ".sg-demo-nativeselect-1 {\n  max-width: 300px\n}\n\n.sg-demo-nativeselect-2 {\n  max-width: 300px\n}\n\n.sg-demo-nativeselect-3 {\n  max-width: 300px\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

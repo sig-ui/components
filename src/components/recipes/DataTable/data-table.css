@@ -1,0 +1,67 @@
+@layer sigui.base {
+  .sg-data-table {
+    width: 100%;
+  }
+
+  .sg-data-table-head {
+    cursor: pointer;
+  }
+
+  .sg-data-table-sort-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sg-gap-tight, 0.25rem);
+    border: none;
+    background: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .sg-data-table-sort-icon {
+    font-size: var(--sg-text-xs, 0.6875rem);
+  }
+
+  .sg-data-table-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sg-gap-related, 0.5rem);
+    padding: var(--sg-pad-button-y, 0.75rem) var(--sg-pad-button-x, 1rem);
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+  }
+
+  .sg-data-table-pagination button {
+    padding: var(--sg-gap-tight, 0.25rem) var(--sg-pad-input, 0.75rem);
+    border: 1px solid var(--sg-color-border);
+    border-radius: var(--sg-input-radius, 0.25rem);
+    background: none;
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+    cursor: pointer;
+  }
+
+  .sg-data-table-pagination button:disabled {
+    opacity: var(--sg-disabled-opacity, 0.38);
+    cursor: not-allowed;
+  }
+
+}
+
+@layer sigui.states {
+  .sg-data-table-sort-trigger:hover {
+    color: var(--sg-color-text);
+  }
+
+  .sg-data-table-sort-trigger:focus-visible {
+    outline: var(--sg-focus-width, 2px) solid var(--sg-focus-color);
+    outline-offset: var(--sg-focus-offset, 2px);
+    box-shadow: 0 0 0 var(--sg-focus-offset, 2px) var(--sg-focus-inner, white);
+  }
+
+
+}

@@ -1,0 +1,108 @@
+@layer sigui.base {
+  .sg-meter-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sg-gap-related, 0.5rem);
+    font-family: var(--sg-font-family, system-ui);
+  }
+
+  .sg-meter-label {
+    font-size: var(--sg-text-sm, 0.875rem);
+    font-weight: 500;
+    color: var(--sg-color-text);
+  }
+
+  .sg-meter {
+    appearance: none;
+    width: 100%;
+    height: 0.5rem;
+    border: none;
+    border-radius: 9999px;
+    background: transparent;
+  }
+
+  /* Webkit (Chrome, Safari, Edge) */
+  .sg-meter::-webkit-meter-bar {
+    background: var(--sg-surface-container-high);
+    border-radius: 9999px;
+    border: none;
+    height: 0.5rem;
+  }
+
+  .sg-meter::-webkit-meter-optimum-value {
+    background: var(--sg-color-success);
+    border-radius: 9999px;
+  }
+
+  .sg-meter::-webkit-meter-suboptimum-value {
+    background: var(--sg-color-warning);
+    border-radius: 9999px;
+  }
+
+  .sg-meter::-webkit-meter-even-less-good-value {
+    background: var(--sg-color-danger);
+    border-radius: 9999px;
+  }
+
+  /* Firefox */
+  .sg-meter::-moz-meter-bar {
+    border-radius: 9999px;
+  }
+
+  .sg-meter:-moz-meter-optimum::-moz-meter-bar {
+    background: var(--sg-color-success);
+  }
+
+  .sg-meter:-moz-meter-sub-optimum::-moz-meter-bar {
+    background: var(--sg-color-warning);
+  }
+
+  .sg-meter:-moz-meter-sub-sub-optimum::-moz-meter-bar {
+    background: var(--sg-color-danger);
+  }
+
+  .sg-meter-description {
+    font-size: var(--sg-text-xs, 0.6875rem);
+    color: var(--sg-color-text-muted);
+  }
+}
+
+@layer sigui.variants {
+  .sg-meter[data-size="sm"] {
+    height: 0.25rem;
+  }
+
+  .sg-meter[data-size="sm"]::-webkit-meter-bar {
+    height: 0.25rem;
+  }
+
+  .sg-meter[data-size="md"] {
+    height: 0.5rem;
+  }
+
+  .sg-meter[data-size="md"]::-webkit-meter-bar {
+    height: 0.5rem;
+  }
+
+  .sg-meter[data-size="lg"] {
+    height: 0.75rem;
+  }
+
+  .sg-meter[data-size="lg"]::-webkit-meter-bar {
+    height: 0.75rem;
+  }
+}
+
+@layer sigui.states {
+  @media (forced-colors: active) {
+    .sg-meter::-webkit-meter-bar {
+      border: 1px solid CanvasText;
+    }
+
+    .sg-meter::-webkit-meter-optimum-value,
+    .sg-meter::-webkit-meter-suboptimum-value,
+    .sg-meter::-webkit-meter-even-less-good-value {
+      background: Highlight;
+    }
+  }
+}

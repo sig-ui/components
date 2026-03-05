@@ -1,0 +1,65 @@
+{
+  "name": "InputNumber",
+  "importPath": "sg/input-number",
+  "category": "form",
+  "description": "Number-specific input wrapper around native input[type=number].",
+  "whenToUse": "Numeric form entry with min/max/step validation hints.",
+  "semanticRole": "spinbutton",
+  "props": {
+    "name": {
+      "type": "string",
+      "description": "Form field name."
+    },
+    "value": {
+      "type": "string",
+      "description": "Current string value."
+    },
+    "min": {
+      "type": "number",
+      "description": "Minimum allowed value."
+    },
+    "max": {
+      "type": "number",
+      "description": "Maximum allowed value."
+    },
+    "step": {
+      "type": "number",
+      "description": "Increment step value."
+    },
+    "placeholder": {
+      "type": "string",
+      "description": "Placeholder text."
+    },
+    "required": {
+      "type": "boolean",
+      "default": false,
+      "description": "Marks input as required."
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Disables user input."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "input-number.css",
+      "input-number.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/forms/input-number",
+    "label": "InputNumber",
+    "group": "forms",
+    "subgroup": "entry-controls",
+    "description": "Number-specific text input wrapper"
+  },
+  "page": {
+    "title": "Numeric input",
+    "code": "<sg-input-number name=\"quantity\" min=\"1\" max=\"10\" step=\"1\" value=\"3\"></sg-input-number>"
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "name": "ColorPicker",
+  "importPath": "sg/color-picker",
+  "category": "form",
+  "description": "Canvas-based OKLCH color picker with a hue ring and an inner 2D lightness/chroma crosshair. Supports dual-mode API: hex string (value) or decomposed OKLCH (hue/lightness/chroma). Renders as swatch+ring inline, or swatch-triggered popover ring.",
+  "whenToUse": "When users need to select a color with full hue, lightness, and chroma control in a single compact widget.",
+  "avoidWhen": "When the user needs to pick from a predefined set of colors - use a Select or RadioGroup with color swatches instead.",
+  "semanticRole": "slider",
+  "accessibilityRequirements": [
+    "label prop is required for the hue slider",
+    "Keyboard (hue): Arrow keys ±1 (±10 with Shift), Home/End jump to 0/359",
+    "Keyboard (L/C): Up/Down adjust lightness ±0.01 (±0.1 with Shift), Left/Right adjust chroma ±0.005 (±0.05 with Shift)",
+    "role=\"slider\" on canvas for hue and on hidden div for L/C"
+  ],
+  "props": {
+    "value": {
+      "type": "string",
+      "description": "Current color as hex string (bindable). Dual-mode: use value OR hue/lightness/chroma."
+    },
+    "hue": {
+      "type": "number",
+      "default": 0,
+      "description": "Hue angle 0–360 (bindable)"
+    },
+    "lightness": {
+      "type": "number",
+      "default": 0.7,
+      "description": "OKLCH lightness 0–1 (bindable)"
+    },
+    "chroma": {
+      "type": "number",
+      "default": 0.15,
+      "description": "OKLCH chroma 0–0.4 (bindable)"
+    },
+    "size": {
+      "type": "number",
+      "default": 50,
+      "description": "Ring outer diameter in base units (1bu = --sg-base-unit). Overridden by ringSize."
+    },
+    "ringSize": {
+      "type": "number",
+      "description": "Ring outer diameter in base units (overrides size for the ring)."
+    },
+    "swatchSize": {
+      "type": "number",
+      "description": "Swatch size in base units (inline swatch or trigger swatch). Defaults to ~20% of ringSize when inline."
+    },
+    "thickness": {
+      "type": "number",
+      "default": 6,
+      "description": "Ring thickness in base units."
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Disable interaction."
+    },
+    "label": {
+      "type": "string",
+      "required": true,
+      "description": "Accessible label for the hue slider."
+    },
+    "swatch": {
+      "type": "boolean",
+      "default": false,
+      "description": "Reserved for compatibility."
+    },
+    "showValue": {
+      "type": "boolean",
+      "default": false,
+      "description": "Display current value as read-only text (hex or OKLCH depending on mode)."
+    },
+    "input": {
+      "type": "boolean",
+      "default": false,
+      "description": "Enable editable value inputs (hex in value mode; L/C/H numeric inputs in OKLCH mode)."
+    },
+    "mode": {
+      "type": "string",
+      "values": [
+        "inline",
+        "popover"
+      ],
+      "default": "inline",
+      "description": "Rendering mode. inline shows ring + swatch together; popover shows swatch/value and opens ring on click."
+    },
+    "popover": {
+      "type": "boolean",
+      "default": false,
+      "description": "Backward-compatible alias for mode='popover'."
+    },
+    "direction": {
+      "type": "string",
+      "values": [
+        "top",
+        "bottom",
+        "left",
+        "right"
+      ],
+      "default": "bottom",
+      "description": "Direction of ring placement relative to swatch (inline) or popover placement (popover mode)."
+    },
+    "onchange": {
+      "type": "function",
+      "description": "Fires with { hex, hue, lightness, chroma } on each change."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "color-picker.css",
+      "color-picker.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/forms/color-picker",
+    "label": "ColorPicker",
+    "group": "forms",
+    "subgroup": "entry-controls",
+    "description": "Canvas OKLCH color picker with hue ring and L/C area"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Popover Mode (Swatch Only)",
+            "language": "svelte",
+            "code": "<sg-color-picker value=\"#3b82f6\" mode=\"popover\" label=\"Brand color\" />"
+          },
+          {
+            "title": "Hex Mode with Value",
+            "language": "svelte",
+            "code": "<sg-color-picker\n  value={hexValue}\n  label=\"Pick a color\"\n  show-value\n  onchange={(e) => {\n    const d = ((e as CustomEvent<any>).detail ?? { hex: (e.currentTarget as any).value });\n    hexValue = d.hex;\n  }}\n/>"
+          },
+          {
+            "title": "OKLCH Mode with Value",
+            "language": "svelte",
+            "code": "<sg-color-picker hue={240} lightness={0.7} chroma={0.15} label=\"OKLCH color\" show-value />"
+          },
+          {
+            "title": "Hex Input",
+            "language": "svelte",
+            "code": "<sg-color-picker\n  value={hexValue}\n  label=\"Pick a color\"\n  input\n  onchange={(e) => {\n    const d = ((e as CustomEvent<any>).detail ?? { hex: (e.currentTarget as any).value });\n    hexValue = d.hex;\n  }}\n/>"
+          },
+          {
+            "title": "Compact (Swatch + Popover + Input)",
+            "language": "svelte",
+            "code": "<sg-color-picker\n  value={compactValue}\n  mode=\"popover\"\n  input\n  label=\"Pick a color\"\n  onchange={(e) => {\n    const d = ((e as CustomEvent<any>).detail ?? { hex: (e.currentTarget as any).value });\n    compactValue = d.hex;\n  }}\n/>"
+          },
+          {
+            "title": "Compact (No Input)",
+            "language": "svelte",
+            "code": "<sg-color-picker value={compactValue} mode=\"popover\" label=\"Pick a color\" />"
+          },
+          {
+            "title": "Direction",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-colorpicker-1\">\n  <sg-color-picker value=\"#ef4444\" mode=\"popover\" direction=\"top\" label=\"Top\" />\n  <sg-color-picker value=\"#f59e0b\" mode=\"popover\" direction=\"right\" label=\"Right\" />\n  <sg-color-picker value=\"#10b981\" mode=\"popover\" direction=\"bottom\" label=\"Bottom\" />\n  <sg-color-picker value=\"#3b82f6\" mode=\"popover\" direction=\"left\" label=\"Left\" />\n</div>",
+            "css": ".sg-demo-colorpicker-1 {\n  display:flex;flex-wrap:wrap;gap:var(--sg-gap-grouped);align-items:center;\n}"
+          },
+          {
+            "title": "Independent Sizes",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-colorpicker-1\">\n  <sg-color-picker value=\"#6366f1\" ring-size={30} swatch-size={8} thickness={3.5} show-value label=\"Custom\" />\n  <sg-color-picker value=\"#22c55e\" mode=\"popover\" ring-size={40} swatch-size={6} input label=\"Custom Popover\" />\n</div>",
+            "css": ".sg-demo-colorpicker-1 {\n  display:flex;flex-wrap:wrap;gap:var(--sg-gap-grouped);align-items:center;\n}"
+          },
+          {
+            "title": "Sizes",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-colorpicker-1\">\n  <sg-color-picker size={30} thickness={4} label=\"Small\" />\n  <sg-color-picker size={20} thickness={2.5} swatch-size={4} label=\"Tiny\" />\n</div>",
+            "css": ".sg-demo-colorpicker-1 {\n  display:flex;flex-wrap:wrap;gap:var(--sg-gap-grouped);align-items:center;\n}"
+          },
+          {
+            "title": "Disabled",
+            "language": "svelte",
+            "code": "<sg-color-picker value=\"#e11d48\" label=\"Disabled\" disabled />"
+          }
+        ]
+      }
+    ]
+  }
+}

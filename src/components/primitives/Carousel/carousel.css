@@ -1,0 +1,88 @@
+@layer sigui.base {
+  .sg-carousel {
+    position: relative;
+    font-family: var(--sg-font-family, system-ui);
+  }
+
+  .sg-carousel-content {
+    display: flex;
+    overflow: hidden;
+    scroll-snap-type: x mandatory;
+  }
+
+  .sg-carousel[data-orientation="vertical"] .sg-carousel-content {
+    flex-direction: column;
+    scroll-snap-type: y mandatory;
+  }
+
+  .sg-carousel-item {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    min-width: 0;
+  }
+
+  .sg-carousel-button {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid var(--sg-color-border);
+    border-radius: 50%;
+    background: var(--sg-card-bg);
+    box-shadow: var(--sg-card-shadow);
+    cursor: pointer;
+    color: var(--sg-color-text);
+    z-index: 1;
+  }
+
+  .sg-carousel-button[data-direction="previous"] {
+    left: var(--sg-gap-related, 0.5rem);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .sg-carousel-button[data-direction="next"] {
+    right: var(--sg-gap-related, 0.5rem);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+}
+
+@layer sigui.variants {
+  .sg-carousel[data-orientation="vertical"] .sg-carousel-button[data-direction="previous"] {
+    left: 50%;
+    top: var(--sg-gap-related, 0.5rem);
+    transform: translateX(-50%);
+  }
+
+  .sg-carousel[data-orientation="vertical"] .sg-carousel-button[data-direction="next"] {
+    left: 50%;
+    top: auto;
+    right: auto;
+    bottom: var(--sg-gap-related, 0.5rem);
+    transform: translateX(-50%);
+  }
+
+}
+
+@layer sigui.states {
+  .sg-carousel-button:hover:not(:disabled) {
+    background: var(--sg-surface-container);
+  }
+
+  .sg-carousel-button:focus-visible {
+    outline: var(--sg-focus-width, 2px) solid var(--sg-focus-color);
+    outline-offset: var(--sg-focus-offset, 2px);
+    box-shadow: 0 0 0 var(--sg-focus-offset, 2px) var(--sg-focus-inner, white);
+  }
+
+  .sg-carousel-button:disabled {
+    opacity: var(--sg-disabled-opacity, 0.38);
+    cursor: not-allowed;
+  }
+
+
+}

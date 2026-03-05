@@ -1,0 +1,74 @@
+@layer sigui.base {
+  .sg-combobox-input {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--sg-input-padding, 0.75rem);
+    border: 1px solid var(--sg-input-border);
+    border-radius: var(--sg-input-radius);
+    background: var(--sg-input-bg);
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-base, 1rem);
+    color: var(--sg-color-text);
+    min-height: var(--sg-touch-min, 44px);
+    width: 100%;
+    outline: none;
+    transition:
+      border-color var(--sg-transition-default, 200ms ease-out),
+      box-shadow var(--sg-transition-default, 200ms ease-out);
+  }
+
+  .sg-combobox-content {
+    background: var(--sg-card-bg);
+    border: 1px solid var(--sg-card-border);
+    border-radius: var(--sg-card-radius, var(--sg-card-radius, 0.5rem));
+    box-shadow: var(--sg-shadow-dropdown);
+    padding: var(--sg-gap-tight, 0.25rem);
+    min-width: 12rem;
+  }
+
+  .sg-combobox-item {
+    padding: var(--sg-gap-related, 0.5rem) var(--sg-pad-input, 0.75rem);
+    border-radius: var(--sg-input-radius, 0.25rem);
+    cursor: pointer;
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+  }
+
+  .sg-combobox-empty {
+    padding: var(--sg-gap-related, 0.5rem) var(--sg-pad-input, 0.75rem);
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+    color: var(--sg-color-text-muted);
+    text-align: center;
+  }
+
+}
+
+@layer sigui.states {
+  @media (forced-colors: active) {
+    .sg-combobox-input {
+      border: 1px solid ButtonText;
+    }
+  }
+
+  .sg-combobox-input:focus-visible {
+    outline: var(--sg-focus-width, 2px) solid var(--sg-focus-color);
+    outline-offset: var(--sg-focus-offset, 2px);
+    box-shadow: 0 0 0 var(--sg-focus-offset, 2px) var(--sg-focus-inner, white);
+    border-color: var(--sg-color-border-focus);
+  }
+
+  .sg-combobox-item {
+    transition: background var(--sg-transition-default, 200ms ease-out);
+  }
+
+  .sg-combobox-item:hover {
+    background: var(--sg-surface-container);
+  }
+
+  .sg-combobox-item[data-state="selected"] {
+    background: var(--sg-surface-container);
+    font-weight: 500;
+  }
+
+}

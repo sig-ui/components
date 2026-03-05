@@ -1,0 +1,106 @@
+{
+  "name": "Stack",
+  "importPath": "sg/stack",
+  "category": "layout",
+  "description": "Flex container with Gestalt-based spacing relationships.",
+  "whenToUse": "Arranging elements vertically or horizontally with consistent spacing.",
+  "avoidWhen": "You need a 2D grid layout - use Grid instead.",
+  "semanticRole": "none (layout primitive)",
+  "props": {
+    "gap": {
+      "type": "SpacingRelationship",
+      "values": [
+        "related",
+        "grouped",
+        "separated",
+        "distinct"
+      ],
+      "default": "grouped",
+      "description": "Gestalt-based spacing between children. 'related' is tightest, 'distinct' is widest."
+    },
+    "relationship": {
+      "type": "SpacingRelationship | 'auto'",
+      "values": [
+        "related",
+        "grouped",
+        "separated",
+        "distinct",
+        "auto"
+      ],
+      "description": "Alias for gap. Use 'auto' with data-depth to derive spacing by nesting level."
+    },
+    "direction": {
+      "type": "string",
+      "values": [
+        "vertical",
+        "horizontal"
+      ],
+      "default": "vertical",
+      "description": "Main axis direction for child elements."
+    },
+    "align": {
+      "type": "string",
+      "values": [
+        "start",
+        "center",
+        "end",
+        "stretch"
+      ],
+      "description": "Cross-axis alignment of children."
+    },
+    "wrap": {
+      "type": "boolean",
+      "default": false,
+      "description": "Allow children to wrap to next line when they overflow."
+    },
+    "density": {
+      "type": "Density",
+      "values": [
+        "compact",
+        "comfortable",
+        "spacious"
+      ],
+      "description": "Adjusts spacing scale for compact or spacious layouts."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "stack.css",
+      "stack.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/layout/stack",
+    "label": "Stack",
+    "group": "layout",
+    "subgroup": "primitives",
+    "description": "Flexbox layout with semantic gap tokens"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Horizontal Stack",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"grouped\" wrap={true}>\n    <div class=\"sg-demo-stack-1\">Item 1</div>\n    <div class=\"sg-demo-stack-2\">Item 2</div>\n    <div class=\"sg-demo-stack-3\">Item 3</div>\n</sg-stack>",
+            "css": ".sg-demo-stack-1 {\n  background: var(--sg-surface-container-high); padding: var(--sg-space-4); border-radius: var(--sg-radius-md); border: var(--sg-border-thin) solid var(--sg-color-border)\n}\n\n.sg-demo-stack-2 {\n  background: var(--sg-surface-container-high); padding: var(--sg-space-4); border-radius: var(--sg-radius-md); border: var(--sg-border-thin) solid var(--sg-color-border)\n}\n\n.sg-demo-stack-3 {\n  background: var(--sg-surface-container-high); padding: var(--sg-space-4); border-radius: var(--sg-radius-md); border: var(--sg-border-thin) solid var(--sg-color-border)\n}"
+          },
+          {
+            "title": "Density",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"separated\">\n    <p class=\"sg-demo-stack-1\">Compact</p>\n    <sg-stack density=\"compact\" gap=\"grouped\">\n        <div class=\"sg-demo-stack-2\">Compact item 1</div>\n        <div class=\"sg-demo-stack-3\">Compact item 2</div>\n    </sg-stack>\n    <p class=\"sg-demo-stack-4\">Spacious</p>\n    <sg-stack density=\"spacious\" gap=\"grouped\">\n        <div class=\"sg-demo-stack-5\">Spacious item 1</div>\n        <div class=\"sg-demo-stack-6\">Spacious item 2</div>\n    </sg-stack>\n</sg-stack>",
+            "css": ".sg-demo-stack-1 {\n  margin: 0; font-weight: var(--sg-weight-semibold)\n}\n\n.sg-demo-stack-2 {\n  background: var(--sg-surface-container-high); padding: var(--sg-space-4); border-radius: var(--sg-radius-md); border: var(--sg-border-thin) solid var(--sg-color-border)\n}\n\n.sg-demo-stack-3 {\n  background: var(--sg-surface-container-high); padding: var(--sg-space-4); border-radius: var(--sg-radius-md); border: var(--sg-border-thin) solid var(--sg-color-border)\n}\n\n.sg-demo-stack-4 {\n  margin: 0; font-weight: var(--sg-weight-semibold)\n}\n\n.sg-demo-stack-5 {\n  background: var(--sg-surface-container-high); padding: var(--sg-space-4); border-radius: var(--sg-radius-md); border: var(--sg-border-thin) solid var(--sg-color-border)\n}\n\n.sg-demo-stack-6 {\n  background: var(--sg-surface-container-high); padding: var(--sg-space-4); border-radius: var(--sg-radius-md); border: var(--sg-border-thin) solid var(--sg-color-border)\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+@layer sigui.base {
+  .sg-alert-dialog {
+    background: var(--sg-card-bg);
+    border-radius: var(--sg-card-radius, var(--sg-card-radius, 0.5rem));
+    box-shadow: var(--sg-shadow-dropdown);
+    padding: var(--sg-card-padding, 1.5rem);
+    max-width: 32rem;
+    width: calc(100% - 2rem);
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    margin: auto;
+    border: none;
+  }
+
+  .sg-alert-dialog::backdrop {
+    background: var(--sg-overlay-backdrop, color-mix(in oklch, var(--sg-color-text) 50%, transparent));
+    backdrop-filter: blur(var(--sg-backdrop-blur, 4px));
+  }
+
+}
+
+@layer sigui.states {
+  @media (prefers-reduced-motion: reduce) {
+    .sg-alert-dialog[data-state="opening"] {
+      animation-name: sg-fade-in-overlay;
+      animation-duration: 200ms;
+    }
+    .sg-alert-dialog[data-state="closing"] {
+      animation-name: sg-fade-out;
+      animation-duration: 200ms;
+    }
+  }
+
+
+}

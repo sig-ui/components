@@ -1,0 +1,107 @@
+{
+  "name": "Breadcrumb",
+  "importPath": "sg/breadcrumb",
+  "category": "navigation",
+  "description": "Navigation trail showing the current page location in a hierarchy.",
+  "whenToUse": "Showing navigational hierarchy (Home > Section > Page).",
+  "avoidWhen": "Flat navigation with no hierarchy - use Tabs or links.",
+  "semanticRole": "navigation",
+  "accessibilityRequirements": "Wrapped in <nav> with aria-label='Breadcrumb'. Last item has aria-current='page'.",
+  "parts": [
+    {
+      "name": "Breadcrumb",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "BreadcrumbItem",
+      "description": "Single item in a Breadcrumb trail.",
+      "whenToUse": "Always inside a Breadcrumb.",
+      "props": {
+        "href": {
+          "type": "string",
+          "description": "Link URL. Omit for the current (last) page."
+        },
+        "current": {
+          "type": "boolean",
+          "default": false,
+          "description": "Marks this as the current page. Sets aria-current='page'."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "BreadcrumbSeparator",
+      "description": "Visual separator between breadcrumb items. Defaults to '/'.",
+      "whenToUse": "Always between BreadcrumbItems inside a Breadcrumb.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "BreadcrumbEllipsis",
+      "description": "Collapsed overflow indicator in breadcrumb trails.",
+      "whenToUse": "When middle breadcrumb items are collapsed for compact layouts.",
+      "props": {
+        "aria-label": {
+          "type": "string",
+          "default": "Show more",
+          "description": "Accessible label for the ellipsis indicator."
+        }
+      },
+      "slots": []
+    },
+    {
+      "name": "BreadcrumbPage",
+      "description": "Current page item in a breadcrumb trail (aria-current='page').",
+      "whenToUse": "As the final breadcrumb item for the active page.",
+      "semanticRole": "link current-page marker",
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "breadcrumb.css",
+      "breadcrumb.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/breadcrumb",
+    "label": "Breadcrumb",
+    "group": "overlays",
+    "subgroup": "navigation-shells",
+    "description": "Navigation trail showing page hierarchy"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Basic Breadcrumb",
+            "language": "svelte",
+            "code": "<sg-breadcrumb>\n    <sg-breadcrumb-item href=\"/\">Home</sg-breadcrumb-item>\n    <sg-breadcrumb-separator />\n    <sg-breadcrumb-item href=\"/components\">Components</sg-breadcrumb-item>\n    <sg-breadcrumb-separator />\n    <sg-breadcrumb-item current={true}>Breadcrumb</sg-breadcrumb-item>\n</sg-breadcrumb>"
+          },
+          {
+            "title": "With Custom Separator",
+            "language": "svelte",
+            "code": "<sg-breadcrumb>\n    <sg-breadcrumb-item href=\"/\">Home</sg-breadcrumb-item>\n    <sg-breadcrumb-separator>\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\">\n          <path d=\"M6 4l4 4-4 4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n        </svg>\n    </sg-breadcrumb-separator>\n    <sg-breadcrumb-item href=\"/components\">Components</sg-breadcrumb-item>\n    <sg-breadcrumb-separator>\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\">\n          <path d=\"M6 4l4 4-4 4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n        </svg>\n    </sg-breadcrumb-separator>\n    <sg-breadcrumb-item current={true}>Breadcrumb</sg-breadcrumb-item>\n</sg-breadcrumb>"
+          },
+          {
+            "title": "Collapsed with Ellipsis",
+            "language": "svelte",
+            "code": "<sg-breadcrumb>\n    <sg-breadcrumb-item href=\"/\">Home</sg-breadcrumb-item>\n    <sg-breadcrumb-separator />\n    <sg-breadcrumb-item>\n        <sg-breadcrumb-ellipsis />\n    </sg-breadcrumb-item>\n    <sg-breadcrumb-separator />\n    <sg-breadcrumb-item href=\"/docs/components\">Components</sg-breadcrumb-item>\n    <sg-breadcrumb-separator />\n    <sg-breadcrumb-item current={true}>\n        <sg-breadcrumb-page>Breadcrumb</sg-breadcrumb-page>\n    </sg-breadcrumb-item>\n</sg-breadcrumb>"
+          }
+        ]
+      }
+    ]
+  }
+}

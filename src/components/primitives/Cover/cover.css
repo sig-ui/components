@@ -1,0 +1,22 @@
+@layer sigui.base {
+  .sg-cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+  }
+}
+
+@layer sigui.variants {
+  .sg-cover[data-gap="related"]   { gap: var(--sg-gap-related, 0.5rem); }
+  .sg-cover[data-gap="grouped"]   { gap: var(--sg-gap-grouped, 1rem); }
+  .sg-cover[data-gap="separated"] { gap: var(--sg-gap-separated, 2rem); }
+  .sg-cover[data-gap="distinct"]  { gap: var(--sg-gap-distinct, 4rem); }
+
+  .sg-cover[data-padding="related"]   { padding: var(--sg-gap-related, 0.5rem); }
+  .sg-cover[data-padding="grouped"]   { padding: var(--sg-gap-grouped, 1rem); }
+  .sg-cover[data-padding="separated"] { padding: var(--sg-gap-separated, 2rem); }
+  .sg-cover[data-padding="distinct"]  { padding: var(--sg-gap-distinct, 4rem); }
+}

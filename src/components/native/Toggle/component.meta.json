@@ -1,0 +1,139 @@
+{
+  "name": "Toggle",
+  "importPath": "sg/toggle",
+  "category": "form",
+  "description": "CSS-only styled pressable toggle button. Apply class=\"sg-toggle\" on a native <button> with aria-pressed.",
+  "whenToUse": "Binary toggle controls in toolbars. Use class=\"sg-toggle\" on a native <button aria-pressed>.",
+  "avoidWhen": "On/off settings - use Switch. Multiple exclusive options - use ToggleGroup.",
+  "semanticRole": "button with aria-pressed",
+  "accessibilityRequirements": "Uses aria-pressed for toggle state. Requires aria-label.",
+  "parts": [
+    {
+      "name": "Toggle",
+      "props": {
+        "class": {
+          "type": "string",
+          "required": true,
+          "description": "Use class=\"sg-toggle\" on a native <button> with aria-pressed."
+        },
+        "data-size": {
+          "type": "Size",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "description": "Toggle size."
+        },
+        "data-variant": {
+          "type": "string",
+          "values": [
+            "default",
+            "outline"
+          ],
+          "default": "default",
+          "description": "Visual variant."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "ToggleGroup",
+      "description": "Group of mutually exclusive or multi-select toggles.",
+      "whenToUse": "Grouping related toggle options (text alignment, view modes).",
+      "semanticRole": "group",
+      "accessibilityRequirements": "Uses role='group'. Children are Toggle components that read context.",
+      "props": {
+        "type": {
+          "type": "string",
+          "values": [
+            "single",
+            "multiple"
+          ],
+          "required": true,
+          "description": "Selection mode."
+        },
+        "value": {
+          "type": "string | string[]",
+          "description": "Selected value(s). Bindable."
+        },
+        "size": {
+          "type": "Size",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "description": "Size applied to all child toggles."
+        },
+        "disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disables all child toggles."
+        },
+        "onchange": {
+          "type": "(value: string | string[]) => void",
+          "description": "Called when selection changes."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "toggle.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/native/toggle",
+    "label": "Toggle",
+    "group": "native",
+    "description": "Toggle buttons and toggle groups"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Toggle Buttons",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\">\n    <button class=\"sg-toggle\" aria-pressed={bold} oninput={(e) => { const el = e.currentTarget as any; bold = (el.pressed ?? bold); }} onchange={(e) => { const el = e.currentTarget as any; bold = (el.pressed ?? bold); }} onclick={(e) => { const el = e.currentTarget as any; bold = (el.pressed ?? bold); }} ontoggle={(e) => { const el = e.currentTarget as any; bold = (el.pressed ?? bold); }} aria-label=\"Bold\"><strong>B</strong></button>\n    <button class=\"sg-toggle\" aria-pressed={italic} oninput={(e) => { const el = e.currentTarget as any; italic = (el.pressed ?? italic); }} onchange={(e) => { const el = e.currentTarget as any; italic = (el.pressed ?? italic); }} onclick={(e) => { const el = e.currentTarget as any; italic = (el.pressed ?? italic); }} ontoggle={(e) => { const el = e.currentTarget as any; italic = (el.pressed ?? italic); }} aria-label=\"Italic\"><em>I</em></button>\n</sg-stack>\n<p class=\"sg-demo-toggle-1\">Bold: {bold}, Italic: {italic}</p>",
+            "css": ".sg-demo-toggle-1 {\n  margin-top: var(--sg-space-2); color: var(--text-3); font-size: var(--sg-text-sm)\n}"
+          },
+          {
+            "title": "Outline Variant",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\">\n    <button class=\"sg-toggle\" data-variant=\"outline\" aria-label=\"Bold\"><strong>B</strong></button>\n    <button class=\"sg-toggle\" data-variant=\"outline\" aria-pressed=\"true\" aria-label=\"Italic\"><em>I</em></button>\n</sg-stack>"
+          },
+          {
+            "title": "Toggle Group (Single)",
+            "language": "svelte",
+            "code": "<sg-toggle-group type=\"single\" value={alignment} oninput={(e) => { const el = e.currentTarget as any; alignment = (el.value ?? alignment); }} onchange={(e) => { const el = e.currentTarget as any; alignment = (el.value ?? alignment); }} onclick={(e) => { const el = e.currentTarget as any; alignment = (el.value ?? alignment); }} ontoggle={(e) => { const el = e.currentTarget as any; alignment = (el.value ?? alignment); }} aria-label=\"Text alignment\">\n    <button class=\"sg-toggle\" value=\"left\" aria-label=\"Align left\">Left</button>\n    <button class=\"sg-toggle\" value=\"center\" aria-label=\"Align center\">Center</button>\n    <button class=\"sg-toggle\" value=\"right\" aria-label=\"Align right\">Right</button>\n</sg-toggle-group>\n<p class=\"sg-demo-toggle-1\">Alignment: {alignment}</p>",
+            "css": ".sg-demo-toggle-1 {\n  margin-top: var(--sg-space-2); color: var(--text-3); font-size: var(--sg-text-sm)\n}"
+          },
+          {
+            "title": "Toggle Group (Multiple)",
+            "language": "svelte",
+            "code": "<sg-toggle-group type=\"multiple\" value={formats} oninput={(e) => { const el = e.currentTarget as any; formats = (el.value ?? formats); }} onchange={(e) => { const el = e.currentTarget as any; formats = (el.value ?? formats); }} onclick={(e) => { const el = e.currentTarget as any; formats = (el.value ?? formats); }} ontoggle={(e) => { const el = e.currentTarget as any; formats = (el.value ?? formats); }} variant=\"outline\" aria-label=\"Text formatting\">\n    <button class=\"sg-toggle\" value=\"bold\" aria-label=\"Bold\"><strong>B</strong></button>\n    <button class=\"sg-toggle\" value=\"italic\" aria-label=\"Italic\"><em>I</em></button>\n    <button class=\"sg-toggle\" value=\"underline\" aria-label=\"Underline\"><u>U</u></button>\n</sg-toggle-group>\n<p class=\"sg-demo-toggle-1\">Formats: {formats.join(\", \") || \"none\"}</p>",
+            "css": ".sg-demo-toggle-1 {\n  margin-top: var(--sg-space-2); color: var(--text-3); font-size: var(--sg-text-sm)\n}"
+          },
+          {
+            "title": "Sizes",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\">\n    <button class=\"sg-toggle\" data-size=\"sm\" aria-label=\"Small toggle\">SM</button>\n    <button class=\"sg-toggle\" data-size=\"md\" aria-label=\"Medium toggle\">MD</button>\n    <button class=\"sg-toggle\" data-size=\"lg\" aria-label=\"Large toggle\">LG</button>\n</sg-stack>"
+          }
+        ]
+      }
+    ]
+  }
+}

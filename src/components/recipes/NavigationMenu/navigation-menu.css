@@ -1,0 +1,89 @@
+@layer sigui.base {
+  .sg-nav-menu {
+    position: relative;
+    container-type: inline-size;
+  }
+
+  .sg-nav-menu-list {
+    display: flex;
+    align-items: center;
+    gap: var(--sg-gap-tight, 0.25rem);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sg-nav-menu-item {
+    position: relative;
+  }
+
+  .sg-nav-menu-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sg-gap-tight, 0.25rem);
+    padding: var(--sg-gap-related, 0.5rem) var(--sg-pad-input, 0.75rem);
+    border: none;
+    background: none;
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+    font-weight: 500;
+    color: var(--sg-color-text);
+    cursor: pointer;
+    border-radius: var(--sg-input-radius, 0.375rem);
+  }
+
+  .sg-nav-menu-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--sg-card-bg);
+    border: 1px solid var(--sg-card-border);
+    border-radius: var(--sg-card-radius, var(--sg-card-radius, 0.5rem));
+    box-shadow: var(--sg-shadow-dropdown);
+    padding: var(--sg-pad-input, 0.75rem);
+    min-width: 12rem;
+    z-index: var(--sg-z-popover, 50);
+  }
+
+  .sg-nav-menu-link {
+    display: block;
+    padding: var(--sg-gap-related, 0.5rem) var(--sg-pad-input, 0.75rem);
+    border-radius: var(--sg-input-radius, 0.25rem);
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+    color: var(--sg-color-text);
+    text-decoration: none;
+  }
+
+}
+
+@layer sigui.states {
+  @media (forced-colors: active) {
+    .sg-nav-menu-content {
+      border: 1px solid CanvasText;
+    }
+  }
+
+  .sg-nav-menu-trigger:hover {
+    background: var(--sg-surface-container);
+  }
+
+  .sg-nav-menu-trigger:focus-visible {
+    outline: var(--sg-focus-width, 2px) solid var(--sg-focus-color);
+    outline-offset: var(--sg-focus-offset, 2px);
+    box-shadow: 0 0 0 var(--sg-focus-offset, 2px) var(--sg-focus-inner, white);
+  }
+
+  .sg-nav-menu-link:hover {
+    background: var(--sg-surface-container);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sg-nav-menu-content {
+      animation-name: sg-fade-in;
+      animation-duration: 200ms;
+    }
+  }
+
+
+}

@@ -1,0 +1,95 @@
+{
+  "name": "Heading",
+  "importPath": "sg/heading",
+  "category": "layout",
+  "description": "Heading element (h1-h6) with auto-sized typography.",
+  "whenToUse": "Section headings that establish document hierarchy.",
+  "avoidWhen": "You just want large/bold text without semantic heading - use Text with weight='bold'.",
+  "semanticRole": "heading",
+  "accessibilityRequirements": "Use sequential heading levels (h1 → h2 → h3). Never skip levels.",
+  "props": {
+    "level": {
+      "type": "HeadingLevel",
+      "values": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "required": true,
+      "description": "Semantic heading level (h1-h6). Determines the HTML tag."
+    },
+    "size": {
+      "type": "HeadingSize",
+      "values": [
+        "lg",
+        "xl",
+        "2xl",
+        "3xl",
+        "4xl",
+        "5xl",
+        "6xl"
+      ],
+      "description": "Visual size. Auto-mapped from level if omitted."
+    },
+    "color": {
+      "type": "string",
+      "values": [
+        "primary",
+        "secondary",
+        "muted"
+      ],
+      "default": "primary",
+      "description": "Semantic text color."
+    },
+    "align": {
+      "type": "string",
+      "values": [
+        "left",
+        "center",
+        "right"
+      ],
+      "description": "Text alignment."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "heading.css",
+      "heading.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/layout/heading",
+    "label": "Heading",
+    "group": "layout",
+    "subgroup": "content-typography",
+    "description": "Semantic heading levels with auto-sized typography"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Heading Levels",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"related\">\n    <sg-heading level={1}>Heading 1 (4xl)</sg-heading>\n    <sg-heading level={2}>Heading 2 (3xl)</sg-heading>\n    <sg-heading level={3}>Heading 3 (2xl)</sg-heading>\n    <sg-heading level={4}>Heading 4 (xl)</sg-heading>\n    <sg-heading level={5}>Heading 5 (lg)</sg-heading>\n    <sg-heading level={6}>Heading 6 (lg)</sg-heading>\n</sg-stack>"
+          },
+          {
+            "title": "Custom Size Override",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"related\">\n    <sg-heading level={3} size=\"4xl\">h3 with 4xl size override</sg-heading>\n    <sg-heading level={5} size=\"2xl\">h5 with 2xl size override</sg-heading>\n</sg-stack>"
+          }
+        ]
+      }
+    ]
+  }
+}

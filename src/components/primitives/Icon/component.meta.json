@@ -1,0 +1,157 @@
+{
+  "name": "Icon",
+  "importPath": "sg/icon",
+  "category": "data-display",
+  "description": "Icon wrapper with size, color, directional, and accessibility support. Supports SVG children and Material Symbols font mode (renders ligature when name is set without children). Decorative by default (aria-hidden). Set label for semantic icons.",
+  "whenToUse": "Displaying icons alongside text or as standalone meaningful symbols. Use font mode with Material Symbols for large icon sets.",
+  "avoidWhen": "User avatar - use Avatar. Decorative images - use <img>.",
+  "semanticRole": "img (when label is set) or none (decorative)",
+  "accessibilityRequirements": "Decorative icons are aria-hidden. Semantic icons require label prop for aria-label.",
+  "props": {
+    "name": {
+      "type": "string",
+      "description": "Icon name. In font mode (no children), rendered as ligature text for Material Symbols."
+    },
+    "size": {
+      "type": "IconSize",
+      "values": [
+        "xs",
+        "sm",
+        "md",
+        "default",
+        "lg",
+        "xl"
+      ],
+      "default": "default",
+      "description": "Icon size."
+    },
+    "color": {
+      "type": "string",
+      "values": [
+        "currentColor",
+        "success",
+        "warning",
+        "danger",
+        "info"
+      ],
+      "default": "currentColor",
+      "description": "Icon color. Inherits from parent by default."
+    },
+    "label": {
+      "type": "string",
+      "description": "Accessible label. When set, role='img' + aria-label are applied."
+    },
+    "directional": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to mirror in RTL layouts."
+    },
+    "filled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Uses filled icon variant (FILL axis 1 in font mode)."
+    },
+    "variant": {
+      "type": "MaterialSymbolsVariant",
+      "values": [
+        "outlined",
+        "rounded",
+        "sharp"
+      ],
+      "default": "outlined",
+      "description": "Material Symbols font family variant. Only used in font mode."
+    },
+    "weight": {
+      "type": "number",
+      "default": 400,
+      "description": "Font weight axis (wght: 100-700). Only used in font mode."
+    },
+    "grade": {
+      "type": "number",
+      "default": 0,
+      "description": "Grade axis (GRAD: -50 to 200). Only used in font mode."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "icon.css",
+      "icon.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/icon",
+    "label": "Icon",
+    "group": "data-display",
+    "subgroup": "content-and-media",
+    "description": "Scalable icon container with sizing and RTL support"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Sizes",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\" wrap={true}>\n    <sg-icon name=\"star\" size=\"xs\" label=\"Extra small\" />\n    <sg-icon name=\"star\" size=\"sm\" label=\"Small\" />\n    <sg-icon name=\"star\" size=\"md\" label=\"Medium\" />\n    <sg-icon name=\"star\" size=\"default\" label=\"Default\" />\n    <sg-icon name=\"star\" size=\"lg\" label=\"Large\" />\n    <sg-icon name=\"star\" size=\"xl\" label=\"Extra large\" />\n</sg-stack>"
+          },
+          {
+            "title": "Colors",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\" wrap={true}>\n    <sg-icon name=\"check\" size=\"lg\" color=\"success\" label=\"Success\" />\n    <sg-icon name=\"warning\" size=\"lg\" color=\"warning\" label=\"Warning\" />\n    <sg-icon name=\"close\" size=\"lg\" color=\"danger\" label=\"Danger\" />\n    <sg-icon name=\"info\" size=\"lg\" color=\"info\" label=\"Info\" />\n    <sg-icon name=\"circle\" size=\"lg\" color=\"currentColor\" label=\"Current\" />\n</sg-stack>"
+          },
+          {
+            "title": "Variants",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\" wrap={true}>\n    <sg-icon name=\"favorite\" size=\"lg\" label=\"Outline heart\" />\n    <sg-icon name=\"favorite\" size=\"lg\" filled={true} label=\"Filled heart\" />\n    <sg-icon name=\"arrow-right\" size=\"lg\" directional={true} label=\"Directional arrow\" />\n</sg-stack>"
+          },
+          {
+            "title": "Material Symbols - Font Mode",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\" wrap={true}>\n    <sg-icon name=\"home\" size=\"lg\" label=\"Home\" />\n    <sg-icon name=\"search\" size=\"lg\" label=\"Search\" />\n    <sg-icon name=\"settings\" size=\"lg\" label=\"Settings\" />\n    <sg-icon name=\"favorite\" size=\"lg\" label=\"Favorite\" />\n    <sg-icon name=\"delete\" size=\"lg\" label=\"Delete\" />\n    <sg-icon name=\"schedule\" size=\"lg\" label=\"Schedule\" />\n</sg-stack>"
+          },
+          {
+            "title": "Material Symbols - Filled",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\" wrap={true}>\n    <sg-icon name=\"home\" size=\"lg\" filled label=\"Home filled\" />\n    <sg-icon name=\"favorite\" size=\"lg\" filled label=\"Favorite filled\" />\n    <sg-icon name=\"star\" size=\"lg\" filled label=\"Star filled\" />\n    <sg-icon name=\"bookmark\" size=\"lg\" filled label=\"Bookmark filled\" />\n    <sg-icon name=\"notifications\" size=\"lg\" filled label=\"Notifications filled\" />\n</sg-stack>"
+          },
+          {
+            "title": "Material Symbols - Font Variants",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"separated\" align=\"center\" wrap={true}>\n    <sg-stack align=\"center\" gap=\"related\">\n        <sg-icon name=\"settings\" size=\"xl\" variant=\"outlined\" label=\"Outlined\" />\n        <span class=\"sg-demo-icon-1\">Outlined</span>\n    </sg-stack>\n    <sg-stack align=\"center\" gap=\"related\">\n        <sg-icon name=\"settings\" size=\"xl\" variant=\"rounded\" label=\"Rounded\" />\n        <span class=\"sg-demo-icon-2\">Rounded</span>\n    </sg-stack>\n    <sg-stack align=\"center\" gap=\"related\">\n        <sg-icon name=\"settings\" size=\"xl\" variant=\"sharp\" label=\"Sharp\" />\n        <span class=\"sg-demo-icon-3\">Sharp</span>\n    </sg-stack>\n</sg-stack>",
+            "css": ".sg-demo-icon-1 {\n  font-size: var(--sg-text-xs); color: var(--sg-color-text-muted);\n}\n\n.sg-demo-icon-2 {\n  font-size: var(--sg-text-xs); color: var(--sg-color-text-muted);\n}\n\n.sg-demo-icon-3 {\n  font-size: var(--sg-text-xs); color: var(--sg-color-text-muted);\n}"
+          },
+          {
+            "title": "Material Symbols - Weight Axis",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"separated\" align=\"center\" wrap={true}>\n    <sg-stack align=\"center\" gap=\"related\">\n        <sg-icon name=\"home\" size=\"xl\" weight={100} label=\"Weight 100\" />\n        <span class=\"sg-demo-icon-1\">100</span>\n    </sg-stack>\n    <sg-stack align=\"center\" gap=\"related\">\n        <sg-icon name=\"home\" size=\"xl\" weight={300} label=\"Weight 300\" />\n        <span class=\"sg-demo-icon-2\">300</span>\n    </sg-stack>\n    <sg-stack align=\"center\" gap=\"related\">\n        <sg-icon name=\"home\" size=\"xl\" weight={400} label=\"Weight 400\" />\n        <span class=\"sg-demo-icon-3\">400</span>\n    </sg-stack>\n    <sg-stack align=\"center\" gap=\"related\">\n        <sg-icon name=\"home\" size=\"xl\" weight={700} label=\"Weight 700\" />\n        <span class=\"sg-demo-icon-4\">700</span>\n    </sg-stack>\n</sg-stack>",
+            "css": ".sg-demo-icon-1 {\n  font-size: var(--sg-text-xs); color: var(--sg-color-text-muted);\n}\n\n.sg-demo-icon-2 {\n  font-size: var(--sg-text-xs); color: var(--sg-color-text-muted);\n}\n\n.sg-demo-icon-3 {\n  font-size: var(--sg-text-xs); color: var(--sg-color-text-muted);\n}\n\n.sg-demo-icon-4 {\n  font-size: var(--sg-text-xs); color: var(--sg-color-text-muted);\n}"
+          },
+          {
+            "title": "Material Symbols - Grade Axis",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"separated\" align=\"center\" wrap={true}>\n    <sg-stack align=\"center\" gap=\"related\">\n        <sg-icon name=\"settings\" size=\"xl\" grade={-50} label=\"Grade -50\" />\n        <span class=\"sg-demo-icon-1\">-50</span>\n    </sg-stack>\n    <sg-stack align=\"center\" gap=\"related\">\n        <sg-icon name=\"settings\" size=\"xl\" grade={0} label=\"Grade 0\" />\n        <span class=\"sg-demo-icon-2\">0</span>\n    </sg-stack>\n    <sg-stack align=\"center\" gap=\"related\">\n        <sg-icon name=\"settings\" size=\"xl\" grade={200} label=\"Grade 200\" />\n        <span class=\"sg-demo-icon-3\">200</span>\n    </sg-stack>\n</sg-stack>",
+            "css": ".sg-demo-icon-1 {\n  font-size: var(--sg-text-xs); color: var(--sg-color-text-muted);\n}\n\n.sg-demo-icon-2 {\n  font-size: var(--sg-text-xs); color: var(--sg-color-text-muted);\n}\n\n.sg-demo-icon-3 {\n  font-size: var(--sg-text-xs); color: var(--sg-color-text-muted);\n}"
+          },
+          {
+            "title": "Material Symbols - Sizes",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\" wrap={true}>\n    <sg-icon name=\"home\" size=\"xs\" label=\"Extra small\" />\n    <sg-icon name=\"home\" size=\"sm\" label=\"Small\" />\n    <sg-icon name=\"home\" size=\"md\" label=\"Medium\" />\n    <sg-icon name=\"home\" size=\"default\" label=\"Default\" />\n    <sg-icon name=\"home\" size=\"lg\" label=\"Large\" />\n    <sg-icon name=\"home\" size=\"xl\" label=\"Extra large\" />\n</sg-stack>"
+          },
+          {
+            "title": "Material Symbols - Combined Axes",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"separated\" align=\"center\" wrap={true}>\n    <sg-stack align=\"center\" gap=\"related\">\n        <sg-icon name=\"favorite\" size=\"xl\" variant=\"rounded\" weight={700} filled label=\"Bold filled rounded\" />\n        <span class=\"sg-demo-icon-1\">Rounded / 700 / Filled</span>\n    </sg-stack>\n    <sg-stack align=\"center\" gap=\"related\">\n        <sg-icon name=\"star\" size=\"xl\" variant=\"sharp\" weight={100} grade={-50} label=\"Thin sharp low-emphasis\" />\n        <span class=\"sg-demo-icon-2\">Sharp / 100 / Grade -50</span>\n    </sg-stack>\n    <sg-stack align=\"center\" gap=\"related\">\n        <sg-icon name=\"home\" size=\"xl\" variant=\"outlined\" weight={400} filled grade={200} label=\"Filled high-emphasis\" />\n        <span class=\"sg-demo-icon-3\">Outlined / Filled / Grade 200</span>\n    </sg-stack>\n</sg-stack>",
+            "css": ".sg-demo-icon-1 {\n  font-size: var(--sg-text-xs); color: var(--sg-color-text-muted);\n}\n\n.sg-demo-icon-2 {\n  font-size: var(--sg-text-xs); color: var(--sg-color-text-muted);\n}\n\n.sg-demo-icon-3 {\n  font-size: var(--sg-text-xs); color: var(--sg-color-text-muted);\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

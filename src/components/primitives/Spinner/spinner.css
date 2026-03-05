@@ -1,0 +1,38 @@
+@layer sigui.base {
+  .sg-spinner {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid var(--sg-color-border);
+    border-top-color: var(--sg-color-primary);
+    border-radius: 9999px;
+    animation: sg-spin calc(200ms * 3) linear infinite;
+  }
+
+}
+
+@layer sigui.variants {
+  .sg-spinner[data-size="sm"] {
+    width: 1rem;
+    height: 1rem;
+    border-width: 1.5px;
+  }
+
+  .sg-spinner[data-size="lg"] {
+    width: 2rem;
+    height: 2rem;
+    border-width: 3px;
+  }
+
+}
+
+@layer sigui.states {
+  @media (prefers-reduced-motion: reduce) {
+
+    .sg-spinner {
+      animation-duration: calc(200ms * 7.5);
+    }
+  }
+
+
+}

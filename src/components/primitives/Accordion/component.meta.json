@@ -1,0 +1,107 @@
+{
+  "name": "AccordionRoot",
+  "importPath": "sg/accordion",
+  "category": "navigation",
+  "description": "Root controller for an accordion.",
+  "whenToUse": "Progressive disclosure of multiple sections (FAQs, settings groups).",
+  "avoidWhen": "Only one section to expand - use Collapsible.",
+  "semanticRole": "group of disclosure widgets",
+  "accessibilityRequirements": "Each item has a heading + button trigger. Keyboard: Enter/Space toggles, arrows navigate.",
+  "parts": [
+    {
+      "name": "AccordionRoot",
+      "props": {
+        "multiple": {
+          "type": "boolean",
+          "default": false,
+          "description": "Allow multiple items open at once."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "AccordionItem",
+      "description": "Single collapsible item in an Accordion.",
+      "whenToUse": "Always inside an AccordionRoot.",
+      "semanticRole": "disclosure widget",
+      "props": {
+        "value": {
+          "type": "string",
+          "required": true,
+          "description": "Unique identifier for this item."
+        },
+        "disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disables this item."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "AccordionTrigger",
+      "description": "Button that toggles an AccordionItem.",
+      "whenToUse": "Always inside an AccordionItem.",
+      "semanticRole": "button",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "AccordionContent",
+      "description": "Collapsible content of an AccordionItem.",
+      "whenToUse": "Always inside an AccordionItem.",
+      "semanticRole": "region",
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "accordion.css",
+      "accordion.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/accordion",
+    "label": "Accordion",
+    "group": "overlays",
+    "subgroup": "disclosure-and-switching",
+    "description": "Collapsible content sections"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Usage",
+            "language": "svelte",
+            "code": "<sg-accordion-root>\n    <sg-accordion-item value=\"item1\">\n        <sg-accordion-trigger>What is SigUI?</sg-accordion-trigger>\n        <sg-accordion-content>\n            <p class=\"sg-demo-accordionroot-1\">SigUI is a comprehensive design system built on perceptual color science, fluid typography, and accessible interaction patterns.</p>\n        </sg-accordion-content>\n    </sg-accordion-item>\n    <sg-accordion-item value=\"item2\">\n        <sg-accordion-trigger>How does it work?</sg-accordion-trigger>\n        <sg-accordion-content>\n            <p class=\"sg-demo-accordionroot-2\">Core algorithms are pure TypeScript with no runtime dependencies. The Svelte layer provides reactive components with constrained typed props.</p>\n        </sg-accordion-content>\n    </sg-accordion-item>\n    <sg-accordion-item value=\"item3\" disabled={true}>\n        <sg-accordion-trigger>Disabled Item</sg-accordion-trigger>\n        <sg-accordion-content>\n          <p>This won't open.</p>\n        </sg-accordion-content>\n    </sg-accordion-item>\n</sg-accordion-root>",
+            "css": ".sg-demo-accordionroot-1 {\n  padding: var(--sg-space-3) 0; color: var(--sg-color-text-secondary); margin: 0;\n}\n\n.sg-demo-accordionroot-2 {\n  padding: var(--sg-space-3) 0; color: var(--sg-color-text-secondary); margin: 0;\n}"
+          },
+          {
+            "title": "Multiple Open",
+            "language": "svelte",
+            "code": "<sg-accordion-root multiple={true}>\n    <sg-accordion-item value=\"multi1\">\n        <sg-accordion-trigger>Can open multiple panels at once</sg-accordion-trigger>\n        <sg-accordion-content>\n            <p class=\"sg-demo-accordionroot-1\">With the multiple prop, you can have several accordion items open simultaneously. This is useful for FAQ sections where users may want to compare answers.</p>\n        </sg-accordion-content>\n    </sg-accordion-item>\n    <sg-accordion-item value=\"multi2\">\n        <sg-accordion-trigger>This can be open too</sg-accordion-trigger>\n        <sg-accordion-content>\n            <p class=\"sg-demo-accordionroot-2\">Both items can be expanded at the same time, unlike the default behavior where opening one item closes the others.</p>\n        </sg-accordion-content>\n    </sg-accordion-item>\n</sg-accordion-root>",
+            "css": ".sg-demo-accordionroot-1 {\n  padding: var(--sg-space-3) 0; color: var(--sg-color-text-secondary); margin: 0;\n}\n\n.sg-demo-accordionroot-2 {\n  padding: var(--sg-space-3) 0; color: var(--sg-color-text-secondary); margin: 0;\n}"
+          },
+          {
+            "title": "Feature Flag",
+            "language": "svelte",
+            "code": "<p class=\"sg-demo-accordionroot-1\">Accordion machine can be toggled with <code>featureFlags.accordionMachine</code>.</p>",
+            "css": ".sg-demo-accordionroot-1 {\n  margin: 0; color: var(--sg-color-text-secondary);\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

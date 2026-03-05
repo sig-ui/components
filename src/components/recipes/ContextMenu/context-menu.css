@@ -1,0 +1,103 @@
+@layer sigui.base {
+  .sg-context-menu-content {
+    background: var(--sg-card-bg);
+    border: 1px solid var(--sg-card-border);
+    border-radius: var(--sg-card-radius, var(--sg-card-radius, 0.5rem));
+    box-shadow: var(--sg-shadow-dropdown);
+    padding: var(--sg-gap-tight, 0.25rem);
+    min-width: 10rem;
+    z-index: var(--sg-z-popover, 50);
+  }
+
+  .sg-context-menu-item {
+    display: flex;
+    align-items: center;
+    padding: var(--sg-gap-related, 0.5rem) var(--sg-pad-input, 0.75rem);
+    border-radius: var(--sg-input-radius, 0.25rem);
+    cursor: pointer;
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+  }
+
+  .sg-context-menu-separator {
+    height: 1px;
+    background: var(--sg-color-border);
+    margin: var(--sg-gap-tight, 0.25rem) 0;
+  }
+
+  .sg-context-menu-label {
+    padding: var(--sg-gap-related, 0.5rem) var(--sg-pad-input, 0.75rem);
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-xs, 0.6875rem);
+    font-weight: 500;
+    color: var(--sg-color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .sg-context-menu-label[data-inset] {
+    padding-left: calc(var(--sg-pad-card, 1.5rem) + var(--sg-pad-input, 0.75rem));
+  }
+
+  .sg-context-menu-sub-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--sg-gap-related, 0.5rem) var(--sg-pad-input, 0.75rem);
+    border-radius: var(--sg-input-radius, 0.25rem);
+    cursor: pointer;
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+  }
+
+  .sg-context-menu-sub-trigger-content {
+    flex: 1;
+  }
+
+  .sg-context-menu-sub-trigger-arrow {
+    margin-left: var(--sg-gap-related, 0.5rem);
+    color: var(--sg-color-text-muted);
+  }
+
+  .sg-context-menu-sub-content {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    margin-left: var(--sg-gap-tight, 0.25rem);
+  }
+
+}
+
+@layer sigui.states {
+  @media (forced-colors: active) {
+    .sg-context-menu-content {
+      border: 1px solid CanvasText;
+    }
+  }
+
+  .sg-context-menu-item {
+    transition: background var(--sg-transition-default, 200ms ease-out);
+  }
+
+  .sg-context-menu-item:hover:not([data-disabled]) {
+    background: var(--sg-surface-container);
+  }
+
+  .sg-context-menu-item:active:not([data-disabled]) {
+    background: var(--sg-surface-container-high);
+  }
+
+  .sg-context-menu-item:focus-visible {
+    outline: var(--sg-focus-width, 2px) solid var(--sg-focus-color);
+    outline-offset: -2px;
+  }
+
+}

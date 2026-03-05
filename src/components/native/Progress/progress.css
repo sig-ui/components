@@ -1,0 +1,130 @@
+@layer sigui.base {
+  .sg-progress {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    height: 0.5rem;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 9999px;
+    background: var(--sg-surface-container-high);
+    border: none;
+  }
+
+  /* WebKit track */
+  .sg-progress::-webkit-progress-bar {
+    background: var(--sg-surface-container-high);
+    border-radius: 9999px;
+  }
+
+  /* WebKit fill */
+  .sg-progress::-webkit-progress-value {
+    background: var(--sg-color-primary);
+    border-radius: 9999px;
+    /* sg-lint-disable no-layout-animation – intentional width transition for progress fill */
+    transition: width var(--sg-transition-default, 200ms ease-out);
+  }
+
+  /* Firefox fill */
+  .sg-progress::-moz-progress-bar {
+    background: var(--sg-color-primary);
+    border-radius: 9999px;
+  }
+
+  /* Div-based fallback */
+  .sg-progress-indicator {
+    height: 100%;
+    width: 100%;
+    background: var(--sg-color-primary);
+    border-radius: 9999px;
+    transform-origin: left;
+    transition: transform var(--sg-transition-default, 200ms ease-out);
+  }
+
+}
+
+@layer sigui.variants {
+  .sg-progress[data-size="sm"] {
+    height: 0.25rem;
+  }
+
+  .sg-progress[data-size="md"] {
+    height: 0.5rem;
+  }
+
+  .sg-progress[data-size="lg"] {
+    height: 0.75rem;
+  }
+
+  .sg-progress[data-color="primary"]::-webkit-progress-value,
+  .sg-progress[data-color="primary"] .sg-progress-indicator {
+    background: var(--sg-color-primary);
+  }
+
+  .sg-progress[data-color="success"]::-webkit-progress-value,
+  .sg-progress[data-color="success"] .sg-progress-indicator {
+    background: var(--sg-color-success);
+  }
+
+  .sg-progress[data-color="danger"]::-webkit-progress-value,
+  .sg-progress[data-color="danger"] .sg-progress-indicator {
+    background: var(--sg-color-danger);
+  }
+
+  .sg-progress[data-color="warning"]::-webkit-progress-value,
+  .sg-progress[data-color="warning"] .sg-progress-indicator {
+    background: var(--sg-color-warning);
+  }
+
+  .sg-progress[data-color="info"]::-webkit-progress-value,
+  .sg-progress[data-color="info"] .sg-progress-indicator {
+    background: var(--sg-color-info);
+  }
+
+  .sg-progress[data-color="primary"]::-moz-progress-bar { background: var(--sg-color-primary); }
+  .sg-progress[data-color="success"]::-moz-progress-bar { background: var(--sg-color-success); }
+  .sg-progress[data-color="danger"]::-moz-progress-bar { background: var(--sg-color-danger); }
+  .sg-progress[data-color="warning"]::-moz-progress-bar { background: var(--sg-color-warning); }
+  .sg-progress[data-color="info"]::-moz-progress-bar { background: var(--sg-color-info); }
+
+}
+
+@layer sigui.states {
+  .sg-progress:indeterminate::-webkit-progress-bar {
+    background: var(--sg-surface-container-high);
+  }
+
+  .sg-progress:indeterminate::-webkit-progress-value {
+    background: var(--sg-color-primary);
+    animation: sg-progress-indeterminate calc(200ms * 7.5) ease-in-out infinite;
+  }
+
+  .sg-progress:indeterminate::-moz-progress-bar {
+    background: var(--sg-color-primary);
+    animation: sg-progress-indeterminate calc(200ms * 7.5) ease-in-out infinite;
+  }
+
+  .sg-progress:indeterminate .sg-progress-indicator {
+    transform: scaleX(0.5);
+    animation: sg-progress-indeterminate calc(200ms * 7.5) ease-in-out infinite;
+  }
+
+  @media (forced-colors: active) {
+
+    .sg-progress {
+      border: 1px solid CanvasText;
+    }
+
+    .sg-progress::-webkit-progress-value,
+    .sg-progress-indicator {
+      background: Highlight;
+    }
+
+    .sg-progress::-moz-progress-bar {
+      background: Highlight;
+    }
+  }
+
+
+}

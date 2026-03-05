@@ -1,0 +1,42 @@
+{
+  "name": "TabGroup",
+  "importPath": "sg/tab-group",
+  "category": "overlay",
+  "description": "Grouping container for tabbed interfaces.",
+  "whenToUse": "Wrapping one or more tab sets that share layout or context.",
+  "semanticRole": "tablist container",
+  "props": {
+    "orientation": {
+      "type": "string",
+      "values": [
+        "horizontal",
+        "vertical"
+      ],
+      "default": "horizontal",
+      "description": "Tab orientation hint."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "tab-group.css",
+      "tab-group.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/tab-group",
+    "label": "TabGroup",
+    "group": "overlays",
+    "subgroup": "disclosure-and-switching",
+    "description": "Container for grouped tab interfaces"
+  },
+  "page": {
+    "title": "Tab grouping container",
+    "code": "<sg-tab-group orientation=\"horizontal\">\n  <sg-tabs-root>\n    <sg-tabs-list>\n      <sg-tabs-trigger value=\"a\">Overview</sg-tabs-trigger>\n      <sg-tabs-trigger value=\"b\">Settings</sg-tabs-trigger>\n    </sg-tabs-list>\n  </sg-tabs-root>\n</sg-tab-group>"
+  }
+}

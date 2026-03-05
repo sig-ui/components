@@ -1,0 +1,112 @@
+@layer sigui.base {
+  .sg-switch-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sg-gap-related, 0.5rem);
+    cursor: pointer;
+  }
+
+  .sg-switch {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 2.75rem;
+    height: 1.5rem;
+    border-radius: 9999px;
+    background: var(--sg-surface-container-high);
+    border: 1.5px solid var(--sg-color-border);
+    position: relative;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition:
+      background 150ms ease-out,
+      border-color 150ms ease-out;
+  }
+
+  .sg-switch::before {
+    content: "";
+    position: absolute;
+    width: 1.125rem;
+    height: 1.125rem;
+    border-radius: 9999px;
+    background: var(--sg-color-text-inverse);
+    box-shadow: var(--sg-card-shadow);
+    top: 50%;
+    left: 0.125rem;
+    transform: translateY(-50%);
+    transition: transform 246ms cubic-bezier(0.2, 1.2, 0.4, 1);
+  }
+
+  .sg-switch-thumb {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 9999px;
+    background: var(--sg-color-text-inverse);
+    box-shadow: var(--sg-card-shadow);
+    position: absolute;
+    top: 0.0625rem;
+    left: 0.0625rem;
+    transition: transform 246ms cubic-bezier(0.2, 1.2, 0.4, 1);
+  }
+
+  .sg-switch-label {
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+    color: var(--sg-color-text);
+    user-select: none;
+  }
+
+}
+
+@layer sigui.states {
+
+  .sg-switch-wrapper:focus-within .sg-switch {
+    outline: var(--sg-focus-width, 2px) solid var(--sg-focus-color);
+    outline-offset: var(--sg-focus-offset, 2px);
+    box-shadow: 0 0 0 var(--sg-focus-offset) var(--sg-focus-inner);
+  }
+
+  .sg-switch:focus-visible {
+    outline: var(--sg-focus-width, 2px) solid var(--sg-focus-color);
+    outline-offset: var(--sg-focus-offset, 2px);
+  }
+
+  .sg-switch:checked {
+    background: var(--sg-color-primary);
+    border-color: var(--sg-color-primary);
+  }
+
+  .sg-switch:checked::before {
+    transform: translateY(-50%) translateX(1.25rem);
+  }
+
+  .sg-switch:checked .sg-switch-thumb {
+    transform: translateX(1.25rem);
+  }
+
+  .sg-switch:hover:not(:disabled) {
+    border-color: var(--sg-color-text-muted);
+  }
+
+  .sg-switch:checked:hover:not(:disabled) {
+    opacity: 0.9;
+    border-color: var(--sg-color-primary);
+  }
+
+  .sg-switch:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  @media (forced-colors: active) {
+
+    .sg-switch {
+      border: 2px solid ButtonText;
+    }
+
+    .sg-switch:checked {
+      background: Highlight;
+    }
+  }
+
+
+}

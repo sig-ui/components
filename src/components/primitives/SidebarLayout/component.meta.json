@@ -1,0 +1,81 @@
+{
+  "name": "SidebarLayout",
+  "importPath": "sg/sidebar-layout",
+  "category": "layout",
+  "description": "Two-column layout with intrinsic-width sidebar and flexible content area. Uses CSS Grid for robust sizing.",
+  "whenToUse": "Main application layouts with navigation sidebar + content area. Documentation sites with TOC sidebar.",
+  "avoidWhen": "You need the interactive navigation Sidebar component - use SidebarRoot instead. Simple side-by-side layouts - use Stack with direction='horizontal'.",
+  "semanticRole": "none (layout primitive)",
+  "parts": [
+    {
+      "name": "SidebarLayout",
+      "props": {
+        "side": {
+          "type": "string",
+          "values": [
+            "left",
+            "right"
+          ],
+          "default": "left",
+          "description": "Which side the sidebar appears on."
+        },
+        "gap": {
+          "type": "SpacingRelationship",
+          "values": [
+            "related",
+            "grouped",
+            "separated",
+            "distinct"
+          ],
+          "default": "grouped",
+          "description": "Gestalt-based spacing between sidebar and content."
+        },
+        "sidebarWidth": {
+          "type": "string",
+          "description": "Explicit sidebar width. Omit for intrinsic width based on content."
+        },
+        "collapsible": {
+          "type": "boolean",
+          "default": false,
+          "description": "Allow sidebar to collapse (requires collapse logic in SidebarLayoutSidebar)."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "SidebarLayoutSidebar",
+      "description": "Sidebar region within a SidebarLayout. Has intrinsic width by default.",
+      "whenToUse": "Always inside a SidebarLayout. Contains navigation, TOC, or other sidebar content.",
+      "semanticRole": "complementary",
+      "props": {
+        "width": {
+          "type": "string",
+          "description": "Intrinsic width override. Uses parent's sidebarWidth if omitted."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "SidebarLayoutContent",
+      "description": "Main content region within a SidebarLayout. Fills remaining space.",
+      "whenToUse": "Always inside a SidebarLayout. Contains the primary page content.",
+      "semanticRole": "main",
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "sidebar-layout.css",
+      "sidebar-layout.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  }
+}

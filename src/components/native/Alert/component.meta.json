@@ -1,0 +1,114 @@
+{
+  "name": "Alert",
+  "importPath": "sg/alert",
+  "category": "feedback",
+  "description": "CSS-only alert container. Apply class=\"sg-alert\" to a native <div> or <aside> with role=\"alert\" or role=\"status\".",
+  "whenToUse": "Persistent status messages, notifications, and callouts with native HTML.",
+  "avoidWhen": "Auto-dismissing notices (use Toast) or destructive confirmations (use AlertDialog).",
+  "semanticRole": "alert or status",
+  "accessibilityRequirements": "Use role=\"alert\" for assertive announcements or role=\"status\" for polite updates.",
+  "parts": [
+    {
+      "name": "Alert",
+      "props": {
+        "class": {
+          "type": "string",
+          "required": true,
+          "description": "Use class=\"sg-alert\" on a native container."
+        },
+        "data-color": {
+          "type": "ColorVariant",
+          "values": [
+            "primary",
+            "secondary",
+            "danger",
+            "success",
+            "warning",
+            "info",
+            "ghost"
+          ],
+          "default": "info",
+          "description": "Semantic alert color."
+        },
+        "role": {
+          "type": "string",
+          "values": [
+            "alert",
+            "status"
+          ],
+          "default": "alert",
+          "description": "Live region behavior for assistive technology."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "AlertTitle",
+      "description": "CSS-only title text for an Alert. Apply class=\"sg-alert-title\" to a heading or block element.",
+      "whenToUse": "Inside Alert when a concise heading improves scanability.",
+      "semanticRole": "heading or text",
+      "props": {
+        "class": {
+          "type": "string",
+          "required": true,
+          "description": "Use class=\"sg-alert-title\"."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "AlertDescription",
+      "description": "CSS-only supporting text for an Alert. Apply class=\"sg-alert-description\" to a paragraph or container.",
+      "whenToUse": "Inside Alert to provide additional guidance or detail.",
+      "semanticRole": "text",
+      "props": {
+        "class": {
+          "type": "string",
+          "required": true,
+          "description": "Use class=\"sg-alert-description\"."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "alert.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/alert",
+    "label": "Alert",
+    "group": "data-display",
+    "subgroup": "status-feedback",
+    "description": "Contextual feedback messages with color variants"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Color Variants",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"related\">\n    <div class=\"sg-alert\" role=\"alert\" data-color=\"info\"><div class=\"sg-alert-title\">Informational message.</div></div>\n    <div class=\"sg-alert\" role=\"alert\" data-color=\"success\"><div class=\"sg-alert-title\">Operation completed successfully.</div></div>\n    <div class=\"sg-alert\" role=\"alert\" data-color=\"warning\"><div class=\"sg-alert-title\">Please review before continuing.</div></div>\n    <div class=\"sg-alert\" role=\"alert\" data-color=\"danger\"><div class=\"sg-alert-title\">Something went wrong.</div></div>\n</sg-stack>"
+          },
+          {
+            "title": "With Title and Description",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"related\">\n    <div class=\"sg-alert\" role=\"alert\" data-color=\"success\">\n      <div class=\"sg-alert-icon\"><sg-icon name=\"check\" label=\"success\" color=\"success\" /></div>\n      <div class=\"sg-alert-content\">\n        <div class=\"sg-alert-title\">Success! Your changes have been saved</div>\n        <div class=\"sg-alert-description\">This is an alert with icon, title and description.</div>\n      </div>\n    </div>\n    <div class=\"sg-alert\" role=\"alert\" data-color=\"danger\">\n      <div class=\"sg-alert-icon\"><sg-icon name=\"warning\" label=\"error\" color=\"danger\" /></div>\n      <div class=\"sg-alert-content\">\n        <div class=\"sg-alert-title\">Unable to process your payment.</div>\n        <div class=\"sg-alert-description\">Please verify your billing information and try again.</div>\n      </div>\n    </div>\n</sg-stack>"
+          }
+        ]
+      }
+    ]
+  }
+}

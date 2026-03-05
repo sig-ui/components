@@ -1,0 +1,93 @@
+{
+  "name": "Toast",
+  "importPath": "sg/toast",
+  "category": "feedback",
+  "description": "Individual toast notification.",
+  "whenToUse": "Brief, non-blocking feedback messages (success, error, info).",
+  "avoidWhen": "Blocking action needed - use AlertDialog. Persistent status - use Badge or inline message.",
+  "semanticRole": "alert or status",
+  "accessibilityRequirements": "Uses role='status' (polite) or role='alert' (assertive) depending on color.",
+  "parts": [
+    {
+      "name": "ToastProvider",
+      "description": "Context provider that manages toast notifications.",
+      "whenToUse": "Wrap your app root to enable toast notifications anywhere in the tree.",
+      "semanticRole": "status region",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "Toast",
+      "props": {
+        "color": {
+          "type": "ColorVariant",
+          "values": [
+            "primary",
+            "secondary",
+            "danger",
+            "success",
+            "warning",
+            "info",
+            "ghost"
+          ],
+          "description": "Semantic color indicating the notification type."
+        },
+        "duration": {
+          "type": "number",
+          "default": 5000,
+          "description": "Auto-dismiss time in milliseconds."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "toast.css",
+      "toast.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/toast",
+    "label": "Toast",
+    "group": "data-display",
+    "subgroup": "status-feedback",
+    "description": "Transient notification messages"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Variants",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" wrap={true}>\n    <sg-toast color=\"primary\">Info toast message</sg-toast>\n    <sg-toast color=\"success\">Success toast</sg-toast>\n    <sg-toast color=\"danger\">Error toast</sg-toast>\n    <sg-toast color=\"warning\">Warning toast</sg-toast>\n</sg-stack>"
+          },
+          {
+            "title": "With Title and Action",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" wrap={true}>\n    <sg-toast\n      title=\"Success!\"\n      color=\"success\"\n      action={{ label: \"Undo\", onClick: () => console.log(\"Undo clicked\") }}\n    >\n      Your changes have been saved.\n    </sg-toast>\n    <sg-toast\n      title=\"Error\"\n      color=\"danger\"\n      action={{ label: \"Retry\", onClick: () => console.log(\"Retry clicked\") }}\n    >\n      Failed to save changes. Please try again.\n    </sg-toast>\n</sg-stack>"
+          },
+          {
+            "title": "Non-dismissible",
+            "language": "svelte",
+            "code": "<sg-toast color=\"info\" dismissible={false}>\n  This toast cannot be dismissed manually - only auto-dismisses after duration.\n</sg-toast>"
+          },
+          {
+            "title": "Feature Flag",
+            "language": "svelte",
+            "code": "<p class=\"sg-demo-toast-1\">Toast machine can be toggled with <code>featureFlags.toastMachine</code>.</p>",
+            "css": ".sg-demo-toast-1 {\n  margin: 0; color: var(--sg-color-text-secondary);\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

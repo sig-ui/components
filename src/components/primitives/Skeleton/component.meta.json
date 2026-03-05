@@ -1,0 +1,60 @@
+{
+  "name": "Skeleton",
+  "importPath": "sg/skeleton",
+  "category": "feedback",
+  "description": "Placeholder loading animation.",
+  "whenToUse": "Showing placeholder shapes while content is loading.",
+  "avoidWhen": "You know the progress percentage - use Progress.",
+  "semanticRole": "none (presentational)",
+  "props": {
+    "width": {
+      "type": "string",
+      "description": "CSS width value."
+    },
+    "height": {
+      "type": "string",
+      "description": "CSS height value."
+    },
+    "circle": {
+      "type": "boolean",
+      "default": false,
+      "description": "Renders as a circle."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "skeleton.css",
+      "skeleton.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/skeleton",
+    "label": "Skeleton",
+    "group": "data-display",
+    "subgroup": "status-feedback",
+    "description": "Placeholder loading indicator with shapes"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Shapes",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"related\">\n    <sg-skeleton width=\"100%\" height=\"20px\" />\n    <sg-skeleton width=\"200px\" height=\"20px\" />\n    <sg-skeleton width=\"40px\" height=\"40px\" circle={true} />\n</sg-stack>"
+          },
+          {
+            "title": "Card Placeholder",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\">\n    <sg-skeleton width=\"48px\" height=\"48px\" circle={true} />\n    <sg-stack gap=\"related\">\n        <sg-skeleton width=\"160px\" height=\"16px\" />\n        <sg-skeleton width=\"100px\" height=\"12px\" />\n    </sg-stack>\n</sg-stack>"
+          }
+        ]
+      }
+    ]
+  }
+}

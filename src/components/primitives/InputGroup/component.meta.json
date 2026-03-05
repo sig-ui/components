@@ -1,0 +1,263 @@
+{
+  "name": "InputGroup",
+  "importPath": "sg/input-group",
+  "category": "form",
+  "description": "Flex container that visually groups an input with prefix and/or suffix elements using compound components.",
+  "whenToUse": "To add icons, buttons, or text add-ons to an input field. Use with InputGroupAddon, InputGroupInput, InputGroupTextarea, InputGroupText, and InputGroupButton.",
+  "avoidWhen": "When the input stands alone without add-ons.",
+  "semanticRole": "group",
+  "parts": [
+    {
+      "name": "InputGroup",
+      "props": {
+        "size": {
+          "type": "Size",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "description": "Size of the group (sm, md, lg)"
+        },
+        "disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disable the entire input group"
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "InputGroupAddon",
+      "description": "Addon container that positions content at the start or end of an input group.",
+      "whenToUse": "To wrap icons, text, or buttons that attach to an input.",
+      "props": {
+        "align": {
+          "type": "InputGroupAddonAlign",
+          "values": [
+            "inline-start",
+            "inline-end",
+            "block-start",
+            "block-end"
+          ],
+          "default": "inline-start",
+          "description": "Position of the addon relative to the input"
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "InputGroupInput",
+      "description": "Input element designed for use within InputGroup with proper border radius handling.",
+      "whenToUse": "As the main text input within an InputGroup compound.",
+      "semanticRole": "textbox",
+      "props": {
+        "value": {
+          "type": "string",
+          "default": "",
+          "description": "Input value (bindable)"
+        },
+        "type": {
+          "type": "string",
+          "values": [
+            "text",
+            "email",
+            "password",
+            "number",
+            "search",
+            "tel",
+            "url"
+          ],
+          "default": "text",
+          "description": "Input type"
+        },
+        "placeholder": {
+          "type": "string",
+          "description": "Placeholder text"
+        },
+        "disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disable the input"
+        },
+        "readonly": {
+          "type": "boolean",
+          "default": false,
+          "description": "Make input read-only"
+        },
+        "required": {
+          "type": "boolean",
+          "default": false,
+          "description": "Mark as required"
+        }
+      },
+      "slots": []
+    },
+    {
+      "name": "InputGroupTextarea",
+      "description": "Textarea element designed for use within InputGroup with block-start/block-end addons.",
+      "whenToUse": "For multi-line text input within an InputGroup with header/footer addons.",
+      "semanticRole": "textbox",
+      "props": {
+        "value": {
+          "type": "string",
+          "default": "",
+          "description": "Textarea value (bindable)"
+        },
+        "placeholder": {
+          "type": "string",
+          "description": "Placeholder text"
+        },
+        "disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disable the textarea"
+        },
+        "readonly": {
+          "type": "boolean",
+          "default": false,
+          "description": "Make textarea read-only"
+        },
+        "required": {
+          "type": "boolean",
+          "default": false,
+          "description": "Mark as required"
+        },
+        "rows": {
+          "type": "number",
+          "default": 3,
+          "description": "Number of visible text rows"
+        }
+      },
+      "slots": []
+    },
+    {
+      "name": "InputGroupText",
+      "description": "Text content for InputGroupAddon, styled as muted helper text.",
+      "whenToUse": "To display static text like currency symbols, units, or labels in an addon.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "InputGroupButton",
+      "description": "Button element designed for use within InputGroupAddon.",
+      "whenToUse": "For action buttons within an input group (e.g., submit, search, clear).",
+      "semanticRole": "button",
+      "props": {
+        "size": {
+          "type": "InputGroupButtonSize",
+          "values": [
+            "xs",
+            "icon-xs",
+            "sm",
+            "icon-sm"
+          ],
+          "default": "xs",
+          "description": "Button size"
+        },
+        "variant": {
+          "type": "ColorVariant",
+          "values": [
+            "primary",
+            "secondary",
+            "danger",
+            "success",
+            "warning",
+            "info",
+            "ghost"
+          ],
+          "default": "ghost",
+          "description": "Color variant"
+        },
+        "disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disable the button"
+        },
+        "type": {
+          "type": "string",
+          "values": [
+            "button",
+            "submit",
+            "reset"
+          ],
+          "default": "button",
+          "description": "Button type"
+        },
+        "href": {
+          "type": "string",
+          "description": "If provided, renders as anchor link"
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "input-group.css",
+      "input-group.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/forms/input-group",
+    "label": "InputGroup",
+    "group": "forms",
+    "subgroup": "field-composition",
+    "description": "Input with prefix and suffix slots"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Text Addons",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    <sg-input-group aria-label=\"Price\">\n      <sg-input-group-addon align=\"inline-start\">\n        <sg-input-group-text>$</sg-input-group-text>\n      </sg-input-group-addon>\n      <sg-input-group-input type=\"number\" placeholder=\"0\" />\n      <sg-input-group-addon align=\"inline-end\">\n        <sg-input-group-text>.00</sg-input-group-text>\n      </sg-input-group-addon>\n    </sg-input-group>\n    <sg-input-group aria-label=\"Website URL\">\n      <sg-input-group-addon align=\"inline-start\">\n        <sg-input-group-text>https://</sg-input-group-text>\n      </sg-input-group-addon>\n      <sg-input-group-input type=\"url\" placeholder=\"example.com\" />\n    </sg-input-group>\n</sg-stack>"
+          },
+          {
+            "title": "Button Addons",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    <sg-input-group aria-label=\"Search\">\n      <sg-input-group-input type=\"search\" placeholder=\"Search...\" />\n      <sg-input-group-addon align=\"inline-end\">\n        <sg-input-group-button variant=\"primary\">Go</sg-input-group-button>\n      </sg-input-group-addon>\n    </sg-input-group>\n    <sg-input-group aria-label=\"Email signup\">\n      <sg-input-group-input type=\"email\" placeholder=\"Enter your email\" />\n      <sg-input-group-addon align=\"inline-end\">\n        <sg-input-group-button variant=\"secondary\">Subscribe</sg-input-group-button>\n      </sg-input-group-addon>\n    </sg-input-group>\n</sg-stack>"
+          },
+          {
+            "title": "Icon Addons",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    <sg-input-group aria-label=\"Search with icon\">\n      <sg-input-group-addon align=\"inline-start\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n          <circle cx=\"11\" cy=\"11\" r=\"8\"></circle>\n          <line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"></line>\n        </svg>\n      </sg-input-group-addon>\n      <sg-input-group-input type=\"search\" placeholder=\"Search...\" />\n    </sg-input-group>\n    <sg-input-group aria-label=\"Email with icon\">\n      <sg-input-group-addon align=\"inline-start\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n          <path d=\"M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z\"></path>\n          <polyline points=\"22,6 12,13 2,6\"></polyline>\n        </svg>\n      </sg-input-group-addon>\n      <sg-input-group-input type=\"email\" placeholder=\"email@example.com\" />\n    </sg-input-group>\n</sg-stack>"
+          },
+          {
+            "title": "Size Variants",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    <sg-input-group size=\"sm\" aria-label=\"Small input\">\n      <sg-input-group-addon align=\"inline-start\">\n        <sg-input-group-text>$</sg-input-group-text>\n      </sg-input-group-addon>\n      <sg-input-group-input placeholder=\"Small\" />\n    </sg-input-group>\n    <sg-input-group size=\"md\" aria-label=\"Medium input\">\n      <sg-input-group-addon align=\"inline-start\">\n        <sg-input-group-text>$</sg-input-group-text>\n      </sg-input-group-addon>\n      <sg-input-group-input placeholder=\"Medium\" />\n    </sg-input-group>\n    <sg-input-group size=\"lg\" aria-label=\"Large input\">\n      <sg-input-group-addon align=\"inline-start\">\n        <sg-input-group-text>$</sg-input-group-text>\n      </sg-input-group-addon>\n      <sg-input-group-input placeholder=\"Large\" />\n    </sg-input-group>\n</sg-stack>"
+          },
+          {
+            "title": "Textarea with Addons",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    <sg-input-group aria-label=\"Message\">\n      <sg-input-group-addon align=\"block-start\">\n        <sg-input-group-text>Message</sg-input-group-text>\n      </sg-input-group-addon>\n      <sg-input-group-textarea placeholder=\"Type your message...\" rows=\"3\" />\n      <sg-input-group-addon align=\"block-end\">\n        <sg-input-group-button variant=\"primary\">Send</sg-input-group-button>\n      </sg-input-group-addon>\n    </sg-input-group>\n</sg-stack>"
+          },
+          {
+            "title": "Disabled State",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    <sg-input-group disabled aria-label=\"Disabled input\">\n      <sg-input-group-addon align=\"inline-start\">\n        <sg-input-group-text>$</sg-input-group-text>\n      </sg-input-group-addon>\n      <sg-input-group-input placeholder=\"Disabled\" />\n    </sg-input-group>\n</sg-stack>"
+          },
+          {
+            "title": "Button Color Variants",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    <sg-input-group aria-label=\"Primary action\">\n      <sg-input-group-input placeholder=\"Primary\" />\n      <sg-input-group-addon align=\"inline-end\">\n        <sg-input-group-button variant=\"primary\">Submit</sg-input-group-button>\n      </sg-input-group-addon>\n    </sg-input-group>\n    <sg-input-group aria-label=\"Danger action\">\n      <sg-input-group-input placeholder=\"Delete item\" />\n      <sg-input-group-addon align=\"inline-end\">\n        <sg-input-group-button variant=\"danger\">Delete</sg-input-group-button>\n      </sg-input-group-addon>\n    </sg-input-group>\n    <sg-input-group aria-label=\"Success action\">\n      <sg-input-group-input placeholder=\"Confirm email\" />\n      <sg-input-group-addon align=\"inline-end\">\n        <sg-input-group-button variant=\"success\">Confirm</sg-input-group-button>\n      </sg-input-group-addon>\n    </sg-input-group>\n    <sg-input-group aria-label=\"Outline action\">\n      <sg-input-group-input placeholder=\"Search\" />\n      <sg-input-group-addon align=\"inline-end\">\n        <sg-input-group-button variant=\"outline\">Search</sg-input-group-button>\n      </sg-input-group-addon>\n    </sg-input-group>\n</sg-stack>"
+          }
+        ]
+      }
+    ]
+  }
+}

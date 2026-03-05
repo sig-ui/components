@@ -1,0 +1,95 @@
+{
+  "name": "Calendar",
+  "importPath": "sg/calendar",
+  "category": "form",
+  "description": "Date calendar supporting single date and date range selection with full keyboard navigation.",
+  "whenToUse": "When users need to pick a date from a visual calendar grid.",
+  "avoidWhen": "For simple date input - use a native date <input> instead.",
+  "semanticRole": "grid",
+  "accessibilityRequirements": "Arrow keys navigate days (Left/Right/Up/Down). Home/End jump to first/last day. PageUp/PageDown change months. Enter/Space selects. Visual focus indicator on focused day.",
+  "props": {
+    "mode": {
+      "type": "string",
+      "values": [
+        "single",
+        "range"
+      ],
+      "default": "single",
+      "description": "Single date or date range"
+    },
+    "value": {
+      "type": "string",
+      "description": "Selected date (ISO format) or {start,end} for range mode"
+    },
+    "default-date": {
+      "type": "string",
+      "description": "Initial visible/selected date when value is not provided (ISO)"
+    },
+    "min": {
+      "type": "string",
+      "description": "Minimum selectable date (ISO)"
+    },
+    "max": {
+      "type": "string",
+      "description": "Maximum selectable date (ISO)"
+    },
+    "onchange": {
+      "type": "(value: string | {start: string, end: string}) => void",
+      "description": "Called when selection changes"
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "calendar.css",
+      "calendar.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/forms/calendar",
+    "label": "Calendar",
+    "group": "forms",
+    "subgroup": "entry-controls",
+    "description": "Date selection with single and range modes"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Single Date Selection",
+            "description": "Click any day to select. Use arrow keys to navigate, Enter or Space to select.",
+            "language": "svelte",
+            "code": "<sg-calendar mode=\"single\" value=\"2026-03-05\"></sg-calendar>\n<p class=\"sg-demo-calendar-1\">Selected: 2026-03-05</p>",
+            "css": ".sg-demo-calendar-1 {\n  margin-top: var(--sg-space-2); color: var(--sg-color-text-secondary); font-size: var(--sg-text-sm)\n}"
+          },
+          {
+            "title": "Date Range Selection",
+            "description": "Click to set start date, click again to set end date. Range is highlighted.",
+            "language": "svelte",
+            "code": "<sg-calendar mode=\"range\" value='{\"start\":\"2026-03-05\",\"end\":\"2026-03-12\"}'></sg-calendar>\n<p class=\"sg-demo-calendar-1\">Range: 2026-03-05 - 2026-03-12</p>",
+            "css": ".sg-demo-calendar-1 {\n  margin-top: var(--sg-space-2); color: var(--sg-color-text-secondary); font-size: var(--sg-text-sm)\n}"
+          },
+          {
+            "title": "Min/Max Constraints",
+            "description": "Limit selectable dates with min and max props.",
+            "language": "svelte",
+            "code": "<sg-calendar mode=\"single\" min=\"2024-01-15\" max=\"2024-02-15\" value=\"2024-01-22\"></sg-calendar>\n<p class=\"sg-demo-calendar-1\">Only dates between Jan 15 and Feb 15 are selectable</p>",
+            "css": ".sg-demo-calendar-1 {\n  margin-top: var(--sg-space-2); color: var(--sg-color-text-secondary); font-size: var(--sg-text-sm)\n}"
+          },
+          {
+            "title": "Keyboard Navigation",
+            "description": "Full keyboard support for accessibility.",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-calendar-1\">\n  <p><strong>Keyboard Shortcuts:</strong></p>\n  <ul class=\"sg-demo-calendar-2\">\n    <li><kbd>ArrowLeft</kbd> / <kbd>ArrowRight</kbd>: Previous/Next day</li>\n    <li><kbd>ArrowUp</kbd> / <kbd>ArrowDown</kbd>: Previous/Next week</li>\n    <li><kbd>Home</kbd>: First day of month</li>\n    <li><kbd>End</kbd>: Last day of month</li>\n    <li><kbd>PageUp</kbd> / <kbd>PageDown</kbd>: Previous/Next month</li>\n    <li><kbd>Enter</kbd> / <kbd>Space</kbd>: Select focused day</li>\n  </ul>\n</div>",
+            "css": ".sg-demo-calendar-1 {\n  color: var(--sg-color-text-secondary); font-size: var(--sg-text-sm)\n}\n\n.sg-demo-calendar-2 {\n  margin: var(--sg-space-2) 0; padding-left: var(--sg-space-6);\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "Include",
+  "importPath": "sg/include",
+  "category": "data-display",
+  "description": "Fetches remote content and injects it into the current DOM subtree.",
+  "whenToUse": "Server-rendered partial includes or lightweight remote content injection.",
+  "avoidWhen": "Trusted rendering cannot be guaranteed or strict sanitization is required.",
+  "semanticRole": "none",
+  "props": {
+    "src": {
+      "type": "string",
+      "required": true,
+      "description": "URL to fetch."
+    },
+    "mode": {
+      "type": "string",
+      "values": [
+        "html",
+        "text"
+      ],
+      "default": "html",
+      "description": "Injection mode for fetched response."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "include.css",
+      "include.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/include",
+    "label": "Include",
+    "group": "data-display",
+    "subgroup": "content-and-media",
+    "description": "Fetch and include remote markup"
+  },
+  "page": {
+    "title": "Remote HTML include",
+    "code": "<sg-include src=\"/README.md\" mode=\"text\"></sg-include>"
+  }
+}

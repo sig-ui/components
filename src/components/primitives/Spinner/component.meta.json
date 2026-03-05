@@ -1,0 +1,59 @@
+{
+  "name": "Spinner",
+  "importPath": "sg/spinner",
+  "category": "feedback",
+  "description": "Loading spinner animation with accessible label.",
+  "whenToUse": "Indicating loading state for actions or content.",
+  "avoidWhen": "Content placeholder - use Skeleton. Known progress - use Progress.",
+  "semanticRole": "status",
+  "accessibilityRequirements": "Uses role='status' with aria-label for screen readers.",
+  "props": {
+    "size": {
+      "type": "Size",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "md",
+      "description": "Spinner size."
+    },
+    "label": {
+      "type": "string",
+      "default": "Loading",
+      "description": "Accessible label for screen readers."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "spinner.css",
+      "spinner.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/spinner",
+    "label": "Spinner",
+    "group": "data-display",
+    "subgroup": "status-feedback",
+    "description": "Loading spinner indicator"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Sizes",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"grouped\" align=\"center\">\n    <div class=\"sg-demo-spinner-1\">\n      <sg-spinner size=\"sm\" label=\"Loading\" />\n      <p class=\"sg-demo-spinner-2\">Small</p>\n    </div>\n    <div class=\"sg-demo-spinner-3\">\n      <sg-spinner size=\"md\" label=\"Loading\" />\n      <p class=\"sg-demo-spinner-4\">Medium</p>\n    </div>\n    <div class=\"sg-demo-spinner-5\">\n      <sg-spinner size=\"lg\" label=\"Loading\" />\n      <p class=\"sg-demo-spinner-6\">Large</p>\n    </div>\n</sg-stack>",
+            "css": ".sg-demo-spinner-1 {\n  text-align: center\n}\n\n.sg-demo-spinner-2 {\n  margin: var(--sg-space-2) 0 0; font-size: var(--sg-text-xs); color: var(--text-3)\n}\n\n.sg-demo-spinner-3 {\n  text-align: center\n}\n\n.sg-demo-spinner-4 {\n  margin: var(--sg-space-2) 0 0; font-size: var(--sg-text-xs); color: var(--text-3)\n}\n\n.sg-demo-spinner-5 {\n  text-align: center\n}\n\n.sg-demo-spinner-6 {\n  margin: var(--sg-space-2) 0 0; font-size: var(--sg-text-xs); color: var(--text-3)\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,79 @@
+/* Structural shield - unlayered to survive external CSS resets.
+ * These rules re-assert critical layout properties for all sigui components.
+ * Because class selectors (specificity 0,1,0+) outweigh universal selectors
+ * (0,0,0) in the unlayered cascade, components survive `* { padding: 0; }`.
+ *
+ * Value properties use internal custom properties (--_ prefix) so that
+ * layered variant/state rules can override values without fighting the
+ * unlayered cascade. Shield hardcodes property *names*, not values. */
+
+.sg-stack { display: flex; flex-direction: column; }
+.sg-stack[data-direction="horizontal"] { flex-direction: row; }
+
+.sg-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sg-gap-related, 0.5rem);
+  padding: var(--sg-button-padding-y, 0.75rem) var(--sg-button-padding-x, 1rem);
+}
+
+.sg-card[data-padding] { padding: var(--_card-padding); }
+.sg-card-header { padding: var(--_card-section-pad); padding-bottom: 0; }
+.sg-card-body { padding: var(--_card-section-pad); }
+.sg-card-footer { padding: var(--_card-section-pad); padding-top: 0; }
+
+.sg-container { width: 100%; margin-inline: auto; }
+.sg-container[data-padding] { padding-inline: var(--sg-space-4, 1rem); }
+
+.sg-input {
+  display: block;
+  width: 100%;
+  padding: var(--sg-input-padding, 0.75rem);
+}
+
+.sg-dialog { padding: var(--sg-pad-card, 1.5rem); margin: auto; border: none; }
+.sg-alert-dialog { padding: var(--sg-pad-card, 1.5rem); margin: auto; border: none; }
+.sg-sheet { border: none; margin: 0; }
+
+.sg-select-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sg-gap-related, 0.5rem);
+  padding: var(--sg-space-2, 0.5rem) var(--sg-space-3, 0.75rem);
+}
+
+.sg-tabs-list {
+  display: flex;
+  gap: var(--_tabs-gap);
+  border-bottom: var(--_tabs-border-bottom);
+}
+
+.sg-tabs-trigger {
+  padding: var(--_tabs-trigger-py) var(--_tabs-trigger-px);
+}
+
+.sg-accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--_accordion-trigger-pad);
+  gap: var(--_accordion-trigger-gap);
+}
+
+.sg-menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sg-gap-related, 0.5rem);
+  padding: var(--sg-space-2, 0.5rem) var(--sg-space-3, 0.75rem);
+}
+
+.sg-grid { display: grid; }
+.sg-grid[data-inline="true"] { display: inline-grid; }
+.sg-grid-item { min-width: 0; }
+
+.sg-progress {
+  width: 100%;
+  overflow: hidden;
+}

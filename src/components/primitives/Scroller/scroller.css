@@ -1,0 +1,14 @@
+.sg-scroller {
+  display: block;
+  overflow: auto;
+}
+
+.sg-scroller[data-axis="x"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.sg-scroller[data-axis="y"] {
+  overflow-y: auto;
+  overflow-x: hidden;
+}

@@ -1,0 +1,90 @@
+{
+  "name": "Checkbox",
+  "importPath": "sg/checkbox",
+  "category": "form",
+  "description": "Machine-driven checkbox web component with checked, unchecked, and optional indeterminate states.",
+  "whenToUse": "Binary yes/no choices, or selecting multiple items from a list.",
+  "avoidWhen": "Mutually exclusive options - use RadioGroup. On/off toggle - consider Switch.",
+  "semanticRole": "checkbox",
+  "accessibilityRequirements": "Requires associated label or aria-label.",
+  "props": {
+    "checked": {
+      "type": "boolean",
+      "default": false,
+      "description": "Initial checked state."
+    },
+    "indeterminate": {
+      "type": "boolean",
+      "default": false,
+      "description": "Initial mixed state. First user toggle resolves to checked."
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Disables interaction and form submission."
+    },
+    "aria-label": {
+      "type": "string",
+      "description": "Accessible label when no visible text label is provided."
+    },
+    "name": {
+      "type": "string",
+      "description": "Form field name forwarded to the internal input control."
+    },
+    "value": {
+      "type": "string",
+      "description": "Form value submitted when checked."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "checkbox.css",
+      "checkbox.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/forms/checkbox",
+    "label": "Checkbox",
+    "group": "forms",
+    "subgroup": "entry-controls",
+    "description": "Binary and indeterminate selection"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "States",
+            "language": "html",
+            "code": "<sg-stack gap=\"grouped\">\n  <sg-checkbox aria-label=\"Unchecked\"></sg-checkbox>\n  <sg-checkbox checked aria-label=\"Checked\"></sg-checkbox>\n  <sg-checkbox indeterminate aria-label=\"Indeterminate\"></sg-checkbox>\n  <sg-checkbox disabled aria-label=\"Disabled\"></sg-checkbox>\n</sg-stack>"
+          },
+          {
+            "title": "With Labels",
+            "language": "html",
+            "code": "<sg-stack gap=\"grouped\">\n  <label class=\"sg-demo-checkbox-1\">\n    <sg-checkbox name=\"updates\" value=\"email\"></sg-checkbox>\n    <span>Email updates</span>\n  </label>\n  <label class=\"sg-demo-checkbox-2\">\n    <sg-checkbox checked name=\"updates\" value=\"product\"></sg-checkbox>\n    <span>Product announcements</span>\n  </label>\n</sg-stack>",
+            "css": ".sg-demo-checkbox-1 {\n  display: flex; align-items: center; gap: var(--sg-gap-related);\n}\n\n.sg-demo-checkbox-2 {\n  display: flex; align-items: center; gap: var(--sg-gap-related);\n}"
+          },
+          {
+            "title": "Custom Label Content",
+            "language": "html",
+            "code": "<label class=\"sg-demo-checkbox-1\">\n  <sg-checkbox></sg-checkbox>\n  <span>Custom label with <a href=\"#\">link</a></span>\n</label>",
+            "css": ".sg-demo-checkbox-1 {\n  display: flex; align-items: center; gap: var(--sg-gap-related);\n}"
+          },
+          {
+            "title": "Form Association",
+            "language": "html",
+            "code": "<form>\n  <label class=\"sg-demo-checkbox-1\">\n    <sg-checkbox name=\"remember\" value=\"yes\" checked></sg-checkbox>\n    <span>Remember me</span>\n  </label>\n</form>",
+            "css": ".sg-demo-checkbox-1 {\n  display: flex; align-items: center; gap: var(--sg-gap-related);\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

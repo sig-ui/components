@@ -1,0 +1,141 @@
+{
+  "name": "ComboboxRoot",
+  "importPath": "sg/combobox",
+  "category": "overlay",
+  "description": "Root controller for an autocomplete combobox. Combines text input with dropdown listbox.",
+  "whenToUse": "Searchable/filterable selection from many options (search, tagging, autocomplete).",
+  "avoidWhen": "Few options without search - use Select. Free text - use Input.",
+  "semanticRole": "combobox + listbox",
+  "accessibilityRequirements": "label is required. Input has role='combobox' with aria-autocomplete.",
+  "parts": [
+    {
+      "name": "ComboboxRoot",
+      "props": {
+        "label": {
+          "type": "string",
+          "required": true,
+          "description": "Accessible label for the combobox - required."
+        },
+        "value": {
+          "type": "string",
+          "description": "Currently selected value."
+        },
+        "placeholder": {
+          "type": "string",
+          "default": "Search...",
+          "description": "Placeholder text for the input."
+        },
+        "disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disables the combobox."
+        },
+        "onchange": {
+          "type": "(value: string) => void",
+          "description": "Called when selection changes."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "ComboboxInput",
+      "description": "Text input for the Combobox with autocomplete.",
+      "whenToUse": "Always inside a ComboboxRoot.",
+      "semanticRole": "combobox",
+      "slots": []
+    },
+    {
+      "name": "ComboboxContent",
+      "description": "Dropdown container for ComboboxItems.",
+      "whenToUse": "Always inside a ComboboxRoot.",
+      "semanticRole": "listbox",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "ComboboxItem",
+      "description": "Single option inside a Combobox.",
+      "whenToUse": "Always inside ComboboxContent.",
+      "semanticRole": "option",
+      "props": {
+        "value": {
+          "type": "string",
+          "required": true,
+          "description": "Unique value for this option."
+        },
+        "disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disables this option."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "ComboboxEmpty",
+      "description": "Empty state shown when no Combobox items match.",
+      "whenToUse": "Always inside ComboboxContent.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "ComboboxGroup",
+      "description": "Groups related combobox options with an optional heading.",
+      "whenToUse": "Inside ComboboxContent to organize larger option sets.",
+      "semanticRole": "group",
+      "props": {
+        "heading": {
+          "type": "string",
+          "description": "Group heading label."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "ComboboxSeparator",
+      "description": "Visual separator between combobox groups or sections.",
+      "whenToUse": "Inside ComboboxContent between item groups.",
+      "semanticRole": "separator",
+      "slots": []
+    }
+  ],
+  "registry": {
+    "files": [
+      "combobox.css",
+      "combobox.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/combobox",
+    "label": "Combobox",
+    "group": "overlays",
+    "subgroup": "selection-and-command",
+    "description": "Searchable dropdown with filtering"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Searchable Dropdown",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-comboboxroot-1\">\n  <sg-combobox-root label=\"Framework\" value={value} oninput={(e) => { const el = e.currentTarget as any; value = (el.value ?? value); }} onchange={(e) => { const el = e.currentTarget as any; value = (el.value ?? value); }} onclick={(e) => { const el = e.currentTarget as any; value = (el.value ?? value); }} ontoggle={(e) => { const el = e.currentTarget as any; value = (el.value ?? value); }} placeholder=\"Search frameworks...\">\n      <sg-combobox-input />\n      <sg-combobox-content>\n          <sg-combobox-item value=\"svelte\">Svelte</sg-combobox-item>\n          <sg-combobox-item value=\"react\">React</sg-combobox-item>\n          <sg-combobox-item value=\"vue\">Vue</sg-combobox-item>\n          <sg-combobox-item value=\"angular\">Angular</sg-combobox-item>\n          <sg-combobox-item value=\"solid\">SolidJS</sg-combobox-item>\n          <sg-combobox-empty>No results found</sg-combobox-empty>\n      </sg-combobox-content>\n  </sg-combobox-root>\n</div>\n{#if value}\n  <p class=\"sg-demo-comboboxroot-2\">Selected: {value}</p>\n{/if}",
+            "css": ".sg-demo-comboboxroot-1 {\n  max-width: 300px\n}\n\n.sg-demo-comboboxroot-2 {\n  margin-top: var(--sg-space-2); color: var(--text-3); font-size: var(--sg-text-sm)\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

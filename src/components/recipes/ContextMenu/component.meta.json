@@ -1,0 +1,165 @@
+{
+  "name": "ContextMenuRoot",
+  "importPath": "sg/context-menu",
+  "category": "navigation",
+  "description": "Root controller for a right-click context menu.",
+  "whenToUse": "Contextual actions triggered by right-click (file operations, text formatting).",
+  "avoidWhen": "Button-triggered menus - use Menu. Page navigation - use NavigationMenu.",
+  "semanticRole": "menu",
+  "accessibilityRequirements": "ContextMenuContent requires aria-label or aria-labelledby. Arrow keys navigate items.",
+  "parts": [
+    {
+      "name": "ContextMenuRoot",
+      "props": {
+        "open": {
+          "type": "boolean",
+          "default": false,
+          "description": "Controlled open state. Bindable."
+        },
+        "onclose": {
+          "type": "() => void",
+          "description": "Called when context menu is dismissed."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "ContextMenuTrigger",
+      "description": "Area that opens the ContextMenu on right-click.",
+      "whenToUse": "Always inside a ContextMenuRoot.",
+      "semanticRole": "none (wraps trigger area)",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "ContextMenuContent",
+      "description": "Container for ContextMenuItems. Positioned at cursor.",
+      "whenToUse": "Always inside a ContextMenuRoot.",
+      "semanticRole": "menu",
+      "accessibilityRequirements": "Must have aria-label or aria-labelledby (enforced by ModalLabelProps type).",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "ContextMenuItem",
+      "description": "Single action item in a ContextMenu.",
+      "whenToUse": "Always inside ContextMenuContent.",
+      "semanticRole": "menuitem",
+      "accessibilityRequirements": "Must have visible text content or aria-label.",
+      "props": {
+        "disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disables this menu item."
+        },
+        "onselect": {
+          "type": "() => void",
+          "description": "Called when item is selected."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "ContextMenuSeparator",
+      "description": "Visual separator between ContextMenu items.",
+      "whenToUse": "Separating groups of related menu items.",
+      "semanticRole": "separator",
+      "slots": []
+    },
+    {
+      "name": "ContextMenuLabel",
+      "description": "Label for a group of ContextMenu items.",
+      "whenToUse": "Grouping related menu items with a descriptive label.",
+      "semanticRole": "group",
+      "props": {
+        "inset": {
+          "type": "boolean",
+          "default": false,
+          "description": "Align label with menu items that have icons."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "ContextMenuSub",
+      "description": "Root controller for a nested submenu within a ContextMenu.",
+      "whenToUse": "Creating cascading/nested menu structures.",
+      "semanticRole": "menu",
+      "props": {
+        "open": {
+          "type": "boolean",
+          "default": false,
+          "description": "Controlled open state for the submenu. Bindable."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "ContextMenuSubTrigger",
+      "description": "Trigger item that opens a ContextMenuSub submenu.",
+      "whenToUse": "Inside ContextMenuContent to create a nested submenu.",
+      "semanticRole": "menuitem",
+      "accessibilityRequirements": "Automatically has aria-expanded and aria-haspopup attributes.",
+      "props": {
+        "disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disables the submenu trigger."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "ContextMenuSubContent",
+      "description": "Content of a ContextMenuSub submenu.",
+      "whenToUse": "Inside ContextMenuSub, containing ContextMenuItems for the nested menu.",
+      "semanticRole": "menu",
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "context-menu.css",
+      "context-menu.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/context-menu",
+    "label": "ContextMenu",
+    "group": "overlays",
+    "subgroup": "selection-and-command",
+    "description": "Right-click triggered action menu"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Right-Click Menu",
+            "language": "svelte",
+            "code": "<sg-context-menu-root>\n    <sg-context-menu-trigger>\n        <div class=\"sg-demo-contextmenuroot-1\">\n          Right-click this area\n        </div>\n    </sg-context-menu-trigger>\n    <sg-context-menu-content aria-label=\"Context actions\">\n        <sg-context-menu-label>Actions</sg-context-menu-label>\n        <sg-context-menu-item onselect={() => console.log(\"Edit\")}>Edit</sg-context-menu-item>\n        <sg-context-menu-item onselect={() => console.log(\"Copy\")}>Copy</sg-context-menu-item>\n        <sg-context-menu-item onselect={() => console.log(\"Paste\")}>Paste</sg-context-menu-item>\n        <sg-context-menu-separator />\n        <sg-context-menu-sub>\n            <sg-context-menu-sub-trigger>Share</sg-context-menu-sub-trigger>\n            <sg-context-menu-sub-content aria-label=\"Share options\">\n                <sg-context-menu-item onselect={() => console.log(\"Email\")}>Email</sg-context-menu-item>\n                <sg-context-menu-item onselect={() => console.log(\"Message\")}>Message</sg-context-menu-item>\n                <sg-context-menu-item onselect={() => console.log(\"Copy Link\")}>Copy Link</sg-context-menu-item>\n            </sg-context-menu-sub-content>\n        </sg-context-menu-sub>\n        <sg-context-menu-separator />\n        <sg-context-menu-item disabled={true}>Disabled Item</sg-context-menu-item>\n        <sg-context-menu-item onselect={() => console.log(\"Delete\")}>Delete</sg-context-menu-item>\n    </sg-context-menu-content>\n</sg-context-menu-root>",
+            "css": ".sg-demo-contextmenuroot-1 {\n  background: var(--sg-surface-container-high); border: var(--sg-border-medium) dashed var(--sg-color-border); border-radius: var(--sg-radius-md); padding: var(--sg-space-12); text-align: center; color: var(--sg-color-text-secondary); cursor: context-menu\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

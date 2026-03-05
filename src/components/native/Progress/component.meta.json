@@ -1,0 +1,85 @@
+{
+  "name": "Progress",
+  "importPath": "sg/progress",
+  "category": "feedback",
+  "description": "CSS-only styled progress bar. Apply class=\"sg-progress\" on a native <progress> element with data-* attributes for variants.",
+  "whenToUse": "Showing progress of an operation. Use class=\"sg-progress\" on a native <progress> element.",
+  "avoidWhen": "You need a loading placeholder - use Skeleton.",
+  "semanticRole": "progressbar",
+  "accessibilityRequirements": "Requires associated label or aria-label.",
+  "props": {
+    "class": {
+      "type": "string",
+      "required": true,
+      "description": "Use class=\"sg-progress\" on a native <progress> element."
+    },
+    "data-size": {
+      "type": "Size",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "md",
+      "description": "Progress bar height."
+    },
+    "data-color": {
+      "type": "ColorVariant",
+      "values": [
+        "primary",
+        "success",
+        "danger",
+        "warning",
+        "info"
+      ],
+      "default": "primary",
+      "description": "Progress bar color."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "progress.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/native/progress",
+    "label": "Progress",
+    "group": "native",
+    "description": "Determinate and indeterminate progress indicator"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Determinate Progress",
+            "language": "svelte",
+            "code": "<div class=\"demo-progress-tracks\">\n    <progress class=\"sg-progress\" value={25} max={100}></progress>\n    <progress class=\"sg-progress\" value={50} max={100}></progress>\n    <progress class=\"sg-progress\" value={75} max={100}></progress>\n    <progress class=\"sg-progress\" value={100} max={100}></progress>\n</div>",
+            "css": ".demo-progress-tracks {\n  display: grid;\n  gap: var(--sg-gap-grouped, 1rem);\n}\n\n.demo-progress-tracks .sg-progress {\n  width: 100%;\n}"
+          },
+          {
+            "title": "Indeterminate",
+            "language": "svelte",
+            "code": "<div class=\"demo-progress-indeterminate\">\n  <progress class=\"sg-progress\"></progress>\n</div>",
+            "css": ".demo-progress-indeterminate {\n  width: 100%;\n  max-width: 28rem;\n}\n\n.demo-progress-indeterminate .sg-progress {\n  width: 100%;\n}"
+          },
+          {
+            "title": "Sizes",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    <progress class=\"sg-progress\" value={60} max={100} data-size=\"sm\"></progress>\n    <progress class=\"sg-progress\" value={60} max={100} data-size=\"md\"></progress>\n    <progress class=\"sg-progress\" value={60} max={100} data-size=\"lg\"></progress>\n</sg-stack>"
+          },
+          {
+            "title": "Colors",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    <progress class=\"sg-progress\" value={70} max={100} data-color=\"primary\"></progress>\n    <progress class=\"sg-progress\" value={70} max={100} data-color=\"success\"></progress>\n    <progress class=\"sg-progress\" value={70} max={100} data-color=\"warning\"></progress>\n    <progress class=\"sg-progress\" value={70} max={100} data-color=\"danger\"></progress>\n    <progress class=\"sg-progress\" value={70} max={100} data-color=\"info\"></progress>\n</sg-stack>"
+          }
+        ]
+      }
+    ]
+  }
+}

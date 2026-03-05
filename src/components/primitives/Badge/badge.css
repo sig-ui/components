@@ -1,0 +1,166 @@
+@layer sigui.base {
+  .sg-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sg-gap-tight, 0.25rem);
+    padding: var(--sg-gap-micro, 0.125rem) var(--sg-gap-related, 0.5rem);
+    border-radius: 9999px;
+    border: 1px solid color-mix(in oklch, currentColor 16%, transparent);
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-xs, 0.6875rem);
+    font-weight: 500;
+    line-height: var(--sg-leading-normal, 1.4);
+    white-space: nowrap;
+    --sg-icon-size: 1em;
+    --sg-icon-stroke: 1.5;
+  }
+
+  .sg-badge > .sg-icon {
+    --sg-icon-size: 1em;
+  }
+
+  a.sg-badge {
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+}
+
+@layer sigui.variants {
+  .sg-badge[data-color="primary"] {
+    background: var(--sg-color-primary-subtle);
+    color: var(--sg-color-primary);
+  }
+
+  .sg-badge[data-color="secondary"] {
+    background: var(--sg-surface-container-high);
+    color: var(--sg-color-text-secondary);
+  }
+
+  .sg-badge[data-color="danger"] {
+    background: var(--sg-color-danger-subtle);
+    color: var(--sg-color-danger-active);
+  }
+
+  .sg-badge[data-color="success"] {
+    background: var(--sg-color-success-subtle);
+    color: var(--sg-color-success-active);
+  }
+
+  .sg-badge[data-color="warning"] {
+    background: var(--sg-color-warning-subtle);
+    color: var(--sg-color-warning-active);
+  }
+
+  .sg-badge[data-color="info"] {
+    background: var(--sg-color-info-subtle);
+    color: var(--sg-color-info-active);
+  }
+
+  .sg-badge[data-color="ghost"] {
+    background: transparent;
+    color: var(--sg-color-text-secondary);
+    border: 1px solid var(--sg-color-border);
+  }
+
+  .sg-badge[data-color="outline"] {
+    background: transparent;
+    color: var(--sg-color-primary);
+    border: 1px solid currentColor;
+  }
+
+  .sg-badge[data-low-contrast] {
+    outline: 1.5px dashed currentColor;
+    outline-offset: -1px;
+  }
+
+  :root[data-theme="dark"] .sg-badge[data-color="primary"] {
+    background: var(--sg-color-primary);
+    color: var(--sg-color-text-inverse);
+  }
+
+  :root[data-theme="dark"] .sg-badge[data-color="danger"] {
+    background: var(--sg-color-danger);
+    color: var(--sg-color-text-inverse);
+  }
+
+  :root[data-theme="dark"] .sg-badge[data-color="success"] {
+    background: var(--sg-color-success);
+    color: var(--sg-color-text-inverse);
+  }
+
+  :root[data-theme="dark"] .sg-badge[data-color="warning"] {
+    background: var(--sg-color-warning);
+    color: var(--sg-color-text-inverse);
+  }
+
+  :root[data-theme="dark"] .sg-badge[data-color="info"] {
+    background: var(--sg-color-info);
+    color: var(--sg-color-text-inverse);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .sg-badge[data-color="primary"] {
+      background: var(--sg-color-primary);
+      color: var(--sg-color-text-inverse);
+    }
+
+    :root:not([data-theme="light"]) .sg-badge[data-color="danger"] {
+      background: var(--sg-color-danger);
+      color: var(--sg-color-text-inverse);
+    }
+
+    :root:not([data-theme="light"]) .sg-badge[data-color="success"] {
+      background: var(--sg-color-success);
+      color: var(--sg-color-text-inverse);
+    }
+
+    :root:not([data-theme="light"]) .sg-badge[data-color="warning"] {
+      background: var(--sg-color-warning);
+      color: var(--sg-color-text-inverse);
+    }
+
+    :root:not([data-theme="light"]) .sg-badge[data-color="info"] {
+      background: var(--sg-color-info);
+      color: var(--sg-color-text-inverse);
+    }
+  }
+
+}
+
+@layer sigui.states {
+  a.sg-badge::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: currentColor;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--sg-transition-default, 200ms ease-out);
+  }
+
+  a.sg-badge:hover::before {
+    opacity: var(--sg-state-hover-opacity, 0.08);
+  }
+
+  a.sg-badge:active::before {
+    opacity: var(--sg-state-active-opacity, 0.12);
+  }
+
+  a.sg-badge:focus-visible {
+    outline: var(--sg-focus-width, 2px) solid var(--sg-focus-color);
+    outline-offset: var(--sg-focus-offset, 2px);
+    box-shadow: 0 0 0 var(--sg-focus-offset, 2px) var(--sg-focus-inner, white);
+  }
+  @media (forced-colors: active) {
+    a.sg-badge {
+      color: LinkText;
+      text-decoration: underline;
+    }
+  }
+
+
+}

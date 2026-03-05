@@ -1,0 +1,87 @@
+{
+  "name": "Link",
+  "importPath": "sg/link",
+  "category": "basic",
+  "description": "CSS-only styled link. Apply class=\"sg-link\" and data-* attributes directly on a native <a> element.",
+  "whenToUse": "Text links in prose, navigation links, external references. Use class=\"sg-link\" on a native <a>.",
+  "avoidWhen": "Button-styled links (use Button with href). Navigation bars (use NavigationMenu).",
+  "semanticRole": "link",
+  "props": {
+    "class": {
+      "type": "string",
+      "required": true,
+      "description": "Use class=\"sg-link\" on a native <a> element."
+    },
+    "data-color": {
+      "type": "string",
+      "values": [
+        "primary",
+        "muted",
+        "inherit"
+      ],
+      "default": "primary",
+      "description": "Link color variant."
+    },
+    "data-underline": {
+      "type": "string",
+      "values": [
+        "always",
+        "hover",
+        "none"
+      ],
+      "default": "always",
+      "description": "Underline behavior."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "link.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/native/link",
+    "label": "Link",
+    "group": "native",
+    "description": "Inline text link for prose navigation"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Basic Link",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"grouped\" align=\"center\" wrap={true}>\n    <a class=\"sg-link\" href=\"/components\" data-nav>Components</a>\n    <a class=\"sg-link\" href=\"https://example.com\" target=\"_blank\" rel=\"noopener noreferrer\">External link</a>\n</sg-stack>"
+          },
+          {
+            "title": "Color Variants",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"grouped\" align=\"center\" wrap={true}>\n    <a class=\"sg-link\" href=\"#\" data-color=\"primary\">Primary</a>\n    <a class=\"sg-link\" href=\"#\" data-color=\"muted\">Muted</a>\n    <sg-text color=\"danger\">\n      <a class=\"sg-link\" href=\"#\" data-color=\"inherit\">Inherit (danger)</a>\n    </sg-text>\n</sg-stack>"
+          },
+          {
+            "title": "Underline Variants",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"grouped\" align=\"center\" wrap={true}>\n    <a class=\"sg-link\" href=\"#\" data-underline=\"always\">Always underlined</a>\n    <a class=\"sg-link\" href=\"#\" data-underline=\"hover\">Underline on hover</a>\n    <a class=\"sg-link\" href=\"#\" data-underline=\"none\">No underline</a>\n</sg-stack>"
+          },
+          {
+            "title": "In Prose",
+            "language": "svelte",
+            "code": "<sg-text>\n    Read the <a class=\"sg-link\" href=\"/philosophy\" data-nav>design philosophy</a>\n    or browse the <a class=\"sg-link\" href=\"/components\" data-nav>component library</a>.\n    For external resources, visit the\n    <a class=\"sg-link\" href=\"https://svelte.dev\" target=\"_blank\" rel=\"noopener noreferrer\">Svelte docs</a>.\n</sg-text>"
+          },
+          {
+            "title": "External Links",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"related\">\n    <a class=\"sg-link\" href=\"https://example.com\" target=\"_blank\" rel=\"noopener noreferrer\">Opens in new tab with rel=\"noopener noreferrer\"</a>\n</sg-stack>"
+          }
+        ]
+      }
+    ]
+  }
+}

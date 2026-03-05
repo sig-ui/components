@@ -1,0 +1,41 @@
+{
+  "name": "QrCode",
+  "importPath": "sg/qr-code",
+  "category": "data-display",
+  "description": "QR-code-like visual encoding surface for short values.",
+  "whenToUse": "Displaying quick-scannable references for links and IDs.",
+  "semanticRole": "img",
+  "props": {
+    "value": {
+      "type": "string",
+      "required": true,
+      "description": "Encoded content value."
+    },
+    "size": {
+      "type": "number",
+      "default": 128,
+      "description": "Rendered square size in CSS pixels."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "qr-code.css",
+      "qr-code.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/qr-code",
+    "label": "QrCode",
+    "group": "data-display",
+    "subgroup": "content-and-media",
+    "description": "QR code visualization for a value"
+  },
+  "page": {
+    "title": "QR code rendering",
+    "code": "<sg-qr-code value=\"https://sigui.dev/docs\" size=\"160\"></sg-qr-code>"
+  }
+}

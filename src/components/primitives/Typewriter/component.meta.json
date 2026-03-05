@@ -1,0 +1,105 @@
+{
+  "name": "Typewriter",
+  "importPath": "sg/typewriter",
+  "category": "feedback",
+  "description": "Animated text typing effect that reveals characters one at a time.",
+  "whenToUse": "Hero text animation, terminal effects, chatbot-style message reveal.",
+  "avoidWhen": "Static content that doesn't benefit from animation. Long paragraphs - can be disorienting.",
+  "semanticRole": "status",
+  "accessibilityRequirements": "Sets aria-label to the full text so screen readers get the complete content immediately.",
+  "props": {
+    "text": {
+      "type": "string | string[]",
+      "required": true,
+      "description": "Text to type out. Pass a string[] to cycle through multiple strings (type → pause → delete → next)."
+    },
+    "speed": {
+      "type": "number",
+      "default": 50,
+      "description": "Milliseconds between each character."
+    },
+    "delay": {
+      "type": "number",
+      "default": 0,
+      "description": "Milliseconds to wait before typing starts."
+    },
+    "cursor": {
+      "type": "boolean",
+      "default": true,
+      "description": "Show a blinking cursor after the typed text."
+    },
+    "loop": {
+      "type": "boolean",
+      "default": false,
+      "description": "Loop the animation. When text is a string[], always cycles regardless of this prop."
+    },
+    "pauseBetween": {
+      "type": "number",
+      "default": 1500,
+      "description": "Milliseconds to pause at the end before deleting (when looping or cycling)."
+    },
+    "paused": {
+      "type": "boolean",
+      "default": false,
+      "description": "Pause the animation. Resumes from current position when set back to false."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "typewriter.css",
+      "typewriter.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/typewriter",
+    "label": "Typewriter",
+    "group": "data-display",
+    "subgroup": "content-and-media",
+    "description": "Animated text typing effect"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Basic",
+            "language": "svelte",
+            "code": "<sg-typewriter text=\"Build beautiful interfaces with SigUI.\" />"
+          },
+          {
+            "title": "Speed",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    <div>\n      <span class=\"sg-demo-typewriter-1\">20ms</span>\n      <sg-typewriter text=\"Fast typing.\" speed={20} />\n    </div>\n    <div>\n      <span class=\"sg-demo-typewriter-2\">120ms</span>\n      <sg-typewriter text=\"Slow typing.\" speed={120} />\n    </div>\n</sg-stack>",
+            "css": ".sg-demo-typewriter-1 {\n  font-size: var(--sg-text-sm); color: var(--text-3)\n}\n\n.sg-demo-typewriter-2 {\n  font-size: var(--sg-text-sm); color: var(--text-3)\n}"
+          },
+          {
+            "title": "No Cursor",
+            "language": "svelte",
+            "code": "<sg-typewriter text=\"No blinking cursor here.\" cursor={false} />"
+          },
+          {
+            "title": "Delay",
+            "language": "svelte",
+            "code": "<sg-typewriter text=\"This appears after 1 second.\" delay={1000} />"
+          },
+          {
+            "title": "Looping",
+            "language": "svelte",
+            "code": "<sg-typewriter text=\"Design tokens for every scale.\" loop={true} pauseBetween={2000} />"
+          },
+          {
+            "title": "Pause / Resume",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"related\">\n    <sg-typewriter text=\"Pause me mid-sentence if you dare.\" paused={paused} oninput={(e) => { const el = e.currentTarget as any; paused = (el.paused ?? paused); }} onchange={(e) => { const el = e.currentTarget as any; paused = (el.paused ?? paused); }} onclick={(e) => { const el = e.currentTarget as any; paused = (el.paused ?? paused); }} ontoggle={(e) => { const el = e.currentTarget as any; paused = (el.paused ?? paused); }} speed={80} />\n    <div>\n      <button class=\"sg-demo-typewriter-3\" onclick={() => paused = !paused}>{paused ? \"Resume\" : \"Pause\"}</button>\n    </div>\n</sg-stack>",
+            "css": ".sg-demo-typewriter-3 {\n  padding: var(--sg-space-2) var(--sg-space-4);\n  border: var(--sg-border-thin) solid var(--sg-color-border);\n  border-radius: var(--sg-radius-md);\n  background: var(--sg-surface-container-high);\n  cursor: pointer;\n  color: var(--sg-color-text);\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

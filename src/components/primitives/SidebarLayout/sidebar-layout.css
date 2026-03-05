@@ -1,0 +1,29 @@
+@layer sigui.base {
+  .sg-sidebar-layout {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    min-height: 100%;
+    width: 100%;
+  }
+
+  .sg-sidebar-layout[data-side="right"] {
+    grid-template-columns: 1fr auto;
+  }
+
+  .sg-sidebar-layout__sidebar {
+    width: var(--sg-sidebar-intrinsic-width, var(--sg-sidebar-width, auto));
+    min-width: 0;
+  }
+
+  .sg-sidebar-layout__content {
+    min-width: 0;
+    flex: 1;
+  }
+}
+
+@layer sigui.variants {
+  .sg-sidebar-layout[data-gap="related"]   { gap: var(--sg-gap-related, 0.5rem); }
+  .sg-sidebar-layout[data-gap="grouped"]   { gap: var(--sg-gap-grouped, 1rem); }
+  .sg-sidebar-layout[data-gap="separated"] { gap: var(--sg-gap-separated, 2rem); }
+  .sg-sidebar-layout[data-gap="distinct"]  { gap: var(--sg-gap-distinct, 4rem); }
+}

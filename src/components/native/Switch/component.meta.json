@@ -1,0 +1,46 @@
+{
+  "name": "Switch",
+  "importPath": "sg/switch",
+  "category": "form",
+  "description": "CSS-only styled toggle switch. Apply class=\"sg-switch\" and role=\"switch\" on a native <input type=\"checkbox\"> element.",
+  "whenToUse": "On/off settings that take effect immediately (dark mode, notifications). Use class=\"sg-switch\" on a native <input type=\"checkbox\" role=\"switch\">.",
+  "avoidWhen": "The choice doesn't take effect until form submission - use Checkbox.",
+  "semanticRole": "switch",
+  "accessibilityRequirements": "Requires associated label or aria-label. Uses role='switch'.",
+  "props": {
+    "class": {
+      "type": "string",
+      "required": true,
+      "description": "Use class=\"sg-switch\" on a native <input type=\"checkbox\" role=\"switch\">."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "switch.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/native/switch",
+    "label": "Switch",
+    "group": "native",
+    "description": "Toggle between on and off states"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "States",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    <input type=\"checkbox\" class=\"sg-switch\" role=\"switch\" checked={switchChecked} oninput={(e) => { const el = e.currentTarget as any; switchChecked = (el.checked ?? switchChecked); }} onchange={(e) => { const el = e.currentTarget as any; switchChecked = (el.checked ?? switchChecked); }} onclick={(e) => { const el = e.currentTarget as any; switchChecked = (el.checked ?? switchChecked); }} ontoggle={(e) => { const el = e.currentTarget as any; switchChecked = (el.checked ?? switchChecked); }} />\n    <input type=\"checkbox\" class=\"sg-switch\" role=\"switch\" disabled={true} />\n</sg-stack>"
+          }
+        ]
+      }
+    ]
+  }
+}

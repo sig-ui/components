@@ -1,0 +1,58 @@
+{
+  "name": "Tag",
+  "importPath": "sg/tag",
+  "category": "form",
+  "description": "Compact label/chip with optional remove affordance.",
+  "whenToUse": "Representing selected filters, categories, or tokenized values.",
+  "semanticRole": "status",
+  "props": {
+    "variant": {
+      "type": "string",
+      "values": [
+        "default",
+        "primary",
+        "secondary"
+      ],
+      "default": "default",
+      "description": "Visual variant."
+    },
+    "size": {
+      "type": "Size",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "md",
+      "description": "Tag size."
+    },
+    "removable": {
+      "type": "boolean",
+      "default": false,
+      "description": "Shows remove affordance and emits removal intent."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "tag.css",
+      "tag.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/forms/tag",
+    "label": "Tag",
+    "group": "forms",
+    "subgroup": "actions-and-affordances",
+    "description": "Compact removable label chip"
+  },
+  "page": {
+    "title": "Removable tag",
+    "code": "<sg-tag removable variant=\"default\">Design Token</sg-tag>"
+  }
+}

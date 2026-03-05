@@ -1,0 +1,20 @@
+@layer sigui.base {
+  .sg-typewriter {
+    display: inline;
+    white-space: pre-wrap;
+  }
+
+  .sg-typewriter[data-cursor]::after {
+    content: "\200B"; /* zero-width space keeps line height stable */
+    border-right: 0.1em solid currentColor;
+    margin-inline-start: var(--sg-gap-micro, 1px);
+    animation: sg-typewriter-blink calc(200ms * 3.5) steps(2, start) infinite;
+  }
+
+}
+
+@layer sigui.states {
+  .sg-typewriter[data-state="complete"]:not([data-cursor])::after {
+    display: none;
+  }
+}

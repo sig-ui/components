@@ -1,0 +1,76 @@
+{
+  "name": "Separator",
+  "importPath": "sg/separator",
+  "category": "layout",
+  "description": "CSS-only separator. Apply class=\"sg-separator\" to a native <hr> (horizontal) or <div role=\"separator\"> (vertical).",
+  "whenToUse": "Separating content with native semantics and SigUI styling.",
+  "avoidWhen": "Spacing alone provides enough distinction.",
+  "semanticRole": "separator",
+  "accessibilityRequirements": "Use role=\"separator\" + aria-orientation=\"vertical\" for vertical separators. Add aria-hidden for decorative usage.",
+  "props": {
+    "class": {
+      "type": "string",
+      "required": true,
+      "description": "Use class=\"sg-separator\" on a native element."
+    },
+    "data-orientation": {
+      "type": "string",
+      "values": [
+        "horizontal",
+        "vertical"
+      ],
+      "default": "horizontal",
+      "description": "Separator direction."
+    },
+    "aria-hidden": {
+      "type": "string",
+      "values": [
+        "true"
+      ],
+      "description": "Set to true for decorative separators."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "separator.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/layout/separator",
+    "label": "Separator",
+    "group": "layout",
+    "subgroup": "primitives",
+    "description": "Visual divider with horizontal and vertical orientation"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Horizontal",
+            "language": "svelte",
+            "code": "<div>\n  <p class=\"sg-demo-separator-1\">Content above the separator</p>\n  <hr class=\"sg-separator\" data-orientation=\"horizontal\" />\n  <p class=\"sg-demo-separator-2\">Content below the separator</p>\n</div>",
+            "css": ".sg-demo-separator-1 {\n  margin: 0 0 var(--sg-space-3); color: var(--sg-color-text-secondary)\n}\n\n.sg-demo-separator-2 {\n  margin: var(--sg-space-3) 0 0; color: var(--sg-color-text-secondary)\n}"
+          },
+          {
+            "title": "Vertical",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"grouped\" align=\"center\">\n    <span class=\"sg-demo-separator-1\">Left content</span>\n    <div class=\"sg-separator\" data-orientation=\"vertical\" role=\"separator\" aria-orientation=\"vertical\"></div>\n    <span class=\"sg-demo-separator-2\">Right content</span>\n</sg-stack>",
+            "css": ".sg-demo-separator-1 {\n  color: var(--sg-color-text-secondary)\n}\n\n.sg-demo-separator-2 {\n  color: var(--sg-color-text-secondary)\n}"
+          },
+          {
+            "title": "Decorative",
+            "language": "svelte",
+            "code": "<div>\n  <p class=\"sg-demo-separator-1\">Decorative separator (aria-hidden, no semantic role)</p>\n  <hr class=\"sg-separator\" data-orientation=\"horizontal\" aria-hidden=\"true\" />\n</div>",
+            "css": ".sg-demo-separator-1 {\n  margin: 0 0 var(--sg-space-3); color: var(--sg-color-text-secondary)\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

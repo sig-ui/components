@@ -1,0 +1,62 @@
+{
+  "name": "Switcher",
+  "importPath": "sg/switcher",
+  "category": "layout",
+  "description": "Container query driven row-to-column switching. Automatically switches between horizontal and vertical layout based on container width.",
+  "whenToUse": "Responsive layouts that need to switch from horizontal to vertical when space is limited. Side-by-side content that stacks on narrow viewports.",
+  "avoidWhen": "You need a 2D grid layout - use Grid. You need simple flex wrapping - use Cluster.",
+  "semanticRole": "none (layout primitive)",
+  "props": {
+    "threshold": {
+      "type": "string",
+      "default": "30rem",
+      "description": "Container width threshold for switching to vertical layout. Any CSS length value."
+    },
+    "gap": {
+      "type": "SpacingRelationship",
+      "values": [
+        "related",
+        "grouped",
+        "separated",
+        "distinct"
+      ],
+      "default": "grouped",
+      "description": "Gestalt-based spacing between children."
+    },
+    "align": {
+      "type": "string",
+      "values": [
+        "start",
+        "center",
+        "end",
+        "stretch"
+      ],
+      "default": "stretch",
+      "description": "Cross-axis alignment of children."
+    },
+    "limit": {
+      "type": "number",
+      "values": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "default": 4,
+      "description": "Max items to show in horizontal row. Remaining items wrap to new row."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "switcher.css",
+      "switcher.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  }
+}

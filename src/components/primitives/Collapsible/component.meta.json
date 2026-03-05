@@ -1,0 +1,95 @@
+{
+  "name": "CollapsibleRoot",
+  "importPath": "sg/collapsible",
+  "category": "navigation",
+  "description": "Root controller for a collapsible disclosure section.",
+  "whenToUse": "Single expand/collapse section (show more, details).",
+  "avoidWhen": "Multiple collapsible sections - use Accordion.",
+  "semanticRole": "disclosure widget",
+  "accessibilityRequirements": "Trigger should use aria-expanded and aria-controls.",
+  "parts": [
+    {
+      "name": "CollapsibleRoot",
+      "props": {
+        "open": {
+          "type": "boolean",
+          "default": false,
+          "description": "Controlled open state. Bindable."
+        },
+        "disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disables toggle."
+        },
+        "onchange": {
+          "type": "(open: boolean) => void",
+          "description": "Called when open state changes."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "CollapsibleTrigger",
+      "description": "Button that toggles the Collapsible open/closed.",
+      "whenToUse": "Always inside a CollapsibleRoot.",
+      "semanticRole": "button",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "CollapsibleContent",
+      "description": "Collapsible content region.",
+      "whenToUse": "Always inside a CollapsibleRoot.",
+      "semanticRole": "region",
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "collapsible.css",
+      "collapsible.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/collapsible",
+    "label": "Collapsible",
+    "group": "overlays",
+    "subgroup": "disclosure-and-switching",
+    "description": "Expandable content region with open/closed state"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Basic Collapsible",
+            "language": "svelte",
+            "code": "<sg-collapsible-root>\n    <sg-collapsible-trigger>\n        <button class=\"sg-button\" data-color=\"secondary\">Toggle Content</button>\n    </sg-collapsible-trigger>\n    <sg-collapsible-content>\n        <div class=\"sg-demo-collapsibleroot-1\">\n          <p class=\"sg-demo-collapsibleroot-2\">This content is revealed when the collapsible is open. Click the trigger again to hide it.</p>\n        </div>\n    </sg-collapsible-content>\n</sg-collapsible-root>",
+            "css": ".sg-demo-collapsibleroot-1 {\n  padding: var(--sg-space-3) 0; color: var(--sg-color-text-secondary)\n}\n\n.sg-demo-collapsibleroot-2 {\n  margin: 0\n}"
+          },
+          {
+            "title": "Disabled",
+            "language": "svelte",
+            "code": "<sg-collapsible-root disabled={true}>\n    <sg-collapsible-trigger>\n        <button class=\"sg-button\" data-color=\"secondary\" disabled={true}>Cannot Toggle</button>\n    </sg-collapsible-trigger>\n    <sg-collapsible-content>\n        <p class=\"sg-demo-collapsibleroot-1\">This content cannot be revealed.</p>\n    </sg-collapsible-content>\n</sg-collapsible-root>",
+            "css": ".sg-demo-collapsibleroot-1 {\n  padding: var(--sg-space-3) 0; color: var(--sg-color-text-secondary)\n}"
+          },
+          {
+            "title": "Feature Flag",
+            "language": "svelte",
+            "code": "<p class=\"sg-demo-collapsibleroot-1\">Collapsible machine can be toggled with <code>featureFlags.collapsibleMachine</code>.</p>",
+            "css": ".sg-demo-collapsibleroot-1 {\n  margin: 0; color: var(--sg-color-text-secondary);\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

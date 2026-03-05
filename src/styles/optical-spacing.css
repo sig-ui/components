@@ -1,0 +1,135 @@
+/*
+ * Optical Spacing - Visual Weight System (Spec 03 §4.7)
+ *
+ * Adjusts margins between adjacent siblings based on visual weight.
+ * Heavy elements (solid buttons) make gaps feel wider → reduce spacing.
+ * Sparse elements (text, icons) make gaps feel narrower → increase spacing.
+ *
+ * Corrections are proportional to --sg-gap-current (set by layout containers)
+ * and apply only inside Stack/Cluster layouts via adjacent-sibling selectors.
+ */
+
+@layer sigui.utilities {
+
+  /* -----------------------------------------------------------------------
+   * Optical adjustment variable per sibling pair
+   * Only non-zero pairs are listed. dvw = data-visual-weight (shorthand in selectors).
+   * ----------------------------------------------------------------------- */
+
+  /* solid → solid: -0.15 */
+  [data-visual-weight="solid"] + [data-visual-weight="solid"] {
+    --sg-optical-adjust: -0.15;
+  }
+  /* solid → text: +0.10 */
+  [data-visual-weight="solid"] + [data-visual-weight="text"] {
+    --sg-optical-adjust: 0.10;
+  }
+  /* solid → icon: +0.15 */
+  [data-visual-weight="solid"] + [data-visual-weight="icon"] {
+    --sg-optical-adjust: 0.15;
+  }
+  /* solid → surface: -0.10 */
+  [data-visual-weight="solid"] + [data-visual-weight="surface"] {
+    --sg-optical-adjust: -0.10;
+  }
+
+  /* outlined → text: +0.10 */
+  [data-visual-weight="outlined"] + [data-visual-weight="text"] {
+    --sg-optical-adjust: 0.10;
+  }
+  /* outlined → icon: +0.10 */
+  [data-visual-weight="outlined"] + [data-visual-weight="icon"] {
+    --sg-optical-adjust: 0.10;
+  }
+
+  /* text → solid: +0.10 */
+  [data-visual-weight="text"] + [data-visual-weight="solid"] {
+    --sg-optical-adjust: 0.10;
+  }
+  /* text → outlined: +0.10 */
+  [data-visual-weight="text"] + [data-visual-weight="outlined"] {
+    --sg-optical-adjust: 0.10;
+  }
+  /* text → text: -0.05 */
+  [data-visual-weight="text"] + [data-visual-weight="text"] {
+    --sg-optical-adjust: -0.05;
+  }
+  /* text → icon: +0.10 */
+  [data-visual-weight="text"] + [data-visual-weight="icon"] {
+    --sg-optical-adjust: 0.10;
+  }
+  /* text → surface: +0.05 */
+  [data-visual-weight="text"] + [data-visual-weight="surface"] {
+    --sg-optical-adjust: 0.05;
+  }
+
+  /* icon → solid: +0.15 */
+  [data-visual-weight="icon"] + [data-visual-weight="solid"] {
+    --sg-optical-adjust: 0.15;
+  }
+  /* icon → outlined: +0.10 */
+  [data-visual-weight="icon"] + [data-visual-weight="outlined"] {
+    --sg-optical-adjust: 0.10;
+  }
+  /* icon → text: +0.10 */
+  [data-visual-weight="icon"] + [data-visual-weight="text"] {
+    --sg-optical-adjust: 0.10;
+  }
+  /* icon → icon: -0.10 */
+  [data-visual-weight="icon"] + [data-visual-weight="icon"] {
+    --sg-optical-adjust: -0.10;
+  }
+  /* icon → surface: +0.05 */
+  [data-visual-weight="icon"] + [data-visual-weight="surface"] {
+    --sg-optical-adjust: 0.05;
+  }
+
+  /* surface → solid: -0.10 */
+  [data-visual-weight="surface"] + [data-visual-weight="solid"] {
+    --sg-optical-adjust: -0.10;
+  }
+  /* surface → text: +0.05 */
+  [data-visual-weight="surface"] + [data-visual-weight="text"] {
+    --sg-optical-adjust: 0.05;
+  }
+  /* surface → icon: +0.05 */
+  [data-visual-weight="surface"] + [data-visual-weight="icon"] {
+    --sg-optical-adjust: 0.05;
+  }
+  /* surface → surface: -0.08 */
+  [data-visual-weight="surface"] + [data-visual-weight="surface"] {
+    --sg-optical-adjust: -0.08;
+  }
+
+  /* -----------------------------------------------------------------------
+   * Apply margin corrections inside layout containers
+   * --sg-gap-current is set by Stack/Cluster to their resolved gap value.
+   * The correction = gap * optical-adjust fraction.
+   * ----------------------------------------------------------------------- */
+
+  /* Horizontal Stack */
+  .sg-stack[data-direction="horizontal"] > [data-visual-weight] + [data-visual-weight] {
+    margin-inline-start: calc(var(--sg-gap-current, 0px) * var(--sg-optical-adjust, 0));
+    transition: margin-inline-start var(--sg-duration-normal, 200ms) ease-out;
+  }
+
+  /* Vertical Stack (default) */
+  .sg-stack:not([data-direction="horizontal"]) > [data-visual-weight] + [data-visual-weight] {
+    margin-block-start: calc(var(--sg-gap-current, 0px) * var(--sg-optical-adjust, 0));
+    transition: margin-block-start var(--sg-duration-normal, 200ms) ease-out;
+  }
+
+  /* Cluster (always horizontal wrap) */
+  .sg-cluster > [data-visual-weight] + [data-visual-weight] {
+    margin-inline-start: calc(var(--sg-gap-current, 0px) * var(--sg-optical-adjust, 0));
+    transition: margin-inline-start var(--sg-duration-normal, 200ms) ease-out;
+  }
+
+  /* -----------------------------------------------------------------------
+   * Opt-out: disable optical spacing adjustments
+   * ----------------------------------------------------------------------- */
+  [data-optical-spacing="none"] > [data-visual-weight] + [data-visual-weight] {
+    --sg-optical-adjust: 0;
+  }
+
+} /* @layer sigui.utilities */

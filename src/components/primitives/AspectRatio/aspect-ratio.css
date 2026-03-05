@@ -1,0 +1,15 @@
+@layer sigui.base {
+  .sg-aspect-ratio {
+    position: relative;
+    width: 100%;
+  }
+
+  .sg-aspect-ratio > :first-child {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+}

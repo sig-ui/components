@@ -1,0 +1,129 @@
+{
+  "name": "CarouselRoot",
+  "importPath": "sg/carousel",
+  "category": "data-display",
+  "description": "Carousel/slideshow container with autoplay and full keyboard navigation support.",
+  "whenToUse": "For image galleries, testimonials, or any paginated slide content.",
+  "avoidWhen": "For static grids of items - use Grid instead.",
+  "semanticRole": "region with aria-roledescription='carousel'",
+  "accessibilityRequirements": "aria-roledescription='carousel' on root. Arrow keys navigate slides (Left/Right for horizontal, Up/Down for vertical). Home/End jump to first/last slide. Slides have aria-roledescription='slide' and labeled 'Slide N of M'. Non-active slides have aria-hidden='true'. Autoplay pauses on hover/focus.",
+  "parts": [
+    {
+      "name": "CarouselRoot",
+      "props": {
+        "orientation": {
+          "type": "string",
+          "values": [
+            "horizontal",
+            "vertical"
+          ],
+          "default": "horizontal",
+          "description": "Scroll direction"
+        },
+        "loop": {
+          "type": "boolean",
+          "default": false,
+          "description": "Loop back to start/end"
+        },
+        "autoplay": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable autoplay"
+        },
+        "autoplayInterval": {
+          "type": "number",
+          "default": 5000,
+          "description": "Autoplay interval in ms"
+        },
+        "onchange": {
+          "type": "(index: number) => void",
+          "description": "Called when slide changes"
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "CarouselContent",
+      "description": "Scrollable container for carousel slides.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "CarouselItem",
+      "description": "Individual slide within a Carousel. Auto-registers with parent and provides accessibility attributes.",
+      "semanticRole": "group with aria-roledescription='slide'",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "CarouselPrevious",
+      "description": "Button to navigate to the previous slide.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "CarouselNext",
+      "description": "Button to navigate to the next slide.",
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "carousel.css",
+      "carousel.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/carousel",
+    "label": "Carousel",
+    "group": "data-display",
+    "subgroup": "visualization-and-browsing",
+    "description": "Scrollable content with navigation controls"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Basic Carousel",
+            "description": "Use arrow keys to navigate. The carousel pauses autoplay on hover/focus.",
+            "language": "svelte",
+            "code": "<sg-carousel-root aria-label=\"Example carousel\" onchange={handleChange}>\n    <sg-carousel-content>\n        {#each [1, 2, 3, 4, 5] as n}\n          <sg-carousel-item>\n              <div class=\"sg-demo-carouselroot-1\">Slide {n}</div>\n          </sg-carousel-item>\n        {/each}\n    </sg-carousel-content>\n    <sg-carousel-previous />\n    <sg-carousel-next />\n</sg-carousel-root>\n<p class=\"sg-demo-carouselroot-2\">\n  Current slide: {currentIndex + 1}\n</p>",
+            "css": ".sg-demo-carouselroot-1 {\n  background: var(--sg-surface-container-high); border: var(--sg-border-thin) solid var(--sg-color-border); border-radius: var(--sg-radius-md); padding: var(--sg-space-12); text-align: center; color: var(--sg-color-text-secondary)\n}\n\n.sg-demo-carouselroot-2 {\n  margin-top: var(--sg-space-2); color: var(--sg-color-text-secondary); font-size: var(--sg-text-sm)\n}"
+          },
+          {
+            "title": "With Loop and Autoplay",
+            "description": "Autoplay pauses on hover and focus for accessibility.",
+            "language": "svelte",
+            "code": "<sg-carousel-root loop={true} autoplay={true} autoplayInterval={3000} aria-label=\"Looping carousel with autoplay\">\n    <sg-carousel-content>\n        {#each [\"Alpha\", \"Beta\", \"Gamma\"] as label}\n          <sg-carousel-item>\n              <div class=\"sg-demo-carouselroot-1\">{label}</div>\n          </sg-carousel-item>\n        {/each}\n    </sg-carousel-content>\n    <sg-carousel-previous />\n    <sg-carousel-next />\n</sg-carousel-root>",
+            "css": ".sg-demo-carouselroot-1 {\n  background: var(--sg-surface-container-high); border: var(--sg-border-thin) solid var(--sg-color-border); border-radius: var(--sg-radius-md); padding: var(--sg-space-12); text-align: center; color: var(--sg-color-text-secondary)\n}"
+          },
+          {
+            "title": "Vertical Orientation",
+            "language": "svelte",
+            "code": "<sg-carousel-root orientation=\"vertical\" aria-label=\"Vertical carousel\">\n    <sg-carousel-content>\n        {#each [\"Step 1\", \"Step 2\", \"Step 3\"] as label}\n          <sg-carousel-item>\n              <div class=\"sg-demo-carouselroot-1\">{label}</div>\n          </sg-carousel-item>\n        {/each}\n    </sg-carousel-content>\n    <sg-carousel-previous />\n    <sg-carousel-next />\n</sg-carousel-root>",
+            "css": ".sg-demo-carouselroot-1 {\n  background: var(--sg-surface-container-high); border: var(--sg-border-thin) solid var(--sg-color-border); border-radius: var(--sg-radius-md); padding: var(--sg-space-12); text-align: center; color: var(--sg-color-text-secondary)\n}"
+          },
+          {
+            "title": "Keyboard Navigation",
+            "description": "Full keyboard support for accessibility.",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-carouselroot-1\">\n  <p><strong>Keyboard Shortcuts (horizontal):</strong></p>\n  <ul class=\"sg-demo-carouselroot-2\">\n    <li><kbd>ArrowLeft</kbd>: Previous slide</li>\n    <li><kbd>ArrowRight</kbd>: Next slide</li>\n    <li><kbd>Home</kbd>: First slide</li>\n    <li><kbd>End</kbd>: Last slide</li>\n  </ul>\n  <p><strong>For vertical orientation:</strong></p>\n  <ul class=\"sg-demo-carouselroot-3\">\n    <li><kbd>ArrowUp</kbd>: Previous slide</li>\n    <li><kbd>ArrowDown</kbd>: Next slide</li>\n  </ul>\n  <p class=\"sg-demo-carouselroot-4\"><em>Autoplay automatically pauses on hover and keyboard focus.</em></p>\n</div>",
+            "css": ".sg-demo-carouselroot-1 {\n  color: var(--sg-color-text-secondary); font-size: var(--sg-text-sm)\n}\n\n.sg-demo-carouselroot-2 {\n  margin: var(--sg-space-2) 0; padding-left: var(--sg-space-6);\n}\n\n.sg-demo-carouselroot-3 {\n  margin: var(--sg-space-2) 0; padding-left: var(--sg-space-6);\n}\n\n.sg-demo-carouselroot-4 {\n  margin-top: var(--sg-space-2);\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

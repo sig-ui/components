@@ -1,0 +1,169 @@
+{
+  "name": "SheetRoot",
+  "importPath": "sg/sheet",
+  "category": "overlay",
+  "description": "Root controller for a side-anchored panel. Uses native <dialog> for top-layer rendering.",
+  "whenToUse": "Side panels for navigation, filters, or detail views that slide in from an edge.",
+  "avoidWhen": "Centered modal - use Dialog. Small inline overlay - use Popover.",
+  "semanticRole": "dialog",
+  "accessibilityRequirements": "SheetContent requires aria-label or aria-labelledby.",
+  "parts": [
+    {
+      "name": "SheetRoot",
+      "props": {
+        "open": {
+          "type": "boolean",
+          "default": false,
+          "description": "Controlled open state. Bindable."
+        },
+        "side": {
+          "type": "string",
+          "values": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ],
+          "default": "right",
+          "description": "Edge the panel slides in from."
+        },
+        "onclose": {
+          "type": "() => void",
+          "description": "Called when sheet is dismissed."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "SheetTrigger",
+      "description": "Button that opens the parent Sheet.",
+      "whenToUse": "Always inside a SheetRoot.",
+      "semanticRole": "button",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "SheetContent",
+      "description": "Side-anchored content panel of a Sheet. Uses native <dialog> with showModal(). Requires aria-label or aria-labelledby.",
+      "whenToUse": "Always inside a SheetRoot.",
+      "semanticRole": "dialog",
+      "accessibilityRequirements": "Must have aria-label or aria-labelledby (enforced by ModalLabelProps type).",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "SheetClose",
+      "description": "Button that closes the parent Sheet.",
+      "whenToUse": "Inside SheetContent, typically in the header or footer.",
+      "semanticRole": "button",
+      "props": {
+        "aria-label": {
+          "type": "string",
+          "default": "Close",
+          "description": "Accessible label for the close button."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "SheetHeader",
+      "description": "Header section of a Sheet, typically contains title and description.",
+      "whenToUse": "At the top of SheetContent.",
+      "semanticRole": "section",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "SheetTitle",
+      "description": "Title heading for the Sheet.",
+      "whenToUse": "Inside SheetHeader.",
+      "semanticRole": "heading",
+      "props": {
+        "as": {
+          "type": "string",
+          "values": [
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6"
+          ],
+          "default": "h2",
+          "description": "Heading element to render."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "SheetDescription",
+      "description": "Description text for the Sheet.",
+      "whenToUse": "Inside SheetHeader, below SheetTitle.",
+      "semanticRole": "text",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "SheetFooter",
+      "description": "Footer section of a Sheet, typically contains action buttons.",
+      "whenToUse": "At the bottom of SheetContent.",
+      "semanticRole": "section",
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "sheet.css",
+      "sheet.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/sheet",
+    "label": "Sheet",
+    "group": "overlays",
+    "subgroup": "dialogs-and-popups",
+    "description": "Slide-in panel from any edge with focus trap"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Side Variants",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" wrap={true}>\n    <sg-sheet-root side=\"right\" open={sheetRight} oninput={(e) => { const el = e.currentTarget as any; sheetRight = (el.open ?? sheetRight); }} onchange={(e) => { const el = e.currentTarget as any; sheetRight = (el.open ?? sheetRight); }} onclick={(e) => { const el = e.currentTarget as any; sheetRight = (el.open ?? sheetRight); }} ontoggle={(e) => { const el = e.currentTarget as any; sheetRight = (el.open ?? sheetRight); }}>\n        <sg-sheet-trigger>\n            <button class=\"sg-button\" data-color=\"primary\" onclick={() => sheetRight = true}>Open Right</button>\n        </sg-sheet-trigger>\n        <sg-sheet-content aria-label=\"Right sheet\">\n            <sg-sheet-header>\n                <sg-sheet-title>Right Panel</sg-sheet-title>\n                <sg-sheet-description>This sheet slides in from the right edge.</sg-sheet-description>\n            </sg-sheet-header>\n            <div class=\"sg-demo-sheetroot-1\">\n              <p class=\"sg-demo-sheetroot-2\">Content goes here.</p>\n            </div>\n            <sg-sheet-footer>\n                <button class=\"sg-button\" data-color=\"ghost\" onclick={() => sheetRight = false}>Cancel</button>\n                <button class=\"sg-button\" data-color=\"primary\" onclick={() => sheetRight = false}>Save</button>\n            </sg-sheet-footer>\n        </sg-sheet-content>\n    </sg-sheet-root>\n    <sg-sheet-root side=\"left\" open={sheetLeft} oninput={(e) => { const el = e.currentTarget as any; sheetLeft = (el.open ?? sheetLeft); }} onchange={(e) => { const el = e.currentTarget as any; sheetLeft = (el.open ?? sheetLeft); }} onclick={(e) => { const el = e.currentTarget as any; sheetLeft = (el.open ?? sheetLeft); }} ontoggle={(e) => { const el = e.currentTarget as any; sheetLeft = (el.open ?? sheetLeft); }}>\n        <sg-sheet-trigger>\n            <button class=\"sg-button\" data-color=\"secondary\" onclick={() => sheetLeft = true}>Open Left</button>\n        </sg-sheet-trigger>\n        <sg-sheet-content aria-label=\"Left sheet\">\n            <sg-sheet-header>\n                <sg-sheet-title>Left Panel</sg-sheet-title>\n                <sg-sheet-description>Navigation drawer pattern.</sg-sheet-description>\n            </sg-sheet-header>\n            <div class=\"sg-demo-sheetroot-3\">\n              <p class=\"sg-demo-sheetroot-4\">Content goes here.</p>\n            </div>\n            <sg-sheet-footer>\n                <button class=\"sg-button\" data-color=\"secondary\" onclick={() => sheetLeft = false}>Close</button>\n            </sg-sheet-footer>\n        </sg-sheet-content>\n    </sg-sheet-root>\n    <sg-sheet-root side=\"bottom\" open={sheetBottom} oninput={(e) => { const el = e.currentTarget as any; sheetBottom = (el.open ?? sheetBottom); }} onchange={(e) => { const el = e.currentTarget as any; sheetBottom = (el.open ?? sheetBottom); }} onclick={(e) => { const el = e.currentTarget as any; sheetBottom = (el.open ?? sheetBottom); }} ontoggle={(e) => { const el = e.currentTarget as any; sheetBottom = (el.open ?? sheetBottom); }}>\n        <sg-sheet-trigger>\n            <button class=\"sg-button\" data-color=\"ghost\" onclick={() => sheetBottom = true}>Open Bottom</button>\n        </sg-sheet-trigger>\n        <sg-sheet-content aria-label=\"Bottom sheet\">\n            <sg-sheet-header>\n                <sg-sheet-title>Bottom Sheet</sg-sheet-title>\n                <sg-sheet-description>Mobile-friendly bottom panel.</sg-sheet-description>\n            </sg-sheet-header>\n            <div class=\"sg-demo-sheetroot-5\">\n              <p class=\"sg-demo-sheetroot-6\">Content goes here.</p>\n            </div>\n            <sg-sheet-footer>\n                <button class=\"sg-button\" data-color=\"ghost\" onclick={() => sheetBottom = false}>Close</button>\n            </sg-sheet-footer>\n        </sg-sheet-content>\n    </sg-sheet-root>\n</sg-stack>",
+            "css": ".sg-demo-sheetroot-1 {\n  flex: 1; padding: var(--sg-space-4) 0;\n}\n\n.sg-demo-sheetroot-2 {\n  color: var(--sg-color-text-secondary); margin: 0;\n}\n\n.sg-demo-sheetroot-3 {\n  flex: 1; padding: var(--sg-space-4) 0;\n}\n\n.sg-demo-sheetroot-4 {\n  color: var(--sg-color-text-secondary); margin: 0;\n}\n\n.sg-demo-sheetroot-5 {\n  flex: 1; padding: var(--sg-space-4) 0;\n}\n\n.sg-demo-sheetroot-6 {\n  color: var(--sg-color-text-secondary); margin: 0;\n}"
+          },
+          {
+            "title": "With Close Button",
+            "language": "svelte",
+            "code": "<sg-sheet-root open={sheetForm} oninput={(e) => { const el = e.currentTarget as any; sheetForm = (el.open ?? sheetForm); }} onchange={(e) => { const el = e.currentTarget as any; sheetForm = (el.open ?? sheetForm); }} onclick={(e) => { const el = e.currentTarget as any; sheetForm = (el.open ?? sheetForm); }} ontoggle={(e) => { const el = e.currentTarget as any; sheetForm = (el.open ?? sheetForm); }}>\n    <sg-sheet-trigger>\n        <button class=\"sg-button\" data-color=\"primary\" onclick={() => sheetForm = true}>Open Form Sheet</button>\n    </sg-sheet-trigger>\n    <sg-sheet-content aria-label=\"Edit profile form\">\n        <sg-sheet-close>\n            <span class=\"sg-demo-sheetroot-1\">&#10005;</span>\n        </sg-sheet-close>\n        <sg-sheet-header>\n            <sg-sheet-title>Edit profile</sg-sheet-title>\n            <sg-sheet-description>Make changes to your profile here. Click save when you're done.</sg-sheet-description>\n        </sg-sheet-header>\n        <div class=\"sg-demo-sheetroot-2\">\n          <p class=\"sg-demo-sheetroot-3\">Form fields would go here...</p>\n        </div>\n        <sg-sheet-footer>\n            <button class=\"sg-button\" data-color=\"ghost\" onclick={() => sheetForm = false}>Cancel</button>\n            <button class=\"sg-button\" data-color=\"primary\" onclick={() => sheetForm = false}>Save changes</button>\n        </sg-sheet-footer>\n    </sg-sheet-content>\n</sg-sheet-root>",
+            "css": ".sg-demo-sheetroot-1 {\n  font-size: 1.25rem;\n}\n\n.sg-demo-sheetroot-2 {\n  flex: 1; padding: var(--sg-space-4) 0;\n}\n\n.sg-demo-sheetroot-3 {\n  color: var(--sg-color-text-secondary); margin: 0 0 var(--sg-space-2);\n}"
+          },
+          {
+            "title": "Feature Flag",
+            "language": "svelte",
+            "code": "<p class=\"sg-demo-sheetroot-1\">Sheet machine can be toggled with <code>featureFlags.sheetMachine</code>.</p>",
+            "css": ".sg-demo-sheetroot-1 {\n  margin: 0; color: var(--sg-color-text-secondary);\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

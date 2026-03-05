@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sigui.dev/schemas/component.meta.json",
+  "title": "SigUI Component Metadata",
+  "description": "Single source of truth for a SigUI component's manifest, registry, and route data.",
+  "type": "object",
+  "required": ["name", "importPath", "category", "description", "registry"],
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "PascalCase component name matching the directory name."
+    },
+    "importPath": {
+      "type": "string",
+      "pattern": "^sg/",
+      "description": "Import specifier (e.g. 'sg/stack')."
+    },
+    "category": {
+      "type": "string",
+      "enum": ["layout", "basic", "form", "overlay", "navigation", "feedback", "data-display"],
+      "description": "Manifest category for the component."
+    },
+    "description": {
+      "type": "string",
+      "description": "One-line description of the component."
+    },
+    "whenToUse": { "type": "string" },
+    "avoidWhen": { "type": "string" },
+    "semanticRole": { "type": "string" },
+    "accessibilityRequirements": { "type": "string" },
+    "props": {
+      "type": "object",
+      "description": "Props for simple (non-compound) components.",
+      "additionalProperties": { "$ref": "#/$defs/PropDescriptor" }
+    },
+    "slots": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Named slots for simple components."
+    },
+    "parts": {
+      "type": "array",
+      "description": "Sub-components for compound components.",
+      "items": { "$ref": "#/$defs/Part" }
+    },
+    "registry": { "$ref": "#/$defs/Registry" },
+    "route": { "$ref": "#/$defs/Route" },
+    "page": { "$ref": "#/$defs/Page" }
+  },
+  "oneOf": [
+    {
+      "required": ["props", "slots"],
+      "not": { "required": ["parts"] },
+      "description": "Simple component with top-level props/slots."
+    },
+    {
+      "required": ["parts"],
+      "not": { "required": ["props"] },
+      "description": "Compound component with parts array."
+    }
+  ],
+  "$defs": {
+    "PropDescriptor": {
+      "type": "object",
+      "required": ["type", "description"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "type": "string" },
+        "required": { "type": "boolean" },
+        "default": {},
+        "values": {
+          "type": "array",
+          "items": { "type": ["string", "number"] }
+        },
+        "description": { "type": "string" }
+      }
+    },
+    "Part": {
+      "type": "object",
+      "required": ["name", "slots"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "whenToUse": { "type": "string" },
+        "avoidWhen": { "type": "string" },
+        "semanticRole": { "type": "string" },
+        "accessibilityRequirements": { "type": "string" },
+        "props": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/$defs/PropDescriptor" }
+        },
+        "slots": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "Registry": {
+      "type": "object",
+      "required": ["files", "componentDeps", "libDeps", "npmDeps"],
+      "additionalProperties": false,
+      "properties": {
+        "files": { "type": "array", "items": { "type": "string" } },
+        "componentDeps": { "type": "array", "items": { "type": "string" } },
+        "libDeps": { "type": "array", "items": { "type": "string" } },
+        "npmDeps": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "Route": {
+      "type": "object",
+      "required": ["path", "label", "group"],
+      "additionalProperties": false,
+      "properties": {
+        "path": { "type": "string", "pattern": "^/components/" },
+        "label": { "type": "string" },
+        "description": { "type": "string" },
+        "group": { "type": "string" },
+        "subgroup": { "type": "string" }
+      }
+    },
+    "PageExample": {
+      "type": "object",
+      "required": ["title", "code"],
+      "additionalProperties": false,
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "language": { "type": "string" },
+        "code": { "type": "string" }
+      }
+    },
+    "PageSection": {
+      "type": "object",
+      "required": ["title", "examples"],
+      "additionalProperties": false,
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "examples": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/PageExample" }
+        }
+      }
+    },
+    "Page": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": { "type": "string" },
+        "code": { "type": "string" },
+        "sections": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/PageSection" }
+        }
+      },
+      "oneOf": [
+        {
+          "required": ["title", "code"],
+          "description": "Legacy single-example page format."
+        },
+        {
+          "required": ["sections"],
+          "description": "Structured docs format with sectioned examples."
+        }
+      ]
+    }
+  }
+}

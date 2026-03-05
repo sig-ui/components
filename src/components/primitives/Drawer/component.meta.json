@@ -1,0 +1,75 @@
+{
+  "name": "DrawerRoot",
+  "importPath": "sg/drawer",
+  "category": "overlay",
+  "description": "Bottom-anchored overlay panel using native <dialog>. Ideal for mobile-first interactions.",
+  "whenToUse": "For mobile-friendly bottom sheets and action panels.",
+  "avoidWhen": "For side panels - use Sheet. For centered modals - use Dialog.",
+  "semanticRole": "dialog",
+  "accessibilityRequirements": "ModalLabelProps: aria-label or aria-labelledby required on DrawerContent.",
+  "parts": [
+    {
+      "name": "DrawerRoot",
+      "props": {
+        "open": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether the drawer is open"
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "DrawerTrigger",
+      "description": "Button that opens the parent DrawerRoot.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "DrawerContent",
+      "description": "The <dialog> content panel of a Drawer.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "DrawerHandle",
+      "description": "Visual drag handle indicator for a Drawer.",
+      "slots": []
+    }
+  ],
+  "registry": {
+    "files": [
+      "drawer.css",
+      "drawer.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/drawer",
+    "label": "Drawer",
+    "group": "overlays",
+    "subgroup": "dialogs-and-popups",
+    "description": "Dialog-based sliding panel"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Bottom Drawer",
+            "language": "svelte",
+            "code": "<sg-drawer-root open={drawerOpen} oninput={(e) => { const el = e.currentTarget as any; drawerOpen = (el.open ?? drawerOpen); }} onchange={(e) => { const el = e.currentTarget as any; drawerOpen = (el.open ?? drawerOpen); }} onclick={(e) => { const el = e.currentTarget as any; drawerOpen = (el.open ?? drawerOpen); }} ontoggle={(e) => { const el = e.currentTarget as any; drawerOpen = (el.open ?? drawerOpen); }}>\n    <sg-drawer-trigger>\n        <button class=\"sg-button\" data-color=\"primary\" onclick={() => drawerOpen = true}>Open Drawer</button>\n    </sg-drawer-trigger>\n    <sg-drawer-content aria-label=\"Example drawer\">\n        <div class=\"sg-demo-drawerroot-1\">\n          <sg-drawer-handle />\n          <h3 class=\"sg-demo-drawerroot-2\">Drawer Panel</h3>\n          <p class=\"sg-demo-drawerroot-3\">This is a dialog-based drawer that slides up from the bottom.</p>\n          <button class=\"sg-button\" data-color=\"primary\" onclick={() => drawerOpen = false}>Close</button>\n        </div>\n    </sg-drawer-content>\n</sg-drawer-root>",
+            "css": ".sg-demo-drawerroot-1 {\n  padding: var(--sg-pad-card, 1.5rem)\n}\n\n.sg-demo-drawerroot-2 {\n  margin: var(--sg-space-4) 0 var(--sg-space-2)\n}\n\n.sg-demo-drawerroot-3 {\n  color: var(--sg-color-text-secondary); margin: 0 0 var(--sg-space-4)\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

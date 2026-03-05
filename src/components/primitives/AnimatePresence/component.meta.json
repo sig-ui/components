@@ -1,0 +1,34 @@
+{
+  "name": "AnimatePresence",
+  "importPath": "sg/animate-presence",
+  "category": "layout",
+  "description": "Keeps removed items mounted long enough to play exit animations.",
+  "whenToUse": "Animating item removal in lists or conditional UI.",
+  "semanticRole": "none (animation orchestrator)",
+  "props": {
+    "items": {
+      "type": "T[]",
+      "required": true,
+      "description": "Current item collection to render."
+    },
+    "exit": {
+      "type": "ExitFactory",
+      "required": true,
+      "description": "Factory that starts exit animation for a removed element."
+    },
+    "getKey": {
+      "type": "(item: T) => string | number",
+      "required": true,
+      "description": "Stable key extractor for each item."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  }
+}

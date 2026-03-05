@@ -1,0 +1,195 @@
+{
+  "name": "MenubarRoot",
+  "importPath": "sg/menubar",
+  "category": "navigation",
+  "description": "Horizontal menu bar containing multiple dropdown menus, like a desktop app menu bar.",
+  "whenToUse": "For application-style menu bars with multiple dropdown menus.",
+  "avoidWhen": "For a single dropdown menu - use Menu instead.",
+  "semanticRole": "menubar",
+  "accessibilityRequirements": "Left/Right arrow keys navigate between menus. Down arrow opens dropdown.",
+  "parts": [
+    {
+      "name": "MenubarRoot",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "MenubarMenu",
+      "description": "Individual menu within a MenubarRoot.",
+      "props": {
+        "label": {
+          "type": "string",
+          "required": true,
+          "description": "Menu label"
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "MenubarTrigger",
+      "description": "Button that opens a MenubarMenu dropdown.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "MenubarContent",
+      "description": "Dropdown content of a MenubarMenu.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "MenubarItem",
+      "description": "Actionable item inside MenubarContent.",
+      "props": {
+        "disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disable item"
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "MenubarSeparator",
+      "description": "Visual separator between MenubarItems.",
+      "slots": []
+    },
+    {
+      "name": "MenubarShortcut",
+      "description": "Displays keyboard shortcut text in a MenubarItem, aligned to the right.",
+      "whenToUse": "To show keyboard shortcuts next to menu items.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "MenubarCheckboxItem",
+      "description": "Checkbox menu item that can be toggled on/off.",
+      "whenToUse": "For toggleable options in a menu.",
+      "semanticRole": "menuitemcheckbox",
+      "props": {
+        "checked": {
+          "type": "boolean",
+          "default": false,
+          "description": "Checked state"
+        },
+        "disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disable item"
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "MenubarRadioGroup",
+      "description": "Groups MenubarRadioItem components for single-selection behavior.",
+      "whenToUse": "For mutually exclusive options in a menu.",
+      "props": {
+        "value": {
+          "type": "string",
+          "description": "Currently selected value (bindable)"
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "MenubarRadioItem",
+      "description": "Radio menu item for mutually exclusive selection within a MenubarRadioGroup.",
+      "whenToUse": "For mutually exclusive options in a menu.",
+      "semanticRole": "menuitemradio",
+      "props": {
+        "value": {
+          "type": "string",
+          "required": true,
+          "description": "Value this item represents"
+        },
+        "disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disable item"
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "MenubarSub",
+      "description": "Container for a submenu within a MenubarItem.",
+      "whenToUse": "For nested menu structures.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "MenubarSubTrigger",
+      "description": "Trigger button that opens a submenu.",
+      "whenToUse": "Inside MenubarSub to open the submenu.",
+      "props": {
+        "disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disable item"
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "MenubarSubContent",
+      "description": "Content of a submenu, positioned to the right of the trigger.",
+      "whenToUse": "Inside MenubarSub to display submenu items.",
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "menubar.css",
+      "menubar.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/menubar",
+    "label": "Menubar",
+    "group": "overlays",
+    "subgroup": "selection-and-command",
+    "description": "Application menu bar with dropdowns"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Application Menu Bar",
+            "language": "svelte",
+            "code": "<sg-menubar-root aria-label=\"Application menu\">\n    <sg-menubar-menu label=\"File\">\n        <sg-menubar-trigger>File</sg-menubar-trigger>\n        <sg-menubar-content>\n            <sg-menubar-item onselect={() => console.log(\"New Tab\")}>\n                New Tab <sg-menubar-shortcut>Cmd+T</sg-menubar-shortcut>\n            </sg-menubar-item>\n            <sg-menubar-item onselect={() => console.log(\"New Window\")}>\n                New Window <sg-menubar-shortcut>Cmd+N</sg-menubar-shortcut>\n            </sg-menubar-item>\n            <sg-menubar-item disabled={true}>New Incognito Window</sg-menubar-item>\n            <sg-menubar-separator />\n            <sg-menubar-sub>\n                <sg-menubar-sub-trigger>Share</sg-menubar-sub-trigger>\n                <sg-menubar-sub-content>\n                    <sg-menubar-item>Email link</sg-menubar-item>\n                    <sg-menubar-item>Messages</sg-menubar-item>\n                    <sg-menubar-item>Notes</sg-menubar-item>\n                </sg-menubar-sub-content>\n            </sg-menubar-sub>\n            <sg-menubar-separator />\n            <sg-menubar-item onselect={() => console.log(\"Print\")}>\n                Print... <sg-menubar-shortcut>Cmd+P</sg-menubar-shortcut>\n            </sg-menubar-item>\n        </sg-menubar-content>\n    </sg-menubar-menu>\n    <sg-menubar-menu label=\"Edit\">\n        <sg-menubar-trigger>Edit</sg-menubar-trigger>\n        <sg-menubar-content>\n            <sg-menubar-item>Undo</sg-menubar-item>\n            <sg-menubar-item>Redo</sg-menubar-item>\n            <sg-menubar-separator />\n            <sg-menubar-item>Cut</sg-menubar-item>\n            <sg-menubar-item>Copy</sg-menubar-item>\n            <sg-menubar-item>Paste</sg-menubar-item>\n        </sg-menubar-content>\n    </sg-menubar-menu>\n    <sg-menubar-menu label=\"View\">\n        <sg-menubar-trigger>View</sg-menubar-trigger>\n        <sg-menubar-content>\n            <sg-menubar-checkbox-item checked={bookmarksChecked} oninput={(e) => { const el = e.currentTarget as any; bookmarksChecked = (el.checked ?? bookmarksChecked); }} onchange={(e) => { const el = e.currentTarget as any; bookmarksChecked = (el.checked ?? bookmarksChecked); }} onclick={(e) => { const el = e.currentTarget as any; bookmarksChecked = (el.checked ?? bookmarksChecked); }} ontoggle={(e) => { const el = e.currentTarget as any; bookmarksChecked = (el.checked ?? bookmarksChecked); }} onselect={(v) => bookmarksChecked = v}>\n              Always Show Bookmarks Bar\n            </sg-menubar-checkbox-item>\n            <sg-menubar-checkbox-item checked={urlsChecked} oninput={(e) => { const el = e.currentTarget as any; urlsChecked = (el.checked ?? urlsChecked); }} onchange={(e) => { const el = e.currentTarget as any; urlsChecked = (el.checked ?? urlsChecked); }} onclick={(e) => { const el = e.currentTarget as any; urlsChecked = (el.checked ?? urlsChecked); }} ontoggle={(e) => { const el = e.currentTarget as any; urlsChecked = (el.checked ?? urlsChecked); }} onselect={(v) => urlsChecked = v}>\n              Always Show Full URLs\n            </sg-menubar-checkbox-item>\n            <sg-menubar-separator />\n            <sg-menubar-item>Reload</sg-menubar-item>\n            <sg-menubar-item disabled={true}>Force Reload</sg-menubar-item>\n            <sg-menubar-separator />\n            <sg-menubar-item>Toggle Fullscreen</sg-menubar-item>\n        </sg-menubar-content>\n    </sg-menubar-menu>\n    <sg-menubar-menu label=\"Profiles\">\n        <sg-menubar-trigger>Profiles</sg-menubar-trigger>\n        <sg-menubar-content>\n            <sg-menubar-radio-group value={profileValue} oninput={(e) => { const el = e.currentTarget as any; profileValue = (el.value ?? profileValue); }} onclick={(e) => { const el = e.currentTarget as any; profileValue = (el.value ?? profileValue); }} ontoggle={(e) => { const el = e.currentTarget as any; profileValue = (el.value ?? profileValue); }} onchange={(e) => { const v = ((e as CustomEvent<any>).detail ?? (e.currentTarget as any).value); profileValue = v }}>\n                <sg-menubar-radio-item value=\"andy\">Andy</sg-menubar-radio-item>\n                <sg-menubar-radio-item value=\"benoit\">Benoit</sg-menubar-radio-item>\n                <sg-menubar-radio-item value=\"luis\">Luis</sg-menubar-radio-item>\n            </sg-menubar-radio-group>\n            <sg-menubar-separator />\n            <sg-menubar-item>Edit...</sg-menubar-item>\n            <sg-menubar-item>Add Profile...</sg-menubar-item>\n        </sg-menubar-content>\n    </sg-menubar-menu>\n</sg-menubar-root>"
+          },
+          {
+            "title": "With Keyboard Shortcuts",
+            "language": "svelte",
+            "code": "<sg-menubar-root aria-label=\"Shortcuts demo\">\n    <sg-menubar-menu label=\"File\">\n        <sg-menubar-trigger>File</sg-menubar-trigger>\n        <sg-menubar-content>\n            <sg-menubar-item>New <sg-menubar-shortcut>Cmd+N</sg-menubar-shortcut></sg-menubar-item>\n            <sg-menubar-item>Open <sg-menubar-shortcut>Cmd+O</sg-menubar-shortcut></sg-menubar-item>\n            <sg-menubar-separator />\n            <sg-menubar-item>Save <sg-menubar-shortcut>Cmd+S</sg-menubar-shortcut></sg-menubar-item>\n            <sg-menubar-item>Save As... <sg-menubar-shortcut>Cmd+Shift+S</sg-menubar-shortcut></sg-menubar-item>\n        </sg-menubar-content>\n    </sg-menubar-menu>\n</sg-menubar-root>"
+          }
+        ]
+      }
+    ]
+  }
+}

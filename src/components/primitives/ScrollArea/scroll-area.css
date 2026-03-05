@@ -1,0 +1,92 @@
+@layer sigui.base {
+  .sg-scroll-area {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sg-scroll-area-viewport {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    scrollbar-width: none;
+  }
+
+  .sg-scroll-area-viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sg-scroll-area-scrollbar {
+    position: absolute;
+    user-select: none;
+    touch-action: none;
+    transition: opacity var(--sg-transition-default, 200ms ease-out);
+  }
+
+  .sg-scroll-area-scrollbar[data-orientation="vertical"] {
+    right: 2px;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+  }
+
+  .sg-scroll-area-scrollbar[data-orientation="horizontal"] {
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    height: 6px;
+  }
+
+  .sg-scroll-area-thumb {
+    background: var(--sg-scrollbar-thumb, color-mix(in oklch, var(--sg-color-text) 30%, transparent));
+    border-radius: 9999px;
+    min-height: 30px;
+    min-width: 30px;
+  }
+
+}
+
+@layer sigui.states {
+  .sg-scroll-area[data-type="hover"] .sg-scroll-area-scrollbar {
+    opacity: 0;
+  }
+
+  .sg-scroll-area[data-type="hover"]:hover .sg-scroll-area-scrollbar {
+    opacity: 1;
+  }
+
+  .sg-scroll-area[data-type="auto"] .sg-scroll-area-scrollbar {
+    opacity: 0;
+  }
+
+  .sg-scroll-area[data-type="auto"]:hover .sg-scroll-area-scrollbar {
+    opacity: 1;
+  }
+
+
+
+
+
+
+
+
+  @keyframes sg-progress-indeterminate {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(200%); }
+  }
+  @keyframes sg-sheet-slide-in-right {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+  @keyframes sg-sheet-slide-in-left {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+  }
+  @keyframes sg-sheet-slide-in-top {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+  }
+  @keyframes sg-sheet-slide-in-bottom {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+}

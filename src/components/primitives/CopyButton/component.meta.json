@@ -1,0 +1,57 @@
+{
+  "name": "CopyButton",
+  "importPath": "sg/copy-button",
+  "category": "form",
+  "description": "Action control that copies a resolved value to the clipboard.",
+  "whenToUse": "Copying code snippets, URLs, IDs, or generated values.",
+  "avoidWhen": "Standard button actions that do not involve clipboard writes.",
+  "semanticRole": "button",
+  "accessibilityRequirements": "Requires visible text or aria-label.",
+  "props": {
+    "for": {
+      "type": "string",
+      "description": "CSS selector used to resolve target text/value."
+    },
+    "value": {
+      "type": "string",
+      "description": "Explicit value to copy (overrides for selector)."
+    },
+    "success-text": {
+      "type": "string",
+      "description": "Temporary label shown after a successful copy."
+    },
+    "timeout": {
+      "type": "number",
+      "default": 1200,
+      "description": "Success-state reset delay in milliseconds."
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Disable copy action."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "copy-button.css",
+      "copy-button.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/forms/copy-button",
+    "label": "CopyButton",
+    "group": "forms",
+    "subgroup": "actions-and-affordances",
+    "description": "Copies text content to clipboard"
+  },
+  "page": {
+    "title": "Copy text from value",
+    "code": "<sg-copy-button value=\"npm i @sig-ui/components\" success-text=\"Copied!\">Copy install command</sg-copy-button>"
+  }
+}

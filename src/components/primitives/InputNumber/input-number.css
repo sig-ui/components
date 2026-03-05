@@ -1,0 +1,7 @@
+.sg-input-number {
+  display: inline-block;
+}
+
+.sg-input-number > input[type="number"] {
+  inline-size: 100%;
+}

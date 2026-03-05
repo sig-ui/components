@@ -1,0 +1,59 @@
+{
+  "name": "Cluster",
+  "importPath": "sg/cluster",
+  "category": "layout",
+  "description": "Convenience wrapper for horizontal wrapping flow. Flexbox with wrap enabled by default.",
+  "whenToUse": "Tag clouds, button groups, status badges, any horizontally-flowing items that should wrap. More ergonomic than Stack(direction='horizontal', wrap=true).",
+  "avoidWhen": "You need vertical stacking - use Stack. You need responsive row/column switching - use Switcher.",
+  "semanticRole": "none (layout primitive)",
+  "props": {
+    "gap": {
+      "type": "SpacingRelationship",
+      "values": [
+        "related",
+        "grouped",
+        "separated",
+        "distinct"
+      ],
+      "default": "grouped",
+      "description": "Gestalt-based spacing between children."
+    },
+    "align": {
+      "type": "string",
+      "values": [
+        "start",
+        "center",
+        "end",
+        "stretch",
+        "baseline"
+      ],
+      "default": "center",
+      "description": "Cross-axis alignment of children."
+    },
+    "justify": {
+      "type": "string",
+      "values": [
+        "start",
+        "center",
+        "end",
+        "space-between",
+        "space-around",
+        "space-evenly"
+      ],
+      "default": "start",
+      "description": "Main axis distribution."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "cluster.css",
+      "cluster.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  }
+}

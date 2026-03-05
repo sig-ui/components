@@ -1,0 +1,46 @@
+{
+  "name": "AnimatedImage",
+  "importPath": "sg/animated-image",
+  "category": "data-display",
+  "description": "Image wrapper that can swap to a reduced-motion source when the user prefers less motion.",
+  "whenToUse": "Rendering animated media while respecting reduced-motion preferences.",
+  "avoidWhen": "Static imagery with no alternate source requirement.",
+  "semanticRole": "img",
+  "props": {
+    "src": {
+      "type": "string",
+      "required": true,
+      "description": "Primary image source."
+    },
+    "reduced-src": {
+      "type": "string",
+      "description": "Fallback source used when prefers-reduced-motion is enabled."
+    },
+    "alt": {
+      "type": "string",
+      "default": "",
+      "description": "Accessible alternative text."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "animated-image.css",
+      "animated-image.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/animated-image",
+    "label": "AnimatedImage",
+    "group": "data-display",
+    "subgroup": "visualization-and-browsing",
+    "description": "Image with reduced-motion fallback support"
+  },
+  "page": {
+    "title": "Animated media with reduced-motion fallback",
+    "code": "<sg-animated-image src=\"https://media.giphy.com/media/ICOgUNjpvO0PC/giphy.gif\" reduced-src=\"https://picsum.photos/640/360\" alt=\"Animated sample\"></sg-animated-image>"
+  }
+}

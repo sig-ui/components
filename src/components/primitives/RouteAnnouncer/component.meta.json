@@ -1,0 +1,23 @@
+{
+  "name": "RouteAnnouncer",
+  "importPath": "sg/route-announcer",
+  "category": "feedback",
+  "description": "Screen-reader live region announcer for route/page title changes.",
+  "whenToUse": "Client-side routed apps where page updates do not trigger full reload announcements.",
+  "semanticRole": "status",
+  "accessibilityRequirements": "Provide a meaningful pageTitle on each route change.",
+  "props": {
+    "pageTitle": {
+      "type": "string",
+      "required": true,
+      "description": "Title text announced to assistive technology."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  }
+}

@@ -1,0 +1,16 @@
+@layer sigui.states {
+  @keyframes sg-fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes sg-fade-in-overlay {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+}

@@ -1,0 +1,90 @@
+@layer sigui.base {
+  .sg-native-dialog {
+    font-family: var(--sg-font-family, system-ui);
+    color: var(--sg-color-text);
+    background: var(--sg-bg);
+    border: 1px solid var(--sg-color-border-light);
+    border-radius: var(--sg-card-radius, 0.5rem);
+    padding: var(--sg-pad-card, 1.5rem);
+    box-shadow: var(--sg-shadow-dropdown);
+    max-width: min(90vw, 32rem);
+    width: 100%;
+  }
+
+  .sg-native-dialog::backdrop {
+    background: var(--sg-overlay-backdrop);
+  }
+
+  .sg-native-dialog-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sg-gap-micro, 0.25rem);
+    margin-bottom: var(--sg-gap-grouped, 1rem);
+  }
+
+  .sg-native-dialog-title {
+    font-size: var(--sg-text-lg, 1.125rem);
+    font-weight: 600;
+    line-height: var(--sg-leading-tight, 1.25);
+    color: var(--sg-color-text);
+    margin: 0;
+  }
+
+  .sg-native-dialog-description {
+    font-size: var(--sg-text-sm, 0.875rem);
+    color: var(--sg-color-text-muted);
+    margin: 0;
+  }
+
+  .sg-native-dialog-body {
+    font-size: var(--sg-text-sm, 0.875rem);
+    color: var(--sg-color-text-secondary);
+    line-height: var(--sg-leading-base, 1.5);
+  }
+
+  .sg-native-dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--sg-gap-related, 0.5rem);
+    margin-top: var(--sg-pad-card, 1.5rem);
+  }
+}
+
+@layer sigui.variants {
+  .sg-native-dialog[data-size="sm"] {
+    max-width: min(90vw, 24rem);
+    padding: var(--sg-gap-grouped, 1rem);
+  }
+
+  .sg-native-dialog[data-size="lg"] {
+    max-width: min(90vw, 42rem);
+  }
+
+  .sg-native-dialog[data-size="full"] {
+    max-width: 90vw;
+    max-height: 85vh;
+  }
+}
+
+@layer sigui.states {
+  .sg-native-dialog[open] {
+    animation: sg-dialog-in var(--sg-transition-default, 200ms ease-out);
+  }
+
+  @keyframes sg-dialog-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95) translateY(0.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  @media (forced-colors: active) {
+    .sg-native-dialog {
+      border: 2px solid CanvasText;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+@layer sigui.base {
+  .sg-separator {
+    border: none;
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  .sg-separator[data-orientation="horizontal"] {
+    width: 100%;
+    height: 1px;
+    background: var(--sg-color-border);
+  }
+
+  .sg-separator[data-orientation="vertical"] {
+    width: 1px;
+    align-self: stretch;
+    background: var(--sg-color-border);
+  }
+
+}
+
+@layer sigui.states {
+  @media (forced-colors: active) {
+
+    .sg-separator {
+      background: CanvasText;
+    }
+  }
+
+
+}

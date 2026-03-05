@@ -1,0 +1,200 @@
+@layer sigui.base {
+  .sg-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sg-gap-related, 0.5rem);
+  }
+
+  .sg-radio-group[data-orientation="horizontal"] {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--sg-gap-grouped, 1rem);
+  }
+
+  .sg-radio-group-item {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: var(--sg-gap-related, 0.5rem);
+    cursor: pointer;
+  }
+
+  .sg-radio-group-item--with-description {
+    align-items: flex-start;
+  }
+
+  .sg-radio {
+    appearance: none;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid var(--sg-color-border-light);
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin: 0;
+    margin-top: var(--sg-gap-micro, 0.125rem);
+    cursor: pointer;
+    transition: border-color var(--sg-transition-default, 200ms ease-out);
+  }
+
+  .sg-radio::after {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background: transparent;
+    transform: scale(0);
+    transition:
+      background var(--sg-transition-default, 200ms ease-out),
+      transform 200ms cubic-bezier(0.2, 1.2, 0.4, 1);
+  }
+
+  .sg-radio-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sg-gap-micro, 0.125rem);
+  }
+
+  .sg-radio-label {
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+    color: var(--sg-color-text);
+    user-select: none;
+  }
+
+  .sg-radio-description {
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-xs, 0.6875rem);
+    color: var(--sg-color-text-muted);
+  }
+
+}
+
+@layer sigui.variants {
+  .sg-radio-group[data-size="sm"] .sg-radio {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  .sg-radio-group[data-size="sm"] .sg-radio::after {
+    width: 0.375rem;
+    height: 0.375rem;
+  }
+
+  .sg-radio-group[data-size="sm"] .sg-radio-label {
+    font-size: var(--sg-text-xs, 0.6875rem);
+  }
+
+  .sg-radio-group[data-size="lg"] .sg-radio {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .sg-radio-group[data-size="lg"] .sg-radio::after {
+    width: 0.625rem;
+    height: 0.625rem;
+  }
+
+  .sg-radio-group[data-size="lg"] .sg-radio-label {
+    font-size: var(--sg-text-base, 1rem);
+  }
+
+  .sg-radio-group-item[data-size="sm"] .sg-radio {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  .sg-radio-group-item[data-size="sm"] .sg-radio::after {
+    width: 0.375rem;
+    height: 0.375rem;
+  }
+
+  .sg-radio-group-item[data-size="sm"] .sg-radio-label {
+    font-size: var(--sg-text-xs, 0.6875rem);
+  }
+
+  .sg-radio-group-item[data-size="lg"] .sg-radio {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .sg-radio-group-item[data-size="lg"] .sg-radio::after {
+    width: 0.625rem;
+    height: 0.625rem;
+  }
+
+  .sg-radio-group-item[data-size="lg"] .sg-radio-label {
+    font-size: var(--sg-text-base, 1rem);
+  }
+
+  .sg-badge[data-size="sm"] {
+    font-size: 0.625rem;
+    padding: 0 var(--sg-gap-related, 0.375rem);
+  }
+
+  .sg-badge[data-size="lg"] {
+    font-size: var(--sg-text-sm, 0.875rem);
+    padding: var(--sg-gap-tight, 0.25rem) var(--sg-pad-input, 0.75rem);
+  }
+
+  .sg-avatar[data-size="sm"] {
+    width: 2rem;
+    height: 2rem;
+    font-size: var(--sg-text-xs, 0.6875rem);
+  }
+
+  .sg-avatar[data-size="md"] {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: var(--sg-text-sm, 0.875rem);
+  }
+
+  .sg-avatar[data-size="lg"] {
+    width: 3rem;
+    height: 3rem;
+    font-size: var(--sg-text-base, 1rem);
+  }
+
+}
+
+@layer sigui.states {
+
+  .sg-radio:focus-visible {
+    outline: var(--sg-focus-width, 2px) solid var(--sg-focus-color);
+    outline-offset: var(--sg-focus-offset, 2px);
+    box-shadow: 0 0 0 var(--sg-focus-offset, 2px) var(--sg-focus-inner, white);
+  }
+  .sg-radio:checked {
+    border-color: var(--sg-color-primary);
+  }
+
+  .sg-radio:checked::after {
+    background: var(--sg-color-primary);
+    transform: scale(1);
+  }
+
+  .sg-radio:not(:checked)::after {
+    transform: scale(0);
+  }
+
+  @media (forced-colors: active) {
+
+    .sg-radio {
+      border: 2px solid ButtonText;
+    }
+
+    .sg-radio:checked {
+      border-color: Highlight;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+
+    .sg-radio:not(:checked)::after {
+      transform: scale(0);
+    }
+  }
+
+
+}

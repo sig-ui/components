@@ -1,0 +1,68 @@
+{
+  "name": "Container",
+  "importPath": "sg/container",
+  "category": "layout",
+  "description": "Centered max-width container with size breakpoints.",
+  "whenToUse": "Wrapping page content to constrain width and center it.",
+  "avoidWhen": "Content should be full-width with no max constraint.",
+  "semanticRole": "none (layout primitive)",
+  "props": {
+    "size": {
+      "type": "string",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "full"
+      ],
+      "default": "lg",
+      "description": "Max-width breakpoint. 'full' removes the constraint."
+    },
+    "padding": {
+      "type": "boolean",
+      "default": true,
+      "description": "Add horizontal padding to prevent content touching edges."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "container.css",
+      "container.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/layout/container",
+    "label": "Container",
+    "group": "layout",
+    "subgroup": "primitives",
+    "description": "Centered max-width container with size breakpoints"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Size Variants",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    {#each [\"sm\", \"md\", \"lg\", \"xl\", \"full\"] as sz}\n      <sg-container size={sz}>\n          <div class=\"sg-demo-container-1\">\n            Container size=\"{sz}\"\n          </div>\n      </sg-container>\n    {/each}\n</sg-stack>",
+            "css": ".sg-demo-container-1 {\n  background: var(--sg-surface-container-high); padding: var(--sg-pad-button-y, 0.75rem) var(--sg-pad-button-x, 1rem); border-radius: var(--sg-radius-md); border: var(--sg-border-thin) solid var(--sg-color-border)\n}"
+          },
+          {
+            "title": "Padding Control",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    <sg-container padding={true}>\n        <div class=\"sg-demo-container-1\">\n          padding=true (default)\n        </div>\n    </sg-container>\n    <sg-container padding={false}>\n        <div class=\"sg-demo-container-2\">\n          padding=false\n        </div>\n    </sg-container>\n</sg-stack>",
+            "css": ".sg-demo-container-1 {\n  background: var(--sg-surface-container-high); padding: var(--sg-pad-button-y, 0.75rem) var(--sg-pad-button-x, 1rem); border-radius: var(--sg-radius-md); border: var(--sg-border-thin) solid var(--sg-color-border)\n}\n\n.sg-demo-container-2 {\n  background: var(--sg-surface-container-high); padding: var(--sg-pad-button-y, 0.75rem) var(--sg-pad-button-x, 1rem); border-radius: var(--sg-radius-md); border: var(--sg-border-thin) solid var(--sg-color-border)\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

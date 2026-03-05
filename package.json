@@ -1,0 +1,50 @@
+{
+  "name": "@sig-ui/components",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sig-ui/components.git"
+  },
+  "homepage": "https://github.com/sig-ui/components",
+  "bugs": "https://github.com/sig-ui/components/issues",
+  "files": [
+    "src",
+    "LICENSE"
+  ],
+  "sideEffects": true,
+  "description": "Web Components library built on SigUI design tokens",
+  "author": "SigID, gentix.dev",
+  "keywords": [
+    "sigui",
+    "design-system",
+    "design-tokens",
+    "ui",
+    "components"
+  ],
+  "exports": {
+    ".": { "types": "./src/index.d.ts", "default": "./src/index.js" },
+    "./manifest": { "types": "./src/manifest.d.ts", "default": "./src/manifest.js" },
+    "./lib/base-element": { "types": "./src/lib/base-element.d.ts", "default": "./src/lib/base-element.js" },
+    "./lib/use-machine": { "types": "./src/lib/use-machine.d.ts", "default": "./src/lib/use-machine.js" },
+    "./lib/context": { "types": "./src/lib/context.d.ts", "default": "./src/lib/context.js" },
+    "./lib/locale": { "types": "./src/lib/locale.d.ts", "default": "./src/lib/locale.js" },
+    "./lib/use-id": { "types": "./src/lib/use-id.d.ts", "default": "./src/lib/use-id.js" },
+    "./lib/use-reduced-motion": { "types": "./src/lib/use-reduced-motion.d.ts", "default": "./src/lib/use-reduced-motion.js" },
+    "./lib/keyboard-navigation": { "types": "./src/lib/keyboard-navigation.d.ts", "default": "./src/lib/keyboard-navigation.js" },
+    "./lib/actions": { "types": "./src/lib/actions/index.d.ts", "default": "./src/lib/actions/index.js" },
+    "./lib/interactive-shared": { "types": "./src/components/interactive/shared.d.ts", "default": "./src/components/interactive/shared.js" }
+  },
+  "dependencies": {
+    "@sig-ui/core": "workspace:*",
+    "@sig-ui/theme": "workspace:*",
+    "@sig-ui/dom": "workspace:*"
+  },
+  "scripts": {
+    "test": "bun test"
+  }
+}

@@ -1,0 +1,45 @@
+@layer sigui.base {
+  .sg-output {
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-base, 1rem);
+    font-weight: 500;
+    color: var(--sg-color-text);
+    padding: var(--sg-gap-related, 0.5rem) var(--sg-pad-input, 0.75rem);
+    background: var(--sg-surface-container-low);
+    border-radius: var(--sg-input-radius, 0.375rem);
+    display: inline-block;
+    min-width: 2em;
+  }
+}
+
+@layer sigui.variants {
+  .sg-output[data-size="sm"] {
+    font-size: var(--sg-text-sm, 0.875rem);
+    padding: var(--sg-gap-tight, 0.25rem) var(--sg-gap-related, 0.5rem);
+  }
+
+  .sg-output[data-size="lg"] {
+    font-size: var(--sg-text-lg, 1.125rem);
+    padding: var(--sg-pad-input, 0.75rem) var(--sg-gap-grouped, 1rem);
+  }
+
+  .sg-output[data-color="primary"] {
+    color: var(--sg-color-primary);
+    background: var(--sg-color-primary-subtle);
+  }
+
+  .sg-output[data-color="success"] {
+    color: var(--sg-color-success);
+    background: var(--sg-color-success-subtle);
+  }
+
+  .sg-output[data-color="danger"] {
+    color: var(--sg-color-danger);
+    background: var(--sg-color-danger-subtle);
+  }
+
+  .sg-output[data-color="warning"] {
+    color: var(--sg-color-warning);
+    background: var(--sg-color-warning-subtle);
+  }
+}

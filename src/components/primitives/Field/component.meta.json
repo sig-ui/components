@@ -1,0 +1,73 @@
+{
+  "name": "Field",
+  "importPath": "sg/field",
+  "category": "form",
+  "description": "Form field wrapper that provides label, description, and error messaging with auto-wired aria-describedby.",
+  "whenToUse": "To wrap any form control with consistent label, description, and error layout.",
+  "avoidWhen": "For inputs that already have their own label wiring (e.g. Input, Textarea with label prop).",
+  "semanticRole": "group",
+  "accessibilityRequirements": "label prop is required. Error and description auto-wire aria-describedby.",
+  "props": {
+    "label": {
+      "type": "string",
+      "required": true,
+      "description": "Field label text"
+    },
+    "error": {
+      "type": "string",
+      "description": "Error message"
+    },
+    "description": {
+      "type": "string",
+      "description": "Help text"
+    },
+    "required": {
+      "type": "boolean",
+      "default": false,
+      "description": "Show required indicator"
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Disable the field"
+    },
+    "htmlFor": {
+      "type": "string",
+      "description": "ID of the form control this field labels"
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "field.css",
+      "field.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/forms/field",
+    "label": "Field",
+    "group": "forms",
+    "subgroup": "field-composition",
+    "description": "Form field wrapper with label, error, and description"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Form Field Wrapper",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    <sg-field label=\"Username\" description=\"Choose a unique name.\" required={true} htmlFor=\"demo-username\">\n        <input type=\"text\" id=\"demo-username\" class=\"sg-demo-field-1\" />\n    </sg-field>\n    <sg-field label=\"Bio\" error=\"Too long (max 200 chars)\" htmlFor=\"demo-bio\">\n        <textarea id=\"demo-bio\" rows=\"2\" class=\"sg-demo-field-2\"></textarea>\n    </sg-field>\n    <sg-field label=\"Disabled Field\" disabled={true} htmlFor=\"demo-disabled\">\n        <input type=\"text\" id=\"demo-disabled\" disabled class=\"sg-demo-field-3\" />\n    </sg-field>\n</sg-stack>",
+            "css": ".sg-demo-field-1 {\n  padding: var(--sg-space-2); border: var(--sg-border-thin) solid var(--sg-color-border); border-radius: var(--sg-radius-md); width: 100%; box-sizing: border-box\n}\n\n.sg-demo-field-2 {\n  padding: var(--sg-space-2); border: var(--sg-border-thin) solid var(--sg-color-border); border-radius: var(--sg-radius-md); width: 100%; box-sizing: border-box\n}\n\n.sg-demo-field-3 {\n  padding: var(--sg-space-2); border: var(--sg-border-thin) solid var(--sg-color-border); border-radius: var(--sg-radius-md); width: 100%; box-sizing: border-box; opacity: 0.5\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+@layer sigui.base {
+  .sg-tabs-list {
+    --_tabs-gap: 0;
+    --_tabs-border-bottom: 1px solid var(--sg-color-border);
+  }
+
+  .sg-tabs-trigger {
+    --_tabs-trigger-py: var(--sg-gap-related, 0.5rem);
+    --_tabs-trigger-px: var(--sg-gap-grouped, 1rem);
+    border: none;
+    background: none;
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+    color: var(--sg-color-text-muted);
+    min-height: var(--sg-touch-min, 44px);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition:
+      color var(--sg-transition-default, 200ms ease-out),
+      border-bottom-color var(--sg-transition-default, 200ms ease-out);
+  }
+
+  .sg-tabs-content {
+    padding: var(--sg-gap-grouped, 1rem) 0;
+  }
+
+  /* Pill variant */
+  .sg-tabs-list[data-variant="pills"] {
+    --_tabs-border-bottom: none;
+    --_tabs-gap: var(--sg-gap-tight, 0.25rem);
+  }
+
+  .sg-tabs-list[data-variant="pills"] .sg-tabs-trigger {
+    border-bottom: none;
+    margin-bottom: 0;
+    border-radius: var(--sg-input-radius, 0.375rem);
+  }
+
+}
+
+@layer sigui.variants {
+  .sg-tabs-list[data-justify="start"]         { justify-content: flex-start; }
+  .sg-tabs-list[data-justify="center"]        { justify-content: center; }
+  .sg-tabs-list[data-justify="end"]           { justify-content: flex-end; }
+  .sg-tabs-list[data-justify="space-between"] { justify-content: space-between; }
+  .sg-tabs-list[data-justify="space-around"]  { justify-content: space-around; }
+  .sg-tabs-list[data-justify="space-evenly"]  { justify-content: space-evenly; }
+}
+
+@layer sigui.states {
+
+  .sg-tabs-trigger:focus-visible {
+    outline: var(--sg-focus-width, 2px) solid var(--sg-focus-color);
+    outline-offset: var(--sg-focus-offset, 2px);
+    box-shadow: 0 0 0 var(--sg-focus-offset, 2px) var(--sg-focus-inner, white);
+  }
+  .sg-tabs-trigger:hover:not([data-state="active"]) {
+    color: var(--sg-color-text-secondary);
+  }
+
+  .sg-tabs-trigger[data-state="active"] {
+    color: var(--sg-color-primary);
+    border-bottom-color: var(--sg-color-primary);
+    font-weight: var(--sg-weight-medium, 500);
+  }
+
+  .sg-tabs-list[data-variant="pills"] .sg-tabs-trigger[data-state="active"] {
+    background: var(--sg-color-primary);
+    color: var(--sg-color-text-inverse);
+    border-bottom-color: transparent;
+  }
+
+  @media (forced-colors: active) {
+    .sg-tabs-trigger[data-state="active"] {
+      border-bottom: 2px solid Highlight;
+    }
+  }
+
+
+}

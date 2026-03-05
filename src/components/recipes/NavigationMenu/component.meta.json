@@ -1,0 +1,113 @@
+{
+  "name": "NavigationMenuRoot",
+  "importPath": "sg/navigation-menu",
+  "category": "navigation",
+  "description": "Root controller for a site navigation menu with hover-activated dropdown submenus.",
+  "whenToUse": "Top-level site navigation with dropdown sections.",
+  "avoidWhen": "Mobile navigation - use Sheet. Action menus - use Menu.",
+  "semanticRole": "navigation",
+  "accessibilityRequirements": "Uses <nav> with aria-label. Submenus activated by hover and keyboard.",
+  "parts": [
+    {
+      "name": "NavigationMenuRoot",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "NavigationMenuList",
+      "description": "List container for navigation items.",
+      "whenToUse": "Always inside a NavigationMenuRoot.",
+      "semanticRole": "menubar",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "NavigationMenuItem",
+      "description": "Single item in a NavigationMenu. Activates its content on hover.",
+      "whenToUse": "Always inside NavigationMenuList.",
+      "props": {
+        "value": {
+          "type": "string",
+          "required": true,
+          "description": "Unique identifier for this nav item."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "NavigationMenuTrigger",
+      "description": "Button that labels a NavigationMenuItem and opens its content.",
+      "whenToUse": "Always inside a NavigationMenuItem.",
+      "semanticRole": "button",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "NavigationMenuContent",
+      "description": "Dropdown content of a NavigationMenuItem. Shown when item is active.",
+      "whenToUse": "Always inside a NavigationMenuItem.",
+      "semanticRole": "menu",
+      "props": {
+        "value": {
+          "type": "string",
+          "required": true,
+          "description": "Must match parent NavigationMenuItem value."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "NavigationMenuLink",
+      "description": "Navigation link inside a NavigationMenu.",
+      "whenToUse": "Inside NavigationMenuContent or directly in NavigationMenuItem.",
+      "semanticRole": "menuitem",
+      "props": {
+        "href": {
+          "type": "string",
+          "required": true,
+          "description": "Link URL."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "navigation-menu.css",
+      "navigation-menu.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/navigation-menu",
+    "label": "NavigationMenu",
+    "group": "overlays",
+    "subgroup": "selection-and-command",
+    "description": "Site navigation with trigger menus"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Navigation Menu",
+            "language": "svelte",
+            "code": "<sg-navigation-menu-root aria-label=\"Main navigation\">\n    <sg-navigation-menu-list>\n        <sg-navigation-menu-item value=\"getting-started\">\n            <sg-navigation-menu-trigger>Getting Started</sg-navigation-menu-trigger>\n            <sg-navigation-menu-content value=\"getting-started\">\n                <sg-navigation-menu-link href=\"/components\">Components</sg-navigation-menu-link>\n                <sg-navigation-menu-link href=\"/system\">Design System</sg-navigation-menu-link>\n            </sg-navigation-menu-content>\n        </sg-navigation-menu-item>\n        <sg-navigation-menu-item value=\"resources\">\n            <sg-navigation-menu-trigger>Resources</sg-navigation-menu-trigger>\n            <sg-navigation-menu-content value=\"resources\">\n                <sg-navigation-menu-link href=\"/build/tokens\">Tokens</sg-navigation-menu-link>\n                <sg-navigation-menu-link href=\"/icons/browser\">Icons</sg-navigation-menu-link>\n            </sg-navigation-menu-content>\n        </sg-navigation-menu-item>\n        <sg-navigation-menu-item value=\"about\">\n            <sg-navigation-menu-link href=\"/philosophy\">Philosophy</sg-navigation-menu-link>\n        </sg-navigation-menu-item>\n    </sg-navigation-menu-list>\n</sg-navigation-menu-root>"
+          }
+        ]
+      }
+    ]
+  }
+}

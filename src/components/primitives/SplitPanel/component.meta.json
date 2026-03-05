@@ -1,0 +1,42 @@
+{
+  "name": "SplitPanel",
+  "importPath": "sg/split-panel",
+  "category": "layout",
+  "description": "Two-pane layout container with horizontal or vertical direction.",
+  "whenToUse": "Side-by-side or stacked dual-panel interfaces.",
+  "semanticRole": "group",
+  "props": {
+    "direction": {
+      "type": "string",
+      "values": [
+        "horizontal",
+        "vertical"
+      ],
+      "default": "horizontal",
+      "description": "Panel arrangement axis."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "split-panel.css",
+      "split-panel.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/layout/split-panel",
+    "label": "SplitPanel",
+    "group": "layout",
+    "subgroup": "grid-and-responsive",
+    "description": "Two-panel responsive container"
+  },
+  "page": {
+    "title": "Two-pane layout",
+    "code": "<sg-split-panel>\n  <sg-card><sg-card-body>Left panel</sg-card-body></sg-card>\n  <sg-card><sg-card-body>Right panel</sg-card-body></sg-card>\n</sg-split-panel>"
+  }
+}

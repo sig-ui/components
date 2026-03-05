@@ -1,0 +1,10 @@
+.sg-split-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sg-gap-grouped, 1rem);
+}
+
+.sg-split-panel[data-direction="vertical"] {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+}

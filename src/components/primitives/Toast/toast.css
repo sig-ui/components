@@ -1,0 +1,183 @@
+@layer sigui.base {
+  .sg-toast-container {
+    position: fixed;
+    z-index: var(--sg-z-toast, 60);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sg-gap-related, 0.5rem);
+  }
+
+  .sg-toast-top-right {
+    top: var(--sg-gap-grouped, 1rem);
+    right: var(--sg-gap-grouped, 1rem);
+  }
+
+  .sg-toast-top-left {
+    top: var(--sg-gap-grouped, 1rem);
+    left: var(--sg-gap-grouped, 1rem);
+  }
+
+  .sg-toast-bottom-right {
+    bottom: var(--sg-gap-grouped, 1rem);
+    right: var(--sg-gap-grouped, 1rem);
+  }
+
+  .sg-toast-bottom-left {
+    bottom: var(--sg-gap-grouped, 1rem);
+    left: var(--sg-gap-grouped, 1rem);
+  }
+
+  .sg-toast-top-center {
+    top: var(--sg-gap-grouped, 1rem);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .sg-toast-bottom-center {
+    bottom: var(--sg-gap-grouped, 1rem);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .sg-toast {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    background: var(--sg-card-bg);
+    border: 1px solid var(--sg-card-border);
+    border-radius: var(--sg-card-radius, var(--sg-card-radius, 0.5rem));
+    box-shadow: var(--sg-shadow-dropdown);
+    padding: var(--sg-pad-button-y, 0.75rem) var(--sg-pad-button-x, 1rem);
+    min-width: 16rem;
+    max-width: 28rem;
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+  }
+
+  .sg-toast-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sg-gap-tight, 0.25rem);
+    flex: 1;
+    min-width: 0;
+  }
+
+  .sg-toast-title {
+    font-weight: 600;
+    color: var(--sg-color-text);
+  }
+
+  .sg-toast-message {
+    color: var(--sg-color-text-secondary);
+  }
+
+  .sg-toast-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--sg-gap-related, 0.5rem);
+    margin-left: var(--sg-pad-input, 0.75rem);
+    flex-shrink: 0;
+  }
+
+  .sg-toast-action {
+    padding: var(--sg-gap-tight, 0.25rem) var(--sg-gap-related, 0.5rem);
+    border: none;
+    border-radius: var(--sg-input-radius, 0.25rem);
+    background: var(--sg-color-primary);
+    color: var(--sg-color-text-inverse);
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-xs, 0.6875rem);
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity var(--sg-transition-default, 200ms ease-out);
+  }
+
+  .sg-toast-action:hover {
+    opacity: 0.9;
+  }
+
+  .sg-toast-dismiss {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--sg-gap-tight, 0.25rem);
+    border: none;
+    border-radius: var(--sg-input-radius, 0.25rem);
+    background: transparent;
+    color: var(--sg-color-text-muted);
+    cursor: pointer;
+    transition: color var(--sg-transition-default, 200ms ease-out);
+  }
+
+  .sg-toast-dismiss:hover {
+    color: var(--sg-color-text);
+  }
+
+}
+
+@layer sigui.variants {
+  .sg-toast[data-color="primary"],
+  .sg-toast[color="primary"] {
+    border-left: 3px solid var(--sg-color-primary);
+    background: color-mix(in oklch, var(--sg-color-primary) 6%, var(--sg-card-bg));
+  }
+
+  .sg-toast[data-color="danger"],
+  .sg-toast[color="danger"] {
+    border-left: 3px solid var(--sg-color-danger);
+    background: color-mix(in oklch, var(--sg-color-danger) 6%, var(--sg-card-bg));
+  }
+
+  .sg-toast[data-color="success"],
+  .sg-toast[color="success"] {
+    border-left: 3px solid var(--sg-color-success);
+    background: color-mix(in oklch, var(--sg-color-success) 6%, var(--sg-card-bg));
+  }
+
+  .sg-toast[data-color="warning"],
+  .sg-toast[color="warning"] {
+    border-left: 3px solid var(--sg-color-warning);
+    background: color-mix(in oklch, var(--sg-color-warning) 6%, var(--sg-card-bg));
+  }
+
+  .sg-toast[data-color="info"],
+  .sg-toast[color="info"] {
+    border-left: 3px solid var(--sg-color-info);
+    background: color-mix(in oklch, var(--sg-color-info) 6%, var(--sg-card-bg));
+  }
+
+}
+
+@layer sigui.states {
+  .sg-toast {
+    animation: sg-slide-in-right var(--sg-transition-default, 200ms ease-out);
+  }
+
+
+
+
+  .sg-toast[data-state="closing"] {
+    animation: sg-toast-out 160ms ease-in forwards;
+  }
+
+  @media (forced-colors: active) {
+    .sg-toast {
+      border: 2px solid CanvasText;
+    }
+  }
+
+
+  @keyframes sg-slide-in-right {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes sg-toast-out {
+    to { opacity: 0; transform: translateX(100%); }
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "name": "Table",
+  "importPath": "sg/table",
+  "category": "data-display",
+  "description": "CSS-only table styles. Apply SigUI classes on native <table> elements and table parts.",
+  "whenToUse": "Displaying tabular data with rows and columns.",
+  "avoidWhen": "Simple key-value pairs - use a description list. Card layouts - use Grid + Card.",
+  "semanticRole": "table",
+  "accessibilityRequirements": "Uses native <table> semantics. Add aria-label for context.",
+  "parts": [
+    {
+      "name": "Table",
+      "props": {
+        "class": {
+          "type": "string",
+          "required": true,
+          "description": "Use class=\"sg-table\" on a native <table> element."
+        },
+        "data-striped": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable striped row background."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "TableHeader",
+      "description": "Table header section (<thead>).",
+      "whenToUse": "Always inside a Table.",
+      "props": {
+        "class": {
+          "type": "string",
+          "required": true,
+          "description": "Use class=\"sg-table-header\" on <thead>."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "TableBody",
+      "description": "Table body section (<tbody>).",
+      "whenToUse": "Always inside a Table.",
+      "props": {
+        "class": {
+          "type": "string",
+          "required": true,
+          "description": "Use class=\"sg-table-body\" on <tbody>."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "TableRow",
+      "description": "Table row (<tr>).",
+      "whenToUse": "Always inside TableHeader or TableBody.",
+      "props": {
+        "class": {
+          "type": "string",
+          "required": true,
+          "description": "Use class=\"sg-table-row\" on <tr>."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "TableHead",
+      "description": "Table header cell (<th>).",
+      "whenToUse": "Always inside a TableRow within TableHeader.",
+      "props": {
+        "class": {
+          "type": "string",
+          "required": true,
+          "description": "Use class=\"sg-table-head\" on <th>."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "TableCell",
+      "description": "Table data cell (<td>).",
+      "whenToUse": "Always inside a TableRow within TableBody.",
+      "props": {
+        "class": {
+          "type": "string",
+          "required": true,
+          "description": "Use class=\"sg-table-cell\" on <td>."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "TableFooter",
+      "description": "Table footer section (<tfoot>) for summaries and totals.",
+      "whenToUse": "Inside a Table, after TableBody, when displaying aggregated data.",
+      "props": {
+        "class": {
+          "type": "string",
+          "required": true,
+          "description": "Use class=\"sg-table-footer\" on <tfoot>."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "TableCaption",
+      "description": "Table caption for accessibility and context (<caption>).",
+      "whenToUse": "Inside a Table to provide a title or description for screen readers.",
+      "semanticRole": "caption",
+      "props": {
+        "class": {
+          "type": "string",
+          "required": true,
+          "description": "Use class=\"sg-table-caption\" on <caption>."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "table.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/native/table",
+    "label": "Table",
+    "group": "native",
+    "description": "Semantic HTML table elements with SigUI classes"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Basic Table",
+            "language": "svelte",
+            "code": "<table class=\"sg-table\" aria-label=\"Users table\">\n  <thead class=\"sg-table-header\">\n    <tr class=\"sg-table-row\">\n      <th class=\"sg-table-head\">Name</th>\n      <th class=\"sg-table-head\">Email</th>\n      <th class=\"sg-table-head\">Role</th>\n    </tr>\n  </thead>\n  <tbody class=\"sg-table-body\">\n    <tr class=\"sg-table-row\">\n      <td class=\"sg-table-cell\">Alice Johnson</td>\n      <td class=\"sg-table-cell\">alice@example.com</td>\n      <td class=\"sg-table-cell\">Admin</td>\n    </tr>\n    <tr class=\"sg-table-row\">\n      <td class=\"sg-table-cell\">Bob Smith</td>\n      <td class=\"sg-table-cell\">bob@example.com</td>\n      <td class=\"sg-table-cell\">Editor</td>\n    </tr>\n    <tr class=\"sg-table-row\">\n      <td class=\"sg-table-cell\">Carol White</td>\n      <td class=\"sg-table-cell\">carol@example.com</td>\n      <td class=\"sg-table-cell\">Viewer</td>\n    </tr>\n  </tbody>\n</table>"
+          },
+          {
+            "title": "Striped Table",
+            "language": "svelte",
+            "code": "<table class=\"sg-table\" data-striped aria-label=\"Invoices table\">\n  <caption class=\"sg-table-caption\">\n    A list of your recent invoices.\n  </caption>\n  <thead class=\"sg-table-header\">\n    <tr class=\"sg-table-row\">\n      <th class=\"sg-table-head\">Invoice</th>\n      <th class=\"sg-table-head\">Status</th>\n      <th class=\"sg-table-head\">Method</th>\n      <th class=\"sg-table-head\">Amount</th>\n    </tr>\n  </thead>\n  <tbody class=\"sg-table-body\">\n    <tr class=\"sg-table-row\">\n      <td class=\"sg-table-cell\">INV001</td>\n      <td class=\"sg-table-cell\">Paid</td>\n      <td class=\"sg-table-cell\">Credit Card</td>\n      <td class=\"sg-table-cell\">$250.00</td>\n    </tr>\n    <tr class=\"sg-table-row\">\n      <td class=\"sg-table-cell\">INV002</td>\n      <td class=\"sg-table-cell\">Pending</td>\n      <td class=\"sg-table-cell\">PayPal</td>\n      <td class=\"sg-table-cell\">$150.00</td>\n    </tr>\n    <tr class=\"sg-table-row\">\n      <td class=\"sg-table-cell\">INV003</td>\n      <td class=\"sg-table-cell\">Unpaid</td>\n      <td class=\"sg-table-cell\">Bank Transfer</td>\n      <td class=\"sg-table-cell\">$350.00</td>\n    </tr>\n    <tr class=\"sg-table-row\">\n      <td class=\"sg-table-cell\">INV004</td>\n      <td class=\"sg-table-cell\">Paid</td>\n      <td class=\"sg-table-cell\">Credit Card</td>\n      <td class=\"sg-table-cell\">$450.00</td>\n    </tr>\n  </tbody>\n  <tfoot class=\"sg-table-footer\">\n    <tr class=\"sg-table-row\">\n      <td class=\"sg-table-cell\">Total</td>\n      <td class=\"sg-table-cell\"></td>\n      <td class=\"sg-table-cell\"></td>\n      <td class=\"sg-table-cell\">$1,200.00</td>\n    </tr>\n  </tfoot>\n</table>"
+          }
+        ]
+      }
+    ]
+  }
+}

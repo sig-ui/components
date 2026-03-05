@@ -1,0 +1,167 @@
+{
+  "name": "CommandRoot",
+  "importPath": "sg/command",
+  "category": "navigation",
+  "description": "Root controller for a command palette (cmdk pattern). Standalone filterable list, typically rendered inside Dialog.",
+  "whenToUse": "Command palettes, searchable action lists, keyboard-driven navigation.",
+  "avoidWhen": "Simple dropdown selection - use Select or Combobox.",
+  "semanticRole": "listbox",
+  "accessibilityRequirements": "Arrow keys navigate items. Enter selects. Built-in string matching filter.",
+  "parts": [
+    {
+      "name": "CommandRoot",
+      "props": {
+        "onselect": {
+          "type": "(value: string) => void",
+          "description": "Called when an item is selected."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "CommandDialog",
+      "description": "Dialog wrapper for a command palette, typically containing CommandRoot.",
+      "whenToUse": "Global command palette opened via keyboard shortcut (for example Cmd/Ctrl+K).",
+      "semanticRole": "dialog",
+      "accessibilityRequirements": "Provide accessible labeling via aria-label or aria-labelledby.",
+      "props": {
+        "open": {
+          "type": "boolean",
+          "default": false,
+          "description": "Controlled open state. Bindable."
+        },
+        "aria-label": {
+          "type": "string",
+          "description": "Accessible dialog label. Defaults to 'Command palette'."
+        },
+        "aria-describedby": {
+          "type": "string",
+          "description": "ID of element describing the dialog."
+        },
+        "aria-labelledby": {
+          "type": "string",
+          "description": "ID of element labeling the dialog."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "CommandInput",
+      "description": "Search input for filtering Command items.",
+      "whenToUse": "Always inside a CommandRoot.",
+      "slots": []
+    },
+    {
+      "name": "CommandList",
+      "description": "Scrollable list container for Command items.",
+      "whenToUse": "Always inside a CommandRoot.",
+      "semanticRole": "listbox",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "CommandItem",
+      "description": "Single selectable item in a Command list. Auto-filtered by search query.",
+      "whenToUse": "Always inside CommandList.",
+      "semanticRole": "option",
+      "props": {
+        "value": {
+          "type": "string",
+          "required": true,
+          "description": "Item value used for selection and filtering."
+        },
+        "disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disables this item."
+        },
+        "keywords": {
+          "type": "string[]",
+          "description": "Additional search terms for filtering."
+        },
+        "onselect": {
+          "type": "() => void",
+          "description": "Called when this item is selected."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "CommandEmpty",
+      "description": "Content shown when no Command items match the search.",
+      "whenToUse": "Always inside CommandList.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "CommandGroup",
+      "description": "Group of related Command items with optional heading.",
+      "whenToUse": "Inside CommandList to organize items into labeled sections.",
+      "semanticRole": "group",
+      "props": {
+        "heading": {
+          "type": "string",
+          "description": "Group heading text."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "CommandSeparator",
+      "description": "Visual separator between Command groups.",
+      "whenToUse": "Between CommandGroups inside CommandList.",
+      "semanticRole": "separator",
+      "slots": []
+    },
+    {
+      "name": "CommandShortcut",
+      "description": "Right-aligned keyboard shortcut hint within a command item.",
+      "whenToUse": "Inside CommandItem to display associated key bindings.",
+      "semanticRole": "presentation",
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "command.css",
+      "command.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/command",
+    "label": "Command",
+    "group": "overlays",
+    "subgroup": "selection-and-command",
+    "description": "Command palette with search and groups"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Command Palette",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-commandroot-1\">\n  <sg-command-root aria-label=\"Command menu\">\n      <sg-command-input placeholder=\"Type a command...\" />\n      <sg-command-list>\n          <sg-command-group heading=\"Actions\">\n              <sg-command-item value=\"new-file\">New File</sg-command-item>\n              <sg-command-item value=\"save\">Save</sg-command-item>\n              <sg-command-item value=\"copy\">Copy</sg-command-item>\n          </sg-command-group>\n          <sg-command-separator />\n          <sg-command-group heading=\"Navigation\">\n              <sg-command-item value=\"home\">Home</sg-command-item>\n              <sg-command-item value=\"settings\">Settings</sg-command-item>\n              <sg-command-item value=\"profile\">Profile</sg-command-item>\n          </sg-command-group>\n          <sg-command-empty>No results found</sg-command-empty>\n      </sg-command-list>\n  </sg-command-root>\n</div>",
+            "css": ".sg-demo-commandroot-1 {\n  max-width: 400px; border: var(--sg-border-thin) solid var(--sg-color-border); border-radius: var(--sg-radius-md); overflow: hidden\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

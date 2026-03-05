@@ -1,0 +1,155 @@
+{
+  "name": "AlertDialogRoot",
+  "importPath": "sg/alert-dialog",
+  "category": "overlay",
+  "description": "Root controller for an alert dialog that requires user action. Uses native <dialog>. Blocks Escape key - user must take explicit action.",
+  "whenToUse": "Destructive actions requiring confirmation (delete, discard, irreversible changes).",
+  "avoidWhen": "Non-destructive modals - use Dialog. Non-blocking info - use Popover or Toast.",
+  "semanticRole": "alertdialog",
+  "accessibilityRequirements": "AlertDialogContent requires aria-label or aria-labelledby. Escape key is blocked.",
+  "parts": [
+    {
+      "name": "AlertDialogRoot",
+      "props": {
+        "open": {
+          "type": "boolean",
+          "default": false,
+          "description": "Controlled open state. Bindable."
+        },
+        "onclose": {
+          "type": "() => void",
+          "description": "Called when dialog is dismissed via explicit action."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "AlertDialogTrigger",
+      "description": "Button that opens the parent AlertDialog.",
+      "whenToUse": "Always inside an AlertDialogRoot.",
+      "semanticRole": "button",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "AlertDialogContent",
+      "description": "Content panel of an AlertDialog. Uses native <dialog>. Requires aria-label or aria-labelledby.",
+      "whenToUse": "Always inside an AlertDialogRoot.",
+      "semanticRole": "alertdialog",
+      "accessibilityRequirements": "Must have aria-label or aria-labelledby (enforced by ModalLabelProps type).",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "AlertDialogHeader",
+      "description": "Header section of an AlertDialog containing title and description.",
+      "whenToUse": "Always inside AlertDialogContent to provide structured content.",
+      "semanticRole": "group",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "AlertDialogFooter",
+      "description": "Footer section of an AlertDialog containing action buttons.",
+      "whenToUse": "Always inside AlertDialogContent for action buttons.",
+      "semanticRole": "group",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "AlertDialogTitle",
+      "description": "Title heading of an AlertDialog.",
+      "whenToUse": "Always inside AlertDialogHeader.",
+      "semanticRole": "heading",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "AlertDialogDescription",
+      "description": "Description text of an AlertDialog.",
+      "whenToUse": "Always inside AlertDialogHeader.",
+      "semanticRole": "paragraph",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "AlertDialogAction",
+      "description": "Primary action button that closes the AlertDialog.",
+      "whenToUse": "Always inside AlertDialogFooter for confirming the action.",
+      "semanticRole": "button",
+      "props": {
+        "color": {
+          "type": "string",
+          "values": [
+            "primary",
+            "secondary",
+            "danger"
+          ],
+          "default": "primary",
+          "description": "Button color variant."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "AlertDialogCancel",
+      "description": "Cancel button that closes the AlertDialog without taking action.",
+      "whenToUse": "Always inside AlertDialogFooter for cancelling.",
+      "semanticRole": "button",
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "alert-dialog.css",
+      "alert-dialog.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/alert-dialog",
+    "label": "AlertDialog",
+    "group": "overlays",
+    "subgroup": "dialogs-and-popups",
+    "description": "Modal confirmation that requires explicit action"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Destructive Confirmation",
+            "language": "svelte",
+            "code": "<sg-alert-dialog-root open={alertOpen} oninput={(e) => { const el = e.currentTarget as any; alertOpen = (el.open ?? alertOpen); }} onchange={(e) => { const el = e.currentTarget as any; alertOpen = (el.open ?? alertOpen); }} onclick={(e) => { const el = e.currentTarget as any; alertOpen = (el.open ?? alertOpen); }} ontoggle={(e) => { const el = e.currentTarget as any; alertOpen = (el.open ?? alertOpen); }}>\n    <sg-alert-dialog-trigger>\n        <button class=\"sg-button\" data-color=\"danger\" onclick={() => alertOpen = true}>Delete Account</button>\n    </sg-alert-dialog-trigger>\n    <sg-alert-dialog-content aria-label=\"Delete account confirmation\">\n        <sg-alert-dialog-header>\n            <sg-alert-dialog-title>Are you sure?</sg-alert-dialog-title>\n            <sg-alert-dialog-description>This action cannot be undone. Your account and all data will be permanently deleted.</sg-alert-dialog-description>\n        </sg-alert-dialog-header>\n        <sg-alert-dialog-footer>\n            <sg-alert-dialog-cancel>Cancel</sg-alert-dialog-cancel>\n            <sg-alert-dialog-action color=\"danger\">Delete</sg-alert-dialog-action>\n        </sg-alert-dialog-footer>\n    </sg-alert-dialog-content>\n</sg-alert-dialog-root>"
+          },
+          {
+            "title": "Simple Alert",
+            "language": "svelte",
+            "code": "<sg-alert-dialog-root open={deleteOpen} oninput={(e) => { const el = e.currentTarget as any; deleteOpen = (el.open ?? deleteOpen); }} onchange={(e) => { const el = e.currentTarget as any; deleteOpen = (el.open ?? deleteOpen); }} onclick={(e) => { const el = e.currentTarget as any; deleteOpen = (el.open ?? deleteOpen); }} ontoggle={(e) => { const el = e.currentTarget as any; deleteOpen = (el.open ?? deleteOpen); }}>\n    <sg-alert-dialog-trigger>\n        <button class=\"sg-button\" onclick={() => deleteOpen = true}>Show Alert</button>\n    </sg-alert-dialog-trigger>\n    <sg-alert-dialog-content aria-label=\"Cookie consent\">\n        <sg-alert-dialog-header>\n            <sg-alert-dialog-title>Accept Cookies</sg-alert-dialog-title>\n            <sg-alert-dialog-description>We use cookies to enhance your experience. By continuing to browse, you agree to our use of cookies.</sg-alert-dialog-description>\n        </sg-alert-dialog-header>\n        <sg-alert-dialog-footer>\n            <sg-alert-dialog-cancel>Decline</sg-alert-dialog-cancel>\n            <sg-alert-dialog-action>Accept</sg-alert-dialog-action>\n        </sg-alert-dialog-footer>\n    </sg-alert-dialog-content>\n</sg-alert-dialog-root>"
+          },
+          {
+            "title": "Feature Flag",
+            "language": "svelte",
+            "code": "<p class=\"sg-demo-alertdialogroot-1\">AlertDialog machine can be toggled with <code>featureFlags.alertDialogMachine</code>.</p>",
+            "css": ".sg-demo-alertdialogroot-1 {\n  margin: 0; color: var(--sg-color-text-secondary);\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

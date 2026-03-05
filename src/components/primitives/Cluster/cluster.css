@@ -1,0 +1,30 @@
+@layer sigui.base {
+  .sg-cluster {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@layer sigui.variants {
+  .sg-cluster[data-density="compact"]      { --sg-density: 0.75; }
+  .sg-cluster[data-density="comfortable"]  { --sg-density: 1; }
+  .sg-cluster[data-density="spacious"]     { --sg-density: 1.5; }
+
+  .sg-cluster[data-gap="related"]   { --sg-gap-current: calc(var(--sg-gap-related, 0.5rem) * var(--sg-density, 1)); gap: var(--sg-gap-current); }
+  .sg-cluster[data-gap="grouped"]   { --sg-gap-current: calc(var(--sg-gap-grouped, 1rem) * var(--sg-density, 1)); gap: var(--sg-gap-current); }
+  .sg-cluster[data-gap="separated"] { --sg-gap-current: calc(var(--sg-gap-separated, 2rem) * var(--sg-density, 1)); gap: var(--sg-gap-current); }
+  .sg-cluster[data-gap="distinct"]  { --sg-gap-current: calc(var(--sg-gap-distinct, 4rem) * var(--sg-density, 1)); gap: var(--sg-gap-current); }
+
+  .sg-cluster[data-align="start"]   { align-items: flex-start; }
+  .sg-cluster[data-align="center"]  { align-items: center; }
+  .sg-cluster[data-align="end"]     { align-items: flex-end; }
+  .sg-cluster[data-align="stretch"] { align-items: stretch; }
+  .sg-cluster[data-align="baseline"] { align-items: baseline; }
+
+  .sg-cluster[data-justify="start"]         { justify-content: flex-start; }
+  .sg-cluster[data-justify="center"]        { justify-content: center; }
+  .sg-cluster[data-justify="end"]           { justify-content: flex-end; }
+  .sg-cluster[data-justify="space-between"] { justify-content: space-between; }
+  .sg-cluster[data-justify="space-around"]  { justify-content: space-around; }
+  .sg-cluster[data-justify="space-evenly"]  { justify-content: space-evenly; }
+}

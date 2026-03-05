@@ -1,0 +1,8 @@
+.sg-copy-button {
+  cursor: pointer;
+  user-select: none;
+}
+
+.sg-copy-button[data-copied="true"] {
+  opacity: 0.85;
+}

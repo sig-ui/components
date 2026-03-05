@@ -1,0 +1,103 @@
+{
+  "name": "Text",
+  "importPath": "sg/text",
+  "category": "layout",
+  "description": "Typography primitive for body text with size, color, and weight.",
+  "whenToUse": "Rendering body text, captions, labels, or any non-heading text.",
+  "avoidWhen": "You need a heading - use Heading instead.",
+  "semanticRole": "paragraph or inline text",
+  "props": {
+    "size": {
+      "type": "TextSize",
+      "values": [
+        "xs",
+        "sm",
+        "base",
+        "lg"
+      ],
+      "default": "base",
+      "description": "Visual text size."
+    },
+    "color": {
+      "type": "string",
+      "values": [
+        "primary",
+        "secondary",
+        "muted",
+        "danger",
+        "success"
+      ],
+      "default": "primary",
+      "description": "Semantic text color."
+    },
+    "weight": {
+      "type": "string",
+      "values": [
+        "normal",
+        "medium",
+        "semibold",
+        "bold"
+      ],
+      "default": "normal",
+      "description": "Font weight."
+    },
+    "align": {
+      "type": "string",
+      "values": [
+        "left",
+        "center",
+        "right"
+      ],
+      "description": "Text alignment."
+    },
+    "as": {
+      "type": "string",
+      "values": [
+        "p",
+        "span",
+        "div",
+        "label"
+      ],
+      "default": "p",
+      "description": "HTML element to render."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "text.css",
+      "text.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/layout/text",
+    "label": "Text",
+    "group": "layout",
+    "subgroup": "content-typography",
+    "description": "Typography primitive with size, color, and weight"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Size & Color",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"related\">\n    <sg-text size=\"xs\" color=\"muted\">Extra small muted text</sg-text>\n    <sg-text size=\"sm\" color=\"secondary\">Small secondary text</sg-text>\n    <sg-text size=\"base\" color=\"primary\">Base primary text (default)</sg-text>\n    <sg-text size=\"lg\" color=\"success\">Large success text</sg-text>\n    <sg-text size=\"lg\" color=\"danger\">Large danger text</sg-text>\n</sg-stack>"
+          },
+          {
+            "title": "Weight & Alignment",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"related\">\n    <sg-text weight=\"normal\">Normal weight</sg-text>\n    <sg-text weight=\"medium\">Medium weight</sg-text>\n    <sg-text weight=\"semibold\">Semibold weight</sg-text>\n    <sg-text weight=\"bold\">Bold weight</sg-text>\n    <sg-text align=\"center\">Center aligned</sg-text>\n    <sg-text align=\"right\">Right aligned</sg-text>\n</sg-stack>"
+          }
+        ]
+      }
+    ]
+  }
+}

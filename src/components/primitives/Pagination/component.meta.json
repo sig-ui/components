@@ -1,0 +1,126 @@
+{
+  "name": "PaginationRoot",
+  "importPath": "sg/pagination",
+  "category": "navigation",
+  "description": "Pagination navigation for paged content. Renders a <nav> with aria-label.",
+  "whenToUse": "For lists or tables that split content across multiple pages.",
+  "avoidWhen": "For infinite scroll - use intersection observer instead.",
+  "semanticRole": "navigation",
+  "accessibilityRequirements": "aria-label='Pagination' on nav. aria-current='page' on active page.",
+  "parts": [
+    {
+      "name": "PaginationRoot",
+      "props": {
+        "page": {
+          "type": "number",
+          "required": true,
+          "description": "Current active page (1-indexed)"
+        },
+        "total": {
+          "type": "number",
+          "required": true,
+          "description": "Total number of items"
+        },
+        "perPage": {
+          "type": "number",
+          "default": 10,
+          "description": "Items per page"
+        },
+        "siblingCount": {
+          "type": "number",
+          "default": 1,
+          "description": "Number of page buttons on each side of active"
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "PaginationFirst",
+      "description": "First page button. Disabled when on page 1.",
+      "whenToUse": "For quick navigation to the first page of results.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "PaginationPrevious",
+      "description": "Previous page button. Disabled when on page 1.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "PaginationNext",
+      "description": "Next page button. Disabled when on last page.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "PaginationLast",
+      "description": "Last page button. Disabled when on last page.",
+      "whenToUse": "For quick navigation to the last page of results.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "PaginationItems",
+      "description": "Renders the computed page number buttons with ellipsis.",
+      "slots": []
+    },
+    {
+      "name": "PaginationEllipsis",
+      "description": "Standalone ellipsis indicator for skipped pages.",
+      "slots": []
+    }
+  ],
+  "registry": {
+    "files": [
+      "pagination.css",
+      "pagination.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/pagination",
+    "label": "Pagination",
+    "group": "overlays",
+    "subgroup": "navigation-shells",
+    "description": "Page navigation controls"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Basic Pagination",
+            "language": "svelte",
+            "code": "<sg-pagination-root page={page} oninput={(e) => { const el = e.currentTarget as any; page = (el.page ?? page); }} onchange={(e) => { const el = e.currentTarget as any; page = (el.page ?? page); }} onclick={(e) => { const el = e.currentTarget as any; page = (el.page ?? page); }} ontoggle={(e) => { const el = e.currentTarget as any; page = (el.page ?? page); }} total={100} perPage={10} aria-label=\"Pagination\">\n    <sg-pagination-previous />\n    <sg-pagination-items />\n    <sg-pagination-next />\n</sg-pagination-root>\n<p class=\"sg-demo-paginationroot-1\">Current page: {page}</p>",
+            "css": ".sg-demo-paginationroot-1 {\n  margin-top: var(--sg-space-2); color: var(--text-3); font-size: var(--sg-text-sm)\n}"
+          },
+          {
+            "title": "With First/Last Buttons",
+            "language": "svelte",
+            "code": "<sg-pagination-root total={500} perPage={10} aria-label=\"Pagination with first/last\">\n    <sg-pagination-first />\n    <sg-pagination-previous />\n    <sg-pagination-items />\n    <sg-pagination-next />\n    <sg-pagination-last />\n</sg-pagination-root>"
+          },
+          {
+            "title": "Few Pages",
+            "language": "svelte",
+            "code": "<sg-pagination-root total={30} perPage={10} aria-label=\"Short pagination\">\n    <sg-pagination-previous />\n    <sg-pagination-items />\n    <sg-pagination-next />\n</sg-pagination-root>"
+          },
+          {
+            "title": "Custom Labels",
+            "language": "svelte",
+            "code": "<sg-pagination-root total={100} perPage={10} aria-label=\"Custom labels pagination\">\n    <sg-pagination-first>First</sg-pagination-first>\n    <sg-pagination-previous>Prev</sg-pagination-previous>\n    <sg-pagination-items />\n    <sg-pagination-next>Next</sg-pagination-next>\n    <sg-pagination-last>Last</sg-pagination-last>\n</sg-pagination-root>"
+          }
+        ]
+      }
+    ]
+  }
+}

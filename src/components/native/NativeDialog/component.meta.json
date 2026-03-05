@@ -1,0 +1,71 @@
+{
+  "name": "NativeDialog",
+  "importPath": "sg/native-dialog",
+  "category": "overlay",
+  "description": "CSS-only baseline styling for native <dialog>. Apply class=\"sg-native-dialog\" on a <dialog> element. Use .showModal() to open.",
+  "whenToUse": "For simple modal dialogs without needing the full Dialog/AlertDialog component. Use class=\"sg-native-dialog\".",
+  "avoidWhen": "When you need advanced features like nested dialogs, programmatic stacking, or complex composition - use Dialog or AlertDialog.",
+  "semanticRole": "dialog",
+  "accessibilityRequirements": "Native <dialog> provides built-in focus trapping and escape-to-close. Add aria-labelledby for the title.",
+  "props": {
+    "class": {
+      "type": "string",
+      "required": true,
+      "description": "Use class=\"sg-native-dialog\" on the <dialog> element."
+    },
+    "data-size": {
+      "type": "string",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "full"
+      ],
+      "default": "md",
+      "description": "Maximum width of the dialog."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "native-dialog.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/native/dialog",
+    "label": "Dialog",
+    "group": "native",
+    "description": "Baseline native dialog for non-component use"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Basic Dialog",
+            "language": "svelte",
+            "code": "<button class=\"sg-button\" data-color=\"primary\" onclick=\"document.getElementById('sg-native-basic-dialog')?.showModal()\">Open Dialog</button>\n<dialog class=\"sg-native-dialog\" id=\"sg-native-basic-dialog\">\n  <div class=\"sg-native-dialog-header\">\n    <h3 class=\"sg-native-dialog-title\">Confirm Action</h3>\n    <p class=\"sg-native-dialog-description\">This action cannot be undone.</p>\n  </div>\n  <div class=\"sg-native-dialog-body\">\n    <p class=\"sg-demo-nativedialog-1\">Are you sure you want to delete this item? All associated data will be permanently removed.</p>\n  </div>\n  <div class=\"sg-native-dialog-footer\">\n    <button class=\"sg-button\" data-color=\"ghost\" onclick=\"this.closest('dialog')?.close()\">Cancel</button>\n    <button class=\"sg-button\" data-color=\"danger\" onclick=\"this.closest('dialog')?.close()\">Delete</button>\n  </div>\n</dialog>",
+            "css": ".sg-demo-nativedialog-1 {\n  margin: 0;\n}"
+          },
+          {
+            "title": "Small Dialog",
+            "language": "svelte",
+            "code": "<button class=\"sg-button\" data-color=\"secondary\" onclick=\"document.getElementById('sg-native-small-dialog')?.showModal()\">Open Small Dialog</button>\n<dialog class=\"sg-native-dialog\" data-size=\"sm\" id=\"sg-native-small-dialog\">\n  <div class=\"sg-native-dialog-header\">\n    <h3 class=\"sg-native-dialog-title\">Quick Note</h3>\n  </div>\n  <div class=\"sg-native-dialog-body\">\n    <p class=\"sg-demo-nativedialog-1\">This is a compact dialog for simple messages.</p>\n  </div>\n  <div class=\"sg-native-dialog-footer\">\n    <button class=\"sg-button\" data-color=\"primary\" onclick=\"this.closest('dialog')?.close()\">Got it</button>\n  </div>\n</dialog>",
+            "css": ".sg-demo-nativedialog-1 {\n  margin: 0;\n}"
+          },
+          {
+            "title": "Form Dialog",
+            "language": "svelte",
+            "code": "<button class=\"sg-button\" data-color=\"secondary\" onclick=\"document.getElementById('sg-native-form-dialog')?.showModal()\">Open Form Dialog</button>\n<dialog class=\"sg-native-dialog\" id=\"sg-native-form-dialog\">\n  <form method=\"dialog\">\n    <div class=\"sg-native-dialog-header\">\n      <h3 class=\"sg-native-dialog-title\">Edit Profile</h3>\n      <p class=\"sg-native-dialog-description\">Update your display information.</p>\n    </div>\n    <div class=\"sg-native-dialog-body\">\n      <sg-stack gap=\"grouped\">\n        <div class=\"sg-input-wrapper\">\n          <label class=\"sg-input-label\">Display Name</label>\n          <input class=\"sg-input\" type=\"text\" placeholder=\"Your name\" />\n        </div>\n        <div class=\"sg-input-wrapper\">\n          <label class=\"sg-input-label\">Bio</label>\n          <textarea class=\"sg-textarea\" placeholder=\"Tell us about yourself\" rows=\"3\"></textarea>\n        </div>\n      </sg-stack>\n    </div>\n    <div class=\"sg-native-dialog-footer\">\n      <button class=\"sg-button\" data-color=\"ghost\" value=\"cancel\">Cancel</button>\n      <button class=\"sg-button\" data-color=\"primary\" value=\"save\">Save Changes</button>\n    </div>\n  </form>\n</dialog>"
+          }
+        ]
+      }
+    ]
+  }
+}

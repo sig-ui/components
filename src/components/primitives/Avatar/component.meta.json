@@ -1,0 +1,103 @@
+{
+  "name": "Avatar",
+  "importPath": "sg/avatar",
+  "category": "data-display",
+  "description": "User avatar with image, fallback initials, and size variants.",
+  "whenToUse": "Representing a user or entity with their photo or initials.",
+  "avoidWhen": "Displaying a generic icon - use Icon.",
+  "semanticRole": "img",
+  "accessibilityRequirements": "alt is required. Falls back to initials derived from alt text.",
+  "parts": [
+    {
+      "name": "Avatar",
+      "props": {
+        "src": {
+          "type": "string",
+          "description": "Image URL."
+        },
+        "alt": {
+          "type": "string",
+          "required": true,
+          "description": "Alt text - required for accessibility. Initials are derived from this."
+        },
+        "fallback": {
+          "type": "string",
+          "description": "Explicit initials or text shown when image fails."
+        },
+        "size": {
+          "type": "Size",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "description": "Avatar size."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "AvatarImage",
+      "description": "Image element inside an Avatar.",
+      "whenToUse": "Always inside an Avatar.",
+      "slots": []
+    },
+    {
+      "name": "AvatarFallback",
+      "description": "Fallback content when Avatar image is missing.",
+      "whenToUse": "Always inside an Avatar.",
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "avatar.css",
+      "avatar.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/avatar",
+    "label": "Avatar",
+    "group": "data-display",
+    "subgroup": "content-and-media",
+    "description": "User profile images with fallback initials"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Sizes",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\">\n    <sg-avatar size=\"sm\" alt=\"John Doe\" />\n    <sg-avatar size=\"md\" alt=\"Jane Smith\" />\n    <sg-avatar size=\"lg\" alt=\"Bob Wilson\" fallback=\"BW\" />\n</sg-stack>"
+          },
+          {
+            "title": "With Fallback",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\">\n    <sg-avatar alt=\"John Doe\" fallback=\"JD\" />\n    <sg-avatar alt=\"Jane Smith\" fallback=\"JS\" />\n    <sg-avatar alt=\"Bob Wilson\" fallback=\"BW\" />\n</sg-stack>"
+          },
+          {
+            "title": "Avatar Group",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-avatar-1\">\n  <sg-avatar size=\"md\" alt=\"John Doe\" fallback=\"JD\" />\n  <div class=\"sg-demo-avatar-2\">\n    <sg-avatar size=\"md\" alt=\"Jane Smith\" fallback=\"JS\" />\n  </div>\n  <div class=\"sg-demo-avatar-3\">\n    <sg-avatar size=\"md\" alt=\"Bob Wilson\" fallback=\"BW\" />\n  </div>\n  <div class=\"sg-demo-avatar-4\">\n    <sg-avatar size=\"md\" alt=\"Three more\" fallback=\"+3\" />\n  </div>\n</div>",
+            "css": ".sg-demo-avatar-1 {\n  display: flex; gap: 0;\n}\n\n.sg-demo-avatar-2 {\n  margin-left: -0.5rem;\n}\n\n.sg-demo-avatar-3 {\n  margin-left: -0.5rem;\n}\n\n.sg-demo-avatar-4 {\n  margin-left: -0.5rem;\n}"
+          },
+          {
+            "title": "With Image",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\">\n    <sg-avatar size=\"lg\" alt=\"shadcn\" src=\"https://github.com/shadcn.png\" />\n    <sg-avatar size=\"lg\" alt=\"User with fallback\" src=\"invalid-url-to-show-fallback\" fallback=\"UF\" />\n</sg-stack>"
+          }
+        ]
+      }
+    ]
+  }
+}

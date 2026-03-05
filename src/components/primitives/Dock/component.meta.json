@@ -1,0 +1,116 @@
+{
+  "name": "DockRoot",
+  "importPath": "sg/dock",
+  "category": "navigation",
+  "description": "macOS-style magnifying dock container for quick actions.",
+  "whenToUse": "Compact, icon-focused action/navigation bars.",
+  "semanticRole": "toolbar",
+  "parts": [
+    {
+      "name": "DockRoot",
+      "props": {
+        "magnification": {
+          "type": "number",
+          "default": 1.5,
+          "description": "Hover magnification multiplier."
+        },
+        "iconSize": {
+          "type": "number",
+          "default": 12,
+          "description": "Base icon size in SigUI base-unit multiples."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "DockItem",
+      "description": "Single interactive dock item rendered as button or link.",
+      "whenToUse": "Inside DockRoot for each action destination.",
+      "semanticRole": "button or link",
+      "props": {
+        "disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disables item when rendered as a button."
+        },
+        "href": {
+          "type": "string",
+          "description": "When set, renders as link instead of button."
+        },
+        "target": {
+          "type": "string",
+          "values": [
+            "_blank",
+            "_self"
+          ],
+          "description": "Link target when href is set."
+        },
+        "onclick": {
+          "type": "(e: MouseEvent) => void",
+          "description": "Click handler."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "DockSeparator",
+      "description": "Visual separator between dock item groups.",
+      "whenToUse": "Inside DockRoot to divide related clusters of items.",
+      "semanticRole": "separator",
+      "slots": []
+    }
+  ],
+  "registry": {
+    "files": [
+      "dock.css",
+      "dock.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/dock",
+    "label": "Dock",
+    "group": "overlays",
+    "subgroup": "navigation-shells",
+    "description": "macOS-style magnifying dock bar"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Basic dock",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-dockroot-1\">\n  <sg-dock-root aria-label=\"Application dock\">\n    <sg-dock-item aria-label=\"Home\">🏠</sg-dock-item>\n    <sg-dock-item aria-label=\"Search\">🔍</sg-dock-item>\n    <sg-dock-item aria-label=\"Mail\">✉️</sg-dock-item>\n    <sg-dock-item aria-label=\"Calendar\">📅</sg-dock-item>\n    <sg-dock-item aria-label=\"Photos\">📷</sg-dock-item>\n    <sg-dock-item aria-label=\"Music\">🎵</sg-dock-item>\n    <sg-dock-item aria-label=\"Settings\">⚙️</sg-dock-item>\n  </sg-dock-root>\n</div>",
+            "css": ".sg-demo-dockroot-1 {\n  min-height: calc(48px * 1.5 + 1.5rem); display: flex; align-items: flex-end;\n}"
+          },
+          {
+            "title": "Custom magnification (2x)",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-dockroot-1\">\n  <sg-dock-root magnification={2} aria-label=\"Large magnification dock\">\n    <sg-dock-item aria-label=\"Files\">📁</sg-dock-item>\n    <sg-dock-item aria-label=\"Terminal\">💻</sg-dock-item>\n    <sg-dock-item aria-label=\"Browser\">🌐</sg-dock-item>\n    <sg-dock-item aria-label=\"Notes\">📝</sg-dock-item>\n    <sg-dock-item aria-label=\"Chat\">💬</sg-dock-item>\n  </sg-dock-root>\n</div>",
+            "css": ".sg-demo-dockroot-1 {\n  min-height: calc(48px * 2 + 1.5rem); display: flex; align-items: flex-end;\n}"
+          },
+          {
+            "title": "With separators and disabled item",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-dockroot-1\">\n  <sg-dock-root aria-label=\"Dock with groups\">\n    <sg-dock-item aria-label=\"Home\">🏠</sg-dock-item>\n    <sg-dock-item aria-label=\"Search\">🔍</sg-dock-item>\n    <sg-dock-separator />\n    <sg-dock-item aria-label=\"Mail\">✉️</sg-dock-item>\n    <sg-dock-item aria-label=\"Calendar\">📅</sg-dock-item>\n    <sg-dock-separator />\n    <sg-dock-item aria-label=\"Trash\" disabled>🗑️</sg-dock-item>\n    <sg-dock-item aria-label=\"Settings\">⚙️</sg-dock-item>\n  </sg-dock-root>\n</div>",
+            "css": ".sg-demo-dockroot-1 {\n  min-height: calc(48px * 1.5 + 1.5rem); display: flex; align-items: flex-end;\n}"
+          },
+          {
+            "title": "Small icons (8bu)",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-dockroot-1\">\n  <sg-dock-root iconSize={8} aria-label=\"Small dock\">\n    <sg-dock-item aria-label=\"Star\">⭐</sg-dock-item>\n    <sg-dock-item aria-label=\"Heart\">❤️</sg-dock-item>\n    <sg-dock-item aria-label=\"Fire\">🔥</sg-dock-item>\n    <sg-dock-item aria-label=\"Lightning\">⚡</sg-dock-item>\n  </sg-dock-root>\n</div>",
+            "css": ".sg-demo-dockroot-1 {\n  min-height: calc(32px * 1.5 + 1.5rem); display: flex; align-items: flex-end;\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

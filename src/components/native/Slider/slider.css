@@ -1,0 +1,98 @@
+@layer sigui.base {
+  .sg-slider-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sg-gap-tight);
+  }
+
+  .sg-slider-label {
+    font-family: var(--sg-font-family);
+    font-size: var(--sg-text-sm);
+    font-weight: 500;
+    color: var(--sg-color-text);
+  }
+
+  .sg-slider {
+    width: 100%;
+    height: 1.25rem;
+    border-radius: 9999px;
+    background: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+  }
+
+  .sg-slider::-webkit-slider-runnable-track {
+    height: 0.375rem;
+    border-radius: 9999px;
+    background: var(--sg-surface-container-high);
+  }
+
+  .sg-slider::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 9999px;
+    background: var(--sg-color-primary);
+    border: 2px solid var(--sg-color-text-inverse);
+    box-shadow: var(--sg-card-shadow);
+    cursor: pointer;
+    margin-top: -0.4375rem;
+    transition: box-shadow var(--sg-transition-default, 200ms ease-out);
+  }
+
+  .sg-slider::-moz-range-track {
+    height: 0.375rem;
+    border-radius: 9999px;
+    background: var(--sg-surface-container-high);
+    border: none;
+  }
+
+  .sg-slider::-moz-range-thumb {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 9999px;
+    background: var(--sg-color-primary);
+    border: 2px solid var(--sg-color-text-inverse);
+    box-shadow: var(--sg-card-shadow);
+    cursor: pointer;
+  }
+
+}
+
+@layer sigui.states {
+
+  .sg-slider::-webkit-slider-thumb:hover {
+    box-shadow: var(--sg-shadow-dropdown), 0 0 0 3px color-mix(in oklch, var(--sg-color-primary) 15%, transparent);
+  }
+
+  .sg-slider:focus-visible {
+    outline: none;
+  }
+
+  .sg-slider:focus-visible::-webkit-slider-thumb {
+    box-shadow: var(--sg-card-shadow), 0 0 0 var(--sg-focus-width) var(--sg-focus-inner), 0 0 0 calc(var(--sg-focus-width) + var(--sg-focus-offset)) var(--sg-focus-color);
+  }
+
+  .sg-slider:disabled {
+    opacity: var(--sg-disabled-opacity);
+    cursor: not-allowed;
+  }
+
+  .sg-slider:disabled::-webkit-slider-thumb {
+    cursor: not-allowed;
+  }
+
+  .sg-slider:disabled::-moz-range-thumb {
+    cursor: not-allowed;
+  }
+
+  @media (forced-colors: active) {
+    .sg-slider {
+      border: 1px solid ButtonText;
+    }
+  }
+
+
+}

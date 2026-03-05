@@ -1,0 +1,94 @@
+{
+  "name": "InputVariants",
+  "importPath": "sg/input-variants",
+  "category": "form",
+  "description": "Native input type variants (date, time, file, color, datalist) using SigUI input classes.",
+  "whenToUse": "Documenting and styling specialized native input types with existing sg-input utility classes.",
+  "avoidWhen": "Building bespoke picker workflows that need composed behavior (use DatePicker, ColorPicker, or Input components).",
+  "semanticRole": "native input semantics",
+  "props": {
+    "class": {
+      "type": "string",
+      "required": true,
+      "description": "Use class names like sg-input, sg-input-file, and sg-input-color on native input elements."
+    },
+    "type": {
+      "type": "string",
+      "values": [
+        "date",
+        "time",
+        "datetime-local",
+        "file",
+        "color"
+      ],
+      "description": "Native input type variant to render."
+    },
+    "list": {
+      "type": "string",
+      "description": "Optional datalist id for autocomplete suggestions."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "input-variants.css"
+    ],
+    "componentDeps": [
+      "input"
+    ],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/native/input-variants",
+    "label": "Input Variants",
+    "group": "native",
+    "description": "Date, time, file, color, and datalist inputs"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Date Input",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\" class=\"sg-demo-inputvariants-1\">\n  <div class=\"sg-input-wrapper\">\n    <label class=\"sg-input-label\">Date</label>\n    <input class=\"sg-input\" type=\"date\" />\n  </div>\n  <div class=\"sg-input-wrapper\">\n    <label class=\"sg-input-label\">Date (pre-filled)</label>\n    <input class=\"sg-input\" type=\"date\" value=\"2026-03-04\" />\n  </div>\n</sg-stack>",
+            "css": ".sg-demo-inputvariants-1 {\n  max-width: 300px;\n}"
+          },
+          {
+            "title": "Time Input",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\" class=\"sg-demo-inputvariants-1\">\n  <div class=\"sg-input-wrapper\">\n    <label class=\"sg-input-label\">Time</label>\n    <input class=\"sg-input\" type=\"time\" />\n  </div>\n  <div class=\"sg-input-wrapper\">\n    <label class=\"sg-input-label\">Time (pre-filled)</label>\n    <input class=\"sg-input\" type=\"time\" value=\"14:30\" />\n  </div>\n</sg-stack>",
+            "css": ".sg-demo-inputvariants-1 {\n  max-width: 300px;\n}"
+          },
+          {
+            "title": "DateTime-Local Input",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\" class=\"sg-demo-inputvariants-1\">\n  <div class=\"sg-input-wrapper\">\n    <label class=\"sg-input-label\">Date & Time</label>\n    <input class=\"sg-input\" type=\"datetime-local\" />\n  </div>\n  <div class=\"sg-input-wrapper\">\n    <label class=\"sg-input-label\">Date & Time (pre-filled)</label>\n    <input class=\"sg-input\" type=\"datetime-local\" value=\"2026-03-04T14:30\" />\n  </div>\n</sg-stack>",
+            "css": ".sg-demo-inputvariants-1 {\n  max-width: 300px;\n}"
+          },
+          {
+            "title": "File Input",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\" class=\"sg-demo-inputvariants-1\">\n  <div class=\"sg-input-wrapper\">\n    <label class=\"sg-input-label\">Upload file</label>\n    <input class=\"sg-input-file\" type=\"file\" />\n  </div>\n  <div class=\"sg-input-wrapper\">\n    <label class=\"sg-input-label\">Upload images</label>\n    <input class=\"sg-input-file\" type=\"file\" multiple accept=\"image/*\" />\n  </div>\n</sg-stack>",
+            "css": ".sg-demo-inputvariants-1 {\n  max-width: 400px;\n}"
+          },
+          {
+            "title": "Color Input",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"grouped\" align=\"end\" wrap={true}>\n  <div class=\"sg-input-wrapper\">\n    <label class=\"sg-input-label\">Brand Color</label>\n    <input class=\"sg-input-color\" type=\"color\" value=\"#6366f1\" />\n  </div>\n  <div class=\"sg-input-wrapper\">\n    <label class=\"sg-input-label\">Accent</label>\n    <input class=\"sg-input-color\" type=\"color\" value=\"#f97316\" />\n  </div>\n  <div class=\"sg-input-wrapper\">\n    <label class=\"sg-input-label\">Background</label>\n    <input class=\"sg-input-color\" type=\"color\" value=\"#ffffff\" />\n  </div>\n</sg-stack>"
+          },
+          {
+            "title": "Datalist (Autocomplete)",
+            "language": "svelte",
+            "code": "<div class=\"sg-input-wrapper sg-demo-inputvariants-1\">\n  <label class=\"sg-input-label\">Browser</label>\n  <input class=\"sg-input\" list=\"browsers-demo\" placeholder=\"Start typing...\" />\n  <datalist id=\"browsers-demo\">\n    <option value=\"Chrome\" />\n    <option value=\"Firefox\" />\n    <option value=\"Safari\" />\n    <option value=\"Edge\" />\n    <option value=\"Opera\" />\n    <option value=\"Brave\" />\n    <option value=\"Arc\" />\n  </datalist>\n  <span class=\"sg-input-description\">Type to see suggestions from the datalist.</span>\n</div>",
+            "css": ".sg-demo-inputvariants-1 {\n  max-width: 300px;\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,153 @@
+@layer sigui.states {
+  /* Disabled */
+  [data-disabled] {
+    opacity: var(--sg-disabled-opacity, 0.38);
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
+  /* Popover-attribute layer entrance/exit (Menu, Popover, Select) */
+  .sg-popover,
+  .sg-menu-content,
+  .sg-select-content {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition:
+      opacity var(--sg-duration-fast, 100ms) var(--sg-ease-default, ease-out),
+      transform var(--sg-duration-fast, 100ms) var(--sg-ease-default, ease-out),
+      overlay var(--sg-duration-fast, 100ms) var(--sg-ease-default, ease-out) allow-discrete,
+      display var(--sg-duration-fast, 100ms) var(--sg-ease-default, ease-out) allow-discrete;
+  }
+
+  @starting-style {
+    .sg-popover,
+    .sg-menu-content,
+    .sg-select-content {
+      opacity: 0;
+      transform: translateY(4px) scale(0.98);
+    }
+  }
+
+  .sg-popover:not(:popover-open),
+  .sg-menu-content:not(:popover-open),
+  .sg-select-content:not(:popover-open) {
+    opacity: 0;
+    transform: translateY(4px) scale(0.98);
+  }
+
+  /* Conditional-render layer entrance (Tooltip, HoverCard, etc.) */
+  @keyframes sg-layer-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px) scale(0.98);
+    }
+  }
+
+  @keyframes sg-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .sg-tooltip,
+  .sg-hover-card,
+  .sg-combobox-content,
+  .sg-context-menu-content,
+  .sg-date-picker-content,
+  .sg-nav-menu-content {
+    animation: sg-layer-in var(--sg-duration-fast, 100ms) var(--sg-ease-default, ease-out);
+  }
+
+  @media (forced-colors: active) {
+
+    :focus-visible {
+      outline: 2px solid Highlight;
+      outline-offset: 2px;
+      box-shadow: none;
+    }
+
+    input, select, textarea, button {
+      border: 1px solid ButtonText;
+    }
+
+    [disabled], [aria-disabled="true"] {
+      color: GrayText;
+      border-color: GrayText;
+      opacity: 1;
+    }
+
+    [data-disabled] {
+      color: GrayText;
+      border-color: GrayText;
+      opacity: 1;
+    }
+
+    a { color: LinkText; text-decoration: underline; }
+
+    [aria-selected="true"],
+    [aria-checked="true"],
+    [aria-pressed="true"] {
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+
+    /* Button */
+
+    /* Checkbox / Switch / Radio */
+
+    /* Select */
+
+    /* Tabs */
+
+    /* Accordion */
+
+    /* NativeAccordion */
+
+    /* Dialog / Sheet / AlertDialog */
+
+    /* Card */
+
+    /* Toggle */
+
+    /* Badge link */
+
+    /* Slider */
+
+    /* Toast */
+
+    /* Tooltip / Popover / HoverCard / Menu */
+
+    /* Combobox */
+
+    /* Menubar */
+
+    /* NavigationMenu */
+
+    /* DatePicker */
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    @starting-style {
+      .sg-popover,
+      .sg-menu-content,
+      .sg-select-content {
+        opacity: 0;
+        transform: none;
+      }
+    }
+
+    /* Button: remove spatial press feedback */
+
+    /* Dock: disable magnification wave */
+
+    /* Layers: fade-only, no translate/scale */
+
+    /* Dialog: fade-only, no scale */
+
+    /* Dialog @starting-style: fade only, no scale */
+
+    /* Checkbox/Radio: remove pop/scale animations */
+
+    /* Popover layers: fade only */
+  }
+
+}

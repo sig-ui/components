@@ -1,0 +1,104 @@
+{
+  "name": "Badge",
+  "importPath": "sg/badge",
+  "category": "basic",
+  "description": "Inline status label with color, size, and optional link. Auto-detects low-contrast backgrounds and adds a dashed outline.",
+  "whenToUse": "Displaying short status indicators, counts, or labels alongside other content. Use href to render as a clickable link.",
+  "avoidWhen": "You need a full status message - use Toast or an alert pattern.",
+  "semanticRole": "status",
+  "props": {
+    "color": {
+      "type": "ColorVariant",
+      "values": [
+        "primary",
+        "secondary",
+        "danger",
+        "success",
+        "warning",
+        "info",
+        "ghost"
+      ],
+      "default": "primary",
+      "description": "Semantic color indicating status."
+    },
+    "size": {
+      "type": "Size",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "md",
+      "description": "Badge size."
+    },
+    "icon": {
+      "type": "string",
+      "description": "Material Symbols icon name. Rendered before badge text."
+    },
+    "href": {
+      "type": "string",
+      "description": "Renders as <a> when set."
+    },
+    "target": {
+      "type": "\"_blank\" | \"_self\"",
+      "description": "Link target. Auto-sets rel='noopener noreferrer' when '_blank'."
+    },
+    "rel": {
+      "type": "string",
+      "description": "Link rel attribute."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "badge.css",
+      "badge.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/forms/badge",
+    "label": "Badge",
+    "group": "forms",
+    "subgroup": "actions-and-affordances",
+    "description": "Status indicators and labels"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Variants",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\" wrap={true}>\n    <sg-badge color=\"primary\">Primary</sg-badge>\n    <sg-badge color=\"secondary\">Secondary</sg-badge>\n    <sg-badge color=\"danger\">Error</sg-badge>\n    <sg-badge color=\"success\">Active</sg-badge>\n    <sg-badge color=\"warning\">Pending</sg-badge>\n    <sg-badge color=\"info\">Info</sg-badge>\n    <sg-badge color=\"outline\">Outline</sg-badge>\n    <sg-badge color=\"ghost\">Draft</sg-badge>\n</sg-stack>"
+          },
+          {
+            "title": "Sizes",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\" wrap={true}>\n    <sg-badge size=\"sm\" color=\"primary\">Small</sg-badge>\n    <sg-badge size=\"md\" color=\"primary\">Medium</sg-badge>\n    <sg-badge size=\"lg\" color=\"primary\">Large</sg-badge>\n</sg-stack>"
+          },
+          {
+            "title": "With Icon",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\" wrap={true}>\n    <sg-badge color=\"success\"><sg-icon name=\"check\" label=\"check\" /> Deployed</sg-badge>\n    <sg-badge color=\"danger\"><sg-icon name=\"close\" label=\"error\" /> Failed</sg-badge>\n    <sg-badge color=\"warning\"><sg-icon name=\"warning\" label=\"warning\" /> Pending</sg-badge>\n    <sg-badge color=\"info\"><sg-icon name=\"info\" label=\"info\" /> Beta</sg-badge>\n</sg-stack>"
+          },
+          {
+            "title": "Link Badge",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\" wrap={true}>\n    <sg-badge href=\"https://example.com\" target=\"_blank\" color=\"primary\">View docs</sg-badge>\n    <sg-badge href=\"/components\" color=\"secondary\">Components</sg-badge>\n    <sg-badge href=\"https://example.com\" target=\"_blank\" color=\"outline\">GitHub</sg-badge>\n</sg-stack>"
+          },
+          {
+            "title": "Notification Badges",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\" wrap={true}>\n    <sg-badge color=\"primary\" size=\"sm\">8</sg-badge>\n    <sg-badge color=\"danger\" size=\"sm\">99</sg-badge>\n    <sg-badge color=\"outline\" size=\"sm\">20+</sg-badge>\n</sg-stack>"
+          }
+        ]
+      }
+    ]
+  }
+}

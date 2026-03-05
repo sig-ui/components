@@ -1,0 +1,13 @@
+.sg-progress-ring {
+  --sg-progress-ring-size: 2.5rem;
+  --sg-progress-ring-track: color-mix(in oklab, currentColor 20%, transparent);
+  --sg-progress-ring-fill: currentColor;
+  display: inline-grid;
+  place-items: center;
+  inline-size: var(--sg-progress-ring-size);
+  block-size: var(--sg-progress-ring-size);
+  border-radius: 50%;
+  background:
+    radial-gradient(closest-side, transparent calc(100% - 0.25rem), white calc(100% - 0.24rem) 99.9%, transparent),
+    conic-gradient(var(--sg-progress-ring-fill) var(--sg-progress-ring-value, 0%), var(--sg-progress-ring-track) 0);
+}

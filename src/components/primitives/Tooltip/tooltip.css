@@ -1,0 +1,26 @@
+@layer sigui.base {
+  .sg-tooltip-root {
+    position: relative;
+    display: inline-block;
+  }
+
+  .sg-tooltip {
+    position: absolute;
+    background: var(--sg-color-text);
+    color: var(--sg-color-text-inverse);
+    padding: var(--sg-gap-tight, 0.25rem) var(--sg-gap-related, 0.5rem);
+    border-radius: var(--sg-input-radius, 0.25rem);
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-xs, 0.6875rem);
+    line-height: var(--sg-leading-normal, 1.4);
+    max-width: 20rem;
+    z-index: var(--sg-z-popover, 50);
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+
+}
+
+@layer sigui.states {
+}

@@ -1,0 +1,55 @@
+{
+  "name": "Callout",
+  "importPath": "sg/callout",
+  "category": "feedback",
+  "description": "In-flow message container for emphasized status or guidance.",
+  "whenToUse": "Highlighting warnings, tips, success states, or critical inline messages.",
+  "avoidWhen": "Transient notifications that should auto-dismiss (use Toast).",
+  "semanticRole": "status",
+  "props": {
+    "variant": {
+      "type": "string",
+      "values": [
+        "default",
+        "success",
+        "warning",
+        "danger"
+      ],
+      "default": "default",
+      "description": "Visual emphasis variant."
+    },
+    "size": {
+      "type": "Size",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "md",
+      "description": "Callout size scale."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "callout.css",
+      "callout.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/callout",
+    "label": "Callout",
+    "group": "data-display",
+    "subgroup": "status-feedback",
+    "description": "Emphasized in-flow contextual block"
+  },
+  "page": {
+    "title": "Contextual emphasis block",
+    "code": "<sg-callout variant=\"warning\">This action is permanent and cannot be undone.</sg-callout>"
+  }
+}

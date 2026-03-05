@@ -1,0 +1,141 @@
+{
+  "name": "DataTableRoot",
+  "importPath": "sg/datatable",
+  "category": "data-display",
+  "description": "Root controller for a sortable, paginated data table. Wraps existing Table styles with sort/pagination state.",
+  "whenToUse": "Tabular data with sorting and/or pagination needs.",
+  "avoidWhen": "Simple static tables - use Table. Card layouts - use Grid + Card.",
+  "semanticRole": "table",
+  "accessibilityRequirements": "Uses native <table> semantics. Sort headers use aria-sort.",
+  "parts": [
+    {
+      "name": "DataTableRoot",
+      "props": {
+        "sortColumn": {
+          "type": "string",
+          "description": "Currently sorted column name."
+        },
+        "sortDirection": {
+          "type": "string",
+          "values": [
+            "asc",
+            "desc"
+          ],
+          "default": "asc",
+          "description": "Sort direction."
+        },
+        "page": {
+          "type": "number",
+          "default": 1,
+          "description": "Current page number."
+        },
+        "pageSize": {
+          "type": "number",
+          "default": 10,
+          "description": "Items per page."
+        },
+        "totalItems": {
+          "type": "number",
+          "default": 0,
+          "description": "Total number of items for pagination."
+        },
+        "onsort": {
+          "type": "(column: string, direction: SortDirection) => void",
+          "description": "Called when sort changes."
+        },
+        "onpagechange": {
+          "type": "(page: number) => void",
+          "description": "Called when page changes."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "DataTableHeader",
+      "description": "Table header section for DataTable (<thead>).",
+      "whenToUse": "Always inside a DataTableRoot.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "DataTableBody",
+      "description": "Table body section for DataTable (<tbody>).",
+      "whenToUse": "Always inside a DataTableRoot.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "DataTableRow",
+      "description": "Table row for DataTable (<tr>).",
+      "whenToUse": "Always inside DataTableHeader or DataTableBody.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "DataTableHead",
+      "description": "Sortable table header cell for DataTable. Clicking toggles sort direction.",
+      "whenToUse": "Inside a DataTableRow within DataTableHeader.",
+      "semanticRole": "columnheader",
+      "accessibilityRequirements": "Uses aria-sort to indicate current sort state.",
+      "props": {
+        "column": {
+          "type": "string",
+          "required": true,
+          "description": "Column identifier for sorting."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "DataTableCell",
+      "description": "Table data cell for DataTable (<td>).",
+      "whenToUse": "Inside a DataTableRow within DataTableBody.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "DataTablePagination",
+      "description": "Pagination controls for DataTable with Previous/Next buttons and page indicator.",
+      "whenToUse": "After the DataTable table element, inside DataTableRoot.",
+      "slots": []
+    }
+  ],
+  "registry": {
+    "files": [
+      "data-table.js",
+      "data-table.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/data-table",
+    "label": "DataTable",
+    "group": "data-display",
+    "subgroup": "visualization-and-browsing",
+    "description": "Sortable table with pagination"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Sortable Table with Pagination",
+            "language": "svelte",
+            "code": "<sg-data-table-root sortColumn={sortColumn} sortDirection={sortDirection} page={page} oninput={(e) => { const el = e.currentTarget as any; sortColumn = (el.sortColumn ?? sortColumn); sortDirection = (el.sortDirection ?? sortDirection); page = (el.page ?? page); }} onchange={(e) => { const el = e.currentTarget as any; sortColumn = (el.sortColumn ?? sortColumn); sortDirection = (el.sortDirection ?? sortDirection); page = (el.page ?? page); }} onclick={(e) => { const el = e.currentTarget as any; sortColumn = (el.sortColumn ?? sortColumn); sortDirection = (el.sortDirection ?? sortDirection); page = (el.page ?? page); }} ontoggle={(e) => { const el = e.currentTarget as any; sortColumn = (el.sortColumn ?? sortColumn); sortDirection = (el.sortDirection ?? sortDirection); page = (el.page ?? page); }} pageSize={3} totalItems={rows.length} aria-label=\"Users table\">\n    <sg-data-table-header>\n        <sg-data-table-row>\n            <sg-data-table-head column=\"name\">Name</sg-data-table-head>\n            <sg-data-table-head column=\"email\">Email</sg-data-table-head>\n            <sg-data-table-head column=\"role\">Role</sg-data-table-head>\n        </sg-data-table-row>\n    </sg-data-table-header>\n    <sg-data-table-body>\n        {#each rows.slice((page - 1) * 3, page * 3) as row}\n          <sg-data-table-row>\n              <sg-data-table-cell>{row.name}</sg-data-table-cell>\n              <sg-data-table-cell>{row.email}</sg-data-table-cell>\n              <sg-data-table-cell>{row.role}</sg-data-table-cell>\n          </sg-data-table-row>\n        {/each}\n    </sg-data-table-body>\n    <sg-data-table-pagination />\n</sg-data-table-root>"
+          }
+        ]
+      }
+    ]
+  }
+}

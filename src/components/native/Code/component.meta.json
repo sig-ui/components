@@ -1,0 +1,76 @@
+{
+  "name": "Code",
+  "importPath": "sg/code",
+  "category": "basic",
+  "description": "CSS-only inline code styles. Apply class=\"sg-code\" on a native <code>.",
+  "whenToUse": "Displaying inline code, variable names, file paths, or short highlighted snippets within text.",
+  "avoidWhen": "Keyboard shortcuts (use Kbd). Multi-line code blocks (use CodeBlock).",
+  "semanticRole": "none (semantic <code> element)",
+  "props": {
+    "class": {
+      "type": "string",
+      "required": true,
+      "description": "Use class=\"sg-code\" on a native <code> element."
+    },
+    "data-color": {
+      "type": "string",
+      "values": [
+        "default",
+        "primary",
+        "muted"
+      ],
+      "default": "default",
+      "description": "Color variant for the inline code."
+    },
+    "data-lang": {
+      "type": "string",
+      "description": "Optional language key (for example: 'typescript')."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "code.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/native/code",
+    "label": "Code",
+    "group": "native",
+    "description": "Inline code element for variable names and snippets"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Inline Code",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"related\">\n    <sg-text>\n      Use the <code class=\"sg-code\">console.log()</code> function to debug.\n    </sg-text>\n    <sg-text>\n      Set the <code class=\"sg-code\">NODE_ENV</code> variable before running.\n    </sg-text>\n</sg-stack>"
+          },
+          {
+            "title": "Color Variants",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\" wrap={true}>\n    <code class=\"sg-code\" data-color=\"default\">default</code>\n    <code class=\"sg-code\" data-color=\"primary\">primary</code>\n    <code class=\"sg-code\" data-color=\"muted\">muted</code>\n</sg-stack>"
+          },
+          {
+            "title": "In Prose",
+            "language": "svelte",
+            "code": "<sg-text>\n    Install dependencies with <code class=\"sg-code\">bun install</code>,\n    then run <code class=\"sg-code\">bun dev</code> to start the server.\n    Configuration lives in <code class=\"sg-code\">sigui.config.ts</code>.\n</sg-text>"
+          },
+          {
+            "title": "HLJS Highlighting",
+            "language": "svelte",
+            "code": "<code class=\"sg-code\" data-lang=\"typescript\">\n  import { defineConfig } from \"@sig-ui/cli\";\n</code>"
+          }
+        ]
+      }
+    ]
+  }
+}

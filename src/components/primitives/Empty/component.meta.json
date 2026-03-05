@@ -1,0 +1,58 @@
+{
+  "name": "Empty",
+  "importPath": "sg/empty",
+  "category": "feedback",
+  "description": "Empty state placeholder with optional icon, title, description, and action slots.",
+  "whenToUse": "When a list, table, or section has no content to display.",
+  "avoidWhen": "For error states - use Alert instead.",
+  "props": {
+    "title": {
+      "type": "string",
+      "description": "Empty state heading"
+    },
+    "description": {
+      "type": "string",
+      "description": "Explanatory text"
+    }
+  },
+  "slots": [
+    "default",
+    "icon",
+    "actions"
+  ],
+  "registry": {
+    "files": [
+      "empty.css",
+      "empty.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/empty",
+    "label": "Empty",
+    "group": "data-display",
+    "subgroup": "status-feedback",
+    "description": "Empty state placeholder with actions"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Empty State",
+            "language": "svelte",
+            "code": "<sg-empty title=\"No results found\" description=\"Try adjusting your search or filter to find what you're looking for.\">\n  <div slot=\"actions\">\n    <button class=\"sg-button\" data-color=\"primary\">Create New</button>\n  </div>\n</sg-empty>"
+          },
+          {
+            "title": "Minimal Empty",
+            "language": "svelte",
+            "code": "<sg-empty title=\"No items yet\" description=\"Items you add will appear here.\" />"
+          }
+        ]
+      }
+    ]
+  }
+}

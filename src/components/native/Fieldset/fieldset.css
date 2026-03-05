@@ -1,0 +1,36 @@
+@layer sigui.base {
+  .sg-fieldset {
+    border: 1px solid var(--sg-color-border-light);
+    border-radius: var(--sg-input-radius, 0.375rem);
+    padding: var(--sg-gap-grouped, 1rem);
+    padding-top: var(--sg-pad-input, 0.75rem);
+    margin: 0;
+    font-family: var(--sg-font-family, system-ui);
+  }
+
+  .sg-fieldset > .sg-legend {
+    padding-inline: var(--sg-gap-related, 0.5rem);
+    font-size: var(--sg-text-sm, 0.875rem);
+    font-weight: 600;
+    color: var(--sg-color-text);
+    line-height: var(--sg-leading-tight, 1.25);
+  }
+
+  .sg-fieldset > .sg-legend-description {
+    font-size: var(--sg-text-xs, 0.6875rem);
+    color: var(--sg-color-text-muted);
+    margin-top: var(--sg-gap-tight, 0.25rem);
+    margin-bottom: var(--sg-pad-input, 0.75rem);
+  }
+}
+
+@layer sigui.states {
+  .sg-fieldset:disabled {
+    opacity: var(--sg-disabled-opacity, 0.38);
+    cursor: not-allowed;
+  }
+
+  .sg-fieldset:disabled * {
+    pointer-events: none;
+  }
+}

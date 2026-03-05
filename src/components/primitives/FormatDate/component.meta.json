@@ -1,0 +1,61 @@
+{
+  "name": "FormatDate",
+  "importPath": "sg/format-date",
+  "category": "data-display",
+  "description": "Localized date/time formatter backed by Intl.DateTimeFormat.",
+  "whenToUse": "Presenting locale-aware dates and timestamps.",
+  "semanticRole": "text",
+  "props": {
+    "value": {
+      "type": "string",
+      "required": true,
+      "description": "ISO date/time input."
+    },
+    "locale": {
+      "type": "string",
+      "description": "Optional locale override (defaults to browser locale)."
+    },
+    "date-style": {
+      "type": "string",
+      "values": [
+        "full",
+        "long",
+        "medium",
+        "short"
+      ],
+      "default": "medium",
+      "description": "Date presentation style."
+    },
+    "time-style": {
+      "type": "string",
+      "values": [
+        "full",
+        "long",
+        "medium",
+        "short"
+      ],
+      "description": "Optional time presentation style."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "format-date.css",
+      "format-date.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/format-date",
+    "label": "FormatDate",
+    "group": "data-display",
+    "subgroup": "content-and-media",
+    "description": "Localized date/time formatting"
+  },
+  "page": {
+    "title": "Localized date",
+    "code": "<sg-format-date value=\"2026-03-04T15:30:00Z\" date-style=\"full\" time-style=\"short\"></sg-format-date>"
+  }
+}

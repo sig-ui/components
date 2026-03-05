@@ -1,0 +1,92 @@
+{
+  "name": "ScrollAreaRoot",
+  "importPath": "sg/scroll-area",
+  "category": "data-display",
+  "description": "Root container for a custom scroll area.",
+  "whenToUse": "Custom-styled scrollbars for content areas.",
+  "avoidWhen": "Native scrollbars are acceptable - use CSS overflow.",
+  "semanticRole": "none (container)",
+  "parts": [
+    {
+      "name": "ScrollAreaRoot",
+      "props": {
+        "type": {
+          "type": "string",
+          "values": [
+            "auto",
+            "always",
+            "scroll",
+            "hover"
+          ],
+          "default": "hover",
+          "description": "Scrollbar visibility behavior."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "ScrollAreaViewport",
+      "description": "Scrollable viewport inside a ScrollArea.",
+      "whenToUse": "Always inside a ScrollAreaRoot.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "ScrollAreaScrollbar",
+      "description": "Custom scrollbar overlay for a ScrollArea.",
+      "whenToUse": "Always inside a ScrollAreaRoot.",
+      "props": {
+        "orientation": {
+          "type": "string",
+          "values": [
+            "vertical",
+            "horizontal"
+          ],
+          "default": "vertical",
+          "description": "Scroll direction."
+        }
+      },
+      "slots": []
+    }
+  ],
+  "registry": {
+    "files": [
+      "scroll-area.css",
+      "scroll-area.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/scroll-area",
+    "label": "ScrollArea",
+    "group": "data-display",
+    "subgroup": "visualization-and-browsing",
+    "description": "Custom scrollable viewport with styled scrollbars"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Vertical Scroll",
+            "language": "svelte",
+            "code": "<sg-scroll-area-root type=\"hover\">\n    <sg-scroll-area-viewport>\n        <div class=\"sg-demo-scrollarearoot-1\">\n          {#each Array(20) as _, i}\n            <div class=\"sg-demo-scrollarearoot-2\">\n              Item {i + 1}\n            </div>\n          {/each}\n        </div>\n    </sg-scroll-area-viewport>\n    <sg-scroll-area-scrollbar orientation=\"vertical\" />\n</sg-scroll-area-root>",
+            "css": ".sg-demo-scrollarearoot-1 {\n  height: 200px; overflow: hidden\n}\n\n.sg-demo-scrollarearoot-2 {\n  padding: var(--sg-space-2) var(--sg-space-3); border-bottom: var(--sg-border-thin) solid var(--sg-color-border); color: var(--sg-color-text-secondary)\n}"
+          },
+          {
+            "title": "Always Visible Scrollbar",
+            "language": "svelte",
+            "code": "<sg-scroll-area-root type=\"always\">\n    <sg-scroll-area-viewport>\n        <div class=\"sg-demo-scrollarearoot-1\">\n          {#each Array(15) as _, i}\n            <div class=\"sg-demo-scrollarearoot-2\">\n              Row {i + 1} - always-visible scrollbar\n            </div>\n          {/each}\n        </div>\n    </sg-scroll-area-viewport>\n    <sg-scroll-area-scrollbar orientation=\"vertical\" />\n</sg-scroll-area-root>",
+            "css": ".sg-demo-scrollarearoot-1 {\n  height: 150px; overflow: hidden\n}\n\n.sg-demo-scrollarearoot-2 {\n  padding: var(--sg-space-2) var(--sg-space-3); border-bottom: var(--sg-border-thin) solid var(--sg-color-border); color: var(--sg-color-text-secondary)\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

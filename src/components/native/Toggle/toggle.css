@@ -1,0 +1,116 @@
+@layer sigui.base {
+  .sg-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sg-gap-related, 0.5rem);
+    padding: var(--sg-gap-related, 0.5rem) var(--sg-pad-input, 0.75rem);
+    border: 1px solid var(--sg-color-border);
+    border-radius: var(--sg-input-radius, 0.375rem);
+    background: transparent;
+    color: var(--sg-color-text);
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+    font-weight: 500;
+    min-height: var(--sg-touch-min, 44px);
+    cursor: pointer;
+    user-select: none;
+    transition:
+      background var(--sg-transition-default, 200ms ease-out),
+      border-color var(--sg-transition-default, 200ms ease-out),
+      color var(--sg-transition-default, 200ms ease-out);
+  }
+
+  .sg-toggle-outline {
+    border-color: var(--sg-color-border);
+    background: transparent;
+  }
+
+  .sg-toggle-outline[aria-pressed="true"] {
+    border-color: var(--sg-color-primary);
+    background: var(--sg-color-primary-subtle);
+    color: var(--sg-color-primary);
+  }
+
+  .sg-toggle-group {
+    display: inline-flex;
+    gap: 0;
+  }
+
+  .sg-toggle-group-outline > .sg-toggle {
+    border-color: var(--sg-color-border);
+  }
+
+  .sg-toggle-group > .sg-toggle {
+    border-radius: 0;
+  }
+
+  .sg-toggle-group > .sg-toggle + .sg-toggle {
+    border-left: 0;
+  }
+
+  .sg-toggle-group > .sg-toggle:first-child {
+    border-radius: var(--sg-input-radius, 0.375rem) 0 0 var(--sg-input-radius, 0.375rem);
+  }
+
+  .sg-toggle-group > .sg-toggle:last-child {
+    border-radius: 0 var(--sg-input-radius, 0.375rem) var(--sg-input-radius, 0.375rem) 0;
+  }
+
+}
+
+@layer sigui.variants {
+  .sg-toggle[data-size="sm"] {
+    padding: var(--sg-gap-tight, 0.25rem) var(--sg-gap-related, 0.5rem);
+    font-size: var(--sg-text-xs, 0.6875rem);
+    min-height: calc(var(--sg-touch-min, 44px) * 0.75);
+  }
+
+  .sg-toggle[data-size="lg"] {
+    padding: var(--sg-pad-button-y, 0.75rem) var(--sg-pad-button-x, 1rem);
+    font-size: var(--sg-text-base, 1rem);
+    min-height: calc(var(--sg-touch-min, 44px) * 1.15);
+  }
+
+}
+
+@layer sigui.states {
+  @media (forced-colors: active) {
+    .sg-toggle {
+      border: 1px solid ButtonText;
+    }
+
+    .sg-toggle[aria-pressed="true"] {
+      border-color: Highlight;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+  }
+
+  .sg-toggle:hover:not(:disabled) {
+    background: var(--sg-surface-container);
+  }
+
+  .sg-toggle:active:not(:disabled) {
+    background: var(--sg-surface-container-high);
+  }
+
+  .sg-toggle:focus-visible {
+    outline: var(--sg-focus-width, 2px) solid var(--sg-focus-color);
+    outline-offset: var(--sg-focus-offset, 2px);
+    box-shadow: 0 0 0 var(--sg-focus-offset, 2px) var(--sg-focus-inner, white);
+  }
+
+  .sg-toggle[aria-pressed="true"] {
+    background: var(--sg-color-primary-subtle);
+    border-color: var(--sg-color-primary);
+    color: var(--sg-color-primary);
+  }
+
+  .sg-toggle[aria-pressed="true"]:hover:not(:disabled) {
+    background: var(--sg-color-primary-subtle);
+    opacity: 0.9;
+  }
+
+
+}

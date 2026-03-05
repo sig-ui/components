@@ -1,0 +1,39 @@
+{
+  "name": "Details",
+  "importPath": "sg/details",
+  "category": "overlay",
+  "description": "Native details/summary disclosure wrapper with SigUI state hooks.",
+  "whenToUse": "Simple expandable content without compound overlay machinery.",
+  "avoidWhen": "Complex keyboard-managed disclosure sets (use Accordion or Tabs).",
+  "semanticRole": "group",
+  "props": {
+    "open": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether disclosure content is expanded."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "details.css",
+      "details.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/details",
+    "label": "Details",
+    "group": "overlays",
+    "subgroup": "disclosure-and-switching",
+    "description": "Native details disclosure wrapper"
+  },
+  "page": {
+    "title": "Native disclosure primitive",
+    "code": "<sg-details>\n  <summary>Release Notes</summary>\n  <p>Version 0.1 ships new utility primitives.</p>\n</sg-details>"
+  }
+}

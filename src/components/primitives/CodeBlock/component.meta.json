@@ -1,0 +1,106 @@
+{
+  "name": "CodeBlock",
+  "importPath": "sg/code-block",
+  "category": "data-display",
+  "description": "Block-level code display with optional line numbers, line highlighting, and copy button.",
+  "whenToUse": "Multi-line code samples, configuration files, CLI output, code documentation.",
+  "avoidWhen": "Inline code in prose (use Code).",
+  "semanticRole": "none (semantic <pre><code>)",
+  "props": {
+    "code": {
+      "type": "string",
+      "required": true,
+      "description": "The code string to display."
+    },
+    "language": {
+      "type": "string",
+      "description": "Programming language (displayed as data attribute for syntax highlighters)."
+    },
+    "title": {
+      "type": "string",
+      "description": "Optional title shown in the header bar."
+    },
+    "showLineNumbers": {
+      "type": "boolean",
+      "default": false,
+      "description": "Show line number gutter."
+    },
+    "highlightLines": {
+      "type": "number[]",
+      "description": "Array of 1-indexed line numbers to highlight."
+    },
+    "diff": {
+      "type": "boolean",
+      "default": false,
+      "description": "Enable diff mode – colors lines by +/- prefix."
+    }
+  },
+  "slots": [
+    "highlighted"
+  ],
+  "registry": {
+    "files": [
+      "code-block.css",
+      "code-block.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/code-block",
+    "label": "CodeBlock",
+    "group": "data-display",
+    "subgroup": "content-and-media",
+    "description": "Block-level code display with line numbers and copy"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Basic",
+            "language": "svelte",
+            "code": "<sg-code-block code={`const greeting = \"Hello, world!\";\nconsole.log(greeting);`} language=\"typescript\" />"
+          },
+          {
+            "title": "With Title",
+            "language": "svelte",
+            "code": "<sg-code-block\n          title=\"sigui.config.ts\"\n          language=\"typescript\"\n          code={`import { defineConfig } from \"@sig-ui/cli\";\nexport default defineConfig({\n  brand: \"#6366f1\",\n  radius: \"md\",\n  density: \"comfortable\",\n});`}\n        />"
+          },
+          {
+            "title": "Line Numbers",
+            "language": "svelte",
+            "code": "<sg-code-block\n          language=\"typescript\"\n          showLineNumbers={true}\n          code={`import { generatePalette } from \"@sig-ui/core/color\";\nconst result = generatePalette(\"#6366f1\", {\n  background: \"#ffffff\",\n});\nconsole.log(result.formatted[500]);\n// => \"oklch(0.585 0.233 264.1)\"`}\n        />"
+          },
+          {
+            "title": "Line Highlighting",
+            "language": "svelte",
+            "code": "<sg-code-block\n          language=\"typescript\"\n          showLineNumbers={true}\n          highlightLines={[3, 4, 5]}\n          code={`function setup() {\n  const app = createApp();\n  app.use(router);\n  app.use(store);\n  app.use(i18n);\n  return app;\n}`}\n        />"
+          },
+          {
+            "title": "CLI Output",
+            "language": "svelte",
+            "code": "<sg-code-block\n        title=\"Terminal\"\n        language=\"bash\"\n        code={`$ bun run build\n✓ Compiled 42 components\n✓ Generated tokens.css (12.4 KB)\n✓ Build complete in 340ms`}\n      />"
+          },
+          {
+            "title": "Diff Mode",
+            "language": "svelte",
+            "code": "<sg-code-block\n          diff={true}\n          code={`@@ -1,4 +1,5 @@\n import { defineConfig } from \"@sig-ui/cli\";\n export default defineConfig({\n-  brand: \"#6366f1\",\n+  brand: \"#8b5cf6\",\n+  radius: \"lg\",\n   density: \"comfortable\",\n });`}\n        />"
+          },
+          {
+            "title": "Diff with Line Numbers",
+            "language": "svelte",
+            "code": "<sg-code-block\n          diff={true}\n          showLineNumbers={true}\n          code={`@@ -10,6 +10,7 @@\n function setup() {\n   const app = createApp();\n-  app.use(oldPlugin);\n+  app.use(newPlugin);\n+  app.use(logger);\n   return app;\n }`}\n        />"
+          },
+          {
+            "title": "JSON Configuration",
+            "language": "svelte",
+            "code": "<sg-code-block\n          title=\"package.json\"\n          language=\"json\"\n          showLineNumbers={true}\n          code={`{\n  \"name\": \"my-app\",\n  \"dependencies\": {\n    \"@sig-ui/components\": \"^0.1.0\",\n    \"@sig-ui/core\": \"^0.1.0\",\n    \"@sig-ui/theme\": \"^0.1.0\"\n  }\n}`}\n        />"
+          }
+        ]
+      }
+    ]
+  }
+}

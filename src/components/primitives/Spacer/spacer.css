@@ -1,0 +1,19 @@
+@layer sigui.base {
+  .sg-spacer {
+    display: block;
+    flex-shrink: 0;
+  }
+
+}
+
+@layer sigui.variants {
+  .sg-spacer[data-size="related"]   { height: var(--sg-gap-related, 0.5rem); width: var(--sg-gap-related, 0.5rem); }
+  .sg-spacer[data-size="grouped"]   { height: var(--sg-gap-grouped, 1rem); width: var(--sg-gap-grouped, 1rem); }
+  .sg-spacer[data-size="separated"] { height: var(--sg-gap-separated, 2rem); width: var(--sg-gap-separated, 2rem); }
+  .sg-spacer[data-size="distinct"]  { height: var(--sg-gap-distinct, 4rem); width: var(--sg-gap-distinct, 4rem); }
+
+  .sg-stack > .sg-spacer:not([data-size]) {
+    flex: 1;
+  }
+
+}

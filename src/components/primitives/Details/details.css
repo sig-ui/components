@@ -1,0 +1,7 @@
+.sg-details {
+  display: block;
+}
+
+.sg-details[open] > summary {
+  margin-bottom: var(--sg-gap-related, 0.5rem);
+}

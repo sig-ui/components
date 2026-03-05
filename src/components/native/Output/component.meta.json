@@ -1,0 +1,79 @@
+{
+  "name": "Output",
+  "importPath": "sg/output",
+  "category": "form",
+  "description": "CSS-only styled native <output>. Apply class=\"sg-output\" on an <output> element for displaying calculation results or action outcomes.",
+  "whenToUse": "To present the result of a user action or calculation. Use class=\"sg-output\".",
+  "avoidWhen": "For static text display - use Text or Badge instead.",
+  "semanticRole": "status",
+  "accessibilityRequirements": "The output element is automatically associated with form inputs via the for attribute.",
+  "props": {
+    "class": {
+      "type": "string",
+      "required": true,
+      "description": "Use class=\"sg-output\" on the <output> element."
+    },
+    "data-size": {
+      "type": "string",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "md",
+      "description": "Text size variant."
+    },
+    "data-color": {
+      "type": "string",
+      "values": [
+        "primary",
+        "success",
+        "danger",
+        "warning"
+      ],
+      "description": "Semantic color variant."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "output.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/native/output",
+    "label": "Output",
+    "group": "native",
+    "description": "Calculation result or action output"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Calculation Result",
+            "language": "svelte",
+            "code": "<form oninput=\"result.value = Number(a.value) + Number(b.value)\" class=\"sg-demo-output-1\">\n  <input class=\"sg-input sg-demo-output-2\" type=\"number\" name=\"a\" value=\"10\" />\n  <span class=\"sg-demo-output-3\">+</span>\n  <input class=\"sg-input sg-demo-output-4\" type=\"number\" name=\"b\" value=\"5\" />\n  <span class=\"sg-demo-output-5\">=</span>\n  <output class=\"sg-output\" name=\"result\">15</output>\n</form>",
+            "css": ".sg-demo-output-1 {\n  display: inline-flex; align-items: center; gap: var(--sg-space-2); flex-wrap: wrap;\n}\n\n.sg-demo-output-2 {\n  width: 5rem;\n}\n\n.sg-demo-output-3 {\n  font-weight: 600; color: var(--sg-color-text-muted);\n}\n\n.sg-demo-output-4 {\n  width: 5rem;\n}\n\n.sg-demo-output-5 {\n  font-weight: 600; color: var(--sg-color-text-muted);\n}"
+          },
+          {
+            "title": "Sizes",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\" wrap={true}>\n  <output class=\"sg-output\" data-size=\"sm\">Small</output>\n  <output class=\"sg-output\">Default</output>\n  <output class=\"sg-output\" data-size=\"lg\">Large</output>\n</sg-stack>"
+          },
+          {
+            "title": "Color Variants",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\" wrap={true}>\n  <output class=\"sg-output\" data-color=\"primary\">$42.00</output>\n  <output class=\"sg-output\" data-color=\"success\">+12.5%</output>\n  <output class=\"sg-output\" data-color=\"danger\">-8.3%</output>\n  <output class=\"sg-output\" data-color=\"warning\">Pending</output>\n</sg-stack>"
+          }
+        ]
+      }
+    ]
+  }
+}

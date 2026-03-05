@@ -1,0 +1,51 @@
+{
+  "name": "Input",
+  "importPath": "sg/input",
+  "category": "form",
+  "description": "CSS-only styled text input. Apply class=\"sg-input\" on a native <input> element.",
+  "whenToUse": "Collecting single-line text input (email, password, search, etc.). Use class=\"sg-input\" on a native <input>.",
+  "avoidWhen": "Multi-line text - use a textarea. Selection from options - use Select.",
+  "semanticRole": "textbox",
+  "accessibilityRequirements": "Associate label with input via for/id.",
+  "props": {
+    "class": {
+      "type": "string",
+      "required": true,
+      "description": "Use class=\"sg-input\" on a native <input> element."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "input.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/native/input",
+    "label": "Input",
+    "group": "native",
+    "description": "Text fields with validation and descriptions"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Variants",
+            "language": "svelte",
+            "code": "<sg-card elevation=\"1\">\n    <sg-card-body>\n        <sg-stack gap=\"grouped\">\n            <input class=\"sg-input\" type=\"email\" placeholder=\"you@example.com\" value=\"dev@example.com\" />\n            <input class=\"sg-input\" type=\"password\" placeholder=\"Enter password\" required />\n            <input class=\"sg-input\" type=\"text\" placeholder=\"Plain text\" />\n        </sg-stack>\n    </sg-card-body>\n</sg-card>"
+          },
+          {
+            "title": "Density",
+            "language": "svelte",
+            "code": "<sg-card elevation=\"1\">\n    <sg-card-body>\n        <sg-stack gap=\"grouped\">\n            <input class=\"sg-input\" placeholder=\"Compact input\" />\n            <input class=\"sg-input\" placeholder=\"Comfortable input\" />\n            <input class=\"sg-input\" placeholder=\"Spacious input\" />\n        </sg-stack>\n    </sg-card-body>\n</sg-card>"
+          }
+        ]
+      }
+    ]
+  }
+}

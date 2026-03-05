@@ -1,0 +1,138 @@
+{
+  "name": "DialogRoot",
+  "importPath": "sg/dialog",
+  "category": "overlay",
+  "description": "Root controller for a modal dialog. Uses native <dialog> element for top-layer rendering, focus trapping, and backdrop.",
+  "whenToUse": "Modal interactions requiring user attention (confirmation, forms, detail views).",
+  "avoidWhen": "Non-blocking information - use Popover. Destructive confirmations - use AlertDialog.",
+  "semanticRole": "dialog",
+  "accessibilityRequirements": "DialogContent requires aria-label or aria-labelledby. Focus is automatically trapped by native <dialog>.",
+  "parts": [
+    {
+      "name": "DialogRoot",
+      "props": {
+        "open": {
+          "type": "boolean",
+          "default": false,
+          "description": "Controlled open state. Bindable."
+        },
+        "onclose": {
+          "type": "() => void",
+          "description": "Called when dialog is dismissed."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "DialogTrigger",
+      "description": "Button that opens the parent Dialog. Renders a semantic <button> with aria-haspopup='dialog'.",
+      "whenToUse": "Always inside a DialogRoot to provide the open trigger.",
+      "semanticRole": "button",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "DialogContent",
+      "description": "Content panel of a Dialog. Uses native <dialog> with showModal(). Requires aria-label or aria-labelledby for accessibility.",
+      "whenToUse": "Always inside a DialogRoot to provide the dialog content.",
+      "semanticRole": "dialog",
+      "accessibilityRequirements": "Must have aria-label or aria-labelledby (enforced by ModalLabelProps type).",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "DialogClose",
+      "description": "Button that closes the Dialog when clicked.",
+      "whenToUse": "Inside DialogContent, typically in DialogFooter or as a close button in the header.",
+      "semanticRole": "button",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "DialogHeader",
+      "description": "Header section of a Dialog containing title and description.",
+      "whenToUse": "At the top of DialogContent to provide consistent header layout.",
+      "semanticRole": "section",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "DialogTitle",
+      "description": "Title heading of a Dialog. Announced by screen readers when the dialog opens.",
+      "whenToUse": "Inside DialogHeader. Always required for accessible dialogs.",
+      "semanticRole": "heading",
+      "accessibilityRequirements": "Required for accessible dialogs. Use aria-labelledby on DialogContent pointing to this title.",
+      "props": {
+        "as": {
+          "type": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\"",
+          "default": "h2",
+          "description": "Heading level for semantic structure."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "DialogDescription",
+      "description": "Description text for a Dialog providing additional context.",
+      "whenToUse": "Inside DialogHeader, below DialogTitle.",
+      "semanticRole": "text",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "DialogFooter",
+      "description": "Footer section of a Dialog containing action buttons.",
+      "whenToUse": "At the bottom of DialogContent, typically containing confirmation and cancel buttons.",
+      "semanticRole": "section",
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "dialog.css",
+      "dialog.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/dialog",
+    "label": "Dialog",
+    "group": "overlays",
+    "subgroup": "dialogs-and-popups",
+    "description": "Modal overlay with focus trap"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Usage",
+            "language": "svelte",
+            "code": "<sg-dialog-root open={dialogOpen} oninput={(e) => { const el = e.currentTarget as any; dialogOpen = (el.open ?? dialogOpen); }} onchange={(e) => { const el = e.currentTarget as any; dialogOpen = (el.open ?? dialogOpen); }} onclick={(e) => { const el = e.currentTarget as any; dialogOpen = (el.open ?? dialogOpen); }} ontoggle={(e) => { const el = e.currentTarget as any; dialogOpen = (el.open ?? dialogOpen); }}>\n    <sg-dialog-trigger>\n        <button class=\"sg-button\" data-color=\"primary\">Open Dialog</button>\n    </sg-dialog-trigger>\n    <sg-dialog-content>\n        <sg-dialog-header>\n            <sg-dialog-title as=\"h2\">Edit Profile</sg-dialog-title>\n            <sg-dialog-description>Make changes to your profile here. Click save when you're done.</sg-dialog-description>\n        </sg-dialog-header>\n        <div class=\"sg-demo-dialogroot-1\">\n          <p class=\"sg-demo-dialogroot-2\">Dialog body content goes here.</p>\n        </div>\n        <sg-dialog-footer>\n            <sg-dialog-close>\n                <button class=\"sg-button\" data-color=\"secondary\">Cancel</button>\n            </sg-dialog-close>\n            <button class=\"sg-button\" data-color=\"primary\" onclick={() => dialogOpen = false}>Save Changes</button>\n        </sg-dialog-footer>\n    </sg-dialog-content>\n</sg-dialog-root>",
+            "css": ".sg-demo-dialogroot-1 {\n  padding: var(--sg-space-4) 0;\n}\n\n.sg-demo-dialogroot-2 {\n  color: var(--sg-color-text-secondary); margin: 0;\n}"
+          },
+          {
+            "title": "Feature Flag",
+            "language": "svelte",
+            "code": "<p class=\"sg-demo-dialogroot-1\">Dialog machine can be toggled with <code>featureFlags.dialogMachine</code>.</p>",
+            "css": ".sg-demo-dialogroot-1 {\n  margin: 0; color: var(--sg-color-text-secondary);\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

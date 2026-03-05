@@ -1,0 +1,67 @@
+{
+  "name": "Label",
+  "importPath": "sg/label",
+  "category": "form",
+  "description": "CSS-only styled label. Apply class=\"sg-label\" on a native <label>.",
+  "whenToUse": "Adding a label to a custom form control not covered by Input/Textarea.",
+  "avoidWhen": "Using Input or Textarea - they include labels automatically.",
+  "semanticRole": "label",
+  "props": {
+    "class": {
+      "type": "string",
+      "required": true,
+      "description": "Use class=\"sg-label\" on a native <label>."
+    },
+    "for": {
+      "type": "string",
+      "description": "ID of the form element this label is for."
+    },
+    "data-size": {
+      "type": "Size",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "md",
+      "description": "Label text size."
+    },
+    "data-required": {
+      "type": "boolean",
+      "default": false,
+      "description": "Shows required indicator (*)."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "label.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/native/label",
+    "label": "Label",
+    "group": "native",
+    "description": "Form label with required indicator"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Form Labels",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    <div>\n      <label class=\"sg-label\" for=\"demo-name\">Name</label>\n      <input id=\"demo-name\" type=\"text\" class=\"sg-demo-label-1\" />\n    </div>\n    <div>\n      <label class=\"sg-label\" for=\"demo-email\" data-required>Email</label>\n      <input id=\"demo-email\" type=\"email\" class=\"sg-demo-label-2\" />\n    </div>\n    <sg-stack direction=\"horizontal\" gap=\"grouped\" align=\"center\">\n        <label class=\"sg-label\" data-size=\"sm\">Small</label>\n        <label class=\"sg-label\" data-size=\"md\">Medium</label>\n        <label class=\"sg-label\" data-size=\"lg\">Large</label>\n    </sg-stack>\n</sg-stack>",
+            "css": ".sg-demo-label-1 {\n  display: block; margin-top: var(--sg-space-1); padding: var(--sg-space-2); border: var(--sg-border-thin) solid var(--sg-color-border); border-radius: var(--sg-radius-md); width: 100%; box-sizing: border-box\n}\n\n.sg-demo-label-2 {\n  display: block; margin-top: var(--sg-space-1); padding: var(--sg-space-2); border: var(--sg-border-thin) solid var(--sg-color-border); border-radius: var(--sg-radius-md); width: 100%; box-sizing: border-box\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

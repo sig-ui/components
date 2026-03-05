@@ -1,0 +1,51 @@
+{
+  "name": "Textarea",
+  "importPath": "sg/textarea",
+  "category": "form",
+  "description": "CSS-only styled multi-line text input. Apply class=\"sg-textarea\" on a native <textarea> element.",
+  "whenToUse": "Collecting multi-line text input. Use class=\"sg-textarea\" on a native <textarea>.",
+  "avoidWhen": "Single-line text - use Input.",
+  "semanticRole": "textbox",
+  "accessibilityRequirements": "Associate label with textarea via for/id.",
+  "props": {
+    "class": {
+      "type": "string",
+      "required": true,
+      "description": "Use class=\"sg-textarea\" on a native <textarea> element."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "textarea.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/native/textarea",
+    "label": "Textarea",
+    "group": "native",
+    "description": "Multiline text input with validation"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Basic Textarea",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    <textarea class=\"sg-textarea\" placeholder=\"Tell us about yourself...\" maxlength={200} value={bioValue} oninput={(e) => { const el = e.currentTarget as any; bioValue = (el.value ?? bioValue); }} onchange={(e) => { const el = e.currentTarget as any; bioValue = (el.value ?? bioValue); }} onclick={(e) => { const el = e.currentTarget as any; bioValue = (el.value ?? bioValue); }} ontoggle={(e) => { const el = e.currentTarget as any; bioValue = (el.value ?? bioValue); }}></textarea>\n    <textarea class=\"sg-textarea\" placeholder=\"Additional notes...\" rows={5}></textarea>\n    <textarea class=\"sg-textarea\"></textarea>\n    <textarea class=\"sg-textarea\" disabled={true} value=\"Cannot edit\"></textarea>\n</sg-stack>"
+          },
+          {
+            "title": "Auto-grow Textarea",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    <textarea class=\"sg-textarea\"\n      placeholder=\"Type multiple lines to see the textarea expand automatically...\"\n      value={autogrowValue} oninput={(e) => { const el = e.currentTarget as any; autogrowValue = (el.value ?? autogrowValue); }} onchange={(e) => { const el = e.currentTarget as any; autogrowValue = (el.value ?? autogrowValue); }} onclick={(e) => { const el = e.currentTarget as any; autogrowValue = (el.value ?? autogrowValue); }} ontoggle={(e) => { const el = e.currentTarget as any; autogrowValue = (el.value ?? autogrowValue); }}\n    ></textarea>\n    <textarea class=\"sg-textarea\"\n      value=\"This is read-only content that cannot be edited.\"\n      readonly={true}\n    ></textarea>\n</sg-stack>"
+          }
+        ]
+      }
+    ]
+  }
+}

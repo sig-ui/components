@@ -1,0 +1,4 @@
+.sg-popup {
+  position: absolute;
+  z-index: var(--sg-z-popover, 50);
+}

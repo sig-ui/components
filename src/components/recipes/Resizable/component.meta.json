@@ -1,0 +1,126 @@
+{
+  "name": "ResizableRoot",
+  "importPath": "sg/resizable",
+  "category": "layout",
+  "description": "Root controller for resizable panels. Flex container with drag handles between panels.",
+  "whenToUse": "Split-pane layouts where users need to resize sections (IDE layouts, dashboards).",
+  "avoidWhen": "Fixed layouts - use Grid or Stack.",
+  "semanticRole": "group",
+  "parts": [
+    {
+      "name": "ResizableRoot",
+      "props": {
+        "direction": {
+          "type": "string",
+          "values": [
+            "horizontal",
+            "vertical"
+          ],
+          "default": "horizontal",
+          "description": "Resize axis."
+        },
+        "onresize": {
+          "type": "(sizes: number[]) => void",
+          "description": "Called when panel sizes change."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "ResizablePanel",
+      "description": "A resizable panel within a ResizableRoot.",
+      "whenToUse": "Always inside a ResizableRoot.",
+      "props": {
+        "defaultSize": {
+          "type": "number",
+          "default": 50,
+          "description": "Initial size as percentage."
+        },
+        "minSize": {
+          "type": "number",
+          "default": 10,
+          "description": "Minimum size as percentage."
+        },
+        "maxSize": {
+          "type": "number",
+          "default": 90,
+          "description": "Maximum size as percentage."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "ResizableHandle",
+      "description": "Drag handle between ResizablePanels with optional visual grip indicator.",
+      "whenToUse": "Always between ResizablePanels inside a ResizableRoot.",
+      "semanticRole": "separator",
+      "accessibilityRequirements": "Has role='separator' with keyboard arrow support. Home/End keys resize to min/max.",
+      "props": {
+        "index": {
+          "type": "number",
+          "required": true,
+          "description": "Zero-based handle index (between panels)."
+        },
+        "withHandle": {
+          "type": "boolean",
+          "default": false,
+          "description": "Shows a visual grip indicator for drag affordance."
+        }
+      },
+      "slots": []
+    }
+  ],
+  "registry": {
+    "files": [
+      "resizable.css",
+      "resizable.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/layout/resizable",
+    "label": "Resizable",
+    "group": "layout",
+    "subgroup": "grid-and-responsive",
+    "description": "Draggable resizable panels"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Horizontal Panels",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-resizableroot-1\">\n  <sg-resizable-root direction=\"horizontal\" aria-label=\"Resizable panels\">\n      <sg-resizable-panel defaultSize={50} minSize={20}>\n          <div class=\"sg-demo-resizableroot-2\">Left Panel</div>\n      </sg-resizable-panel>\n      <sg-resizable-handle index={0} />\n      <sg-resizable-panel defaultSize={50} minSize={20}>\n          <div class=\"sg-demo-resizableroot-3\">Right Panel</div>\n      </sg-resizable-panel>\n  </sg-resizable-root>\n</div>",
+            "css": ".sg-demo-resizableroot-1 {\n  height: 200px; border: var(--sg-border-thin) solid var(--sg-color-border); border-radius: var(--sg-radius-md); overflow: hidden\n}\n\n.sg-demo-resizableroot-2 {\n  padding: var(--sg-space-4); height: 100%; box-sizing: border-box; background: var(--sg-surface-container-high); display: flex; align-items: center; justify-content: center; color: var(--sg-color-text-secondary)\n}\n\n.sg-demo-resizableroot-3 {\n  padding: var(--sg-space-4); height: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; color: var(--sg-color-text-secondary)\n}"
+          },
+          {
+            "title": "Vertical Panels",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-resizableroot-1\">\n  <sg-resizable-root direction=\"vertical\" aria-label=\"Vertical resizable panels\">\n      <sg-resizable-panel defaultSize={40} minSize={15}>\n          <div class=\"sg-demo-resizableroot-2\">Top Panel</div>\n      </sg-resizable-panel>\n      <sg-resizable-handle index={0} />\n      <sg-resizable-panel defaultSize={60} minSize={15}>\n          <div class=\"sg-demo-resizableroot-3\">Bottom Panel</div>\n      </sg-resizable-panel>\n  </sg-resizable-root>\n</div>",
+            "css": ".sg-demo-resizableroot-1 {\n  height: 300px; border: var(--sg-border-thin) solid var(--sg-color-border); border-radius: var(--sg-radius-md); overflow: hidden\n}\n\n.sg-demo-resizableroot-2 {\n  padding: var(--sg-space-4); height: 100%; box-sizing: border-box; background: var(--sg-surface-container-high); display: flex; align-items: center; justify-content: center; color: var(--sg-color-text-secondary)\n}\n\n.sg-demo-resizableroot-3 {\n  padding: var(--sg-space-4); height: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; color: var(--sg-color-text-secondary)\n}"
+          },
+          {
+            "title": "With Handle",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-resizableroot-1\">\n  <sg-resizable-root direction=\"horizontal\" aria-label=\"Resizable with handle\">\n      <sg-resizable-panel defaultSize={30} minSize={15}>\n          <div class=\"sg-demo-resizableroot-2\">Sidebar</div>\n      </sg-resizable-panel>\n      <sg-resizable-handle index={0} withHandle={true} />\n      <sg-resizable-panel defaultSize={70} minSize={30}>\n          <div class=\"sg-demo-resizableroot-3\">Content</div>\n      </sg-resizable-panel>\n  </sg-resizable-root>\n</div>",
+            "css": ".sg-demo-resizableroot-1 {\n  height: 200px; border: var(--sg-border-thin) solid var(--sg-color-border); border-radius: var(--sg-radius-md); overflow: hidden\n}\n\n.sg-demo-resizableroot-2 {\n  padding: var(--sg-space-4); height: 100%; box-sizing: border-box; background: var(--sg-surface-container-high); display: flex; align-items: center; justify-content: center; color: var(--sg-color-text-secondary)\n}\n\n.sg-demo-resizableroot-3 {\n  padding: var(--sg-space-4); height: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; color: var(--sg-color-text-secondary)\n}"
+          },
+          {
+            "title": "Three Panels",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-resizableroot-1\">\n  <sg-resizable-root direction=\"horizontal\" aria-label=\"Three panel layout\">\n      <sg-resizable-panel defaultSize={25} minSize={10}>\n          <div class=\"sg-demo-resizableroot-2\">Left</div>\n      </sg-resizable-panel>\n      <sg-resizable-handle index={0} />\n      <sg-resizable-panel defaultSize={50} minSize={20}>\n          <div class=\"sg-demo-resizableroot-3\">Center</div>\n      </sg-resizable-panel>\n      <sg-resizable-handle index={1} />\n      <sg-resizable-panel defaultSize={25} minSize={10}>\n          <div class=\"sg-demo-resizableroot-4\">Right</div>\n      </sg-resizable-panel>\n  </sg-resizable-root>\n</div>",
+            "css": ".sg-demo-resizableroot-1 {\n  height: 200px; border: var(--sg-border-thin) solid var(--sg-color-border); border-radius: var(--sg-radius-md); overflow: hidden\n}\n\n.sg-demo-resizableroot-2 {\n  padding: var(--sg-space-4); height: 100%; box-sizing: border-box; background: var(--sg-surface-container-high); display: flex; align-items: center; justify-content: center; color: var(--sg-color-text-secondary)\n}\n\n.sg-demo-resizableroot-3 {\n  padding: var(--sg-space-4); height: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; color: var(--sg-color-text-secondary)\n}\n\n.sg-demo-resizableroot-4 {\n  padding: var(--sg-space-4); height: 100%; box-sizing: border-box; background: var(--sg-surface-container-high); display: flex; align-items: center; justify-content: center; color: var(--sg-color-text-secondary)\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

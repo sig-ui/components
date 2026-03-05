@@ -1,0 +1,51 @@
+{
+  "name": "Direction",
+  "importPath": "sg/direction",
+  "category": "layout",
+  "description": "Context provider that sets text direction (LTR/RTL) for descendants.",
+  "whenToUse": "To override text direction for a subtree of components.",
+  "avoidWhen": "When the entire app uses a single direction - set dir on <html> instead.",
+  "props": {
+    "dir": {
+      "type": "string",
+      "required": true,
+      "values": [
+        "ltr",
+        "rtl",
+        "auto"
+      ],
+      "description": "Text direction"
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/layout/direction",
+    "label": "Direction",
+    "group": "layout",
+    "subgroup": "grid-and-responsive",
+    "description": "LTR/RTL text direction wrapper"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "LTR / RTL",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    <sg-direction dir=\"ltr\">\n        <p class=\"sg-demo-direction-1\">LTR: This text flows left-to-right. مرحبا</p>\n    </sg-direction>\n    <sg-direction dir=\"rtl\">\n        <p class=\"sg-demo-direction-2\">RTL: هذا النص يتدفق من اليمين إلى اليسار. Hello</p>\n    </sg-direction>\n</sg-stack>",
+            "css": ".sg-demo-direction-1 {\n  margin: 0\n}\n\n.sg-demo-direction-2 {\n  margin: 0\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

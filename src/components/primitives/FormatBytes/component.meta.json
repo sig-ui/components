@@ -1,0 +1,41 @@
+{
+  "name": "FormatBytes",
+  "importPath": "sg/format-bytes",
+  "category": "data-display",
+  "description": "Formats byte counts into human-readable units.",
+  "whenToUse": "Displaying file sizes or storage/network metrics.",
+  "semanticRole": "text",
+  "props": {
+    "value": {
+      "type": "number",
+      "required": true,
+      "description": "Raw byte value."
+    },
+    "decimals": {
+      "type": "number",
+      "default": 1,
+      "description": "Fraction digits for formatted output."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "format-bytes.css",
+      "format-bytes.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/format-bytes",
+    "label": "FormatBytes",
+    "group": "data-display",
+    "subgroup": "content-and-media",
+    "description": "Human-readable byte formatting"
+  },
+  "page": {
+    "title": "Human-readable file size",
+    "code": "<sg-format-bytes value=\"7340032\" decimals=\"1\"></sg-format-bytes>"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "name": "Spacer",
+  "importPath": "sg/spacer",
+  "category": "layout",
+  "description": "Empty space element. Expands to fill remaining space in flex containers when no size is set.",
+  "whenToUse": "Pushing elements apart in a flex layout, or adding explicit whitespace.",
+  "avoidWhen": "Use Stack gap for consistent spacing between siblings.",
+  "semanticRole": "none (presentational)",
+  "props": {
+    "size": {
+      "type": "SpacingRelationship",
+      "values": [
+        "related",
+        "grouped",
+        "separated",
+        "distinct"
+      ],
+      "description": "Fixed size. Omit to fill remaining flex space."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "spacer.css",
+      "spacer.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/layout/spacer",
+    "label": "Spacer",
+    "group": "layout",
+    "subgroup": "primitives",
+    "description": "Empty space element for layout control"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Fixed Size",
+            "language": "svelte",
+            "code": "<div>\n  <div class=\"sg-demo-spacer-1\">Block A</div>\n  <div class=\"sg-demo-spacer-2\">\n    <div class=\"sg-demo-spacer-3\">\n      <sg-spacer size=\"related\" />\n    </div>\n    <span class=\"sg-demo-spacer-4\">\n      <svg width=\"24\" height=\"10\" viewBox=\"0 0 24 10\" class=\"sg-demo-spacer-5\"><path d=\"M24 5 L6 5 L10 1\" fill=\"none\" stroke=\"oklch(0.65 0.12 240)\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M10 9 L6 5\" fill=\"none\" stroke=\"oklch(0.65 0.12 240)\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /></svg>\n      related\n    </span>\n  </div>\n  <div class=\"sg-demo-spacer-6\">Block B</div>\n  <div class=\"sg-demo-spacer-7\">\n    <div class=\"sg-demo-spacer-8\">\n      <sg-spacer size=\"grouped\" />\n    </div>\n    <span class=\"sg-demo-spacer-9\">\n      <svg width=\"24\" height=\"10\" viewBox=\"0 0 24 10\" class=\"sg-demo-spacer-10\"><path d=\"M24 5 L6 5 L10 1\" fill=\"none\" stroke=\"oklch(0.65 0.12 240)\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M10 9 L6 5\" fill=\"none\" stroke=\"oklch(0.65 0.12 240)\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /></svg>\n      grouped\n    </span>\n  </div>\n  <div class=\"sg-demo-spacer-11\">Block C</div>\n  <div class=\"sg-demo-spacer-12\">\n    <div class=\"sg-demo-spacer-13\">\n      <sg-spacer size=\"separated\" />\n    </div>\n    <span class=\"sg-demo-spacer-14\">\n      <svg width=\"24\" height=\"10\" viewBox=\"0 0 24 10\" class=\"sg-demo-spacer-15\"><path d=\"M24 5 L6 5 L10 1\" fill=\"none\" stroke=\"oklch(0.65 0.12 240)\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M10 9 L6 5\" fill=\"none\" stroke=\"oklch(0.65 0.12 240)\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /></svg>\n      separated\n    </span>\n  </div>\n  <div class=\"sg-demo-spacer-16\">Block D</div>\n</div>",
+            "css": ".sg-demo-spacer-1 {\n  width: 70%; background: var(--sg-surface-container-high); padding: var(--sg-pad-button-y, 0.75rem) var(--sg-pad-button-x, 1rem); border-radius: var(--sg-radius-md); border: var(--sg-border-thin) solid var(--sg-color-border)\n}\n\n.sg-demo-spacer-2 {\n  position: relative; width: 70%\n}\n\n.sg-demo-spacer-3 {\n  background: oklch(0.75 0.12 240 / 0.15); outline: 1.5px dashed oklch(0.55 0.12 240 / 0.6); outline-offset: -1px; border-radius: var(--sg-radius-sm)\n}\n\n.sg-demo-spacer-4 {\n  position: absolute; left: calc(100% + 6px); top: 50%; translate: 0 -50%; display: flex; align-items: center; gap: var(--sg-gap-tight); font-size: var(--sg-text-xs); color: oklch(0.65 0.12 240); white-space: nowrap\n}\n\n.sg-demo-spacer-5 {\n  display: block\n}\n\n.sg-demo-spacer-6 {\n  width: 70%; background: var(--sg-surface-container-high); padding: var(--sg-pad-button-y, 0.75rem) var(--sg-pad-button-x, 1rem); border-radius: var(--sg-radius-md); border: var(--sg-border-thin) solid var(--sg-color-border)\n}\n\n.sg-demo-spacer-7 {\n  position: relative; width: 70%\n}\n\n.sg-demo-spacer-8 {\n  background: oklch(0.75 0.12 240 / 0.15); outline: 1.5px dashed oklch(0.55 0.12 240 / 0.6); outline-offset: -1px; border-radius: var(--sg-radius-sm)\n}\n\n.sg-demo-spacer-9 {\n  position: absolute; left: calc(100% + 6px); top: 50%; translate: 0 -50%; display: flex; align-items: center; gap: var(--sg-gap-tight); font-size: var(--sg-text-xs); color: oklch(0.65 0.12 240); white-space: nowrap\n}\n\n.sg-demo-spacer-10 {\n  display: block\n}\n\n.sg-demo-spacer-11 {\n  width: 70%; background: var(--sg-surface-container-high); padding: var(--sg-pad-button-y, 0.75rem) var(--sg-pad-button-x, 1rem); border-radius: var(--sg-radius-md); border: var(--sg-border-thin) solid var(--sg-color-border)\n}\n\n.sg-demo-spacer-12 {\n  position: relative; width: 70%\n}\n\n.sg-demo-spacer-13 {\n  background: oklch(0.75 0.12 240 / 0.15); outline: 1.5px dashed oklch(0.55 0.12 240 / 0.6); outline-offset: -1px; border-radius: var(--sg-radius-sm)\n}\n\n.sg-demo-spacer-14 {\n  position: absolute; left: calc(100% + 6px); top: 50%; translate: 0 -50%; display: flex; align-items: center; gap: var(--sg-gap-tight); font-size: var(--sg-text-xs); color: oklch(0.65 0.12 240); white-space: nowrap\n}\n\n.sg-demo-spacer-15 {\n  display: block\n}\n\n.sg-demo-spacer-16 {\n  width: 70%; background: var(--sg-surface-container-high); padding: var(--sg-pad-button-y, 0.75rem) var(--sg-pad-button-x, 1rem); border-radius: var(--sg-radius-md); border: var(--sg-border-thin) solid var(--sg-color-border)\n}"
+          },
+          {
+            "title": "Flex Expand",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-spacer-1\">\n  <div class=\"sg-demo-spacer-2\">Left</div>\n  <div class=\"sg-demo-spacer-3\">\n    <sg-spacer />\n  </div>\n  <div class=\"sg-demo-spacer-4\">Right</div>\n</div>",
+            "css": ".sg-demo-spacer-1 {\n  display: flex; align-items: center\n}\n\n.sg-demo-spacer-2 {\n  background: var(--sg-surface-container-high); padding: var(--sg-pad-button-y, 0.75rem) var(--sg-pad-button-x, 1rem); border-radius: var(--sg-radius-md); border: var(--sg-border-thin) solid var(--sg-color-border)\n}\n\n.sg-demo-spacer-3 {\n  flex: 1; align-self: stretch; background: oklch(0.75 0.12 240 / 0.15); outline: 1.5px dashed oklch(0.55 0.12 240 / 0.6); outline-offset: -1px; border-radius: var(--sg-radius-sm)\n}\n\n.sg-demo-spacer-4 {\n  background: var(--sg-surface-container-high); padding: var(--sg-pad-button-y, 0.75rem) var(--sg-pad-button-x, 1rem); border-radius: var(--sg-radius-md); border: var(--sg-border-thin) solid var(--sg-color-border)\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

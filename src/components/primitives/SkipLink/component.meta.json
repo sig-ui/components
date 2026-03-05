@@ -1,0 +1,22 @@
+{
+  "name": "SkipLink",
+  "importPath": "sg/skip-link",
+  "category": "navigation",
+  "description": "Renders one or more skip links for keyboard users to jump to major page regions.",
+  "whenToUse": "At the top of app/page layouts to improve keyboard navigation.",
+  "semanticRole": "navigation",
+  "accessibilityRequirements": "Targets should be focusable and have stable IDs.",
+  "props": {
+    "links": {
+      "type": "SkipLinkConfig[]",
+      "description": "Array of skip link configs. Defaults to standard main/nav targets."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  }
+}

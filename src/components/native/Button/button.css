@@ -1,0 +1,227 @@
+@layer sigui.base {
+  .sg-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sg-gap-related, 0.5rem);
+    padding: var(--sg-button-padding-y, 0.75rem) var(--sg-button-padding-x, 1rem);
+    border: none;
+    border-radius: var(--sg-button-radius, var(--sg-input-radius, 0.375rem));
+    background: var(--sg-button-bg);
+    color: var(--sg-button-text);
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+    font-weight: 500;
+    line-height: var(--sg-leading-tight, 1.2);
+    letter-spacing: var(--sg-tracking-sm);
+    min-height: var(--sg-touch-min, 44px);
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+    transition:
+      background var(--sg-transition-default, 200ms ease-out),
+      opacity var(--sg-transition-default, 200ms ease-out),
+      box-shadow var(--sg-transition-default, 200ms ease-out),
+      transform 120ms cubic-bezier(0.4, 0, 0, 1);
+  }
+
+}
+
+@layer sigui.variants {
+  [data-size="sm"] .sg-button,
+  .sg-button[data-size="sm"] {
+    padding: var(--sg-gap-related, 0.375rem) var(--sg-pad-input, 0.75rem);
+    font-size: var(--sg-text-xs, 0.6875rem);
+    min-height: calc(var(--sg-touch-min, 44px) * 0.75);
+  }
+
+  [data-size="lg"] .sg-button,
+  .sg-button[data-size="lg"] {
+    padding: var(--sg-gap-grouped, 1rem) var(--sg-pad-card, 1.5rem);
+    font-size: var(--sg-text-base, 1rem);
+    min-height: calc(var(--sg-touch-min, 44px) * 1.15);
+  }
+
+  .sg-button[data-size="icon"] {
+    padding: 0;
+    width: var(--sg-touch-min, 44px);
+    height: var(--sg-touch-min, 44px);
+    min-height: var(--sg-touch-min, 44px);
+    --sg-icon-size: 1.25rem;
+  }
+
+  .sg-button[data-size="icon"][data-size="sm"],
+  [data-size="sm"] .sg-button[data-size="icon"] {
+    width: calc(var(--sg-touch-min, 44px) * 0.75);
+    height: calc(var(--sg-touch-min, 44px) * 0.75);
+    min-height: calc(var(--sg-touch-min, 44px) * 0.75);
+    --sg-icon-size: 1rem;
+  }
+
+  .sg-button[data-size="icon"][data-size="lg"],
+  [data-size="lg"] .sg-button[data-size="icon"] {
+    width: calc(var(--sg-touch-min, 44px) * 1.15);
+    height: calc(var(--sg-touch-min, 44px) * 1.15);
+    min-height: calc(var(--sg-touch-min, 44px) * 1.15);
+    --sg-icon-size: 1.5rem;
+  }
+
+  .sg-button[data-color="primary"] {
+    background: var(--sg-color-primary);
+    color: var(--sg-color-text-inverse);
+  }
+
+  .sg-button[data-color="secondary"] {
+    background: var(--sg-color-secondary);
+    color: var(--sg-color-text);
+  }
+
+  .sg-button[data-color="danger"] {
+    background: var(--sg-color-danger);
+    color: var(--sg-color-text-inverse);
+  }
+
+  .sg-button[data-color="success"] {
+    background: var(--sg-color-success);
+    color: var(--sg-color-text-inverse);
+  }
+
+  .sg-button[data-color="warning"] {
+    background: var(--sg-color-warning);
+    color: var(--sg-color-text);
+  }
+
+  .sg-button[data-color="info"] {
+    background: var(--sg-color-info);
+    color: var(--sg-color-text-inverse);
+  }
+
+  .sg-button[data-color="ghost"] {
+    background: transparent;
+    color: var(--sg-color-text);
+  }
+
+  .sg-button[data-color="outline"] {
+    background: transparent;
+    color: var(--sg-color-primary);
+    border: 1px solid var(--sg-color-primary);
+  }
+
+}
+
+@layer sigui.states {
+  .sg-button:disabled,
+  .sg-button[disabled],
+  .sg-button[data-disabled],
+  .sg-button[aria-disabled="true"] {
+    opacity: var(--sg-disabled-opacity, 0.38);
+    cursor: not-allowed;
+    pointer-events: none;
+    transform: none;
+  }
+
+  .sg-button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: currentColor;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--sg-transition-default, 200ms ease-out);
+  }
+
+  .sg-button:hover:not(:disabled):not([disabled]):not([data-disabled]):not([aria-disabled="true"])::before {
+    opacity: var(--sg-state-hover-opacity, 0.08);
+  }
+
+  .sg-button[data-color="ghost"]:hover:not(:disabled):not([disabled]):not([data-disabled]):not([aria-disabled="true"]) {
+    background: var(--sg-surface-container);
+  }
+
+  .sg-button[data-color="ghost"]:hover:not(:disabled):not([disabled]):not([data-disabled]):not([aria-disabled="true"])::before {
+    opacity: 0;
+  }
+
+  .sg-button:active:not(:disabled):not([disabled]):not([data-disabled]):not([aria-disabled="true"])::before {
+    opacity: var(--sg-state-active-opacity, 0.12);
+  }
+
+  .sg-button:active:not(:disabled):not([disabled]):not([data-disabled]):not([aria-disabled="true"]) {
+    transform: scale(0.97);
+  }
+
+  .sg-button[data-color="ghost"]:active:not(:disabled):not([disabled]):not([data-disabled]):not([aria-disabled="true"]) {
+    background: var(--sg-surface-container-high);
+  }
+
+  .sg-button[data-color="ghost"]:active:not(:disabled):not([disabled]):not([data-disabled]):not([aria-disabled="true"])::before {
+    opacity: 0;
+  }
+
+
+  .sg-button:focus-visible {
+    outline: var(--sg-focus-width, 2px) solid var(--sg-focus-color);
+    outline-offset: var(--sg-focus-offset, 2px);
+    box-shadow: 0 0 0 var(--sg-focus-offset, 2px) var(--sg-focus-inner, white);
+  }
+  [data-loading] {
+    cursor: wait;
+    position: relative;
+  }
+
+  .sg-button[data-loading] {
+    color: transparent;
+    pointer-events: none;
+  }
+
+  .sg-button[data-loading]::after {
+    content: "";
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    border: 2px solid currentColor;
+    border-color: var(--sg-color-text-inverse) transparent var(--sg-color-text-inverse) transparent;
+    border-radius: 9999px;
+    animation: sg-spin calc(200ms * 3) linear infinite;
+  }
+
+
+
+  .sg-button:active::before {
+    opacity: var(--sg-state-active-opacity, 0.12);
+  }
+
+  @media (forced-colors: active) {
+    .sg-button {
+      border: 1px solid ButtonText;
+    }
+
+    .sg-button[data-disabled] {
+      color: GrayText;
+      border-color: GrayText;
+      opacity: 1;
+    }
+
+    .sg-button:disabled,
+    .sg-button[disabled],
+    .sg-button[aria-disabled="true"] {
+      color: GrayText;
+      border-color: GrayText;
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sg-button:active:not([data-disabled]) {
+      transform: none;
+    }
+  }
+
+
+  @keyframes sg-spin {
+    to { transform: rotate(360deg); }
+  }
+}

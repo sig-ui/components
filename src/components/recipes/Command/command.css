@@ -1,0 +1,83 @@
+@layer sigui.base {
+  .sg-command {
+    display: flex;
+    flex-direction: column;
+    background: var(--sg-card-bg);
+    border: 1px solid var(--sg-card-border);
+    border-radius: var(--sg-card-radius, var(--sg-card-radius, 0.5rem));
+    overflow: hidden;
+  }
+
+  .sg-command-input {
+    padding: var(--sg-pad-button-y, 0.75rem) var(--sg-pad-button-x, 1rem);
+    border: none;
+    border-bottom: 1px solid var(--sg-color-border);
+    background: transparent;
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-base, 1rem);
+    color: var(--sg-color-text);
+    outline: none;
+    width: 100%;
+  }
+
+  .sg-command-list {
+    max-height: 18rem;
+    overflow-y: auto;
+    padding: var(--sg-gap-tight, 0.25rem);
+  }
+
+  .sg-command-item {
+    display: flex;
+    align-items: center;
+    padding: var(--sg-gap-related, 0.5rem) var(--sg-pad-input, 0.75rem);
+    border-radius: var(--sg-input-radius, 0.25rem);
+    cursor: pointer;
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+  }
+
+  .sg-command-empty {
+    padding: var(--sg-gap-grouped, 1rem);
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+    color: var(--sg-color-text-muted);
+    text-align: center;
+  }
+
+  .sg-command-group {
+    padding: var(--sg-gap-tight, 0.25rem) 0;
+  }
+
+  .sg-command-group-heading {
+    padding: var(--sg-gap-tight, 0.25rem) var(--sg-pad-input, 0.75rem);
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-xs, 0.6875rem);
+    font-weight: 500;
+    color: var(--sg-color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .sg-command-separator {
+    height: 1px;
+    background: var(--sg-color-border);
+    margin: var(--sg-gap-tight, 0.25rem) 0;
+  }
+
+}
+
+@layer sigui.states {
+  .sg-command-item {
+    transition: background var(--sg-transition-default, 200ms ease-out);
+  }
+
+  .sg-command-item:hover:not([data-disabled]) {
+    background: var(--sg-surface-container);
+  }
+
+  .sg-command-item[data-state="selected"] {
+    background: var(--sg-surface-container);
+  }
+
+
+}

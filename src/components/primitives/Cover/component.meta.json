@@ -1,0 +1,49 @@
+{
+  "name": "Cover",
+  "importPath": "sg/cover",
+  "category": "layout",
+  "description": "Viewport-covering layout with centered content. Fills available height and centers child on both axes.",
+  "whenToUse": "Hero sections, login pages, 404 pages, full-screen modal content. Any content that should be vertically and horizontally centered.",
+  "avoidWhen": "Normal flow content that doesn't need viewport coverage - use Stack or Container.",
+  "semanticRole": "none (layout primitive)",
+  "props": {
+    "minHeight": {
+      "type": "string",
+      "default": "100vh",
+      "description": "Minimum height. Use '100vh' for viewport, or any CSS length."
+    },
+    "gap": {
+      "type": "SpacingRelationship",
+      "values": [
+        "related",
+        "grouped",
+        "separated",
+        "distinct"
+      ],
+      "default": "grouped",
+      "description": "Gestalt-based spacing between children."
+    },
+    "padding": {
+      "type": "SpacingRelationship",
+      "values": [
+        "related",
+        "grouped",
+        "separated",
+        "distinct"
+      ],
+      "description": "Padding around the centered content."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "cover.css",
+      "cover.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  }
+}

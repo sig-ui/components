@@ -1,0 +1,85 @@
+{
+  "name": "RadioGroup",
+  "importPath": "sg/radio",
+  "category": "form",
+  "description": "CSS-only radio group. Apply class=\"sg-radio-group\" on a container div with native <input type=\"radio\"> children wrapped in labels.",
+  "whenToUse": "Choosing one option from a small set (2-7 visible options). Use class=\"sg-radio-group\" on a wrapper with <label class=\"sg-radio-group-item\"> children.",
+  "avoidWhen": "More than 7 options - use Select. Multiple selections - use Checkbox.",
+  "semanticRole": "radiogroup",
+  "accessibilityRequirements": "Each radio input requires an associated label.",
+  "props": {
+    "class": {
+      "type": "string",
+      "required": true,
+      "description": "Use class=\"sg-radio-group\" on the wrapper element."
+    },
+    "data-orientation": {
+      "type": "string",
+      "values": [
+        "horizontal",
+        "vertical"
+      ],
+      "default": "vertical",
+      "description": "Layout direction."
+    },
+    "data-size": {
+      "type": "Size",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "md",
+      "description": "Size of radio buttons."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "radio.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/native/radio",
+    "label": "Radio",
+    "group": "native",
+    "description": "Single selection from a list of options"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Usage",
+            "language": "svelte",
+            "code": "<div>\n  <div class=\"sg-radio-group\" onchange={(e) => { const el = (e.target as HTMLInputElement); if (el.checked) radioValue = el.value; }}>\n    <label class=\"sg-radio-group-item\">\n      <input type=\"radio\" class=\"sg-radio\" name=\"usage\" value=\"option1\" checked={radioValue === \"option1\"}>\n      <span class=\"sg-radio-content\"><span class=\"sg-radio-label\">Option 1</span></span>\n    </label>\n    <label class=\"sg-radio-group-item\">\n      <input type=\"radio\" class=\"sg-radio\" name=\"usage\" value=\"option2\" checked={radioValue === \"option2\"}>\n      <span class=\"sg-radio-content\"><span class=\"sg-radio-label\">Option 2</span></span>\n    </label>\n    <label class=\"sg-radio-group-item\">\n      <input type=\"radio\" class=\"sg-radio\" name=\"usage\" value=\"option3\" checked={radioValue === \"option3\"}>\n      <span class=\"sg-radio-content\"><span class=\"sg-radio-label\">Option 3</span></span>\n    </label>\n    <label class=\"sg-radio-group-item\">\n      <input type=\"radio\" class=\"sg-radio\" name=\"usage\" value=\"disabled\" disabled={true}>\n      <span class=\"sg-radio-content\"><span class=\"sg-radio-label\">Disabled option</span></span>\n    </label>\n  </div>\n  <p class=\"sg-demo-radiogroup-1\">Selected: {radioValue}</p>\n</div>",
+            "css": ".sg-demo-radiogroup-1 {\n  margin-top: var(--sg-space-2); color: var(--text-3); font-size: var(--sg-text-sm)\n}"
+          },
+          {
+            "title": "Horizontal Layout",
+            "language": "svelte",
+            "code": "<div>\n  <div class=\"sg-radio-group\" data-orientation=\"horizontal\" onchange={(e) => { const el = (e.target as HTMLInputElement); if (el.checked) horizontalValue = el.value; }}>\n    <label class=\"sg-radio-group-item\">\n      <input type=\"radio\" class=\"sg-radio\" name=\"horizontal\" value=\"default\" checked={horizontalValue === \"default\"}>\n      <span class=\"sg-radio-content\"><span class=\"sg-radio-label\">Default</span></span>\n    </label>\n    <label class=\"sg-radio-group-item\">\n      <input type=\"radio\" class=\"sg-radio\" name=\"horizontal\" value=\"comfortable\" checked={horizontalValue === \"comfortable\"}>\n      <span class=\"sg-radio-content\"><span class=\"sg-radio-label\">Comfortable</span></span>\n    </label>\n    <label class=\"sg-radio-group-item\">\n      <input type=\"radio\" class=\"sg-radio\" name=\"horizontal\" value=\"compact\" checked={horizontalValue === \"compact\"}>\n      <span class=\"sg-radio-content\"><span class=\"sg-radio-label\">Compact</span></span>\n    </label>\n  </div>\n  <p class=\"sg-demo-radiogroup-1\">Selected: {horizontalValue}</p>\n</div>",
+            "css": ".sg-demo-radiogroup-1 {\n  margin-top: var(--sg-space-2); color: var(--text-3); font-size: var(--sg-text-sm)\n}"
+          },
+          {
+            "title": "Sizes",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-radiogroup-1\">\n  <div class=\"sg-radio-group\" data-size=\"sm\" onchange={(e) => { const el = (e.target as HTMLInputElement); if (el.checked) sizeValue = el.value; }}>\n    <label class=\"sg-radio-group-item\">\n      <input type=\"radio\" class=\"sg-radio\" name=\"sizes\" value=\"sm\" checked={sizeValue === \"sm\"}>\n      <span class=\"sg-radio-content\"><span class=\"sg-radio-label\">Small</span></span>\n    </label>\n    <label class=\"sg-radio-group-item\">\n      <input type=\"radio\" class=\"sg-radio\" name=\"sizes\" value=\"md\" checked={sizeValue === \"md\"}>\n      <span class=\"sg-radio-content\"><span class=\"sg-radio-label\">Medium</span></span>\n    </label>\n    <label class=\"sg-radio-group-item\">\n      <input type=\"radio\" class=\"sg-radio\" name=\"sizes\" value=\"lg\" checked={sizeValue === \"lg\"}>\n      <span class=\"sg-radio-content\"><span class=\"sg-radio-label\">Large</span></span>\n    </label>\n  </div>\n</div>",
+            "css": ".sg-demo-radiogroup-1 {\n  display: flex; flex-direction: column; gap: var(--sg-gap-grouped)\n}"
+          },
+          {
+            "title": "With Description",
+            "language": "svelte",
+            "code": "<div>\n  <div class=\"sg-radio-group\">\n    <label class=\"sg-radio-group-item\">\n      <input type=\"radio\" class=\"sg-radio\" name=\"notify\" value=\"email\">\n      <span class=\"sg-radio-content\">\n        <span class=\"sg-radio-label\">Email</span>\n        <span class=\"sg-radio-description\">Receive notifications via email</span>\n      </span>\n    </label>\n    <label class=\"sg-radio-group-item\">\n      <input type=\"radio\" class=\"sg-radio\" name=\"notify\" value=\"sms\">\n      <span class=\"sg-radio-content\">\n        <span class=\"sg-radio-label\">SMS</span>\n        <span class=\"sg-radio-description\">Receive notifications via text message</span>\n      </span>\n    </label>\n    <label class=\"sg-radio-group-item\">\n      <input type=\"radio\" class=\"sg-radio\" name=\"notify\" value=\"push\">\n      <span class=\"sg-radio-content\">\n        <span class=\"sg-radio-label\">Push</span>\n        <span class=\"sg-radio-description\">Receive push notifications on your device</span>\n      </span>\n    </label>\n  </div>\n</div>"
+          }
+        ]
+      }
+    ]
+  }
+}

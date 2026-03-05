@@ -1,0 +1,68 @@
+{
+  "name": "IconButton",
+  "importPath": "sg/icon-button",
+  "category": "form",
+  "description": "Compact icon-only action button with button-like semantics.",
+  "whenToUse": "Toolbar actions where icon-only affordance is appropriate.",
+  "avoidWhen": "Primary actions that need explicit text labels.",
+  "semanticRole": "button",
+  "accessibilityRequirements": "Requires aria-label when no visible text is present.",
+  "props": {
+    "size": {
+      "type": "Size",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "md",
+      "description": "Button size."
+    },
+    "color": {
+      "type": "ColorVariant",
+      "values": [
+        "primary",
+        "secondary",
+        "danger",
+        "success",
+        "warning",
+        "info",
+        "ghost"
+      ],
+      "default": "ghost",
+      "description": "Visual color treatment."
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Disable interaction."
+    },
+    "pressed": {
+      "type": "boolean",
+      "description": "Optional toggle pressed state for aria-pressed semantics."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "icon-button.css",
+      "icon-button.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/forms/icon-button",
+    "label": "IconButton",
+    "group": "forms",
+    "subgroup": "actions-and-affordances",
+    "description": "Compact icon-only action button"
+  },
+  "page": {
+    "title": "Icon-only action",
+    "code": "<sg-icon-button aria-label=\"Search\">\n  <sg-icon name=\"search\" set=\"material-symbols\">search</sg-icon>\n</sg-icon-button>"
+  }
+}

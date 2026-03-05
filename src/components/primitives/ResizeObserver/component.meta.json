@@ -1,0 +1,36 @@
+{
+  "name": "ResizeObserver",
+  "importPath": "sg/resize-observer",
+  "category": "layout",
+  "description": "Declarative ResizeObserver bridge that emits resize events.",
+  "whenToUse": "Adapting UI when observed element dimensions change.",
+  "semanticRole": "none",
+  "props": {
+    "for": {
+      "type": "string",
+      "description": "CSS selector for observed target (defaults to parent)."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "resize-observer.css",
+      "resize-observer.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/layout/resize-observer",
+    "label": "ResizeObserver",
+    "group": "layout",
+    "subgroup": "observers",
+    "description": "Dispatch resize events for observed elements"
+  },
+  "page": {
+    "title": "Observe element resize",
+    "code": "<div id=\"resize-target\" class=\"sg-demo-resizeobserver-1\">Resize this box</div>\n<sg-resize-observer for=\"#resize-target\"></sg-resize-observer>",
+    "css": ".sg-demo-resizeobserver-1 {\n  resize: horizontal;\n  overflow: auto;\n  border: 1px solid var(--sg-color-border, #ccc);\n  padding: 0.75rem;\n  min-width: 12rem;\n}"
+  }
+}

@@ -1,0 +1,49 @@
+@layer sigui.base {
+  .sg-menu-content {
+    background: var(--sg-card-bg);
+    border: 1px solid var(--sg-card-border);
+    border-radius: var(--sg-card-radius, var(--sg-card-radius, 0.5rem));
+    box-shadow: var(--sg-shadow-dropdown);
+    padding: var(--sg-gap-tight, 0.25rem);
+    min-width: 10rem;
+    z-index: var(--sg-z-popover, 50);
+    /* CSS anchor positioning */
+    position-area: bottom;
+    position-try-fallbacks: flip-block;
+    margin-top: var(--sg-gap-tight, 0.25rem);
+  }
+
+  .sg-menu-item {
+    display: flex;
+    align-items: center;
+    padding: var(--sg-gap-related, 0.5rem) var(--sg-pad-input, 0.75rem);
+    border-radius: var(--sg-input-radius, 0.25rem);
+    cursor: pointer;
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+  }
+
+}
+
+@layer sigui.states {
+  .sg-menu-item {
+    transition: background var(--sg-transition-default, 200ms ease-out);
+  }
+
+  .sg-menu-item:hover:not([data-disabled]) {
+    background: var(--sg-surface-container);
+  }
+
+  .sg-menu-item:active:not([data-disabled]) {
+    background: var(--sg-surface-container-high);
+  }
+
+  .sg-menu-item:focus-visible {
+    outline: var(--sg-focus-width, 2px) solid var(--sg-focus-color);
+    outline-offset: -2px;
+  }
+}

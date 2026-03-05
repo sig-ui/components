@@ -1,0 +1,44 @@
+{
+  "name": "Scroller",
+  "importPath": "sg/scroller",
+  "category": "data-display",
+  "description": "Axis-constrained scroll container wrapper.",
+  "whenToUse": "Creating horizontal or vertical overflow regions with consistent styling hooks.",
+  "semanticRole": "region",
+  "props": {
+    "axis": {
+      "type": "string",
+      "values": [
+        "x",
+        "y",
+        "both"
+      ],
+      "default": "x",
+      "description": "Primary scroll axis."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "scroller.css",
+      "scroller.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/scroller",
+    "label": "Scroller",
+    "group": "data-display",
+    "subgroup": "visualization-and-browsing",
+    "description": "Axis-constrained scroll container"
+  },
+  "page": {
+    "title": "Horizontal scrolling region",
+    "code": "<sg-scroller axis=\"x\">\n  <div class=\"sg-demo-scroller-1\">\n    <sg-badge>Item 1</sg-badge><sg-badge>Item 2</sg-badge><sg-badge>Item 3</sg-badge><sg-badge>Item 4</sg-badge><sg-badge>Item 5</sg-badge>\n  </div>\n</sg-scroller>",
+    "css": ".sg-demo-scroller-1 {\n  display: inline-flex;\n  gap: 0.75rem;\n  min-width: 34rem;\n}"
+  }
+}

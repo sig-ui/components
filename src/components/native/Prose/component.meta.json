@@ -1,0 +1,70 @@
+{
+  "name": "Prose",
+  "importPath": "sg/prose",
+  "category": "basic",
+  "description": "Semantic prose elements (blockquote, figure, abbr, q) with SigUI typography styling.",
+  "whenToUse": "Rich text content, long-form documentation, and editorial sections that need readable semantics.",
+  "avoidWhen": "App UI controls or dense data layouts that should use dedicated components.",
+  "semanticRole": "semantic text flow",
+  "props": {
+    "class": {
+      "type": "string",
+      "description": "Optional sg-prose container class for readable prose rhythm and typography."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "prose.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/native/prose",
+    "label": "Prose",
+    "group": "native",
+    "description": "Blockquote, figure, abbr, and inline quotation"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Blockquote",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n  <blockquote>\n    <p>Design is not just what it looks like and feels like. Design is how it works.</p>\n    <cite>– Steve Jobs</cite>\n  </blockquote>\n  <blockquote>\n    <p>The best interface is no interface.</p>\n    <footer>– Golden Krishna, <cite>The Best Interface Is No Interface</cite></footer>\n  </blockquote>\n</sg-stack>"
+          },
+          {
+            "title": "Figure & Figcaption",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n  <figure>\n    <div class=\"sg-demo-prose-1\">\n      Image placeholder\n    </div>\n    <figcaption>Figure 1: A placeholder demonstrating the figure/figcaption semantic pattern.</figcaption>\n  </figure>\n  <figure>\n    <pre><code>const theme = resolveTheme(config);</code></pre>\n    <figcaption>Figure 2: Code can also be wrapped in a figure element.</figcaption>\n  </figure>\n</sg-stack>",
+            "css": ".sg-demo-prose-1 {\n  width: 100%; height: 120px; background: var(--sg-surface-container-high); border-radius: var(--sg-radius-md); display: flex; align-items: center; justify-content: center; color: var(--sg-color-text-muted);\n}"
+          },
+          {
+            "title": "Abbreviation",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n  <p class=\"sg-demo-prose-1\">\n    The <abbr title=\"HyperText Markup Language\">HTML</abbr> specification\n    and <abbr title=\"Cascading Style Sheets\">CSS</abbr> standard are maintained\n    by the <abbr title=\"World Wide Web Consortium\">W3C</abbr>.\n  </p>\n  <p class=\"sg-demo-prose-2\">\n    SigUI uses <abbr title=\"Oklch color space: Lightness, Chroma, Hue\">OKLCH</abbr> for\n    perceptually uniform color manipulation.\n  </p>\n</sg-stack>",
+            "css": ".sg-demo-prose-1 {\n  margin: 0; color: var(--sg-color-text);\n}\n\n.sg-demo-prose-2 {\n  margin: 0; color: var(--sg-color-text);\n}"
+          },
+          {
+            "title": "Inline Quotation",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n  <p class=\"sg-demo-prose-1\">\n    The HTML spec notes that <q>the q element represents phrasing content quoted from another source</q>.\n  </p>\n  <p class=\"sg-demo-prose-2\">\n    As the team put it, <q>we build on the platform, not around it</q>, which is central to SigUI's philosophy.\n  </p>\n</sg-stack>",
+            "css": ".sg-demo-prose-1 {\n  margin: 0; color: var(--sg-color-text);\n}\n\n.sg-demo-prose-2 {\n  margin: 0; color: var(--sg-color-text);\n}"
+          },
+          {
+            "title": "Combined Prose",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n  <blockquote>\n    <p>Good design is as little design as possible.</p>\n    <cite>– Dieter Rams</cite>\n  </blockquote>\n  <figure>\n    <div class=\"sg-demo-prose-1\">\n      The ten principles of good design\n    </div>\n    <figcaption>The ten principles articulated by Dieter Rams in the 1970s.</figcaption>\n  </figure>\n  <p class=\"sg-demo-prose-2\">\n    The <abbr title=\"User Interface\">UI</abbr> should feel <q>invisible</q> –\n    working so naturally that the user forgets it's there.\n  </p>\n</sg-stack>",
+            "css": ".sg-demo-prose-1 {\n  width: 100%; height: 80px; background: var(--sg-surface-container-high); border-radius: var(--sg-radius-md); display: flex; align-items: center; justify-content: center; color: var(--sg-color-text-muted);\n}\n\n.sg-demo-prose-2 {\n  margin: 0; color: var(--sg-color-text);\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

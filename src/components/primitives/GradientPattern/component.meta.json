@@ -1,0 +1,146 @@
+{
+  "name": "GradientPattern",
+  "importPath": "sg/gradient-pattern",
+  "category": "basic",
+  "description": "Dynamic gradient background patterns using preset factories. Supports 1–n semantic color tokens with fill/truncate to preset arity, numeric intensity (1–100), neutral-aware rendering, and extensible custom presets. Uses OKLCH color-mix for automatic dark mode and brand adaptation.",
+  "whenToUse": "Add decorative gradient backgrounds to hero sections, cards, page backgrounds, or any container that needs visual richness. Use preset factories with parameters for positioned glows, directional auroras, etc. Adapts automatically to brand color, dark mode, and motion settings.",
+  "avoidWhen": "Content needs maximum readability. Use solid backgrounds for text-heavy sections.",
+  "semanticRole": "presentation",
+  "accessibilityRequirements": "Always decorative (aria-hidden). Content children remain accessible via inner content wrapper.",
+  "props": {
+    "preset": {
+      "type": "PresetProp",
+      "values": [
+        "mesh",
+        "aurora",
+        "glow",
+        "sweep",
+        "noise"
+      ],
+      "default": "mesh",
+      "description": "Gradient preset – built-in name or a PresetDefinition object from a factory function (e.g. glow({ positions, spread }))."
+    },
+    "colors": {
+      "type": "GradientColorToken[]",
+      "values": [
+        "primary",
+        "secondary",
+        "tertiary",
+        "accent",
+        "success",
+        "warning",
+        "danger",
+        "info",
+        "neutral"
+      ],
+      "default": "primary",
+      "description": "Semantic color tokens (1–n). Fill/truncated to preset arity. When all tokens are 'neutral', algorithms shift lightness/chroma instead of hue."
+    },
+    "intensity": {
+      "type": "number",
+      "default": 30,
+      "description": "Intensity 1–100. Controls gradient opacity."
+    },
+    "animated": {
+      "type": "boolean",
+      "default": false,
+      "description": "Enable ambient animation loop. Uses WAAPI, respects prefers-reduced-motion."
+    },
+    "overlay": {
+      "type": "boolean",
+      "default": false,
+      "description": "Render as absolute-positioned layer behind content."
+    },
+    "speed": {
+      "type": "number",
+      "default": 1,
+      "description": "Animation speed multiplier (>1 = faster). Only applies when animated is true."
+    },
+    "progress": {
+      "type": "number",
+      "description": "External progress value (0–1) for scroll-driven gradient shift. Driven by the app layer (e.g. scrollProgressAction + mapRange). The gradient shifts within its container via translateY, creating a parallax effect."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "gradient-pattern.css",
+      "gradient-pattern.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/gradient-pattern",
+    "label": "GradientPattern",
+    "group": "data-display",
+    "subgroup": "content-and-media",
+    "description": "Dynamic gradient backgrounds using theme tokens"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Presets",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    {#each [\n      { p: \"mesh\", c: [\"primary\", \"secondary\", \"accent\"] },\n      { p: \"aurora\", c: [\"primary\", \"info\", \"accent\"] },\n      { p: \"glow\", c: [\"primary\", \"danger\"] },\n      { p: \"sweep\", c: [\"primary\", \"secondary\", \"accent\"] },\n      { p: \"noise\", c: [\"primary\", \"info\", \"warning\"] },\n    ] as item}\n      <div>\n        <sg-text size=\"sm\" color=\"muted\">{item.p}</sg-text>\n        <sg-gradient-pattern preset={item.p} colors={item.c} intensity={50} class=\"sg-demo-gradientpattern-1\" />\n      </div>\n    {/each}\n</sg-stack>",
+            "css": ".sg-demo-gradientpattern-1 {\n  aspect-ratio: 16/9; border-radius: var(--sg-radius-lg)\n}"
+          },
+          {
+            "title": "Multi-Color",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\">\n    {#each [\n      { label: \"1 color\", c: [\"primary\"] },\n      { label: \"2 colors\", c: [\"primary\", \"danger\"] },\n      { label: \"3 colors\", c: [\"primary\", \"danger\", \"info\"] },\n    ] as item}\n      <div class=\"sg-demo-gradientpattern-1\">\n        <sg-text size=\"sm\" color=\"muted\">{item.label}</sg-text>\n        <sg-gradient-pattern preset=\"mesh\" colors={item.c} intensity={50} class=\"sg-demo-gradientpattern-2\" />\n      </div>\n    {/each}\n</sg-stack>",
+            "css": ".sg-demo-gradientpattern-1 {\n  flex: 1\n}\n\n.sg-demo-gradientpattern-2 {\n  aspect-ratio: 16/9; border-radius: var(--sg-radius-lg)\n}"
+          },
+          {
+            "title": "Intensity (1–100)",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\">\n    {#each [15, 50, 90] as val}\n      <div class=\"sg-demo-gradientpattern-1\">\n        <sg-text size=\"sm\" color=\"muted\">{val}</sg-text>\n        <sg-gradient-pattern preset=\"glow\" colors={[\"primary\"]} intensity={val} class=\"sg-demo-gradientpattern-2\" />\n      </div>\n    {/each}\n</sg-stack>",
+            "css": ".sg-demo-gradientpattern-1 {\n  flex: 1\n}\n\n.sg-demo-gradientpattern-2 {\n  aspect-ratio: 16/9; border-radius: var(--sg-radius-lg)\n}"
+          },
+          {
+            "title": "Neutral-Aware",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\">\n    <div class=\"sg-demo-gradientpattern-1\">\n      <sg-text size=\"sm\" color=\"muted\">chromatic</sg-text>\n      <sg-gradient-pattern preset=\"mesh\" colors={[\"primary\", \"info\", \"accent\"]} intensity={50} class=\"sg-demo-gradientpattern-2\" />\n    </div>\n    <div class=\"sg-demo-gradientpattern-3\">\n      <sg-text size=\"sm\" color=\"muted\">neutral</sg-text>\n      <sg-gradient-pattern preset=\"mesh\" colors={[\"neutral\", \"neutral\", \"neutral\"]} intensity={50} class=\"sg-demo-gradientpattern-4\" />\n    </div>\n</sg-stack>",
+            "css": ".sg-demo-gradientpattern-1 {\n  flex: 1\n}\n\n.sg-demo-gradientpattern-2 {\n  aspect-ratio: 16/9; border-radius: var(--sg-radius-lg)\n}\n\n.sg-demo-gradientpattern-3 {\n  flex: 1\n}\n\n.sg-demo-gradientpattern-4 {\n  aspect-ratio: 16/9; border-radius: var(--sg-radius-lg)\n}"
+          },
+          {
+            "title": "Preset Factories with Parameters",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    <div>\n      <sg-text size=\"sm\" color=\"muted\">glow – custom positions + spread</sg-text>\n      <sg-gradient-pattern preset={glowCustom} colors={[\"primary\", \"accent\"]} intensity={60} class=\"sg-demo-gradientpattern-1\" />\n    </div>\n    <div>\n      <sg-text size=\"sm\" color=\"muted\">aurora – direction: 200deg</sg-text>\n      <sg-gradient-pattern preset={auroraAngled} colors={[\"info\", \"primary\", \"success\"]} intensity={50} class=\"sg-demo-gradientpattern-2\" />\n    </div>\n    <div>\n      <sg-text size=\"sm\" color=\"muted\">sweep – centered, 90deg</sg-text>\n      <sg-gradient-pattern preset={sweepCentered} colors={[\"danger\", \"warning\", \"primary\"]} intensity={50} class=\"sg-demo-gradientpattern-3\" />\n    </div>\n</sg-stack>",
+            "css": ".sg-demo-gradientpattern-1 {\n  aspect-ratio: 16/9; border-radius: var(--sg-radius-lg)\n}\n\n.sg-demo-gradientpattern-2 {\n  aspect-ratio: 16/9; border-radius: var(--sg-radius-lg)\n}\n\n.sg-demo-gradientpattern-3 {\n  aspect-ratio: 16/9; border-radius: var(--sg-radius-lg)\n}"
+          },
+          {
+            "title": "Animated",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\">\n    <div class=\"sg-demo-gradientpattern-1\">\n      <sg-text size=\"sm\" color=\"muted\">speed: 1 (default)</sg-text>\n      <sg-gradient-pattern preset=\"mesh\" colors={[\"primary\", \"accent\", \"info\"]} intensity={50} animated class=\"sg-demo-gradientpattern-2\" />\n    </div>\n    <div class=\"sg-demo-gradientpattern-3\">\n      <sg-text size=\"sm\" color=\"muted\">speed: 2</sg-text>\n      <sg-gradient-pattern preset=\"mesh\" colors={[\"primary\", \"accent\", \"info\"]} intensity={50} animated speed={2} class=\"sg-demo-gradientpattern-4\" />\n    </div>\n</sg-stack>",
+            "css": ".sg-demo-gradientpattern-1 {\n  flex: 1\n}\n\n.sg-demo-gradientpattern-2 {\n  aspect-ratio: 16/9; border-radius: var(--sg-radius-lg)\n}\n\n.sg-demo-gradientpattern-3 {\n  flex: 1\n}\n\n.sg-demo-gradientpattern-4 {\n  aspect-ratio: 16/9; border-radius: var(--sg-radius-lg)\n}"
+          },
+          {
+            "title": "Custom Preset",
+            "language": "svelte",
+            "code": "<sg-gradient-pattern preset={customRipple} colors={[\"primary\", \"accent\"]} intensity={50} animated class=\"sg-demo-gradientpattern-1\" />",
+            "css": ".sg-demo-gradientpattern-1 {\n  aspect-ratio: 16/9; border-radius: var(--sg-radius-lg)\n}"
+          },
+          {
+            "title": "Container with Content",
+            "language": "svelte",
+            "code": "<sg-gradient-pattern preset=\"aurora\" colors={[\"primary\", \"info\", \"accent\"]} intensity={70} class=\"sg-demo-gradientpattern-1\">\n    <sg-stack gap=\"related\">\n        <sg-heading level={2} size=\"2xl\" color=\"primary\">Hero Section</sg-heading>\n        <sg-text color=\"secondary\">Content renders above the gradient via the inner wrapper.</sg-text>\n    </sg-stack>\n</sg-gradient-pattern>",
+            "css": ".sg-demo-gradientpattern-1 {\n  aspect-ratio: 16/9; padding: var(--sg-space-8); border-radius: var(--sg-radius-lg)\n}"
+          },
+          {
+            "title": "Overlay Mode",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-gradientpattern-1\">\n  <sg-gradient-pattern preset=\"sweep\" colors={[\"primary\", \"accent\", \"info\"]} intensity={25} overlay class=\"sg-demo-gradientpattern-2\" />\n  <sg-stack gap=\"related\">\n      <sg-heading level={3}>Overlay behind content</sg-heading>\n      <sg-text>The gradient sits behind this text with pointer-events: none.</sg-text>\n  </sg-stack>\n</div>",
+            "css": ".sg-demo-gradientpattern-1 {\n  position: relative; aspect-ratio: 16/9; padding: var(--sg-space-8); border-radius: var(--sg-radius-lg); border: var(--sg-border-thin) solid var(--sg-color-border)\n}\n\n.sg-demo-gradientpattern-2 {\n  border-radius: inherit\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

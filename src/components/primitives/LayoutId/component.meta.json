@@ -1,0 +1,48 @@
+{
+  "name": "LayoutIdProvider",
+  "importPath": "sg/layout-id",
+  "category": "layout",
+  "description": "Context provider for shared layout-id FLIP transitions.",
+  "whenToUse": "Wrap regions where elements with matching layoutId should animate across re-layouts.",
+  "semanticRole": "none (provider)",
+  "parts": [
+    {
+      "name": "LayoutIdProvider",
+      "props": {
+        "flipOptions": {
+          "type": "FlipOptions",
+          "description": "Default FLIP animation options inherited by children."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "LayoutIdItem",
+      "description": "Registers an element for shared layout-id transitions within a LayoutIdProvider.",
+      "whenToUse": "Inside LayoutIdProvider for each animating element.",
+      "semanticRole": "none (animation wrapper)",
+      "props": {
+        "layoutId": {
+          "type": "string",
+          "required": true,
+          "description": "Shared layout identifier used to correlate element positions."
+        },
+        "flipOptions": {
+          "type": "FlipOptions",
+          "description": "Per-item FLIP options overriding provider defaults."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  }
+}

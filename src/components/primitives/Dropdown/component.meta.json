@@ -1,0 +1,39 @@
+{
+  "name": "Dropdown",
+  "importPath": "sg/dropdown",
+  "category": "overlay",
+  "description": "Lightweight dropdown container with open/closed state signaling.",
+  "whenToUse": "Simple anchored dropdown surfaces that do not need full menu behavior.",
+  "avoidWhen": "Command/action lists with keyboard navigation (use Menu).",
+  "semanticRole": "group",
+  "props": {
+    "open": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether dropdown content is open."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "dropdown.css",
+      "dropdown.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/dropdown",
+    "label": "Dropdown",
+    "group": "overlays",
+    "subgroup": "selection-and-command",
+    "description": "Floating dropdown container"
+  },
+  "page": {
+    "title": "Dropdown container",
+    "code": "<sg-dropdown open>\n  <sg-card><sg-card-body>Dropdown content</sg-card-body></sg-card>\n</sg-dropdown>"
+  }
+}

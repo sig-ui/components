@@ -1,0 +1,252 @@
+{
+  "name": "Grid",
+  "importPath": "sg/grid",
+  "category": "layout",
+  "description": "CSS Grid layout with auto-responsive columns, flow control, item placement, and container query collapse.",
+  "whenToUse": "Arranging items in a 2D grid. Supports fixed columns (1-12), auto-fill/auto-fit with minChildWidth, flow control, and responsive collapse via container queries.",
+  "avoidWhen": "You need a single-axis layout - use Stack instead.",
+  "semanticRole": "none (layout primitive)",
+  "parts": [
+    {
+      "name": "Grid",
+      "props": {
+        "columns": {
+          "type": "GridColumns",
+          "values": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            "auto-fill",
+            "auto-fit"
+          ],
+          "default": 1,
+          "description": "Number of columns or 'auto-fill'/'auto-fit' for responsive grids."
+        },
+        "minChildWidth": {
+          "type": "string",
+          "description": "CSS length for auto-fill/fit minmax (e.g. '200px'). Only used with auto-fill/auto-fit columns."
+        },
+        "gap": {
+          "type": "SpacingRelationship",
+          "values": [
+            "related",
+            "grouped",
+            "separated",
+            "distinct"
+          ],
+          "default": "grouped",
+          "description": "Gestalt-based spacing between grid items."
+        },
+        "rows": {
+          "type": "number | string",
+          "description": "Number → repeat(N,1fr), string → verbatim grid-template-rows."
+        },
+        "flow": {
+          "type": "GridFlow",
+          "values": [
+            "row",
+            "column",
+            "dense",
+            "row-dense",
+            "column-dense"
+          ],
+          "description": "Grid auto-flow direction."
+        },
+        "align": {
+          "type": "GridAlignment",
+          "values": [
+            "start",
+            "center",
+            "end",
+            "stretch"
+          ],
+          "default": "stretch",
+          "description": "Cross-axis alignment of grid items (align-items)."
+        },
+        "justify": {
+          "type": "GridAlignment",
+          "values": [
+            "start",
+            "center",
+            "end",
+            "stretch"
+          ],
+          "description": "Inline-axis alignment of grid items (justify-items)."
+        },
+        "placeContent": {
+          "type": "GridPlaceContent",
+          "values": [
+            "start",
+            "center",
+            "end",
+            "stretch",
+            "space-between",
+            "space-around",
+            "space-evenly"
+          ],
+          "description": "Shorthand for align-content + justify-content."
+        },
+        "inline": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use inline-grid display."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "GridItem",
+      "description": "Grid item with span, placement, and self-alignment controls.",
+      "whenToUse": "Controlling individual grid item placement within a Grid.",
+      "semanticRole": "none (layout primitive)",
+      "props": {
+        "span": {
+          "type": "GridSpan",
+          "values": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "description": "Number of columns to span."
+        },
+        "rowSpan": {
+          "type": "number",
+          "values": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "description": "Number of rows to span."
+        },
+        "start": {
+          "type": "number",
+          "values": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "description": "Grid column start line."
+        },
+        "rowStart": {
+          "type": "number",
+          "values": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "description": "Grid row start line."
+        },
+        "area": {
+          "type": "string",
+          "description": "Named grid area (grid-area)."
+        },
+        "alignSelf": {
+          "type": "GridAlignment",
+          "values": [
+            "start",
+            "center",
+            "end",
+            "stretch"
+          ],
+          "description": "Cross-axis alignment for this item."
+        },
+        "justifySelf": {
+          "type": "GridAlignment",
+          "values": [
+            "start",
+            "center",
+            "end",
+            "stretch"
+          ],
+          "description": "Inline-axis alignment for this item."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "grid.css",
+      "grid.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/layout/grid",
+    "label": "Grid",
+    "group": "layout",
+    "subgroup": "grid-and-responsive",
+    "description": "CSS grid layout with column and gap controls"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Auto-Fit with minChildWidth",
+            "language": "svelte",
+            "code": "<sg-grid columns=\"auto-fit\" minChildWidth=\"160px\" gap=\"grouped\">\n    <div class=\"grid-demo-card\">Analytics</div>\n    <div class=\"grid-demo-card\">Revenue</div>\n    <div class=\"grid-demo-card\">Sessions</div>\n    <div class=\"grid-demo-card\">Conversion</div>\n    <div class=\"grid-demo-card\">Retention</div>\n</sg-grid>"
+          },
+          {
+            "title": "GridItem Placement (span/start/rowSpan)",
+            "language": "svelte",
+            "code": "<sg-grid columns={6} rows=\"repeat(3, minmax(56px, auto))\" gap=\"grouped\">\n    <sg-grid-item span={4} start={1}>\n      <div class=\"grid-demo-card\">Main Panel</div>\n    </sg-grid-item>\n    <sg-grid-item span={2} start={5} rowSpan={2}>\n      <div class=\"grid-demo-card\">Sidebar</div>\n    </sg-grid-item>\n    <sg-grid-item span={2} start={1}>\n      <div class=\"grid-demo-card\">Stats A</div>\n    </sg-grid-item>\n    <sg-grid-item span={2} start={3}>\n      <div class=\"grid-demo-card\">Stats B</div>\n    </sg-grid-item>\n    <sg-grid-item span={6}>\n      <div class=\"grid-demo-card\">Timeline</div>\n    </sg-grid-item>\n</sg-grid>"
+          },
+          {
+            "title": "Dense Auto-Placement",
+            "language": "svelte",
+            "code": "<sg-grid columns={4} flow=\"row-dense\" rows=\"repeat(3, minmax(44px, auto))\" gap=\"related\">\n    <sg-grid-item span={2}><div class=\"grid-demo-card\">Wide</div></sg-grid-item>\n    <sg-grid-item rowSpan={2}><div class=\"grid-demo-card\">Tall</div></sg-grid-item>\n    <sg-grid-item><div class=\"grid-demo-card\">Item</div></sg-grid-item>\n    <sg-grid-item span={2}><div class=\"grid-demo-card\">Wide</div></sg-grid-item>\n    <sg-grid-item><div class=\"grid-demo-card\">Item</div></sg-grid-item>\n    <sg-grid-item><div class=\"grid-demo-card\">Item</div></sg-grid-item>\n</sg-grid>"
+          },
+          {
+            "title": "Align, Justify, PlaceContent, Inline",
+            "language": "svelte",
+            "code": "<sg-stack align=\"start\">\n    <div class=\"grid-demo-frame\">\n      <sg-grid\n        inline={true}\n        columns={3}\n        rows={2}\n        gap=\"separated\"\n        align=\"center\"\n        justify=\"center\"\n        placeContent=\"center\" class=\"sg-demo-grid-1\"\n       \n      >\n          <div class=\"grid-demo-card grid-demo-card-sm\">Alpha</div>\n          <div class=\"grid-demo-card grid-demo-card-sm\">Beta</div>\n          <div class=\"grid-demo-card grid-demo-card-sm\">Gamma</div>\n      </sg-grid>\n    </div>\n</sg-stack>",
+            "css": ".sg-demo-grid-1 {\n  min-height: 170px; min-width: min(100%, 480px)\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

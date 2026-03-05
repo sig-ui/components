@@ -1,0 +1,64 @@
+{
+  "name": "ProgressRing",
+  "importPath": "sg/progress-ring",
+  "category": "feedback",
+  "description": "Circular determinate progress indicator.",
+  "whenToUse": "Showing bounded completion percentage in compact spaces.",
+  "semanticRole": "progressbar",
+  "props": {
+    "value": {
+      "type": "number",
+      "default": 0,
+      "description": "Current progress value."
+    },
+    "max": {
+      "type": "number",
+      "default": 100,
+      "description": "Maximum progress value."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "progress-ring.css",
+      "progress-ring.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/progress-ring",
+    "label": "ProgressRing",
+    "group": "data-display",
+    "subgroup": "status-feedback",
+    "description": "Circular determinate progress indicator"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Basic Usage",
+        "examples": [
+          {
+            "title": "Default progress ring",
+            "description": "Shows a determinate completion value for compact surfaces.",
+            "language": "html",
+            "code": "<sg-progress-ring value=\"72\" max=\"100\" aria-label=\"Build progress\"></sg-progress-ring>"
+          }
+        ]
+      },
+      {
+        "title": "Sizing and Labels",
+        "examples": [
+          {
+            "title": "Larger ring with explicit label",
+            "description": "Use custom dimensions and an accessible label for status cards.",
+            "language": "html",
+            "code": "<sg-progress-ring value=\"38\" max=\"50\" aria-label=\"Upload progress\" class=\"sg-demo-progressring-1\"></sg-progress-ring>",
+            "css": ".sg-demo-progressring-1 {\n  --size: 96px;\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+@layer sigui.base {
+  .sg-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sg-gap-related, 0.5rem);
+    padding: var(--sg-gap-separated, 2rem) var(--sg-gap-grouped, 1rem);
+    text-align: center;
+    color: var(--sg-color-text-muted);
+    font-family: var(--sg-font-family, system-ui);
+  }
+
+  .sg-empty-icon {
+    font-size: 2.5rem;
+    opacity: 0.5;
+  }
+
+  .sg-empty-title {
+    font-size: var(--sg-text-lg, 1.125rem);
+    font-weight: 600;
+    color: var(--sg-color-text);
+  }
+
+  .sg-empty-description {
+    font-size: var(--sg-text-sm, 0.875rem);
+    max-width: 28rem;
+  }
+
+  .sg-empty-actions {
+    margin-top: var(--sg-gap-related, 0.5rem);
+  }
+
+}

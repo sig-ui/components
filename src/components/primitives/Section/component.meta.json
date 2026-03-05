@@ -1,0 +1,97 @@
+{
+  "name": "Section",
+  "importPath": "sg/section",
+  "category": "layout",
+  "description": "Content section with optional title, description, and content area. Uses semantic <section> element.",
+  "whenToUse": "Content sections with title + description pattern, page sections, form groups.",
+  "avoidWhen": "Raw vertical stacking without heading (use Stack).",
+  "semanticRole": "region",
+  "props": {
+    "title": {
+      "type": "string",
+      "description": "Section heading text."
+    },
+    "description": {
+      "type": "string",
+      "description": "Descriptive text below the heading."
+    },
+    "level": {
+      "type": "HeadingLevel",
+      "values": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "default": 2,
+      "description": "HTML heading level for the title."
+    },
+    "gap": {
+      "type": "SpacingRelationship",
+      "values": [
+        "related",
+        "grouped",
+        "separated",
+        "distinct"
+      ],
+      "default": "grouped",
+      "description": "Spacing between header and content."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "section.css",
+      "section.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/layout/section",
+    "label": "Section",
+    "group": "layout",
+    "subgroup": "primitives",
+    "description": "Content section with title, description, and content"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Basic Section",
+            "language": "svelte",
+            "code": "<sg-section title=\"Getting Started\" description=\"Everything you need to set up the design system.\">\n    <sg-text>Install the package, configure your theme, and start building. The design system provides tokens, components, and patterns out of the box.</sg-text>\n</sg-section>"
+          },
+          {
+            "title": "Heading Levels",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"separated\">\n    <sg-section title=\"Level 2 (default)\" level={2}>\n      <sg-text>This section uses an h2 heading.</sg-text>\n    </sg-section>\n    <sg-section title=\"Level 3\" level={3}>\n      <sg-text>This section uses an h3 heading.</sg-text>\n    </sg-section>\n    <sg-section title=\"Level 4\" level={4}>\n      <sg-text>This section uses an h4 heading.</sg-text>\n    </sg-section>\n</sg-stack>"
+          },
+          {
+            "title": "Gap Variants",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"distinct\">\n    {#each [\"related\", \"grouped\", \"separated\", \"distinct\"] as gap}\n      <sg-section title=\"Section Title\" description=\"Description text\" gap={gap}>\n          <div class=\"sg-demo-section-1\">\n            <sg-text size=\"sm\" color=\"muted\">gap=\"{gap}\"</sg-text>\n          </div>\n      </sg-section>\n    {/each}\n</sg-stack>",
+            "css": ".sg-demo-section-1 {\n  padding: var(--sg-space-4); background: var(--sg-surface-container-high, #f4f4f5); border-radius: var(--sg-radius-md, 0.375rem);\n}"
+          },
+          {
+            "title": "Without Title",
+            "language": "svelte",
+            "code": "<sg-section>\n    <sg-text>A section without title or description renders only the content area. Useful for grouping content within a semantic region.</sg-text>\n</sg-section>"
+          },
+          {
+            "title": "With Rich Content",
+            "language": "svelte",
+            "code": "<sg-section title=\"Features\" description=\"What's included in the design system.\">\n    <sg-stack gap=\"grouped\">\n        <sg-stack direction=\"horizontal\" gap=\"related\" wrap={true}>\n            <sg-badge color=\"success\">New</sg-badge>\n            <sg-badge color=\"info\">Stable</sg-badge>\n            <sg-badge color=\"warning\">Beta</sg-badge>\n        </sg-stack>\n        <sg-text>Token-driven theming with full OKLCH color support.</sg-text>\n        <button class=\"sg-button\">Get started</button>\n    </sg-stack>\n</sg-section>"
+          }
+        ]
+      }
+    ]
+  }
+}

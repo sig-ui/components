@@ -1,0 +1,223 @@
+@layer sigui.base {
+  .sg-select-root {
+    display: inline-block;
+    --sg-select-control-height: var(--sg-touch-min, 44px);
+    --sg-select-item-height: calc(var(--sg-select-control-height) - 4px);
+  }
+
+  .sg-select-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sg-gap-related, 0.5rem);
+    padding: 0.625rem 0.875rem;
+    padding-right: 2.1rem;
+    border: 1px solid color-mix(in oklch, var(--sg-color-border) 88%, transparent);
+    border-radius: max(var(--sg-input-radius, 0.25rem), 0.5rem);
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in oklch, var(--sg-surface-container-lowest) 86%, white) 0%,
+        var(--sg-surface-container-lowest) 100%
+      );
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--sg-color-text);
+    min-height: var(--sg-select-control-height);
+    cursor: pointer;
+    min-width: 12rem;
+    position: relative;
+    transition:
+      border-color var(--sg-transition-default, 180ms ease),
+      background var(--sg-transition-default, 180ms ease),
+      box-shadow var(--sg-transition-default, 180ms ease);
+  }
+
+  .sg-select-trigger::after {
+    content: "";
+    width: 0.55rem;
+    height: 0.55rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg) translateY(-1px);
+    opacity: 0.72;
+    position: absolute;
+    right: 0.9rem;
+    top: 50%;
+    margin-top: -0.28rem;
+    pointer-events: none;
+  }
+
+  .sg-select-content {
+    background: color-mix(in oklch, var(--sg-surface-container-lowest) 94%, white);
+    border: 1px solid color-mix(in oklch, var(--sg-color-border) 92%, transparent);
+    border-radius: 0.75rem;
+    box-shadow:
+      0 12px 28px -10px rgb(0 0 0 / 0.24),
+      0 4px 10px -6px rgb(0 0 0 / 0.22);
+    padding: 0.35rem;
+    min-width: 12rem;
+    max-height: min(80vh, 24rem);
+    overflow-y: auto;
+    /* CSS anchor positioning */
+    position-area: bottom;
+    position-try-fallbacks: flip-block;
+    margin-top: var(--sg-gap-tight, 0.25rem);
+    color: var(--sg-color-text);
+    transform-origin: top center;
+  }
+
+  .sg-select-item {
+    padding: 0.5rem 0.65rem 0.5rem 1.9rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+    line-height: 1.25;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    position: relative;
+    min-height: var(--sg-select-item-height);
+    color: var(--sg-color-text);
+    background: transparent;
+  }
+
+  .sg-select-group {
+    padding: var(--sg-gap-tight, 0.25rem) 0;
+  }
+
+  .sg-select-group:first-child {
+    padding-top: 0;
+  }
+
+  .sg-select-group:last-child {
+    padding-bottom: 0;
+  }
+
+  .sg-select-label {
+    padding: 0.5rem 0.65rem;
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-xs, 0.6875rem);
+    font-weight: 600;
+    color: var(--sg-color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .sg-select-separator {
+    height: 1px;
+    background: color-mix(in oklch, var(--sg-color-border) 84%, transparent);
+    margin: var(--sg-gap-tight, 0.25rem) 0;
+  }
+
+  .sg-select-item-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    left: 0.6rem;
+    color: var(--sg-color-primary);
+  }
+
+}
+
+@layer sigui.states {
+  .sg-select-item {
+    transition:
+      background var(--sg-transition-default, 160ms ease-out),
+      color var(--sg-transition-default, 160ms ease-out);
+  }
+
+  .sg-select-item:hover {
+    background: color-mix(in oklch, var(--sg-surface-container-high) 78%, transparent);
+    color: var(--sg-color-text);
+  }
+
+  .sg-select-item:active {
+    background: color-mix(in oklch, var(--sg-color-primary) 10%, var(--sg-surface-container-high));
+  }
+
+  .sg-select-trigger:hover {
+    border-color: color-mix(in oklch, var(--sg-color-primary) 28%, var(--sg-color-border));
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in oklch, var(--sg-surface-container-lowest) 82%, white) 0%,
+        color-mix(in oklch, var(--sg-surface-container-lowest) 92%, var(--sg-color-primary) 3%) 100%
+      );
+  }
+
+  .sg-select-trigger:focus-visible {
+    outline: var(--sg-focus-width, 2px) solid var(--sg-focus-color);
+    outline-offset: var(--sg-focus-offset, 2px);
+    box-shadow:
+      0 0 0 var(--sg-focus-offset, 2px) var(--sg-focus-inner, white),
+      0 10px 20px -14px color-mix(in oklch, var(--sg-color-primary) 60%, transparent);
+  }
+
+  .sg-select-item[data-state="selected"] {
+    background: color-mix(in oklch, var(--sg-color-primary) 16%, var(--sg-surface-container-lowest));
+    color: color-mix(in oklch, var(--sg-color-primary) 78%, var(--sg-color-text));
+    font-weight: 500;
+  }
+
+  .sg-select-item[data-state="selected"]::before {
+    content: "";
+    position: absolute;
+    left: 0.75rem;
+    width: 0.4rem;
+    height: 0.7rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+  }
+
+  .sg-select-item[data-disabled],
+  .sg-select-item[disabled] {
+    color: var(--sg-color-text-muted);
+    opacity: var(--sg-disabled-opacity, 0.5);
+    cursor: not-allowed;
+  }
+
+  .sg-select-content[data-state="open"] {
+    display: block;
+  }
+
+  .sg-select-root .sg-select-content {
+    transition:
+      opacity var(--sg-duration-fast, 120ms) var(--sg-ease-default, ease-out),
+      transform var(--sg-duration-fast, 120ms) var(--sg-ease-default, ease-out),
+      overlay var(--sg-duration-fast, 120ms) var(--sg-ease-default, ease-out) allow-discrete,
+      display var(--sg-duration-fast, 120ms) var(--sg-ease-default, ease-out) allow-discrete;
+  }
+
+  @starting-style {
+    .sg-select-root .sg-select-content {
+      opacity: 0;
+      transform: translateY(-6px) scale(0.985);
+    }
+  }
+
+  .sg-select-root .sg-select-content:not(:popover-open) {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.985);
+  }
+
+  @media (forced-colors: active) {
+    .sg-select-trigger {
+      border: 1px solid ButtonText;
+    }
+
+    .sg-select-item[data-state="selected"] {
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+  }
+
+
+}

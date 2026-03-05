@@ -1,0 +1,52 @@
+@layer sigui.base {
+  .sg-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    overflow: hidden;
+    background: var(--sg-color-primary-subtle);
+    color: var(--sg-color-primary);
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    flex-shrink: 0;
+    user-select: none;
+  }
+
+  .sg-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+}
+
+@layer sigui.variants {
+  .sg-avatar[data-size="sm"] {
+    width: 2rem;
+    height: 2rem;
+    font-size: var(--sg-text-xs, 0.75rem);
+  }
+
+  .sg-avatar[data-size="md"] {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: var(--sg-text-sm, 0.875rem);
+  }
+
+  .sg-avatar[data-size="lg"] {
+    width: 3rem;
+    height: 3rem;
+    font-size: var(--sg-text-base, 1rem);
+  }
+
+  .sg-avatar[data-size="xl"] {
+    width: 4rem;
+    height: 4rem;
+    font-size: var(--sg-text-lg, 1.125rem);
+  }
+}

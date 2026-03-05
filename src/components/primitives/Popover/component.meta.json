@@ -1,0 +1,91 @@
+{
+  "name": "PopoverRoot",
+  "importPath": "sg/popover",
+  "category": "overlay",
+  "description": "Root controller for a popover. Uses native Popover API for top-layer rendering and light dismiss.",
+  "whenToUse": "Non-modal overlays (additional info, forms, pickers) that can be dismissed by clicking outside.",
+  "avoidWhen": "Modal interaction requiring focus trap - use Dialog. Simple text hint - use Tooltip.",
+  "semanticRole": "dialog (non-modal)",
+  "accessibilityRequirements": "PopoverContent requires aria-label or aria-labelledby.",
+  "parts": [
+    {
+      "name": "PopoverRoot",
+      "props": {
+        "open": {
+          "type": "boolean",
+          "default": false,
+          "description": "Controlled open state. Bindable."
+        },
+        "onclose": {
+          "type": "() => void",
+          "description": "Called when popover is dismissed."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "PopoverTrigger",
+      "description": "Trigger element for the Popover. Uses native popovertarget attribute.",
+      "whenToUse": "Always inside a PopoverRoot to provide the open trigger.",
+      "semanticRole": "button",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "PopoverContent",
+      "description": "Content panel of a Popover. Uses native popover attribute with CSS Anchor Positioning.",
+      "whenToUse": "Always inside a PopoverRoot to provide the popover content.",
+      "semanticRole": "dialog (non-modal)",
+      "accessibilityRequirements": "Must have aria-label or aria-labelledby (enforced by ModalLabelProps type).",
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "popover.css",
+      "popover.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/popover",
+    "label": "Popover",
+    "group": "overlays",
+    "subgroup": "dialogs-and-popups",
+    "description": "Positioned floating content"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Usage",
+            "language": "svelte",
+            "code": "<sg-popover-root>\n  <sg-popover-trigger>\n    <button class=\"sg-button\" data-color=\"secondary\">Toggle Popover</button>\n  </sg-popover-trigger>\n  <sg-popover-content>\n    <div class=\"sg-demo-popoverroot-1\">\n      <h4 class=\"sg-demo-popoverroot-2\">Popover Content</h4>\n      <p class=\"sg-demo-popoverroot-3\">\n        This popover appears relative to the trigger.\n      </p>\n    </div>\n  </sg-popover-content>\n</sg-popover-root>",
+            "css": ".sg-demo-popoverroot-1 {\n  padding: var(--sg-pad-input)\n}\n\n.sg-demo-popoverroot-2 {\n  margin: 0 0 var(--sg-space-2)\n}\n\n.sg-demo-popoverroot-3 {\n  margin: 0; color: var(--sg-color-text-secondary); font-size: var(--sg-text-sm)\n}"
+          },
+          {
+            "title": "Topbar-Like Scenario",
+            "language": "svelte",
+            "code": "<div class=\"popover-topbar-test\">\n  <div class=\"popover-topbar-test-inner\">\n    <span>Topbar popover test</span>\n    <div class=\"sg-demo-popoverroot-1\">\n      <sg-popover-root>\n        <sg-popover-trigger>\n          <button class=\"sg-button\" data-color=\"secondary\">Open menu</button>\n        </sg-popover-trigger>\n        <sg-popover-content>\n          <div class=\"sg-demo-popoverroot-2\">\n            <strong class=\"sg-demo-popoverroot-3\">Quick actions</strong>\n            <a href=\"#\" class=\"sg-demo-popoverroot-4\">View profile</a>\n            <a href=\"#\" class=\"sg-demo-popoverroot-5\">Settings</a>\n          </div>\n        </sg-popover-content>\n      </sg-popover-root>\n      <sg-color-picker value=\"#3b82f6\" size={30} thickness={4} mode=\"popover\" label=\"Brand color\" />\n    </div>\n  </div>\n</div>",
+            "css": ".sg-demo-popoverroot-1 {\n  display:flex;align-items:center;gap:var(--sg-gap-related);\n}\n\n.sg-demo-popoverroot-2 {\n  display:flex;flex-direction:column;gap:var(--sg-gap-tight);min-width:14rem;\n}\n\n.sg-demo-popoverroot-3 {\n  font-size:var(--sg-text-sm);\n}\n\n.sg-demo-popoverroot-4 {\n  color:var(--sg-color-link);text-decoration:none;\n}\n\n.sg-demo-popoverroot-5 {\n  color:var(--sg-color-link);text-decoration:none;\n}"
+          },
+          {
+            "title": "Feature Flag",
+            "language": "svelte",
+            "code": "<p class=\"sg-demo-popoverroot-1\">Popover machine can be toggled with <code>featureFlags.popoverMachine</code>.</p>",
+            "css": ".sg-demo-popoverroot-1 {\n  margin: 0; color: var(--sg-color-text-secondary);\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

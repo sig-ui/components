@@ -1,0 +1,69 @@
+@layer sigui.base {
+  .sg-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: var(--sg-icon-size, 1.5rem);
+    height: var(--sg-icon-size, 1.5rem);
+    color: currentColor;
+    vertical-align: -0.125em;
+    line-height: 1;
+  }
+
+  .sg-icon > svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    stroke-width: var(--sg-icon-stroke, 1.5);
+    stroke-linecap: var(--sg-icon-linecap, round);
+    stroke-linejoin: var(--sg-icon-linejoin, round);
+    fill: none;
+  }
+
+  .sg-icon--filled > svg {
+    fill: currentColor;
+    stroke: none;
+  }
+
+  .sg-icon[data-delivery="font"] {
+    width: auto;
+    height: auto;
+    min-width: var(--sg-icon-size, 1.5rem);
+    min-height: var(--sg-icon-size, 1.5rem);
+    font-size: var(--sg-icon-size, 1.5rem);
+    font-style: normal;
+    user-select: none;
+    white-space: nowrap;
+    text-transform: none;
+    letter-spacing: normal;
+    direction: ltr;
+    word-wrap: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+}
+
+@layer sigui.variants {
+  .sg-icon[data-size="xs"]      { --sg-icon-size: 0.75rem; --sg-icon-stroke: 1; }
+  .sg-icon[data-size="sm"]      { --sg-icon-size: 1rem; --sg-icon-stroke: 1.25; }
+  .sg-icon[data-size="md"]      { --sg-icon-size: 1.25rem; --sg-icon-stroke: 1.5; }
+  .sg-icon[data-size="default"] { --sg-icon-size: 1.5rem; --sg-icon-stroke: 1.5; }
+  .sg-icon[data-size="lg"]      { --sg-icon-size: 2rem; --sg-icon-stroke: 2; }
+  .sg-icon[data-size="xl"]      { --sg-icon-size: 3rem; --sg-icon-stroke: 2.5; }
+
+  .sg-icon[data-color="success"] { color: var(--sg-color-success); }
+  .sg-icon[data-color="warning"] { color: var(--sg-color-warning); }
+  .sg-icon[data-color="danger"]  { color: var(--sg-color-danger); }
+  .sg-icon[data-color="info"]    { color: var(--sg-color-info); }
+
+  :dir(rtl) .sg-icon[data-icon-dir="directional"] {
+    transform: scaleX(-1);
+  }
+
+}
+
+@layer sigui.states {
+}

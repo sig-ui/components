@@ -1,0 +1,167 @@
+{
+  "name": "Card",
+  "importPath": "sg/card",
+  "category": "basic",
+  "description": "Surface container with optional elevation and padding.",
+  "whenToUse": "Grouping related content into a distinct visual container with depth.",
+  "avoidWhen": "Content doesn't need visual separation - use Stack or a plain container.",
+  "semanticRole": "article or region (depending on content)",
+  "parts": [
+    {
+      "name": "Card",
+      "props": {
+        "elevation": {
+          "type": "Elevation",
+          "values": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "default": 1,
+          "description": "Shadow depth level (0 = flat, 5 = highest)."
+        },
+        "padding": {
+          "type": "boolean | Size",
+          "default": false,
+          "description": "Internal padding. true maps to 'md'. Accepts 'sm', 'md', 'lg'."
+        },
+        "size": {
+          "type": "Size",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "description": "Card width variant."
+        },
+        "density": {
+          "type": "Density",
+          "values": [
+            "compact",
+            "comfortable",
+            "spacious"
+          ],
+          "description": "Adjusts internal spacing scale."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "CardHeader",
+      "description": "Header section inside a Card.",
+      "whenToUse": "Adding a title/header area to a Card.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "CardBody",
+      "description": "Body section inside a Card.",
+      "whenToUse": "Adding the main content area of a Card.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "CardFooter",
+      "description": "Footer section inside a Card.",
+      "whenToUse": "Adding actions or metadata at the bottom of a Card.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "CardTitle",
+      "description": "Title heading inside a CardHeader.",
+      "whenToUse": "Adding a semantic title to a Card header.",
+      "semanticRole": "heading",
+      "props": {
+        "as": {
+          "type": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\"",
+          "default": "h3",
+          "description": "Heading level for semantic structure."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "CardDescription",
+      "description": "Description text inside a CardHeader.",
+      "whenToUse": "Adding supplementary description text below a CardTitle.",
+      "semanticRole": "text",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "CardAction",
+      "description": "Action area aligned to the right in a CardHeader.",
+      "whenToUse": "Adding action buttons or icons to the card header, aligned to the end.",
+      "semanticRole": "group",
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "card.css",
+      "card.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/card",
+    "label": "Card",
+    "group": "data-display",
+    "subgroup": "content-and-media",
+    "description": "Container with header, body, and footer slots"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Structured Card with Title, Description, and Action",
+            "language": "svelte",
+            "code": "<sg-card elevation={2}>\n    <sg-card-header>\n        <sg-card-title>Structured Card</sg-card-title>\n        <sg-card-description>With title, description, and action components</sg-card-description>\n        <sg-card-action><button class=\"sg-button\" data-size=\"sm\" data-color=\"ghost\">...</button></sg-card-action>\n    </sg-card-header>\n    <sg-card-body>\n      <p class=\"sg-demo-card-1\">CardTitle, CardDescription, and CardAction provide semantic structure for card headers.</p>\n    </sg-card-body>\n    <sg-card-footer>\n        <button class=\"sg-button\" data-size=\"sm\">Cancel</button>\n        <button class=\"sg-button\" data-size=\"sm\" data-color=\"primary\">Save</button>\n    </sg-card-footer>\n</sg-card>",
+            "css": ".sg-demo-card-1 {\n  margin: 0; color: var(--sg-color-text-secondary)\n}"
+          },
+          {
+            "title": "Elevation Levels",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"grouped\" wrap={true}>\n    <sg-card elevation={1} class=\"sg-demo-card-1\">\n        <sg-card-body>\n            <h4 class=\"sg-demo-card-2\">Default Card</h4>\n            <p class=\"sg-demo-card-3\">Elevation level 1.</p>\n        </sg-card-body>\n    </sg-card>\n    <sg-card elevation={3} class=\"sg-demo-card-4\">\n        <sg-card-header>\n          <h4 class=\"sg-demo-card-5\">Elevated Card</h4>\n        </sg-card-header>\n        <sg-card-body>\n          <p class=\"sg-demo-card-6\">Elevation 3 with header, body, footer.</p>\n        </sg-card-body>\n        <sg-card-footer>\n          <button class=\"sg-button\" data-size=\"sm\" data-color=\"primary\">Action</button>\n        </sg-card-footer>\n    </sg-card>\n</sg-stack>",
+            "css": ".sg-demo-card-1 {\n  flex: 1\n}\n\n.sg-demo-card-2 {\n  margin: 0 0 var(--sg-space-2)\n}\n\n.sg-demo-card-3 {\n  margin: 0; color: var(--sg-color-text-secondary)\n}\n\n.sg-demo-card-4 {\n  flex: 1\n}\n\n.sg-demo-card-5 {\n  margin: 0\n}\n\n.sg-demo-card-6 {\n  margin: 0; color: var(--sg-color-text-secondary)\n}"
+          },
+          {
+            "title": "Padding Variants",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"grouped\" wrap={true}>\n    <sg-card padding=\"sm\" class=\"sg-demo-card-1\">\n        <p class=\"sg-demo-card-2\">padding=\"sm\"</p>\n    </sg-card>\n    <sg-card padding=\"md\" class=\"sg-demo-card-3\">\n        <p class=\"sg-demo-card-4\">padding=\"md\"</p>\n    </sg-card>\n    <sg-card padding=\"lg\" class=\"sg-demo-card-5\">\n        <p class=\"sg-demo-card-6\">padding=\"lg\"</p>\n    </sg-card>\n</sg-stack>",
+            "css": ".sg-demo-card-1 {\n  flex: 1\n}\n\n.sg-demo-card-2 {\n  margin: 0; color: var(--sg-color-text-secondary)\n}\n\n.sg-demo-card-3 {\n  flex: 1\n}\n\n.sg-demo-card-4 {\n  margin: 0; color: var(--sg-color-text-secondary)\n}\n\n.sg-demo-card-5 {\n  flex: 1\n}\n\n.sg-demo-card-6 {\n  margin: 0; color: var(--sg-color-text-secondary)\n}"
+          },
+          {
+            "title": "Size & Density",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"grouped\" wrap={true}>\n    <sg-card size=\"sm\" padding=\"md\" class=\"sg-demo-card-1\">\n        <p class=\"sg-demo-card-2\">size=\"sm\"</p>\n    </sg-card>\n    <sg-card size=\"lg\" padding=\"md\" class=\"sg-demo-card-3\">\n        <p class=\"sg-demo-card-4\">size=\"lg\"</p>\n    </sg-card>\n    <sg-card density=\"compact\" padding=\"md\" class=\"sg-demo-card-5\">\n        <p class=\"sg-demo-card-6\">density=\"compact\"</p>\n    </sg-card>\n    <sg-card density=\"spacious\" padding=\"md\" class=\"sg-demo-card-7\">\n        <p class=\"sg-demo-card-8\">density=\"spacious\"</p>\n    </sg-card>\n</sg-stack>",
+            "css": ".sg-demo-card-1 {\n  flex: 1\n}\n\n.sg-demo-card-2 {\n  margin: 0; color: var(--sg-color-text-secondary)\n}\n\n.sg-demo-card-3 {\n  flex: 1\n}\n\n.sg-demo-card-4 {\n  margin: 0; color: var(--sg-color-text-secondary)\n}\n\n.sg-demo-card-5 {\n  flex: 1\n}\n\n.sg-demo-card-6 {\n  margin: 0; color: var(--sg-color-text-secondary)\n}\n\n.sg-demo-card-7 {\n  flex: 1\n}\n\n.sg-demo-card-8 {\n  margin: 0; color: var(--sg-color-text-secondary)\n}"
+          },
+          {
+            "title": "CardTitle Heading Levels",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"vertical\" gap=\"separate\">\n    <sg-card padding=\"md\">\n        <sg-card-title as=\"h2\">H2 Section Title</sg-card-title>\n    </sg-card>\n    <sg-card padding=\"md\">\n        <sg-card-title as=\"h3\">H3 Card Title (default)</sg-card-title>\n    </sg-card>\n    <sg-card padding=\"md\">\n        <sg-card-title as=\"h4\">H4 Subsection Title</sg-card-title>\n    </sg-card>\n</sg-stack>"
+          }
+        ]
+      }
+    ]
+  }
+}

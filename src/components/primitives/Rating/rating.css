@@ -1,0 +1,45 @@
+@layer sigui.base {
+  .sg-rating {
+    display: inline-flex;
+  }
+
+  .sg-rating .sg-rating-stars {
+    display: inline-flex;
+    gap: 0.0625rem;
+  }
+
+  .sg-rating .sg-rating-star {
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    line-height: 1;
+    color: var(--sg-color-text-muted);
+    transition: transform 150ms ease-out;
+  }
+
+  .sg-rating[readonly] .sg-rating-star {
+    cursor: default;
+  }
+}
+
+@layer sigui.states {
+  .sg-rating:not([data-style]) .sg-rating-star[data-filled],
+  .sg-rating[data-style="star"] .sg-rating-star[data-filled] {
+    color: #e5a00d;
+  }
+
+  .sg-rating[data-style="heart"] .sg-rating-star[data-filled] {
+    color: #e5344a;
+  }
+
+  .sg-rating .sg-rating-star:not([disabled]):hover {
+    transform: scale(1.2);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sg-rating .sg-rating-star {
+      transition-duration: 0s;
+    }
+  }
+}

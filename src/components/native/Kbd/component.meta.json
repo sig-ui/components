@@ -1,0 +1,79 @@
+{
+  "name": "Kbd",
+  "importPath": "sg/kbd",
+  "category": "basic",
+  "description": "CSS-only keyboard key indicator. Apply class=\"sg-kbd\" on native <kbd>.",
+  "whenToUse": "To display keyboard shortcuts or key combinations in documentation and UI.",
+  "avoidWhen": "For general text emphasis - use Text or Badge instead.",
+  "semanticRole": "none (semantic <kbd> element)",
+  "parts": [
+    {
+      "name": "Kbd",
+      "props": {
+        "class": {
+          "type": "string",
+          "required": true,
+          "description": "Use class=\"sg-kbd\" on a native <kbd> element."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "KbdGroup",
+      "description": "Groups multiple Kbd components together for displaying keyboard shortcuts with proper spacing.",
+      "whenToUse": "When displaying keyboard shortcuts that consist of multiple keys (e.g., Ctrl+K, Cmd+Shift+P).",
+      "semanticRole": "none (layout helper)",
+      "props": {
+        "class": {
+          "type": "string",
+          "required": true,
+          "description": "Use class=\"sg-kbd-group\" on a wrapper element (for example <span>)."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "kbd.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/native/kbd",
+    "label": "Kbd",
+    "group": "native",
+    "description": "Keyboard shortcut display"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Keyboard Shortcuts",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"grouped\" align=\"center\" wrap={true}>\n    <span class=\"sg-demo-kbd-1\">\n      <span class=\"sg-kbd-group\">\n          <kbd class=\"sg-kbd\">Ctrl</kbd>+<kbd class=\"sg-kbd\">S</kbd>\n      </span>\n      <span class=\"sg-demo-kbd-2\">Save</span>\n    </span>\n    <span class=\"sg-demo-kbd-3\">\n      <span class=\"sg-kbd-group\">\n          <kbd class=\"sg-kbd\">Cmd</kbd>+<kbd class=\"sg-kbd\">K</kbd>\n      </span>\n      <span class=\"sg-demo-kbd-4\">Command palette</span>\n    </span>\n    <span class=\"sg-demo-kbd-5\">\n      <kbd class=\"sg-kbd\">Esc</kbd>\n      <span class=\"sg-demo-kbd-6\">Close</span>\n    </span>\n</sg-stack>",
+            "css": ".sg-demo-kbd-1 {\n  color: var(--sg-color-text-secondary); display: inline-flex; align-items: center; gap: var(--sg-gap-tight)\n}\n\n.sg-demo-kbd-2 {\n  margin-left: var(--sg-space-2); font-size: var(--sg-text-sm)\n}\n\n.sg-demo-kbd-3 {\n  color: var(--sg-color-text-secondary); display: inline-flex; align-items: center; gap: var(--sg-gap-tight)\n}\n\n.sg-demo-kbd-4 {\n  margin-left: var(--sg-space-2); font-size: var(--sg-text-sm)\n}\n\n.sg-demo-kbd-5 {\n  color: var(--sg-color-text-secondary); display: inline-flex; align-items: center; gap: var(--sg-gap-tight)\n}\n\n.sg-demo-kbd-6 {\n  margin-left: var(--sg-space-2); font-size: var(--sg-text-sm)\n}"
+          },
+          {
+            "title": "Modifier Keys",
+            "language": "svelte",
+            "code": "<span class=\"sg-kbd-group\">\n    <kbd class=\"sg-kbd\">Ctrl</kbd>+<kbd class=\"sg-kbd\">Shift</kbd>+<kbd class=\"sg-kbd\">Alt</kbd>+<kbd class=\"sg-kbd\">Del</kbd>\n</span>"
+          },
+          {
+            "title": "Single Keys",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\">\n    <kbd class=\"sg-kbd\">A</kbd>\n    <kbd class=\"sg-kbd\">B</kbd>\n    <kbd class=\"sg-kbd\">C</kbd>\n    <kbd class=\"sg-kbd\">D</kbd>\n    <kbd class=\"sg-kbd\">Enter</kbd>\n    <kbd class=\"sg-kbd\">Space</kbd>\n    <kbd class=\"sg-kbd\">Tab</kbd>\n</sg-stack>"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "name": "SearchInput",
+  "importPath": "sg/search-input",
+  "category": "form",
+  "description": "CSS-only styled search input. Apply class=\"sg-search-input\" on a native <input type=\"search\"> element.",
+  "whenToUse": "Search fields, filter inputs. Use class=\"sg-search-input\" on a native <input type=\"search\">.",
+  "avoidWhen": "General text input (use Input). Autocomplete search with dropdown (use Combobox).",
+  "semanticRole": "searchbox",
+  "accessibilityRequirements": "Requires associated label or aria-label.",
+  "props": {
+    "class": {
+      "type": "string",
+      "required": true,
+      "description": "Use class=\"sg-search-input\" on a native <input type=\"search\">."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "search-input.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/native/search-input",
+    "label": "SearchInput",
+    "group": "native",
+    "description": "Search field with icon, clear button, and loading state"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Basic",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-searchinput-1\">\n  <input type=\"search\" class=\"sg-search-input\" placeholder=\"Search components...\" />\n</div>",
+            "css": ".sg-demo-searchinput-1 {\n  max-width: 400px;\n}"
+          },
+          {
+            "title": "With Value & Events",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-searchinput-1\">\n  <sg-stack gap=\"related\">\n      <input type=\"search\" class=\"sg-search-input\" value=\"Svelte\" placeholder=\"Search components...\" />\n      <sg-text size=\"sm\" color=\"muted\">Typing: \"Svelte\"</sg-text>\n      <sg-text size=\"sm\" color=\"success\">Submitted: \"Svelte\"</sg-text>\n  </sg-stack>\n</div>",
+            "css": ".sg-demo-searchinput-1 {\n  max-width: 400px;\n}"
+          },
+          {
+            "title": "Loading State",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-searchinput-1\">\n  <input type=\"search\" class=\"sg-search-input\" value=\"Loading\" placeholder=\"Fetching results...\" />\n</div>",
+            "css": ".sg-demo-searchinput-1 {\n  max-width: 400px;\n}"
+          },
+          {
+            "title": "Disabled",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-searchinput-1\">\n  <input type=\"search\" class=\"sg-search-input\" disabled placeholder=\"Search is disabled\" />\n</div>",
+            "css": ".sg-demo-searchinput-1 {\n  max-width: 400px;\n}"
+          },
+          {
+            "title": "Sizes",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    <div class=\"sg-demo-searchinput-1\">\n      <input type=\"search\" class=\"sg-search-input\" placeholder=\"Small search...\" />\n    </div>\n    <div class=\"sg-demo-searchinput-2\">\n      <input type=\"search\" class=\"sg-search-input\" placeholder=\"Medium search...\" />\n    </div>\n    <div class=\"sg-demo-searchinput-3\">\n      <input type=\"search\" class=\"sg-search-input\" placeholder=\"Large search...\" />\n    </div>\n</sg-stack>",
+            "css": ".sg-demo-searchinput-1 {\n  max-width: 400px;\n}\n\n.sg-demo-searchinput-2 {\n  max-width: 400px;\n}\n\n.sg-demo-searchinput-3 {\n  max-width: 400px;\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

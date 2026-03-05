@@ -1,0 +1,18 @@
+@layer sigui.base {
+  .sg-hover-card {
+    background: var(--sg-card-bg);
+    border: 1px solid var(--sg-card-border);
+    border-radius: var(--sg-card-radius, var(--sg-card-radius, 0.5rem));
+    box-shadow: var(--sg-shadow-dropdown);
+    padding: var(--sg-card-padding, 1.5rem);
+    z-index: var(--sg-z-popover, 50);
+    /* CSS anchor positioning */
+    position: absolute;
+    position-area: bottom;
+    position-try-fallbacks: flip-block, flip-inline;
+  }
+
+}
+
+@layer sigui.states {
+}

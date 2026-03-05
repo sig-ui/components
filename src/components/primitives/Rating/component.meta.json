@@ -1,0 +1,72 @@
+{
+  "name": "Rating",
+  "importPath": "sg/rating",
+  "category": "form",
+  "description": "Star-based rating control with optional read-only mode.",
+  "whenToUse": "Capturing preference or satisfaction on a fixed discrete scale.",
+  "semanticRole": "slider",
+  "props": {
+    "value": {
+      "type": "number",
+      "default": 0,
+      "description": "Selected rating value."
+    },
+    "max": {
+      "type": "number",
+      "default": 5,
+      "description": "Maximum selectable rating."
+    },
+    "readonly": {
+      "type": "boolean",
+      "default": false,
+      "description": "Prevents user interaction when true."
+    },
+    "data-style": {
+      "type": "string",
+      "values": ["star", "heart"],
+      "default": "star",
+      "description": "Visual style of the rating symbols."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "rating.css",
+      "rating.js"
+    ],
+    "componentDeps": ["icon"],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/forms/rating",
+    "label": "Rating",
+    "group": "forms",
+    "subgroup": "entry-controls",
+    "description": "Selectable star rating control"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Star Rating",
+            "language": "html",
+            "code": "<sg-rating value=\"3\" max=\"5\"></sg-rating>"
+          },
+          {
+            "title": "Heart Rating",
+            "language": "html",
+            "code": "<sg-rating value=\"4\" max=\"5\" data-style=\"heart\"></sg-rating>"
+          },
+          {
+            "title": "Read-only",
+            "language": "html",
+            "code": "<sg-stack gap=\"grouped\">\n  <sg-rating value=\"4\" max=\"5\" readonly></sg-rating>\n  <sg-rating value=\"3\" max=\"5\" data-style=\"heart\" readonly></sg-rating>\n</sg-stack>"
+          }
+        ]
+      }
+    ]
+  }
+}

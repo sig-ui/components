@@ -1,0 +1,86 @@
+{
+  "native": {
+    "label": "Native Elements",
+    "description": "Styled native HTML elements with CSS classes"
+  },
+  "layout": {
+    "label": "Layout",
+    "description": "Structural and spatial primitives",
+    "subgroups": {
+      "primitives": {
+        "label": "Primitives",
+        "description": "Foundational composition blocks for page structure"
+      },
+      "grid-and-responsive": {
+        "label": "Grid & Responsive",
+        "description": "Grid systems and responsive/adaptive layout controls"
+      },
+      "content-typography": {
+        "label": "Content Typography",
+        "description": "Text and heading structure for content layout"
+      },
+      "observers": {
+        "label": "Observers",
+        "description": "DOM observers that drive adaptive layout behavior"
+      }
+    }
+  },
+  "forms": {
+    "label": "Forms & Actions",
+    "description": "Inputs, controls, and action triggers",
+    "subgroups": {
+      "actions-and-affordances": {
+        "label": "Actions & Affordances",
+        "description": "Action components and compact UI affordances"
+      },
+      "field-composition": {
+        "label": "Field Composition",
+        "description": "Field wrappers and grouped input structures"
+      },
+      "entry-controls": {
+        "label": "Entry Controls",
+        "description": "Value-entry controls for numeric, date, rating, and color input"
+      }
+    }
+  },
+  "data-display": {
+    "label": "Data Display",
+    "description": "Content presentation and feedback",
+    "subgroups": {
+      "status-feedback": {
+        "label": "Status & Feedback",
+        "description": "Status messaging and loading/empty/system feedback states"
+      },
+      "content-and-media": {
+        "label": "Content & Media",
+        "description": "Media, content containers, and formatting/display utilities"
+      },
+      "visualization-and-browsing": {
+        "label": "Visualization & Browsing",
+        "description": "Charts, tables, and interactive browsing/presentation patterns"
+      }
+    }
+  },
+  "overlays": {
+    "label": "Overlays & Navigation",
+    "description": "Floating layers and navigation patterns",
+    "subgroups": {
+      "disclosure-and-switching": {
+        "label": "Disclosure & Switching",
+        "description": "Reveal/hide regions and switch panelized content"
+      },
+      "selection-and-command": {
+        "label": "Selection & Command",
+        "description": "Menus, selection surfaces, and command-driven interactions"
+      },
+      "dialogs-and-popups": {
+        "label": "Dialogs & Popups",
+        "description": "Layered surfaces for focused interactions"
+      },
+      "navigation-shells": {
+        "label": "Navigation Shells",
+        "description": "Wayfinding and navigation scaffolding patterns"
+      }
+    }
+  }
+}

@@ -1,0 +1,88 @@
+@layer sigui.base {
+  .sg-textarea-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sg-gap-related, 0.5rem);
+  }
+
+  .sg-textarea-label {
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+    font-weight: 500;
+    color: var(--sg-color-text);
+  }
+
+  .sg-textarea {
+    padding: var(--sg-input-padding, 0.75rem);
+    border: 1px solid var(--sg-input-border);
+    border-radius: var(--sg-input-radius);
+    background: var(--sg-input-bg);
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-base, 1rem);
+    line-height: var(--sg-leading-base);
+    color: var(--sg-color-text);
+    outline: none;
+    transition:
+      border-color var(--sg-transition-default, 200ms ease-out),
+      box-shadow var(--sg-transition-default, 200ms ease-out);
+  }
+
+  .sg-textarea[data-resize="none"]     { resize: none; }
+  .sg-textarea[data-resize="vertical"] { resize: vertical; }
+  .sg-textarea[data-resize="both"]     { resize: both; }
+
+  .sg-textarea[data-autogrow] {
+    resize: none;
+    overflow: hidden;
+    min-height: calc(var(--sg-input-padding, 0.75rem) * 2 + var(--sg-leading-base, 1.5) * 1rem);
+  }
+
+  .sg-textarea-description {
+    font-size: var(--sg-text-xs, 0.6875rem);
+    color: var(--sg-color-text-muted);
+  }
+
+  .sg-textarea-error {
+    font-size: var(--sg-text-xs, 0.6875rem);
+    color: var(--sg-color-danger);
+  }
+
+}
+
+@layer sigui.variants {
+  .sg-textarea-wrapper[data-density="compact"] {
+    --sg-density: 0.75;
+  }
+
+  .sg-textarea-wrapper[data-density="comfortable"] {
+    --sg-density: 1;
+  }
+
+  .sg-textarea-wrapper[data-density="spacious"] {
+    --sg-density: 1.5;
+  }
+
+  .sg-textarea-wrapper .sg-textarea {
+    padding: calc(var(--sg-input-padding, 0.75rem) * var(--sg-density, 1));
+  }
+
+  .sg-textarea-wrapper[data-density="compact"] .sg-textarea {
+    font-size: var(--sg-text-sm, 0.875rem);
+  }
+
+}
+
+@layer sigui.states {
+  .sg-textarea:focus-visible {
+    outline: var(--sg-focus-width, 2px) solid var(--sg-focus-color);
+    outline-offset: var(--sg-focus-offset, 2px);
+    box-shadow: 0 0 0 var(--sg-focus-offset, 2px) var(--sg-focus-inner, white);
+    border-color: var(--sg-color-border-focus);
+  }
+
+  .sg-textarea[data-validation="invalid"] {
+    border-color: var(--sg-color-danger);
+  }
+
+
+}

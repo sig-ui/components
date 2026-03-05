@@ -1,0 +1,38 @@
+{
+  "name": "Tree",
+  "importPath": "sg/tree",
+  "category": "data-display",
+  "description": "Hierarchical tree container with keyboard navigation hooks.",
+  "whenToUse": "File explorers, nested navigation, or hierarchical selection.",
+  "semanticRole": "tree",
+  "props": {
+    "selectable": {
+      "type": "boolean",
+      "default": false,
+      "description": "Enables selection semantics for tree items."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "tree.css",
+      "tree.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/tree",
+    "label": "Tree",
+    "group": "data-display",
+    "subgroup": "visualization-and-browsing",
+    "description": "Hierarchical tree with keyboard navigation"
+  },
+  "page": {
+    "title": "Keyboard-navigable tree",
+    "code": "<sg-tree selectable>\n  <div role=\"treeitem\" tabindex=\"0\">src</div>\n  <div role=\"treeitem\" tabindex=\"-1\">components</div>\n  <div role=\"treeitem\" tabindex=\"-1\">styles</div>\n</sg-tree>"
+  }
+}

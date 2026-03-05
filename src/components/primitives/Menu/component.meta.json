@@ -1,0 +1,105 @@
+{
+  "name": "MenuRoot",
+  "importPath": "sg/menu",
+  "category": "navigation",
+  "description": "Root controller for a dropdown menu. Uses native Popover API for top-layer rendering and light dismiss.",
+  "whenToUse": "Contextual list of actions triggered from a button (more actions, user menu).",
+  "avoidWhen": "Navigation links - use a nav list. Form selection - use Select.",
+  "semanticRole": "menu",
+  "accessibilityRequirements": "MenuContent requires aria-label or aria-labelledby. Arrow keys navigate items.",
+  "parts": [
+    {
+      "name": "MenuRoot",
+      "props": {
+        "open": {
+          "type": "boolean",
+          "default": false,
+          "description": "Controlled open state. Bindable."
+        },
+        "onclose": {
+          "type": "() => void",
+          "description": "Called when menu is dismissed."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "MenuTrigger",
+      "description": "Element that opens the Menu. Uses native popovertarget attribute.",
+      "whenToUse": "Always inside a MenuRoot to provide the open trigger.",
+      "semanticRole": "button",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "MenuContent",
+      "description": "Container for MenuItems. Uses native popover attribute.",
+      "whenToUse": "Always inside a MenuRoot.",
+      "semanticRole": "menu",
+      "accessibilityRequirements": "Must have aria-label or aria-labelledby (enforced by ModalLabelProps type).",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "MenuItem",
+      "description": "Single action item in a Menu.",
+      "whenToUse": "Always inside MenuContent.",
+      "semanticRole": "menuitem",
+      "accessibilityRequirements": "Must have visible text content or aria-label.",
+      "props": {
+        "disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disables this menu item."
+        },
+        "onselect": {
+          "type": "() => void",
+          "description": "Called when item is selected."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "menu.css",
+      "menu.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/menu",
+    "label": "Menu",
+    "group": "overlays",
+    "subgroup": "selection-and-command",
+    "description": "Dropdown action menu with keyboard nav"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Usage",
+            "language": "svelte",
+            "code": "<sg-menu-root open={menuOpen} oninput={(e) => { const el = e.currentTarget as any; menuOpen = (el.open ?? menuOpen); }} onchange={(e) => { const el = e.currentTarget as any; menuOpen = (el.open ?? menuOpen); }} onclick={(e) => { const el = e.currentTarget as any; menuOpen = (el.open ?? menuOpen); }} ontoggle={(e) => { const el = e.currentTarget as any; menuOpen = (el.open ?? menuOpen); }}>\n    <sg-menu-trigger>\n        <button class=\"sg-button\" data-color=\"secondary\">Open Menu</button>\n    </sg-menu-trigger>\n    <sg-menu-content>\n        <sg-menu-item onselect={() => console.log(\"Edit\")}>Edit</sg-menu-item>\n        <sg-menu-item onselect={() => console.log(\"Copy\")}>Copy</sg-menu-item>\n        <sg-menu-item onselect={() => console.log(\"Delete\")}>Delete</sg-menu-item>\n        <sg-menu-item disabled={true}>Disabled Item</sg-menu-item>\n    </sg-menu-content>\n</sg-menu-root>"
+          },
+          {
+            "title": "Feature Flag",
+            "language": "svelte",
+            "code": "<p class=\"sg-demo-menuroot-1\">Menu machine can be toggled with <code>featureFlags.menuMachine</code>.</p>",
+            "css": ".sg-demo-menuroot-1 {\n  margin: 0; color: var(--sg-color-text-secondary);\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

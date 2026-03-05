@@ -1,0 +1,108 @@
+{
+  "name": "Chart",
+  "importPath": "sg/chart",
+  "category": "data-display",
+  "description": "Pure SVG chart component supporting bar, line, area, pie, and donut types. Includes a hidden accessible <table> for screen readers.",
+  "whenToUse": "For data visualization with simple datasets.",
+  "avoidWhen": "For complex interactive charts - use a dedicated charting library.",
+  "semanticRole": "img",
+  "accessibilityRequirements": "role='img' with aria-label on SVG. Hidden <table> provides accessible data.",
+  "props": {
+    "type": {
+      "type": "ChartType",
+      "required": true,
+      "values": [
+        "bar",
+        "line",
+        "area",
+        "pie",
+        "donut"
+      ],
+      "description": "Chart type"
+    },
+    "data": {
+      "type": "ChartDataPoint[]",
+      "required": true,
+      "description": "Array of {label, value, color?} data points"
+    },
+    "width": {
+      "type": "string",
+      "default": "100%",
+      "description": "Chart width"
+    },
+    "height": {
+      "type": "string",
+      "default": "300px",
+      "description": "Chart height"
+    },
+    "color": {
+      "type": "ColorVariant",
+      "values": [
+        "primary",
+        "secondary",
+        "danger",
+        "success",
+        "warning",
+        "info",
+        "ghost"
+      ],
+      "description": "Color variant"
+    },
+    "showGrid": {
+      "type": "boolean",
+      "default": true,
+      "description": "Show grid lines (bar/line/area)"
+    },
+    "showLabels": {
+      "type": "boolean",
+      "default": true,
+      "description": "Show axis labels"
+    },
+    "label": {
+      "type": "string",
+      "required": true,
+      "description": "Accessible label for the chart"
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "chart.css",
+      "chart.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/chart",
+    "label": "Chart",
+    "group": "data-display",
+    "subgroup": "visualization-and-browsing",
+    "description": "Data visualization with bar, line, and pie charts"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Bar Chart",
+            "language": "svelte",
+            "code": "<sg-chart type=\"bar\" data={barData} label=\"Monthly sales\" height=\"250px\" />"
+          },
+          {
+            "title": "Line Chart",
+            "language": "svelte",
+            "code": "<sg-chart type=\"line\" data={barData} label=\"Monthly trend\" height=\"250px\" />"
+          },
+          {
+            "title": "Pie Chart",
+            "language": "svelte",
+            "code": "<sg-chart type=\"pie\" data={pieData} label=\"Device breakdown\" height=\"250px\" />"
+          }
+        ]
+      }
+    ]
+  }
+}

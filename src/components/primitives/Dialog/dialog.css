@@ -1,0 +1,170 @@
+@layer sigui.base {
+  .sg-dialog {
+    background: var(--sg-card-bg);
+    border-radius: var(--sg-card-radius, var(--sg-card-radius, 0.5rem));
+    box-shadow: var(--sg-shadow-dropdown);
+    padding: var(--sg-card-padding, 1.5rem);
+    max-width: 32rem;
+    width: calc(100% - 2rem);
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    margin: auto;
+    border: none;
+    container-type: inline-size;
+  }
+
+  .sg-dialog::backdrop {
+    background: var(--sg-overlay-backdrop, color-mix(in oklch, var(--sg-color-text) 50%, transparent));
+    backdrop-filter: blur(var(--sg-backdrop-blur, 4px));
+  }
+
+  .sg-dialog-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sg-gap-tight, 0.25rem);
+    margin-bottom: var(--sg-gap-grouped, 1rem);
+  }
+
+  .sg-dialog-title {
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-lg, 1.125rem);
+    font-weight: 600;
+    color: var(--sg-color-text);
+    margin: 0;
+    line-height: var(--sg-leading-normal, 1.4);
+  }
+
+  .sg-dialog-description {
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+    color: var(--sg-color-text-secondary);
+    margin: 0;
+    line-height: var(--sg-leading-relaxed, 1.5);
+  }
+
+  .sg-dialog-footer {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: var(--sg-gap-related, 0.5rem);
+    margin-top: var(--sg-gap-grouped, 1rem);
+    padding-top: var(--sg-gap-grouped, 1rem);
+    border-top: 1px solid var(--sg-border-light);
+  }
+
+  .sg-dialog-close {
+    position: absolute;
+    top: var(--sg-pad-input, 0.75rem);
+    right: var(--sg-pad-input, 0.75rem);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--sg-touch-min, 44px);
+    height: var(--sg-touch-min, 44px);
+    border: none;
+    background: transparent;
+    color: var(--sg-color-text-secondary);
+    cursor: pointer;
+    border-radius: var(--sg-input-radius, 0.25rem);
+    font-size: 1.25rem;
+    line-height: 1;
+    transition:
+      background calc(200ms * 0.75) ease-out;
+  }
+
+  .sg-dialog-close:hover {
+    background: var(--sg-color-bg-secondary);
+    color: var(--sg-color-text);
+  }
+
+  .sg-dialog-close:focus-visible {
+    outline: 2px solid var(--sg-focus-ring);
+    outline-offset: 2px;
+  }
+
+  @container (max-width: 300px) {
+    .sg-dialog-footer {
+      flex-direction: column;
+    }
+
+    .sg-dialog-footer > * {
+      width: 100%;
+    }
+  }
+
+}
+
+@layer sigui.states {
+
+
+  .sg-dialog[data-state="opening"],
+  .sg-alert-dialog[data-state="opening"] {
+    animation: sg-dialog-in var(--sg-transition-default, 200ms ease-out);
+  }
+
+  .sg-dialog[data-state="closing"],
+  .sg-alert-dialog[data-state="closing"] {
+    animation: sg-dialog-out 160ms ease-in;
+  }
+
+  .sg-dialog[open],
+  .sg-alert-dialog[open] {
+    opacity: 1;
+    transform: scale(1);
+    transition:
+      opacity var(--sg-transition-default, 200ms ease-out),
+      transform var(--sg-transition-default, 200ms ease-out),
+      overlay var(--sg-transition-default, 200ms ease-out) allow-discrete,
+      display var(--sg-transition-default, 200ms ease-out) allow-discrete;
+  }
+
+  @starting-style {
+    .sg-dialog[open],
+    .sg-alert-dialog[open] {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+  }
+
+  .sg-dialog::backdrop,
+  .sg-alert-dialog::backdrop {
+    opacity: 1;
+    background: var(--sg-overlay-backdrop, color-mix(in oklch, var(--sg-color-text) 50%, transparent));
+    transition:
+      opacity var(--sg-transition-default, 200ms ease-out),
+      overlay var(--sg-transition-default, 200ms ease-out) allow-discrete,
+      display var(--sg-transition-default, 200ms ease-out) allow-discrete;
+  }
+
+  @starting-style {
+    .sg-dialog::backdrop,
+    .sg-alert-dialog::backdrop {
+      opacity: 0;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .sg-dialog,
+    .sg-sheet,
+    .sg-alert-dialog {
+      border: 2px solid CanvasText;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    @starting-style {
+      .sg-dialog[open],
+      .sg-alert-dialog[open] {
+        opacity: 0;
+        transform: none;
+      }
+    }
+  }
+
+
+  @keyframes sg-dialog-in {
+    from { opacity: 0; transform: scale(0.95); }
+  }
+  @keyframes sg-dialog-out {
+    to { opacity: 0; transform: scale(0.95); }
+  }
+}

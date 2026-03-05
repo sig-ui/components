@@ -1,0 +1,1173 @@
+{
+  "version": 1,
+  "meta": {
+    "raw": "https://raw.githubusercontent.com/sig-ui/components/main",
+    "generated": true
+  },
+  "lib": {},
+  "components": {
+    "prose": {
+      "name": "Prose",
+      "dir": "native/Prose",
+      "files": [
+        "prose.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "textarea": {
+      "name": "Textarea",
+      "dir": "native/Textarea",
+      "files": [
+        "textarea.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "output": {
+      "name": "Output",
+      "dir": "native/Output",
+      "files": [
+        "output.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "button": {
+      "name": "Button",
+      "dir": "native/Button",
+      "files": [
+        "button.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "link": {
+      "name": "Link",
+      "dir": "native/Link",
+      "files": [
+        "link.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "radio": {
+      "name": "RadioGroup",
+      "dir": "native/Radio",
+      "files": [
+        "radio.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "toggle": {
+      "name": "Toggle",
+      "dir": "native/Toggle",
+      "files": [
+        "toggle.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "separator": {
+      "name": "Separator",
+      "dir": "native/Separator",
+      "files": [
+        "separator.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "divider": {
+      "name": "Divider",
+      "dir": "native/Divider",
+      "files": [
+        "divider.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "input": {
+      "name": "Input",
+      "dir": "native/Input",
+      "files": [
+        "input.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "code": {
+      "name": "Code",
+      "dir": "native/Code",
+      "files": [
+        "code.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "input-variants": {
+      "name": "InputVariants",
+      "dir": "native/InputVariants",
+      "files": [
+        "input-variants.css"
+      ],
+      "componentDeps": [
+        "input"
+      ],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "native-accordion": {
+      "name": "NativeAccordion",
+      "dir": "native/NativeAccordion",
+      "files": [
+        "native-accordion.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "search-input": {
+      "name": "SearchInput",
+      "dir": "native/SearchInput",
+      "files": [
+        "search-input.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "meter": {
+      "name": "Meter",
+      "dir": "native/Meter",
+      "files": [
+        "meter.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "kbd": {
+      "name": "Kbd",
+      "dir": "native/Kbd",
+      "files": [
+        "kbd.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "fieldset": {
+      "name": "Fieldset",
+      "dir": "native/Fieldset",
+      "files": [
+        "fieldset.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "label": {
+      "name": "Label",
+      "dir": "native/Label",
+      "files": [
+        "label.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "native-select": {
+      "name": "NativeSelect",
+      "dir": "native/NativeSelect",
+      "files": [
+        "native-select.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "alert": {
+      "name": "Alert",
+      "dir": "native/Alert",
+      "files": [
+        "alert.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "table": {
+      "name": "Table",
+      "dir": "native/Table",
+      "files": [
+        "table.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "slider": {
+      "name": "Slider",
+      "dir": "native/Slider",
+      "files": [
+        "slider.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "switch": {
+      "name": "Switch",
+      "dir": "native/Switch",
+      "files": [
+        "switch.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "native-dialog": {
+      "name": "NativeDialog",
+      "dir": "native/NativeDialog",
+      "files": [
+        "native-dialog.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "progress": {
+      "name": "Progress",
+      "dir": "native/Progress",
+      "files": [
+        "progress.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "sidebar-layout": {
+      "name": "SidebarLayout",
+      "dir": "primitives/SidebarLayout",
+      "files": [
+        "sidebar-layout.css",
+        "sidebar-layout.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "field": {
+      "name": "Field",
+      "dir": "primitives/Field",
+      "files": [
+        "field.css",
+        "field.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "format-number": {
+      "name": "FormatNumber",
+      "dir": "primitives/FormatNumber",
+      "files": [
+        "format-number.css",
+        "format-number.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "badge": {
+      "name": "Badge",
+      "dir": "primitives/Badge",
+      "files": [
+        "badge.css",
+        "badge.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "gradient-pattern": {
+      "name": "GradientPattern",
+      "dir": "primitives/GradientPattern",
+      "files": [
+        "gradient-pattern.css",
+        "gradient-pattern.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "toast": {
+      "name": "Toast",
+      "dir": "primitives/Toast",
+      "files": [
+        "toast.css",
+        "toast.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "spacer": {
+      "name": "Spacer",
+      "dir": "primitives/Spacer",
+      "files": [
+        "spacer.css",
+        "spacer.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "scroller": {
+      "name": "Scroller",
+      "dir": "primitives/Scroller",
+      "files": [
+        "scroller.css",
+        "scroller.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "collapsible": {
+      "name": "CollapsibleRoot",
+      "dir": "primitives/Collapsible",
+      "files": [
+        "collapsible.css",
+        "collapsible.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "alert-dialog": {
+      "name": "AlertDialogRoot",
+      "dir": "primitives/AlertDialog",
+      "files": [
+        "alert-dialog.css",
+        "alert-dialog.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "tooltip": {
+      "name": "TooltipRoot",
+      "dir": "primitives/Tooltip",
+      "files": [
+        "tooltip.css",
+        "tooltip.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "grid": {
+      "name": "Grid",
+      "dir": "primitives/Grid",
+      "files": [
+        "grid.css",
+        "grid.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "callout": {
+      "name": "Callout",
+      "dir": "primitives/Callout",
+      "files": [
+        "callout.css",
+        "callout.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "button-group": {
+      "name": "ButtonGroup",
+      "dir": "primitives/ButtonGroup",
+      "files": [
+        "button-group.css",
+        "button-group.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "combobox": {
+      "name": "ComboboxRoot",
+      "dir": "primitives/Combobox",
+      "files": [
+        "combobox.css",
+        "combobox.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "format-bytes": {
+      "name": "FormatBytes",
+      "dir": "primitives/FormatBytes",
+      "files": [
+        "format-bytes.css",
+        "format-bytes.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "copy-button": {
+      "name": "CopyButton",
+      "dir": "primitives/CopyButton",
+      "files": [
+        "copy-button.css",
+        "copy-button.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "skip-link": {
+      "name": "SkipLink",
+      "dir": "primitives/SkipLink",
+      "files": [],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "chart": {
+      "name": "Chart",
+      "dir": "primitives/Chart",
+      "files": [
+        "chart.css",
+        "chart.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "rating": {
+      "name": "Rating",
+      "dir": "primitives/Rating",
+      "files": [
+        "rating.css",
+        "rating.js"
+      ],
+      "componentDeps": [
+        "icon"
+      ],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "card": {
+      "name": "Card",
+      "dir": "primitives/Card",
+      "files": [
+        "card.css",
+        "card.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "stack": {
+      "name": "Stack",
+      "dir": "primitives/Stack",
+      "files": [
+        "stack.css",
+        "stack.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "format-date": {
+      "name": "FormatDate",
+      "dir": "primitives/FormatDate",
+      "files": [
+        "format-date.css",
+        "format-date.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "cover": {
+      "name": "Cover",
+      "dir": "primitives/Cover",
+      "files": [
+        "cover.css",
+        "cover.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "checkbox": {
+      "name": "Checkbox",
+      "dir": "primitives/Checkbox",
+      "files": [
+        "checkbox.css",
+        "checkbox.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "text": {
+      "name": "Text",
+      "dir": "primitives/Text",
+      "files": [
+        "text.css",
+        "text.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "resize-observer": {
+      "name": "ResizeObserver",
+      "dir": "primitives/ResizeObserver",
+      "files": [
+        "resize-observer.css",
+        "resize-observer.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "popup": {
+      "name": "Popup",
+      "dir": "primitives/Popup",
+      "files": [
+        "popup.css",
+        "popup.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "animated-image": {
+      "name": "AnimatedImage",
+      "dir": "primitives/AnimatedImage",
+      "files": [
+        "animated-image.css",
+        "animated-image.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "typewriter": {
+      "name": "Typewriter",
+      "dir": "primitives/Typewriter",
+      "files": [
+        "typewriter.css",
+        "typewriter.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "avatar": {
+      "name": "Avatar",
+      "dir": "primitives/Avatar",
+      "files": [
+        "avatar.css",
+        "avatar.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "tabs": {
+      "name": "TabsRoot",
+      "dir": "primitives/Tabs",
+      "files": [
+        "tabs.css",
+        "tabs.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "empty": {
+      "name": "Empty",
+      "dir": "primitives/Empty",
+      "files": [
+        "empty.css",
+        "empty.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "dialog": {
+      "name": "DialogRoot",
+      "dir": "primitives/Dialog",
+      "files": [
+        "dialog.css",
+        "dialog.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "aspect-ratio": {
+      "name": "AspectRatio",
+      "dir": "primitives/AspectRatio",
+      "files": [
+        "aspect-ratio.css",
+        "aspect-ratio.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "pagination": {
+      "name": "PaginationRoot",
+      "dir": "primitives/Pagination",
+      "files": [
+        "pagination.css",
+        "pagination.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "tag": {
+      "name": "Tag",
+      "dir": "primitives/Tag",
+      "files": [
+        "tag.css",
+        "tag.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "skeleton": {
+      "name": "Skeleton",
+      "dir": "primitives/Skeleton",
+      "files": [
+        "skeleton.css",
+        "skeleton.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "icon-button": {
+      "name": "IconButton",
+      "dir": "primitives/IconButton",
+      "files": [
+        "icon-button.css",
+        "icon-button.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "switcher": {
+      "name": "Switcher",
+      "dir": "primitives/Switcher",
+      "files": [
+        "switcher.css",
+        "switcher.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "scroll-area": {
+      "name": "ScrollAreaRoot",
+      "dir": "primitives/ScrollArea",
+      "files": [
+        "scroll-area.css",
+        "scroll-area.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "sidebar": {
+      "name": "SidebarRoot",
+      "dir": "primitives/Sidebar",
+      "files": [
+        "sidebar.css",
+        "sidebar.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "container": {
+      "name": "Container",
+      "dir": "primitives/Container",
+      "files": [
+        "container.css",
+        "container.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "split-panel": {
+      "name": "SplitPanel",
+      "dir": "primitives/SplitPanel",
+      "files": [
+        "split-panel.css",
+        "split-panel.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "layout-id": {
+      "name": "LayoutIdProvider",
+      "dir": "primitives/LayoutId",
+      "files": [],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "color-picker": {
+      "name": "ColorPicker",
+      "dir": "primitives/ColorPicker",
+      "files": [
+        "color-picker.css",
+        "color-picker.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "progress-ring": {
+      "name": "ProgressRing",
+      "dir": "primitives/ProgressRing",
+      "files": [
+        "progress-ring.css",
+        "progress-ring.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "accordion": {
+      "name": "AccordionRoot",
+      "dir": "primitives/Accordion",
+      "files": [
+        "accordion.css",
+        "accordion.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "qr-code": {
+      "name": "QrCode",
+      "dir": "primitives/QrCode",
+      "files": [
+        "qr-code.css",
+        "qr-code.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "icon": {
+      "name": "Icon",
+      "dir": "primitives/Icon",
+      "files": [
+        "icon.css",
+        "icon.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "menu": {
+      "name": "MenuRoot",
+      "dir": "primitives/Menu",
+      "files": [
+        "menu.css",
+        "menu.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "code-block": {
+      "name": "CodeBlock",
+      "dir": "primitives/CodeBlock",
+      "files": [
+        "code-block.css",
+        "code-block.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "spinner": {
+      "name": "Spinner",
+      "dir": "primitives/Spinner",
+      "files": [
+        "spinner.css",
+        "spinner.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "cluster": {
+      "name": "Cluster",
+      "dir": "primitives/Cluster",
+      "files": [
+        "cluster.css",
+        "cluster.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "carousel": {
+      "name": "CarouselRoot",
+      "dir": "primitives/Carousel",
+      "files": [
+        "carousel.css",
+        "carousel.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "tab-group": {
+      "name": "TabGroup",
+      "dir": "primitives/TabGroup",
+      "files": [
+        "tab-group.css",
+        "tab-group.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "popover": {
+      "name": "PopoverRoot",
+      "dir": "primitives/Popover",
+      "files": [
+        "popover.css",
+        "popover.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "include": {
+      "name": "Include",
+      "dir": "primitives/Include",
+      "files": [
+        "include.css",
+        "include.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "mutation-observer": {
+      "name": "MutationObserver",
+      "dir": "primitives/MutationObserver",
+      "files": [
+        "mutation-observer.css",
+        "mutation-observer.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "section": {
+      "name": "Section",
+      "dir": "primitives/Section",
+      "files": [
+        "section.css",
+        "section.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "dock": {
+      "name": "DockRoot",
+      "dir": "primitives/Dock",
+      "files": [
+        "dock.css",
+        "dock.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "menubar": {
+      "name": "MenubarRoot",
+      "dir": "primitives/Menubar",
+      "files": [
+        "menubar.css",
+        "menubar.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "drawer": {
+      "name": "DrawerRoot",
+      "dir": "primitives/Drawer",
+      "files": [
+        "drawer.css",
+        "drawer.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "animate-presence": {
+      "name": "AnimatePresence",
+      "dir": "primitives/AnimatePresence",
+      "files": [],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "tree": {
+      "name": "Tree",
+      "dir": "primitives/Tree",
+      "files": [
+        "tree.css",
+        "tree.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "dropdown": {
+      "name": "Dropdown",
+      "dir": "primitives/Dropdown",
+      "files": [
+        "dropdown.css",
+        "dropdown.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "direction": {
+      "name": "Direction",
+      "dir": "primitives/Direction",
+      "files": [],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "input-number": {
+      "name": "InputNumber",
+      "dir": "primitives/InputNumber",
+      "files": [
+        "input-number.css",
+        "input-number.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "input-group": {
+      "name": "InputGroup",
+      "dir": "primitives/InputGroup",
+      "files": [
+        "input-group.css",
+        "input-group.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "heading": {
+      "name": "Heading",
+      "dir": "primitives/Heading",
+      "files": [
+        "heading.css",
+        "heading.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "sheet": {
+      "name": "SheetRoot",
+      "dir": "primitives/Sheet",
+      "files": [
+        "sheet.css",
+        "sheet.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "select": {
+      "name": "SelectRoot",
+      "dir": "primitives/Select",
+      "files": [
+        "select.css",
+        "select.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "route-announcer": {
+      "name": "RouteAnnouncer",
+      "dir": "primitives/RouteAnnouncer",
+      "files": [],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "calendar": {
+      "name": "Calendar",
+      "dir": "primitives/Calendar",
+      "files": [
+        "calendar.css",
+        "calendar.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "details": {
+      "name": "Details",
+      "dir": "primitives/Details",
+      "files": [
+        "details.css",
+        "details.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "breadcrumb": {
+      "name": "Breadcrumb",
+      "dir": "recipes/Breadcrumb",
+      "files": [
+        "breadcrumb.css",
+        "breadcrumb.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "command": {
+      "name": "CommandRoot",
+      "dir": "recipes/Command",
+      "files": [
+        "command.css",
+        "command.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "datepicker": {
+      "name": "DatePickerRoot",
+      "dir": "recipes/DatePicker",
+      "files": [
+        "date-picker.js",
+        "date-picker.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "datatable": {
+      "name": "DataTableRoot",
+      "dir": "recipes/DataTable",
+      "files": [
+        "data-table.js",
+        "data-table.css"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "context-menu": {
+      "name": "ContextMenuRoot",
+      "dir": "recipes/ContextMenu",
+      "files": [
+        "context-menu.css",
+        "context-menu.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "resizable": {
+      "name": "ResizableRoot",
+      "dir": "recipes/Resizable",
+      "files": [
+        "resizable.css",
+        "resizable.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "hovercard": {
+      "name": "HoverCardRoot",
+      "dir": "recipes/HoverCard",
+      "files": [
+        "hover-card.css",
+        "hover-card.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "input-otp": {
+      "name": "InputOTPRoot",
+      "dir": "recipes/InputOTP",
+      "files": [
+        "input-otp.css",
+        "input-otp.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    },
+    "navigation-menu": {
+      "name": "NavigationMenuRoot",
+      "dir": "recipes/NavigationMenu",
+      "files": [
+        "navigation-menu.css",
+        "navigation-menu.js"
+      ],
+      "componentDeps": [],
+      "libDeps": [],
+      "npmDeps": []
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "name": "TooltipRoot",
+  "importPath": "sg/tooltip",
+  "category": "overlay",
+  "description": "Root controller for a tooltip. Uses CSS Anchor Positioning for placement.",
+  "whenToUse": "Providing supplementary labels or descriptions on hover/focus.",
+  "avoidWhen": "Interactive content - use Popover. Critical information - display inline.",
+  "semanticRole": "tooltip",
+  "accessibilityRequirements": "content is required. Auto-linked to trigger via aria-describedby.",
+  "parts": [
+    {
+      "name": "TooltipRoot",
+      "props": {
+        "content": {
+          "type": "string",
+          "required": true,
+          "description": "Text shown in the tooltip."
+        },
+        "delay": {
+          "type": "number",
+          "default": 200,
+          "description": "Milliseconds before showing."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "TooltipTrigger",
+      "description": "Element that triggers the Tooltip on hover/focus. Sets CSS anchor-name for positioning.",
+      "whenToUse": "Always inside a TooltipRoot to identify the trigger element.",
+      "semanticRole": "none (wraps trigger content)",
+      "props": {
+        "asChild": {
+          "type": "boolean",
+          "default": false,
+          "description": "Render as contents-only wrapper for direct child element."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "TooltipContent",
+      "description": "Visual content of the Tooltip. Positioned via CSS Anchor Positioning relative to trigger.",
+      "whenToUse": "Always inside a TooltipRoot.",
+      "semanticRole": "tooltip",
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "tooltip.css",
+      "tooltip.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/tooltip",
+    "label": "Tooltip",
+    "group": "overlays",
+    "subgroup": "dialogs-and-popups",
+    "description": "Hover-triggered informational overlay"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Basic Usage",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"grouped\">\n    <sg-tooltip-root content=\"This is a tooltip\" delay={300}>\n        <sg-tooltip-trigger>\n            <button class=\"sg-button\" data-color=\"secondary\">Hover me</button>\n        </sg-tooltip-trigger>\n        <sg-tooltip-content />\n    </sg-tooltip-root>\n    <sg-tooltip-root content=\"Another tooltip with longer text\" delay={300}>\n        <sg-tooltip-trigger>\n            <sg-badge color=\"info\">Hover this badge</sg-badge>\n        </sg-tooltip-trigger>\n        <sg-tooltip-content />\n    </sg-tooltip-root>\n</sg-stack>"
+          },
+          {
+            "title": "Positioning",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"grouped\" align=\"center\">\n    <sg-tooltip-root content=\"Tooltip on top\" side=\"top\" delay={100}>\n        <sg-tooltip-trigger>\n            <button class=\"sg-button\" data-color=\"secondary\">Top</button>\n        </sg-tooltip-trigger>\n        <sg-tooltip-content />\n    </sg-tooltip-root>\n    <sg-tooltip-root content=\"Tooltip on right\" side=\"right\" delay={100}>\n        <sg-tooltip-trigger>\n            <button class=\"sg-button\" data-color=\"secondary\">Right</button>\n        </sg-tooltip-trigger>\n        <sg-tooltip-content />\n    </sg-tooltip-root>\n    <sg-tooltip-root content=\"Tooltip on bottom\" side=\"bottom\" delay={100}>\n        <sg-tooltip-trigger>\n            <button class=\"sg-button\" data-color=\"secondary\">Bottom</button>\n        </sg-tooltip-trigger>\n        <sg-tooltip-content />\n    </sg-tooltip-root>\n    <sg-tooltip-root content=\"Tooltip on left\" side=\"left\" delay={100}>\n        <sg-tooltip-trigger>\n            <button class=\"sg-button\" data-color=\"secondary\">Left</button>\n        </sg-tooltip-trigger>\n        <sg-tooltip-content />\n    </sg-tooltip-root>\n</sg-stack>"
+          },
+          {
+            "title": "As Child",
+            "language": "svelte",
+            "code": "<sg-tooltip-root content=\"Click to navigate\" side=\"top\" delay={200}>\n    <sg-tooltip-trigger asChild={true}>\n        <a href=\"#\" class=\"sg-demo-tooltiproot-1\">\n          Link with tooltip\n        </a>\n    </sg-tooltip-trigger>\n    <sg-tooltip-content />\n</sg-tooltip-root>",
+            "css": ".sg-demo-tooltiproot-1 {\n  color: var(--sg-color-primary); text-decoration: underline;\n}"
+          },
+          {
+            "title": "Feature Flag",
+            "language": "svelte",
+            "code": "<p class=\"sg-demo-tooltiproot-1\">Tooltip machine can be toggled with <code>featureFlags.tooltipMachine</code>.</p>",
+            "css": ".sg-demo-tooltiproot-1 {\n  margin: 0; color: var(--sg-color-text-secondary);\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

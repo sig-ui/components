@@ -1,0 +1,89 @@
+{
+  "name": "HoverCardRoot",
+  "importPath": "sg/hovercard",
+  "category": "overlay",
+  "description": "Root controller for a hover card. Shows content on hover with configurable open/close delays.",
+  "whenToUse": "Showing additional information about a link or element on hover (user profiles, previews).",
+  "avoidWhen": "Interactive content that needs clicks - use Popover. Simple text hints - use Tooltip.",
+  "semanticRole": "dialog (non-modal)",
+  "accessibilityRequirements": "HoverCardContent requires aria-label or aria-labelledby. Also opens on focus for keyboard users.",
+  "parts": [
+    {
+      "name": "HoverCardRoot",
+      "props": {
+        "open": {
+          "type": "boolean",
+          "default": false,
+          "description": "Controlled open state. Bindable."
+        },
+        "openDelay": {
+          "type": "number",
+          "default": 700,
+          "description": "Milliseconds before showing on hover."
+        },
+        "closeDelay": {
+          "type": "number",
+          "default": 300,
+          "description": "Milliseconds before hiding after mouse leaves."
+        },
+        "onclose": {
+          "type": "() => void",
+          "description": "Called when hover card is dismissed."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "HoverCardTrigger",
+      "description": "Element that triggers the HoverCard on hover/focus.",
+      "whenToUse": "Always inside a HoverCardRoot.",
+      "semanticRole": "none (wraps trigger content)",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "HoverCardContent",
+      "description": "Content of the HoverCard. Stays open while hovered.",
+      "whenToUse": "Always inside a HoverCardRoot.",
+      "semanticRole": "dialog (non-modal)",
+      "accessibilityRequirements": "Must have aria-label or aria-labelledby (enforced by ModalLabelProps type).",
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "hover-card.css",
+      "hover-card.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/hover-card",
+    "label": "HoverCard",
+    "group": "overlays",
+    "subgroup": "dialogs-and-popups",
+    "description": "Hover-triggered floating card"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Hover Card",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-hovercardroot-1\">\n  Hover over\n  <sg-hover-card-root>\n      <sg-hover-card-trigger>\n          <a href=\"#\" onclick={(e) => e.preventDefault()} class=\"sg-demo-hovercardroot-5\">@sigui</a>\n      </sg-hover-card-trigger>\n      <sg-hover-card-content aria-label=\"User profile\">\n          <div class=\"sg-demo-hovercardroot-2\">\n            <h4 class=\"sg-demo-hovercardroot-3\">SigUI Design System</h4>\n            <p class=\"sg-demo-hovercardroot-4\">A comprehensive design system built on perceptual color science and accessible patterns.</p>\n          </div>\n      </sg-hover-card-content>\n  </sg-hover-card-root>\n  to see the card.\n</div>",
+            "css": ".sg-demo-hovercardroot-1 {\n  color: var(--sg-color-text-secondary)\n}\n\n.sg-demo-hovercardroot-2 {\n  padding: var(--sg-pad-input, 0.75rem); max-width: 240px\n}\n\n.sg-demo-hovercardroot-3 {\n  margin: 0 0 var(--sg-space-1)\n}\n\n.sg-demo-hovercardroot-4 {\n  margin: 0; font-size: var(--sg-text-sm); color: var(--text-3)\n}\n\n.sg-demo-hovercardroot-5 {\n  font-weight: 600;\n  text-decoration: underline;\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

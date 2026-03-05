@@ -1,0 +1,61 @@
+{
+  "name": "AspectRatio",
+  "importPath": "sg/aspect-ratio",
+  "category": "layout",
+  "description": "Constrains children to a given aspect ratio using CSS aspect-ratio.",
+  "whenToUse": "For images, videos, or embeds that need a consistent aspect ratio.",
+  "avoidWhen": "When content should flow naturally without ratio constraints.",
+  "props": {
+    "ratio": {
+      "type": "number",
+      "default": 1,
+      "description": "Width-to-height ratio (e.g. 16/9)"
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "aspect-ratio.css",
+      "aspect-ratio.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/layout/aspect-ratio",
+    "label": "AspectRatio",
+    "group": "layout",
+    "subgroup": "grid-and-responsive",
+    "description": "Constrain content to a specific width-to-height ratio"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Common Ratios",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    <div class=\"sg-demo-aspectratio-1\">\n      <p class=\"sg-demo-aspectratio-2\">16:9 (widescreen)</p>\n      <sg-aspect-ratio ratio={16 / 9}>\n          <div class=\"sg-demo-aspectratio-3\">16:9</div>\n      </sg-aspect-ratio>\n    </div>\n    <div class=\"sg-demo-aspectratio-4\">\n      <p class=\"sg-demo-aspectratio-5\">4:3 (standard)</p>\n      <sg-aspect-ratio ratio={4 / 3}>\n          <div class=\"sg-demo-aspectratio-6\">4:3</div>\n      </sg-aspect-ratio>\n    </div>\n    <div class=\"sg-demo-aspectratio-7\">\n      <p class=\"sg-demo-aspectratio-8\">1:1 (square)</p>\n      <sg-aspect-ratio ratio={1}>\n          <div class=\"sg-demo-aspectratio-9\">1:1</div>\n      </sg-aspect-ratio>\n    </div>\n</sg-stack>",
+            "css": ".sg-demo-aspectratio-1 {\n  max-width: 300px\n}\n\n.sg-demo-aspectratio-2 {\n  margin: 0 0 var(--sg-space-1); font-size: var(--sg-text-sm); color: var(--text-3)\n}\n\n.sg-demo-aspectratio-3 {\n  background: var(--sg-surface-container-high); border: var(--sg-border-thin) solid var(--sg-color-border); border-radius: var(--sg-radius-md); display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; color: var(--sg-color-text-secondary)\n}\n\n.sg-demo-aspectratio-4 {\n  max-width: 300px\n}\n\n.sg-demo-aspectratio-5 {\n  margin: 0 0 var(--sg-space-1); font-size: var(--sg-text-sm); color: var(--text-3)\n}\n\n.sg-demo-aspectratio-6 {\n  background: var(--sg-surface-container-high); border: var(--sg-border-thin) solid var(--sg-color-border); border-radius: var(--sg-radius-md); display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; color: var(--sg-color-text-secondary)\n}\n\n.sg-demo-aspectratio-7 {\n  max-width: 200px\n}\n\n.sg-demo-aspectratio-8 {\n  margin: 0 0 var(--sg-space-1); font-size: var(--sg-text-sm); color: var(--text-3)\n}\n\n.sg-demo-aspectratio-9 {\n  background: var(--sg-surface-container-high); border: var(--sg-border-thin) solid var(--sg-color-border); border-radius: var(--sg-radius-md); display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; color: var(--sg-color-text-secondary)\n}"
+          },
+          {
+            "title": "Profile/Card Ratios",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"grouped\" align=\"end\">\n    <div class=\"sg-demo-aspectratio-1\">\n      <p class=\"sg-demo-aspectratio-2\">3:4 (portrait)</p>\n      <sg-aspect-ratio ratio={3 / 4}>\n          <div class=\"sg-demo-aspectratio-3\">3:4</div>\n      </sg-aspect-ratio>\n    </div>\n    <div class=\"sg-demo-aspectratio-4\">\n      <p class=\"sg-demo-aspectratio-5\">2:3 (poster)</p>\n      <sg-aspect-ratio ratio={2 / 3}>\n          <div class=\"sg-demo-aspectratio-6\">2:3</div>\n      </sg-aspect-ratio>\n    </div>\n</sg-stack>",
+            "css": ".sg-demo-aspectratio-1 {\n  max-width: 150px\n}\n\n.sg-demo-aspectratio-2 {\n  margin: 0 0 var(--sg-space-1); font-size: var(--sg-text-sm); color: var(--text-3)\n}\n\n.sg-demo-aspectratio-3 {\n  background: linear-gradient(135deg, var(--sg-color-primary), var(--sg-color-info)); border-radius: var(--sg-radius-md); display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; color: var(--sg-color-text-inverse)\n}\n\n.sg-demo-aspectratio-4 {\n  max-width: 120px\n}\n\n.sg-demo-aspectratio-5 {\n  margin: 0 0 var(--sg-space-1); font-size: var(--sg-text-sm); color: var(--text-3)\n}\n\n.sg-demo-aspectratio-6 {\n  background: linear-gradient(135deg, var(--sg-color-success), var(--sg-color-info)); border-radius: var(--sg-radius-md); display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; color: var(--sg-color-text-inverse)\n}"
+          },
+          {
+            "title": "With Image",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-aspectratio-1\">\n  <sg-aspect-ratio ratio={16 / 9}>\n      <img\n        src=\"https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80\"\n        alt=\"Colorful abstract background\" class=\"sg-demo-aspectratio-2\"\n       \n      />\n  </sg-aspect-ratio>\n</div>",
+            "css": ".sg-demo-aspectratio-1 {\n  max-width: 400px\n}\n\n.sg-demo-aspectratio-2 {\n  width: 100%; height: 100%; object-fit: cover; border-radius: var(--sg-radius-md);\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

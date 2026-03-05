@@ -1,0 +1,66 @@
+@layer sigui.base {
+  .sg-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .sg-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+    text-align: left;
+  }
+
+  .sg-table-header {
+    border-bottom: 1px solid var(--sg-color-border);
+  }
+
+  .sg-table-head {
+    padding: var(--sg-pad-button-y, 0.75rem) var(--sg-pad-button-x, 1rem);
+    font-weight: 500;
+    color: var(--sg-color-text-muted);
+    white-space: nowrap;
+  }
+
+  .sg-table-cell {
+    padding: var(--sg-pad-button-y, 0.75rem) var(--sg-pad-button-x, 1rem);
+    color: var(--sg-color-text);
+  }
+
+  .sg-table-row {
+    border-bottom: 1px solid var(--sg-color-border);
+  }
+
+  .sg-table-body .sg-table-row:nth-child(even) {
+    background: var(--sg-surface-container-high);
+  }
+
+  .sg-table[data-striped] .sg-table-body .sg-table-row:nth-child(even) {
+    background: var(--sg-surface-container-high);
+  }
+
+  .sg-table[data-striped] .sg-table-body .sg-table-row:nth-child(odd) {
+    background: transparent;
+  }
+
+  .sg-table-footer {
+    border-top: 2px solid var(--sg-color-border);
+    background: var(--sg-surface-container-high);
+    font-weight: 500;
+  }
+
+  .sg-table-footer .sg-table-cell {
+    font-weight: 500;
+  }
+
+  .sg-table-caption {
+    caption-side: bottom;
+    padding: var(--sg-gap-related, 0.5rem) 0;
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-xs, 0.6875rem);
+    color: var(--sg-color-text-muted);
+    text-align: left;
+  }
+
+}

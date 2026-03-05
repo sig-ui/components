@@ -1,0 +1,114 @@
+{
+  "name": "InputOTPRoot",
+  "importPath": "sg/input-otp",
+  "category": "form",
+  "description": "Root controller for a segmented OTP/code input.",
+  "whenToUse": "Collecting verification codes, PINs, or one-time passwords.",
+  "avoidWhen": "General text input - use Input. Password input - use Input with type='password'.",
+  "semanticRole": "textbox (hidden input)",
+  "accessibilityRequirements": "Uses a hidden input for keyboard/paste support. aria-label required.",
+  "parts": [
+    {
+      "name": "InputOTPRoot",
+      "props": {
+        "value": {
+          "type": "string",
+          "default": "",
+          "description": "Current OTP value. Bindable."
+        },
+        "length": {
+          "type": "number",
+          "default": 6,
+          "description": "Number of digits/characters."
+        },
+        "disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disables the input."
+        },
+        "pattern": {
+          "type": "RegExp",
+          "description": "Pattern to filter allowed characters (e.g., digits only)."
+        },
+        "onchange": {
+          "type": "(value: string) => void",
+          "description": "Called when value changes."
+        },
+        "oncomplete": {
+          "type": "(value: string) => void",
+          "description": "Called when all slots are filled."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "InputOTPGroup",
+      "description": "Groups InputOTPSlot components together for styling.",
+      "whenToUse": "When you want to style groups of slots differently or add separators between groups.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "InputOTPSlot",
+      "description": "Visual slot for a single OTP character.",
+      "whenToUse": "Always inside an InputOTPRoot.",
+      "props": {
+        "index": {
+          "type": "number",
+          "required": true,
+          "description": "Zero-based position of this slot."
+        }
+      },
+      "slots": []
+    },
+    {
+      "name": "InputOTPSeparator",
+      "description": "Visual separator between OTP slot groups.",
+      "whenToUse": "Between InputOTPSlot groups (e.g., after slot 2 in a 6-digit code).",
+      "slots": []
+    }
+  ],
+  "registry": {
+    "files": [
+      "input-otp.css",
+      "input-otp.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "OTP Code Entry with Groups",
+            "language": "svelte",
+            "code": "<sg-input-otp-root length={6} value={otpValue} oninput={(e) => { const el = e.currentTarget as any; otpValue = (el.value ?? otpValue); }} onchange={(e) => { const el = e.currentTarget as any; otpValue = (el.value ?? otpValue); }} onclick={(e) => { const el = e.currentTarget as any; otpValue = (el.value ?? otpValue); }} ontoggle={(e) => { const el = e.currentTarget as any; otpValue = (el.value ?? otpValue); }} aria-label=\"Verification code\">\n    <sg-input-otp-group>\n        <sg-input-otp-slot index={0} />\n        <sg-input-otp-slot index={1} />\n        <sg-input-otp-slot index={2} />\n    </sg-input-otp-group>\n    <sg-input-otp-separator />\n    <sg-input-otp-group>\n        <sg-input-otp-slot index={3} />\n        <sg-input-otp-slot index={4} />\n        <sg-input-otp-slot index={5} />\n    </sg-input-otp-group>\n</sg-input-otp-root>\n{#if otpValue}\n  <p class=\"sg-demo-inputotproot-1\">Value: {otpValue}</p>\n{/if}",
+            "css": ".sg-demo-inputotproot-1 {\n  margin-top: var(--sg-space-2); color: var(--text-3); font-size: var(--sg-text-sm)\n}"
+          },
+          {
+            "title": "4-Digit PIN",
+            "language": "svelte",
+            "code": "<sg-input-otp-root length={4} value={pinValue} oninput={(e) => { const el = e.currentTarget as any; pinValue = (el.value ?? pinValue); }} onchange={(e) => { const el = e.currentTarget as any; pinValue = (el.value ?? pinValue); }} onclick={(e) => { const el = e.currentTarget as any; pinValue = (el.value ?? pinValue); }} ontoggle={(e) => { const el = e.currentTarget as any; pinValue = (el.value ?? pinValue); }} aria-label=\"PIN code\">\n    <sg-input-otp-group>\n        <sg-input-otp-slot index={0} />\n        <sg-input-otp-slot index={1} />\n        <sg-input-otp-slot index={2} />\n        <sg-input-otp-slot index={3} />\n    </sg-input-otp-group>\n</sg-input-otp-root>\n{#if pinValue.length === 4}\n  <p class=\"sg-demo-inputotproot-1\">PIN complete!</p>\n{/if}",
+            "css": ".sg-demo-inputotproot-1 {\n  margin-top: var(--sg-space-2); color: var(--sg-color-success); font-size: var(--sg-text-sm)\n}"
+          },
+          {
+            "title": "6-Digit Code (No Groups)",
+            "language": "svelte",
+            "code": "<sg-input-otp-root length={6} aria-label=\"6-digit code\">\n    <sg-input-otp-slot index={0} />\n    <sg-input-otp-slot index={1} />\n    <sg-input-otp-slot index={2} />\n    <sg-input-otp-slot index={3} />\n    <sg-input-otp-slot index={4} />\n    <sg-input-otp-slot index={5} />\n</sg-input-otp-root>"
+          },
+          {
+            "title": "Disabled",
+            "language": "svelte",
+            "code": "<sg-input-otp-root length={4} disabled={true} aria-label=\"Disabled OTP\">\n    <sg-input-otp-group>\n        <sg-input-otp-slot index={0} />\n        <sg-input-otp-slot index={1} />\n        <sg-input-otp-slot index={2} />\n        <sg-input-otp-slot index={3} />\n    </sg-input-otp-group>\n</sg-input-otp-root>"
+          }
+        ]
+      }
+    ]
+  }
+}

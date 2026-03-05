@@ -1,0 +1,59 @@
+{
+  "name": "FormatNumber",
+  "importPath": "sg/format-number",
+  "category": "data-display",
+  "description": "Localized numeric formatter backed by Intl.NumberFormat.",
+  "whenToUse": "Rendering numbers, percentages, or currency values with locale rules.",
+  "semanticRole": "text",
+  "props": {
+    "value": {
+      "type": "number",
+      "required": true,
+      "description": "Numeric value to format."
+    },
+    "locale": {
+      "type": "string",
+      "description": "Optional locale override."
+    },
+    "style": {
+      "type": "string",
+      "values": [
+        "decimal",
+        "currency",
+        "percent",
+        "unit"
+      ],
+      "default": "decimal",
+      "description": "Intl number style."
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO currency code when style='currency'."
+    },
+    "maximum-fraction-digits": {
+      "type": "number",
+      "description": "Maximum decimal precision."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "format-number.css",
+      "format-number.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/data-display/format-number",
+    "label": "FormatNumber",
+    "group": "data-display",
+    "subgroup": "content-and-media",
+    "description": "Localized number formatting"
+  },
+  "page": {
+    "title": "Localized numeric output",
+    "code": "<sg-format-number value=\"12345.678\" maximum-fraction-digits=\"2\"></sg-format-number>"
+  }
+}

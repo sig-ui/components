@@ -1,0 +1,87 @@
+{
+  "name": "Button",
+  "importPath": "sg/button",
+  "category": "basic",
+  "description": "CSS-only styled button. Apply class=\"sg-button\" on a native <button> or <a> element with data-* attributes for variants.",
+  "whenToUse": "Triggering actions (submit, toggle, navigate). Use class=\"sg-button\" on a native <button> or <a>.",
+  "avoidWhen": "Navigating to a new page without an action - use a plain <a> link. For toggle states, consider Switch.",
+  "semanticRole": "button (or link when href is set)",
+  "accessibilityRequirements": "Must have visible text content or aria-label. Links cannot be disabled.",
+  "props": {
+    "class": {
+      "type": "string",
+      "required": true,
+      "description": "Use class=\"sg-button\" on a native <button> or <a> element."
+    },
+    "data-color": {
+      "type": "ColorVariant",
+      "values": [
+        "primary",
+        "secondary",
+        "danger",
+        "success",
+        "warning",
+        "info",
+        "ghost"
+      ],
+      "default": "primary",
+      "description": "Visual color theme of the button."
+    },
+    "data-size": {
+      "type": "Size",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "md",
+      "description": "Button size."
+    },
+    "data-loading": {
+      "type": "boolean",
+      "default": false,
+      "description": "Shows spinner and disables interaction."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "button.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/native/button",
+    "label": "Button",
+    "group": "native",
+    "description": "Primary actions with color variants and states"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Color Variants",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\" wrap={true}>\n    <button class=\"sg-button\" data-color=\"primary\">Primary</button>\n    <button class=\"sg-button\" data-color=\"secondary\">Secondary</button>\n    <button class=\"sg-button\" data-color=\"danger\">Danger</button>\n    <button class=\"sg-button\" data-color=\"success\">Success</button>\n    <button class=\"sg-button\" data-color=\"warning\">Warning</button>\n    <button class=\"sg-button\" data-color=\"ghost\">Ghost</button>\n</sg-stack>"
+          },
+          {
+            "title": "Sizes & States",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\" wrap={true}>\n    <button class=\"sg-button\" data-size=\"sm\" data-color=\"primary\">Small</button>\n    <button class=\"sg-button\" data-size=\"md\" data-color=\"primary\">Medium</button>\n    <button class=\"sg-button\" data-size=\"lg\" data-color=\"primary\">Large</button>\n    <button class=\"sg-button\" data-loading data-color=\"primary\">Loading</button>\n    <button class=\"sg-button\" disabled={true} data-color=\"primary\">Disabled</button>\n</sg-stack>"
+          },
+          {
+            "title": "Link Button",
+            "language": "svelte",
+            "code": "<sg-stack direction=\"horizontal\" gap=\"related\" align=\"center\" wrap={true}>\n    <a class=\"sg-button\" href=\"https://example.com\" target=\"_blank\">External Link</a>\n    <a class=\"sg-button\" href=\"/components\" data-color=\"secondary\">Internal Link</a>\n</sg-stack>"
+          }
+        ]
+      }
+    ]
+  }
+}

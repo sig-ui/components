@@ -1,0 +1,50 @@
+@layer sigui.base {
+  .sg-input-group {
+    display: flex;
+    align-items: stretch;
+    font-family: var(--sg-font-family, system-ui);
+  }
+
+  .sg-input-group-prefix,
+  .sg-input-group-suffix {
+    display: flex;
+    align-items: center;
+    padding: 0 var(--sg-pad-input, 0.75rem);
+    background: var(--sg-surface-container);
+    border: 1px solid var(--sg-color-border);
+    color: var(--sg-color-text-muted);
+    font-size: var(--sg-text-sm, 0.875rem);
+    white-space: nowrap;
+  }
+
+  .sg-input-group-prefix {
+    border-right: none;
+    border-radius: var(--sg-input-radius, 0.375rem) 0 0 var(--sg-input-radius, 0.375rem);
+  }
+
+  .sg-input-group-suffix {
+    border-left: none;
+    border-radius: 0 var(--sg-input-radius, 0.375rem) var(--sg-input-radius, 0.375rem) 0;
+  }
+
+  .sg-input-group-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+}
+
+@layer sigui.variants {
+  .sg-input-group[data-size="sm"] .sg-input-group-prefix,
+  .sg-input-group[data-size="sm"] .sg-input-group-suffix {
+    padding: 0 var(--sg-gap-related, 0.5rem);
+    font-size: var(--sg-text-xs, 0.6875rem);
+  }
+
+  .sg-input-group[data-size="lg"] .sg-input-group-prefix,
+  .sg-input-group[data-size="lg"] .sg-input-group-suffix {
+    padding: 0 var(--sg-gap-grouped, 1rem);
+    font-size: var(--sg-text-base, 1rem);
+  }
+
+}

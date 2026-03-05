@@ -1,0 +1,39 @@
+{
+  "name": "Popup",
+  "importPath": "sg/popup",
+  "category": "overlay",
+  "description": "Positioned popup surface for lightweight floating content.",
+  "whenToUse": "Simple floating content where full Popover behavior is unnecessary.",
+  "semanticRole": "group",
+  "props": {
+    "open": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether popup is visible."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "popup.css",
+      "popup.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/popup",
+    "label": "Popup",
+    "group": "overlays",
+    "subgroup": "dialogs-and-popups",
+    "description": "Lightweight positioned popup container"
+  },
+  "page": {
+    "title": "Positioned popup",
+    "code": "<div class=\"sg-demo-popup-1\">\n  <sg-popup open>\n    <sg-card><sg-card-body>Popup content</sg-card-body></sg-card>\n  </sg-popup>\n</div>",
+    "css": ".sg-demo-popup-1 {\n  position: relative;\n  min-height: 5rem;\n}"
+  }
+}

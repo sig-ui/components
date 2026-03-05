@@ -1,0 +1,42 @@
+/* ---------------------------------------------------------------------------
+ * GradientPattern – structural CSS only
+ *
+ * All gradient rendering (backgrounds, filters, animations) is now
+ * computed by JS preset factories and applied as inline styles.
+ * This stylesheet handles layout, overlay positioning, and accessibility.
+ * ------------------------------------------------------------------------- */
+
+@layer sigui.base {
+  .sg-gradient-pattern {
+    position: relative;
+    overflow: hidden;
+    border-radius: inherit;
+  }
+
+  .sg-gradient-pattern[data-overlay] {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .sg-gradient-pattern-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Progress-driven background layer: oversized to allow parallax shift */
+  .sg-gradient-pattern-bg {
+    position: absolute;
+    inset: -15% 0;
+    will-change: transform;
+  }
+}
+
+@layer sigui.states {
+  @media (forced-colors: active) {
+    .sg-gradient-pattern {
+      background: Canvas !important;
+    }
+  }
+}

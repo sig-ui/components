@@ -1,0 +1,128 @@
+{
+  "name": "TabsRoot",
+  "importPath": "sg/tabs",
+  "category": "navigation",
+  "description": "Root controller for tabbed navigation. Supports keyboard navigation with arrow keys.",
+  "whenToUse": "Switching between panels of related content in the same view.",
+  "avoidWhen": "Page-level navigation - use links/router. Sequential steps - use a wizard.",
+  "semanticRole": "tablist + tabpanel",
+  "accessibilityRequirements": "Arrow keys navigate tabs. Home/End jump to first/last tab. Tab panels are linked via aria-controls.",
+  "parts": [
+    {
+      "name": "TabsRoot",
+      "props": {
+        "value": {
+          "type": "string",
+          "description": "Active tab value. Bindable."
+        },
+        "defaultValue": {
+          "type": "string",
+          "description": "Initial tab value when uncontrolled."
+        },
+        "onchange": {
+          "type": "(value: string) => void",
+          "description": "Called when active tab changes."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "TabsList",
+      "description": "Container for TabsTrigger buttons. Handles keyboard navigation.",
+      "whenToUse": "Always inside a TabsRoot.",
+      "semanticRole": "tablist",
+      "props": {
+        "loop": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether keyboard navigation loops from last to first tab."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "TabsTrigger",
+      "description": "Button that activates a tab panel.",
+      "whenToUse": "Always inside a TabsList.",
+      "semanticRole": "tab",
+      "props": {
+        "value": {
+          "type": "string",
+          "required": true,
+          "description": "Matches the TabsContent value to activate."
+        },
+        "disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disables this tab."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "TabsContent",
+      "description": "Panel content for a tab.",
+      "whenToUse": "Always inside a TabsRoot, paired with a TabsTrigger by value.",
+      "semanticRole": "tabpanel",
+      "props": {
+        "value": {
+          "type": "string",
+          "required": true,
+          "description": "Matches the TabsTrigger value."
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "tabs.css",
+      "tabs.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/tabs",
+    "label": "Tabs",
+    "group": "overlays",
+    "subgroup": "disclosure-and-switching",
+    "description": "Tabbed interface with compound pattern"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Usage",
+            "language": "svelte",
+            "code": "<sg-tabs-root value={tabValue} oninput={(e) => { const el = e.currentTarget as any; tabValue = (el.value ?? tabValue); }} onchange={(e) => { const el = e.currentTarget as any; tabValue = (el.value ?? tabValue); }} onclick={(e) => { const el = e.currentTarget as any; tabValue = (el.value ?? tabValue); }} ontoggle={(e) => { const el = e.currentTarget as any; tabValue = (el.value ?? tabValue); }}>\n    <sg-tabs-list>\n        <sg-tabs-trigger value=\"tab1\">Overview</sg-tabs-trigger>\n        <sg-tabs-trigger value=\"tab2\">Features</sg-tabs-trigger>\n        <sg-tabs-trigger value=\"tab3\">Settings</sg-tabs-trigger>\n        <sg-tabs-trigger value=\"tab4\" disabled={true}>Disabled</sg-tabs-trigger>\n    </sg-tabs-list>\n    <sg-tabs-content value=\"tab1\">\n        <p class=\"sg-demo-tabsroot-1\">Overview panel content. Use arrow keys to navigate between tabs.</p>\n    </sg-tabs-content>\n    <sg-tabs-content value=\"tab2\">\n        <p class=\"sg-demo-tabsroot-2\">Features panel content.</p>\n    </sg-tabs-content>\n    <sg-tabs-content value=\"tab3\">\n        <p class=\"sg-demo-tabsroot-3\">Settings panel content.</p>\n    </sg-tabs-content>\n</sg-tabs-root>",
+            "css": ".sg-demo-tabsroot-1 {\n  padding: var(--sg-space-4); color: var(--sg-color-text-secondary)\n}\n\n.sg-demo-tabsroot-2 {\n  padding: var(--sg-space-4); color: var(--sg-color-text-secondary)\n}\n\n.sg-demo-tabsroot-3 {\n  padding: var(--sg-space-4); color: var(--sg-color-text-secondary)\n}"
+          },
+          {
+            "title": "Uncontrolled with defaultValue",
+            "language": "svelte",
+            "code": "<sg-tabs-root value={uncontrolledTabValue} oninput={(e) => { const el = e.currentTarget as any; uncontrolledTabValue = (el.value ?? uncontrolledTabValue); }} onchange={(e) => { const el = e.currentTarget as any; uncontrolledTabValue = (el.value ?? uncontrolledTabValue); }} onclick={(e) => { const el = e.currentTarget as any; uncontrolledTabValue = (el.value ?? uncontrolledTabValue); }} ontoggle={(e) => { const el = e.currentTarget as any; uncontrolledTabValue = (el.value ?? uncontrolledTabValue); }} defaultValue=\"tab1\">\n    <sg-tabs-list loop={false}>\n        <sg-tabs-trigger value=\"tab1\">Tab 1</sg-tabs-trigger>\n        <sg-tabs-trigger value=\"tab2\">Tab 2</sg-tabs-trigger>\n        <sg-tabs-trigger value=\"tab3\">Tab 3</sg-tabs-trigger>\n    </sg-tabs-list>\n    <sg-tabs-content value=\"tab1\">\n        <p class=\"sg-demo-tabsroot-1\">First tab content. Loop is disabled - arrow keys stop at first/last tab.</p>\n    </sg-tabs-content>\n    <sg-tabs-content value=\"tab2\">\n        <p class=\"sg-demo-tabsroot-2\">Second tab content.</p>\n    </sg-tabs-content>\n    <sg-tabs-content value=\"tab3\">\n        <p class=\"sg-demo-tabsroot-3\">Third tab content.</p>\n    </sg-tabs-content>\n</sg-tabs-root>",
+            "css": ".sg-demo-tabsroot-1 {\n  padding: var(--sg-space-4); color: var(--sg-color-text-secondary)\n}\n\n.sg-demo-tabsroot-2 {\n  padding: var(--sg-space-4); color: var(--sg-color-text-secondary)\n}\n\n.sg-demo-tabsroot-3 {\n  padding: var(--sg-space-4); color: var(--sg-color-text-secondary)\n}"
+          },
+          {
+            "title": "Feature Flag",
+            "language": "svelte",
+            "code": "<p class=\"sg-demo-tabsroot-1\">Tabs machine can be toggled with <code>featureFlags.tabsMachine</code>.</p>",
+            "css": ".sg-demo-tabsroot-1 {\n  margin: 0; color: var(--sg-color-text-secondary);\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "name": "Divider",
+  "importPath": "sg/divider",
+  "category": "layout",
+  "description": "CSS-only divider. Apply class=\"sg-divider\" on a native <hr> (horizontal) or <div> (vertical).",
+  "whenToUse": "Visually separating groups of content within a section using native markup.",
+  "avoidWhen": "Spacing alone provides sufficient visual separation - use Spacer or Stack gap.",
+  "semanticRole": "separator",
+  "props": {
+    "class": {
+      "type": "string",
+      "required": true,
+      "description": "Use class=\"sg-divider\" on a native <hr> or <div>."
+    },
+    "data-orientation": {
+      "type": "string",
+      "values": [
+        "horizontal",
+        "vertical"
+      ],
+      "default": "horizontal",
+      "description": "Line direction."
+    },
+    "data-color": {
+      "type": "string",
+      "values": [
+        "default",
+        "strong",
+        "muted"
+      ],
+      "default": "default",
+      "description": "Line color intensity."
+    },
+    "data-spacing": {
+      "type": "SpacingRelationship",
+      "values": [
+        "related",
+        "grouped",
+        "separated",
+        "distinct"
+      ],
+      "description": "Margin around the divider."
+    }
+  },
+  "slots": [],
+  "registry": {
+    "files": [
+      "divider.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/native/hr",
+    "label": "Hr",
+    "group": "native",
+    "description": "Horizontal or vertical divider using native elements"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Orientation & Color",
+            "language": "svelte",
+            "code": "<sg-stack gap=\"grouped\">\n    <p class=\"sg-demo-divider-1\">Default horizontal</p>\n    <hr class=\"sg-divider\" />\n    <p class=\"sg-demo-divider-2\">Strong horizontal</p>\n    <hr class=\"sg-divider\" data-color=\"strong\" />\n    <p class=\"sg-demo-divider-3\">Vertical (inside horizontal Stack)</p>\n    <sg-stack direction=\"horizontal\" gap=\"grouped\" align=\"center\">\n        <div class=\"sg-demo-divider-4\">Left</div>\n        <div class=\"sg-divider\" data-orientation=\"vertical\"></div>\n        <div class=\"sg-demo-divider-5\">Right</div>\n    </sg-stack>\n</sg-stack>",
+            "css": ".sg-demo-divider-1 {\n  margin: 0; font-weight: var(--sg-weight-semibold)\n}\n\n.sg-demo-divider-2 {\n  margin: 0; font-weight: var(--sg-weight-semibold)\n}\n\n.sg-demo-divider-3 {\n  margin: 0; font-weight: var(--sg-weight-semibold)\n}\n\n.sg-demo-divider-4 {\n  background: var(--sg-surface-container-high); padding: var(--sg-space-4); border-radius: var(--sg-radius-md); border: var(--sg-border-thin) solid var(--sg-color-border)\n}\n\n.sg-demo-divider-5 {\n  background: var(--sg-surface-container-high); padding: var(--sg-space-4); border-radius: var(--sg-radius-md); border: var(--sg-border-thin) solid var(--sg-color-border)\n}"
+          },
+          {
+            "title": "Spacing",
+            "language": "svelte",
+            "code": "<div>\n  <p class=\"sg-demo-divider-1\">Content above</p>\n  <hr class=\"sg-divider\" data-spacing=\"related\" />\n  <p class=\"sg-demo-divider-2\">Content below</p>\n</div>\n<div class=\"sg-demo-divider-3\">\n  <p class=\"sg-demo-divider-4\">Content above</p>\n  <hr class=\"sg-divider\" data-spacing=\"grouped\" />\n  <p class=\"sg-demo-divider-5\">Content below</p>\n</div>\n<div class=\"sg-demo-divider-6\">\n  <p class=\"sg-demo-divider-7\">Content above</p>\n  <hr class=\"sg-divider\" data-spacing=\"separated\" />\n  <p class=\"sg-demo-divider-8\">Content below</p>\n</div>",
+            "css": ".sg-demo-divider-1 {\n  margin: 0\n}\n\n.sg-demo-divider-2 {\n  margin: 0\n}\n\n.sg-demo-divider-3 {\n  margin-top: var(--sg-gap-grouped)\n}\n\n.sg-demo-divider-4 {\n  margin: 0\n}\n\n.sg-demo-divider-5 {\n  margin: 0\n}\n\n.sg-demo-divider-6 {\n  margin-top: var(--sg-gap-grouped)\n}\n\n.sg-demo-divider-7 {\n  margin: 0\n}\n\n.sg-demo-divider-8 {\n  margin: 0\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

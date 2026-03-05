@@ -1,0 +1,158 @@
+@layer sigui.base {
+  .sg-date-picker-root {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sg-gap-tight, 0.25rem);
+  }
+
+  .sg-date-picker-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--sg-input-padding, 0.75rem);
+    border: 1px solid var(--sg-input-border);
+    border-radius: var(--sg-input-radius);
+    background: var(--sg-input-bg);
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-base, 1rem);
+    color: var(--sg-color-text);
+    min-height: var(--sg-touch-min, 44px);
+    cursor: pointer;
+    min-width: 12rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .sg-date-picker-trigger[hidden] {
+    display: none;
+  }
+
+  .sg-date-picker-content {
+    position: absolute;
+    top: calc(100% + var(--sg-gap-tight, 0.25rem));
+    left: 0;
+    z-index: 20;
+    background: var(--sg-card-bg);
+    border: 1px solid var(--sg-card-border);
+    border-radius: var(--sg-card-radius, var(--sg-card-radius, 0.5rem));
+    box-shadow: var(--sg-shadow-dropdown);
+    padding: var(--sg-pad-input, 0.75rem);
+    overflow: visible;
+  }
+
+  .sg-date-picker-content .sg-calendar {
+    border: 1px solid var(--sg-card-border);
+    border-radius: var(--sg-input-radius, 0.5rem);
+    background: var(--sg-card-bg);
+  }
+
+  .sg-date-picker-trigger-value {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--sg-touch-min, 44px);
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-base, 1rem);
+    color: var(--sg-color-text);
+  }
+
+  .sg-date-picker-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: var(--sg-gap-related, 0.5rem);
+  }
+
+  .sg-date-picker-nav {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: var(--sg-input-radius, 0.25rem);
+    font-family: var(--sg-font-family, system-ui);
+    color: var(--sg-color-text);
+  }
+
+  .sg-date-picker-title {
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+    font-weight: 500;
+  }
+
+  .sg-date-picker-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+  }
+
+  .sg-date-picker-weekday {
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-xs, 0.6875rem);
+    color: var(--sg-color-text-muted);
+    padding: var(--sg-gap-tight, 0.25rem);
+  }
+
+  .sg-date-picker-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  .sg-date-picker-day {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: var(--sg-input-radius, 0.25rem);
+    font-family: var(--sg-font-family, system-ui);
+    font-size: var(--sg-text-sm, 0.875rem);
+    color: var(--sg-color-text);
+  }
+
+  .sg-date-picker-day-empty {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+}
+
+@layer sigui.states {
+  @media (forced-colors: active) {
+    .sg-date-picker-content {
+      border: 1px solid CanvasText;
+    }
+  }
+
+  .sg-date-picker-day:hover {
+    background: var(--sg-surface-container);
+  }
+
+  .sg-date-picker-day[data-state="selected"] {
+    background: var(--sg-color-primary);
+    color: var(--sg-color-text-inverse);
+  }
+
+  .sg-date-picker-day[data-today] {
+    font-weight: 700;
+    border: 1px solid var(--sg-color-primary);
+  }
+
+  .sg-date-picker-trigger:focus-visible {
+    outline: var(--sg-focus-width, 2px) solid var(--sg-focus-color);
+    outline-offset: var(--sg-focus-offset, 2px);
+    box-shadow: 0 0 0 var(--sg-focus-offset, 2px) var(--sg-focus-inner, white);
+  }
+
+  .sg-date-picker-nav:hover {
+    background: var(--sg-surface-container);
+  }
+
+}

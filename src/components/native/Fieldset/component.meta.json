@@ -1,0 +1,63 @@
+{
+  "name": "Fieldset",
+  "importPath": "sg/fieldset",
+  "category": "form",
+  "description": "CSS-only styled native <fieldset> with <legend>. Apply class=\"sg-fieldset\" on a <fieldset> and class=\"sg-legend\" on its <legend>.",
+  "whenToUse": "To visually and semantically group related form controls. Use class=\"sg-fieldset\" and class=\"sg-legend\".",
+  "avoidWhen": "For non-form grouping - use Card or Section instead.",
+  "semanticRole": "group",
+  "accessibilityRequirements": "Use <legend> to label the group; screen readers announce it to users.",
+  "props": {
+    "class": {
+      "type": "string",
+      "required": true,
+      "description": "Use class=\"sg-fieldset\" on the <fieldset> element."
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Disables all controls within the fieldset."
+    }
+  },
+  "slots": [
+    "default"
+  ],
+  "registry": {
+    "files": [
+      "fieldset.css"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/native/fieldset",
+    "label": "Fieldset",
+    "group": "native",
+    "description": "Form grouping with legend"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Basic Fieldset",
+            "language": "svelte",
+            "code": "<fieldset class=\"sg-fieldset\">\n  <legend class=\"sg-legend\">Personal Information</legend>\n  <sg-stack gap=\"grouped\">\n    <div class=\"sg-input-wrapper\">\n      <label class=\"sg-input-label\">Name</label>\n      <input class=\"sg-input\" type=\"text\" placeholder=\"Full name\" />\n    </div>\n    <div class=\"sg-input-wrapper\">\n      <label class=\"sg-input-label\">Email</label>\n      <input class=\"sg-input\" type=\"email\" placeholder=\"email@example.com\" />\n    </div>\n  </sg-stack>\n</fieldset>"
+          },
+          {
+            "title": "With Description",
+            "language": "svelte",
+            "code": "<fieldset class=\"sg-fieldset\">\n  <legend class=\"sg-legend\">Notification Preferences</legend>\n  <p class=\"sg-legend-description\">Choose how you'd like to be notified about updates.</p>\n  <sg-stack gap=\"grouped\">\n    <div class=\"sg-checkbox-wrapper\">\n      <input class=\"sg-checkbox\" type=\"checkbox\" id=\"fs-email\" checked />\n      <label class=\"sg-checkbox-label\" for=\"fs-email\">Email notifications</label>\n    </div>\n    <div class=\"sg-checkbox-wrapper\">\n      <input class=\"sg-checkbox\" type=\"checkbox\" id=\"fs-sms\" />\n      <label class=\"sg-checkbox-label\" for=\"fs-sms\">SMS notifications</label>\n    </div>\n    <div class=\"sg-checkbox-wrapper\">\n      <input class=\"sg-checkbox\" type=\"checkbox\" id=\"fs-push\" checked />\n      <label class=\"sg-checkbox-label\" for=\"fs-push\">Push notifications</label>\n    </div>\n  </sg-stack>\n</fieldset>"
+          },
+          {
+            "title": "Disabled Fieldset",
+            "language": "svelte",
+            "code": "<fieldset class=\"sg-fieldset\" disabled>\n  <legend class=\"sg-legend\">Disabled Group</legend>\n  <sg-stack gap=\"grouped\">\n    <div class=\"sg-input-wrapper\">\n      <label class=\"sg-input-label\">Username</label>\n      <input class=\"sg-input\" type=\"text\" value=\"Cannot edit\" />\n    </div>\n    <button class=\"sg-button\" data-color=\"primary\">Submit</button>\n  </sg-stack>\n</fieldset>"
+          }
+        ]
+      }
+    ]
+  }
+}

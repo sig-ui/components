@@ -1,0 +1,167 @@
+{
+  "name": "SidebarRoot",
+  "importPath": "sg/sidebar",
+  "category": "navigation",
+  "description": "Collapsible side navigation panel. Renders as <aside> with expandable/collapsible state.",
+  "whenToUse": "For persistent app-level navigation in dashboard or admin layouts.",
+  "avoidWhen": "For temporary navigation panels - use Sheet or Drawer.",
+  "semanticRole": "complementary",
+  "accessibilityRequirements": "aria-label on <aside>. Toggle button for collapse/expand.",
+  "parts": [
+    {
+      "name": "SidebarRoot",
+      "props": {
+        "state": {
+          "type": "string",
+          "values": [
+            "expanded",
+            "collapsed"
+          ],
+          "default": "expanded",
+          "description": "Current sidebar state"
+        },
+        "collapsible": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether sidebar can be collapsed"
+        },
+        "width": {
+          "type": "string",
+          "default": "16rem",
+          "description": "Width when expanded"
+        },
+        "collapsedWidth": {
+          "type": "string",
+          "default": "4rem",
+          "description": "Width when collapsed"
+        },
+        "side": {
+          "type": "string",
+          "values": [
+            "left",
+            "right"
+          ],
+          "default": "left",
+          "description": "Which side of the viewport"
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "SidebarHeader",
+      "description": "Header section of a Sidebar (logo, brand, etc.).",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "SidebarContent",
+      "description": "Main scrollable content area of a Sidebar.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "SidebarFooter",
+      "description": "Footer section of a Sidebar (settings, user info, etc.).",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "SidebarSection",
+      "description": "Collapsible navigation section with optional title.",
+      "props": {
+        "title": {
+          "type": "string",
+          "description": "Section heading"
+        },
+        "collapsible": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether section can collapse"
+        },
+        "defaultOpen": {
+          "type": "boolean",
+          "default": true,
+          "description": "Initial open state"
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "SidebarItem",
+      "description": "Navigation item inside a SidebarSection. Link or button.",
+      "props": {
+        "href": {
+          "type": "string",
+          "description": "Link URL"
+        },
+        "active": {
+          "type": "boolean",
+          "default": false,
+          "description": "Active/selected state"
+        },
+        "disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disable item"
+        }
+      },
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "SidebarToggle",
+      "description": "Button that toggles sidebar between expanded and collapsed.",
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "SidebarSeparator",
+      "description": "Visual separator between sidebar sections.",
+      "whenToUse": "Between SidebarSection components to create visual grouping.",
+      "semanticRole": "separator",
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "registry": {
+    "files": [
+      "sidebar.css",
+      "sidebar.js"
+    ],
+    "componentDeps": [],
+    "libDeps": [],
+    "npmDeps": []
+  },
+  "route": {
+    "path": "/components/overlays/sidebar",
+    "label": "Sidebar",
+    "group": "overlays",
+    "subgroup": "navigation-shells",
+    "description": "Collapsible sidebar navigation"
+  },
+  "page": {
+    "sections": [
+      {
+        "title": "Examples",
+        "examples": [
+          {
+            "title": "Collapsible Sidebar",
+            "language": "svelte",
+            "code": "<div class=\"sg-demo-sidebarroot-1\">\n  <sg-sidebar-root state={sidebarState} oninput={(e) => { const el = e.currentTarget as any; sidebarState = (el.state ?? sidebarState); }} onchange={(e) => { const el = e.currentTarget as any; sidebarState = (el.state ?? sidebarState); }} onclick={(e) => { const el = e.currentTarget as any; sidebarState = (el.state ?? sidebarState); }} ontoggle={(e) => { const el = e.currentTarget as any; sidebarState = (el.state ?? sidebarState); }} aria-label=\"Example sidebar\">\n      <sg-sidebar-header>\n          <sg-sidebar-toggle />\n          <span class=\"sg-demo-sidebarroot-2\">My App</span>\n      </sg-sidebar-header>\n      <sg-sidebar-content>\n          <sg-sidebar-section title=\"Main\">\n              <sg-sidebar-item active={true}>Dashboard</sg-sidebar-item>\n              <sg-sidebar-item>Projects</sg-sidebar-item>\n              <sg-sidebar-item>Tasks</sg-sidebar-item>\n          </sg-sidebar-section>\n          <sg-sidebar-separator />\n          <sg-sidebar-section title=\"Settings\">\n              <sg-sidebar-item>Account</sg-sidebar-item>\n              <sg-sidebar-item disabled={true}>Billing</sg-sidebar-item>\n          </sg-sidebar-section>\n      </sg-sidebar-content>\n      <sg-sidebar-footer>\n          <span class=\"sg-demo-sidebarroot-3\">v1.0.0</span>\n      </sg-sidebar-footer>\n  </sg-sidebar-root>\n  <div class=\"sg-demo-sidebarroot-4\">\n    Main content area\n  </div>\n</div>",
+            "css": ".sg-demo-sidebarroot-1 {\n  height: 350px; border: var(--sg-border-thin) solid var(--sg-color-border); border-radius: var(--sg-radius-md); overflow: hidden; display: flex\n}\n\n.sg-demo-sidebarroot-2 {\n  font-weight: var(--sg-weight-semibold)\n}\n\n.sg-demo-sidebarroot-3 {\n  font-size: var(--sg-text-xs); color: var(--text-3)\n}\n\n.sg-demo-sidebarroot-4 {\n  flex: 1; padding: var(--sg-space-4); display: flex; align-items: center; justify-content: center; color: var(--sg-color-text-secondary)\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

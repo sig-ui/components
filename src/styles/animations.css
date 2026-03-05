@@ -1,0 +1,103 @@
+/* -------------------------------------------------------------------------
+ * Scroll-driven animations & View Transitions
+ *
+ * All animations respect prefers-reduced-motion.
+ * Scroll-driven features are behind @supports (animation-timeline: view()).
+ * ------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------
+ * Keyframes
+ * ------------------------------------------------------------------------- */
+@keyframes sg-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes sg-reveal-up {
+  from { opacity: 0; transform: translateY(1.5rem); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sg-progress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes sg-skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes sg-typewriter-blink {
+  50% { border-color: transparent; }
+}
+
+/* -------------------------------------------------------------------------
+ * Scroll-driven reveal animations (progressive enhancement)
+ * ------------------------------------------------------------------------- */
+@supports (animation-timeline: view()) {
+
+  .sg-scroll-reveal-fade {
+    animation: sg-fade-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 100%;
+  }
+
+  .sg-scroll-reveal-up {
+    animation: sg-reveal-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 100%;
+  }
+
+  .sg-scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--sg-color-primary);
+    transform-origin: left;
+    animation: sg-progress linear both;
+    animation-timeline: scroll();
+    z-index: 999;
+  }
+
+}
+
+/* -------------------------------------------------------------------------
+ * View Transitions
+ *
+ * Apply a view-transition-name via the custom property:
+ *   style="--sg-vt-name: my-element"
+ * Or use the attribute:
+ *   data-vt-name="my-element"
+ * ------------------------------------------------------------------------- */
+[data-vt-name] {
+  view-transition-name: var(--sg-vt-name);
+}
+
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: var(--sg-duration-normal, 200ms);
+  animation-timing-function: var(--sg-ease-default, ease-out);
+}
+
+/* -------------------------------------------------------------------------
+ * Reduced motion - disable all scroll and view transition animations
+ * ------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+
+  .sg-scroll-reveal-fade,
+  .sg-scroll-reveal-up,
+  .sg-scroll-progress,
+  .sg-skeleton,
+  .sg-typewriter[data-cursor]::after {
+    animation: none;
+  }
+
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0.01ms !important;
+  }
+
+}
