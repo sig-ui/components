@@ -1,4 +1,4 @@
-// @ts-nocheck
+// @ts-check
 
 /**
  * SigUI components runtime module for use machine.

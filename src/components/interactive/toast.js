@@ -1,4 +1,4 @@
-// @ts-nocheck
+// @ts-check
 
 /**
  * interactive / toast module for SigUI web components.

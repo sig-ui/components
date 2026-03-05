@@ -1,4 +1,4 @@
-// @ts-nocheck
+// @ts-check
 
 /**
  * interactive / input-otp module for SigUI web components.

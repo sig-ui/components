@@ -1,4 +1,4 @@
-// @ts-nocheck
+// @ts-check
 
 /**
  * Checkbox / checkbox module for SigUI web components.
